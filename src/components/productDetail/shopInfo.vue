@@ -6,7 +6,7 @@
         <div class="shop-bestItem">
             <div class="bestItemMore">
                 이 판매자의 인기상품이에요
-                <button>더 보기</button>
+                <button class="showMore">더 보기</button>
             </div>
             <hr />
             <div>
@@ -36,7 +36,7 @@
         <style>
 .shop-info {
     width: 100%;
-    height: 200px;
+    height: 210px;
     border: 1px black solid;
     overflow: hidden;
     margin: 0 0 5px 0;
@@ -44,7 +44,7 @@
 .shop-infoBox {
     float: left;
     position: relative;
-    width: 19%;
+    width: 16%;
     height: 100%;
     padding: auto;
 }
@@ -57,8 +57,8 @@
 }
 .shop-bestItem {
     float: right;
-    width: 80%;
-    height: 198px;
+    width: 83%;
+    height: 100%;
     padding: 0px 0px;
     border: 1px black solid;
 }
@@ -72,5 +72,23 @@
 li {
     float: left;
     list-style-type: none;
+}
+
+.showMore{
+    height: 30px;
+    padding: 5px 10px;
+}
+button {
+    background-color: #0051ba;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 0px 1px;
 }
 </style>
