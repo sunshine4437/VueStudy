@@ -141,8 +141,8 @@ export default {
                 link: "/signUp",
                 name: '회원가입'
             }, {
-                link: "/blank",
-                name: '기타'
+                link: "/payment",
+                name: '결제페이지'
             }]
         }
     }
