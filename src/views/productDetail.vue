@@ -152,16 +152,26 @@ export default {
     text-align: center;
 }
 .myCartBtn {
-    width: 280px;
-    height: 50px;
-    font-size: 200%;
+    width: 250px;
+    font-size: 150%;
 }
 .buyBtn {
-    width: 280px;
-    height: 50px;
-    font-size: 200%;
+    width: 250px;
+    font-size: 150%;
 }
-
+button {
+    background-color: #0051ba;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 0px 1px;
+}
 .clear {
     clear: both;
 }
