@@ -138,7 +138,7 @@ export default {
                 link: "/login",
                 name: '로그인'
             }, {
-                link: "/blank",
+                link: "/signUp",
                 name: '회원가입'
             }, {
                 link: "/blank",
