@@ -29,7 +29,8 @@ export default {
 
 <style scoped>
 .login {
-    height: 1100px;
+    /* testsdsds */
+    height: 1200px;
     text-align: center;
     border: 1px solid black;
     margin: 0 auto;
