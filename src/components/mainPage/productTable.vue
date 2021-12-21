@@ -127,7 +127,7 @@ ul {
 
 .imageTitle a {
     font-family: '함초롱돋움';
-    font-weight: bold;
+    font-weight: none;
     font-size: 15px;
 }
 
