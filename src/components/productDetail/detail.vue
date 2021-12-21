@@ -11,10 +11,10 @@
                     <img :src="current.content" alt="" />
                 </div>
                 <div v-else-if="currentId === 2">
-                    <review />
+                    <review></review>
                 </div>
                 <div v-else-if="currentId === 3">
-                    <qna />
+                    <qna></qna>
                 </div>
             </section>
         </transition>
@@ -65,6 +65,9 @@ export default {
 </script>
 
 <style scoped>
+.tabs{
+    width: 200%;
+}
 .contents {
     position: relative;
     overflow: hidden;
