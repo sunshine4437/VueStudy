@@ -1,85 +1,213 @@
 <template>
-<div class="example">
-    <div class="tabs">
-        <TabItem v-for="item in list" v-bind="item" :key="item.id" v-model="currentId" />
+  <div class="container">
+    <div class="detailTop">
+      <div class="leftBox">
+        <img
+          class="scale-down"
+          src="http://gdimg.gmarket.co.kr/1513973750/still/600?ver=1639527436"
+          alt="메이킹유 맨투맨/원피스/블라우스/스커트/기모바지 상품이미지"
+        />
+      </div>
+      <div class="rightBox">
+        <div class="item-topinfo item-topinfo--additional">
+          <div class="item-topinfo_headline">
+            <div id="itemcase_basic">
+              <div class="box__item-title">
+                <h1 class="itemtit">
+                  메이킹유 맨투맨/원피스/블라우스/스커트/기모바지
+                </h1>
+                <!--PRICE CASE -->
+                <p class="price">9900원</p>
+                <p class="deliveryFee">배송비 무료</p>
+              </div>
+            </div>
+          </div>
+          <div class="item_option_area">
+            <div class="form_body">
+              <div>
+                <h3>옵션 선택</h3>
+                <b-dropdown id="dropdown-1" text="옵션 1" class="m-md-2">
+                  <b-dropdown-item>멘트기모후드티</b-dropdown-item>
+                  <b-dropdown-item>룩스기모팬츠</b-dropdown-item>
+                  <b-dropdown-item>파먼기모팬츠</b-dropdown-item>
+                </b-dropdown>
+              </div>
+              <div
+                class="section_seleted_list"
+                id="coreSelectedList"
+                style="display: none"
+              >
+                <ul class="selected-list"></ul>
+              </div>
+            </div>
+            <div class="form_bottom">
+              <p class="total" id="coreTotalPriceP" style="visibility: hidden">
+                <span class="tit"
+                  >총 상품금액<a
+                    href="#tooltip_priceguide"
+                    class="open_tooltip_priceguide"
+                    ><i class="icon i_question"
+                      >총 상품금액 안내 레이어 보기</i
+                    ></a
+                  ></span
+                >
+                <strong class="price" id="coreTotalPrice"
+                  >0<span class="unit">11000원</span></strong
+                >
+              </p>
+              <div class="section_bottombtns">
+                <button
+                  class="btn_primary btn_white btn_mycart"
+                  data-href="#layer_mycart"
+                  data-montelena-acode="200000516"
+                  id="coreAddCartBtn"
+                  onclick="pdsClickLog('200000516', 'utlity', {});"
+                >
+                  <em>장바구니</em>
+                </button>
+                <button
+                  class="btn_primary btn_blue"
+                  id="coreInsOrderBtn"
+                  data-montelena-acode="200000517"
+                  onclick="pdsClickLog('200000517', 'utlity', {});"
+                >
+                  <em>구매하기</em>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="contents">
-        <transition>
-            <section class="item" :key="currentId">
-                <!-- {{ current.content }} -->
-                <div v-if=" currentId === 1 ">
-                    <img :src="current.content" alt="">
-                </div>
-                <div v-else-if="currentId===2">
-                    <test />
-                </div>
-            </section>``
-        </transition>
+    <div class="clear"></div>
+    <div class="shop-info">
+      <div class="shop-infoBox">
+        <div class="shop-title">메이킹 유</div>
+      </div>
+      <div class="shop-bestItem">
+        <h4 class="bestItemMore">
+          이 판매자의 인기상품이에요
+          <button>더 보기</button>
+        </h4>
+        <div>
+          <ul>
+            <li>
+              <img
+                class="bestPic"
+                src="http://gdimg.gmarket.co.kr/1513973750/still/600?ver=1639527436"
+              />
+            </li>
+            <li>
+              <img
+                class="bestPic"
+                src="http://gdimg.gmarket.co.kr/1513973750/still/600?ver=1639527436"
+              />
+            </li>
+            <li>
+              <img
+                class="bestPic"
+                src="http://gdimg.gmarket.co.kr/1513973750/still/600?ver=1639527436"
+              />
+            </li>
+            <li>
+              <img
+                class="bestPic"
+                src="http://gdimg.gmarket.co.kr/1513973750/still/600?ver=1639527436"
+              />
+            </li>
+            <li>
+              <img
+                class="bestPic"
+                src="http://gdimg.gmarket.co.kr/1513973750/still/600?ver=1639527436"
+              />
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-</div>
+    <div class="clear"></div>
+    <div class="detail">
+        <detail></detail>      
+    </div>
+  </div>
 </template>
 
 <script>
-import TabItem from '@/views/tabItem.vue'
-import test from '@/components/mainPage/test.vue'
+import detail from "@/components/productDetail/detail.vue";
 export default {
-    components: {
-        TabItem,
-        test
-    },
-    data() {
-        return {
-            currentId: 1,
-            list: [{
-                id: 1,
-                label: 'Tab1',
-                content: 'http://placehold.it/1920x500'
-            }, {
-                id: 2,
-                label: 'Tab2',
-                content: test
-            }, {
-                id: 3,
-                label: 'Tab3',
-                content: 'http://placehold.it/1920x500'
-            }]
-        }
-    },
-    computed: {
-        current() {
-            return this
-                .list
-                .find(el => el.id === this.currentId) || {}
-        }
-    }
-}
+  components: {
+    detail: detail,
+  },
+};
 </script>
 
 <style scoped>
-.contents {
-    position: relative;
-    overflow: hidden;
-    width: 280px;
-    border: 2px solid #000;
+html {
+  overflow-y: scroll;
+}
+* {
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+.scale-down {
+  object-fit: scale-down;
+  width: 100%;
+}
+.detailTop {
+  width: 100%;
+  display: flex;
+}
+.leftBox {
+  width: 50%;
+  padding: 0 0;
+}
+.rightBox {
+  width: 50%;
+  padding: 0 0;
+  margin-left: auto;
 }
 
-.item {
-    box-sizing: border-box;
-    padding: 10px;
-    width: 100%;
-    /* transition: all 0.8s ease; */
+.shop-info {
+  width: 100%;
+  height: 200px;
+  border: 1px black solid;
+  overflow: hidden;
+}
+.shop-infoBox {
+  float: left;
+  position: relative;
+  width: 20%;
+  height: 100%;
+  border: 1px black solid;
+}
+.shop-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 150%;
+}
+.shop-bestItem {
+  float: right;
+  width: 80%;
+  height: 198px;
+  padding: 0px 0px;
+  border: 1px black solid;
+}
+.bestItemMore {
+  border: 1px black solid;
+  padding: 5px 10px;
+}
+.bestPic {
+  height: 135px;
+  padding: 0px 22px 10px 23px;
+}
+li {
+  float: left;
 }
 
-/* 트랜지션 전용 스타일 */
-.v-leave-active {
-    position: absolute;
-}
-
-.v-enter {
-    transform: translateX(-100%);
-}
-
-.v-leave-to {
-    transform: translateX(100%);
+.clear {
+  clear: both;
 }
 </style>
