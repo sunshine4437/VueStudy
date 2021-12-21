@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import TabItem from './TabItem.vue'
+import TabItem from '@/views/tabItem.vue'
 import test from '@/components/mainPage/test.vue'
 export default {
     components: {
