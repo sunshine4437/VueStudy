@@ -2,14 +2,7 @@
 <div>
     <div>
         <ul class="menu">
-            <li>회사소개</li>
-            <li>채용정보</li>
-            <li>이용약관</li>
-            <li>전자금융거래약관</li>
-            <li>개인정보처리방침</li>
-            <li>입점신청</li>
-            <li>광고안내</li>
-            <li>서비스맵</li>
+            <li v-for="(item, idx) in menuList" :key="idx"><router-link :to="item.link">{{item.name}}</router-link></li>
         </ul>
     </div>
     <div class="container">
@@ -39,7 +32,41 @@
 export default {
     data() {
         return {
+            menuList: [{
+                    name: '회사소개',
+                    link: '/blank',
+                },
+                {
+                    name: '채용정보',
+                    link: '/blank',
+                },
+                {
+                    name: '이용약관',
+                    link: '/blank',
+                },
+                {
+                    name: '전자금융거래약관',
+                    link: '/blank',
+                },
+                {
+                    name: '개인정보처리방침',
+                    link: '/blank',
+                },
+                {
+                    name: '입점신청',
+                    link: '/blank',
+                },
+                {
+                    name: '광고안내',
+                    link: '/blank',
+                },
 
+                {
+                    name: '서비스맵',
+                    link: '/blank',
+                },
+
+            ],
         }
     }
 }
@@ -75,10 +102,12 @@ export default {
     list-style: none;
     display: flex;
 }
-.menu li::before{
+
+.menu li::before {
     content: "| ";
 }
-.menu li::after{
+
+.menu li::after {
     content: " |";
 }
 </style>

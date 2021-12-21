@@ -18,7 +18,7 @@ export default {
 <style scoped>
 .container {
     display: block;
-    height: 900px;
+    height: 1000px;
 }
 
 .content {
@@ -26,6 +26,5 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
 </style>
