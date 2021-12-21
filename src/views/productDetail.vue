@@ -49,7 +49,7 @@ export default {
   box-sizing: border-box;
   padding: 10px;
   width: 100%;
-  /* transition: all 0.8s ease; */
+  transition: all 0.8s ease;
 }
 /* 트랜지션 전용 스타일 */
 .v-leave-active {

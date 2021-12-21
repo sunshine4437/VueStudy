@@ -25,7 +25,6 @@
         <div class="moreImageDiv">
             <button v-on:click="moreImage" class="moreImageBtn">더 보기</button>
         </div>
-
     </div>
 </div>
 </template>
