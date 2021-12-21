@@ -1,7 +1,7 @@
-git clone https://github.com/sunshine4437/VueStudy.git
+1. git clone https://github.com/sunshine4437/VueStudy.git
 
-cd directory
+1. cd directory
 
-npm install
+1. npm install
 
-npm run serve
+1. npm run serve
