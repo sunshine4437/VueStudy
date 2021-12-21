@@ -8,17 +8,17 @@
     <div>
     </div>
     <div>
-        <h2 style="border: black solid 1px">text</h2>
+        <h2 style="font-size:40px">text</h2>
         <div class="imageArea" v-for="n in length" v-bind:key="n">
             <ul>
                 <li class="card_image" v-for='j in 4' :key="j">
-                    <div>
+                    <div class="imageDiv">
                         <!-- <a v-bind:href="images[0].link"><img :src="getImage(images[0].image)" alt="productImage"></a> -->
                         <a v-bind:href="images[(j-1)+(n-1)*4].link"><img :src="require(`@/components/mainPage/productTableImage/${images[(j-1)+(n-1)*4].image}`)" alt="productImage"></a>
                     </div>
-                    <a v-bind:href="images[(j-1)+(n-1)*4].link">
-                        <p style="border: 1px solid black">{{images[(j-1)+(n-1)*4].name}}</p>
-                    </a>
+                    <div class="imageTitle">
+                        <a v-bind:href="images[(j-1)+(n-1)*4].link"> {{images[(j-1)+(n-1)*4].name}} </a>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -87,7 +87,7 @@ ul {
     margin-right: auto;
 }
 
-.card_image div {
+.card_image>.imageDiv {
     width: 300px;
     height: 300px;
     border: black 1px solid;
@@ -95,35 +95,40 @@ ul {
     margin: 0 auto;
 }
 
-.card_image img {
+.imageDiv img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.card_image a {
+.card_image>.imageTitle {
+    display: block;
     text-align: center;
+    width: 300px;
+    border: black 1px solid;
+    overflow: hidden;
+    margin: 0 auto;
 }
 
-.card_image a:link {
+.imageTitle a:link {
     color: black;
     text-decoration: none;
 }
 
-.card_image a:hover {
+.imageTitle a:hover {
     color: navy;
     text-decoration: none;
 }
 
-.card_image a:visited {
+.imageTitle a:visited {
     color: black;
     text-decoration: none;
 }
 
-.card_image a p {
+.imageTitle a {
     font-family: '함초롱돋움';
     font-weight: bold;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .moreImageDiv {
@@ -143,6 +148,6 @@ button {
     cursor: pointer;
     border-radius: 4px;
 }
-/*  */
 
+/*  */
 </style>
