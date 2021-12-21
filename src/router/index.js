@@ -13,13 +13,13 @@ const routes = [
         children: [
             {
                 path: '',
-                component: () => import ('@/components/mainPage/productTable.vue')
+                component: () => import ('../components/mainPage/productTable.vue')
             }, {
                 path: "productDetail",
-                component: () => import ('@/views/productDetail.vue')
+                component: () => import ('../views/productDetail.vue')
             }, {
                 path: "test",
-                component: () => import ('@/components/mainPage/test.vue')
+                component: () => import ('../components/mainPage/test.vue')
             }
         ]
     }, {
