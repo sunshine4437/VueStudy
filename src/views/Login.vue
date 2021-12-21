@@ -29,7 +29,7 @@ export default {
 
 <style scoped>
 .login {
-    height: 1200px;
+    height: 1100px;
     text-align: center;
     border: 1px solid black;
     margin: 0 auto;
