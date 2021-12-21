@@ -2,7 +2,9 @@
 <div>
     <div>
         <ul class="menu">
-            <li v-for="(item, idx) in menuList" :key="idx"><router-link :to="item.link">{{item.name}}</router-link></li>
+            <li v-for="(item, idx) in menuList" :key="idx">
+                <router-link :to="item.link">{{item.name}}</router-link>
+            </li>
         </ul>
     </div>
     <div class="container">
@@ -22,9 +24,9 @@
             <p>고객센터전화번호</p>
             <p>고객센터주소</p>
             <p>고객센터 바로가기 ></p>
+            dfdf
         </div>
     </div>
-
 </div>
 </template>
 
@@ -65,7 +67,6 @@ export default {
                     name: '서비스맵',
                     link: '/blank',
                 },
-
             ],
         }
     }
