@@ -130,8 +130,8 @@ export default {
                 link: "/blank",
                 name: '특별'
             }, {
-                link: "/blank",
-                name: '기타'
+                link: "/basket",
+                name: 'basket'
             }],
             // rightMenuName: ['로그인', '회원가입', '기타'],
             rightMenuName: [{

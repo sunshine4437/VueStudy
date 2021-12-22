@@ -1,39 +1,40 @@
 <template>
-    <div class="shop-info">
-        <div class="shop-infoBox">
-            <div class="shop-title">판매자</div>
+<div class="shop-info">
+    <div class="shop-infoBox">
+        <div class="shop-title">판매자</div>
+    </div>
+    <div class="shop-bestItem">
+        <div class="bestItemMore">
+            이 판매자의 인기상품이에요
+            <button class="showMore">더 보기</button>
         </div>
-        <div class="shop-bestItem">
-            <div class="bestItemMore">
-                이 판매자의 인기상품이에요
-                <button class="showMore">더 보기</button>
-            </div>
-            <hr />
-            <div>
-                <li>
-                    <img class="bestPic" src="http://placehold.it/100x100" />
-                </li>
-                <li>
-                    <img class="bestPic" src="http://placehold.it/100x100" />
-                </li>
-                <li>
-                    <img class="bestPic" src="http://placehold.it/100x100" />
-                </li>
-                <li>
-                    <img class="bestPic" src="http://placehold.it/100x100" />
-                </li>
-                <li>
-                    <img class="bestPic" src="http://placehold.it/100x100" />
-                </li>
-                <li>
-                    <img class="bestPic" src="http://placehold.it/100x100" />
-                </li>
-            </div>
+        <hr />
+        <div>
+            <li>
+                <img class="bestPic" src="http://placehold.it/100x100" />
+            </li>
+            <li>
+                <img class="bestPic" src="http://placehold.it/100x100" />
+            </li>
+            <li>
+                <img class="bestPic" src="http://placehold.it/100x100" />
+            </li>
+            <li>
+                <img class="bestPic" src="http://placehold.it/100x100" />
+            </li>
+            <li>
+                <img class="bestPic" src="http://placehold.it/100x100" />
+            </li>
+            <li>
+                <img class="bestPic" src="http://placehold.it/100x100" />
+            </li>
         </div>
     </div>
+</div>
 </template>
 
-        <style>
+       
+<style scoped>
 .shop-info {
     width: 100%;
     height: 210px;
@@ -41,6 +42,7 @@
     overflow: hidden;
     margin: 0 0 5px 0;
 }
+
 .shop-infoBox {
     float: left;
     position: relative;
@@ -48,6 +50,7 @@
     height: 100%;
     padding: auto;
 }
+
 .shop-title {
     position: absolute;
     top: 50%;
@@ -55,6 +58,7 @@
     transform: translate(-50%, -50%);
     font-size: 150%;
 }
+
 .shop-bestItem {
     float: right;
     width: 83%;
@@ -62,22 +66,26 @@
     padding: 0px 0px;
     border: 1px black solid;
 }
+
 .bestItemMore {
     padding: 10px 10px 5px 10px;
 }
+
 .bestPic {
     height: 135px;
     padding: 0px 20px 0 20px;
 }
+
 li {
     float: left;
     list-style-type: none;
 }
 
-.showMore{
+.showMore {
     height: 30px;
     padding: 5px 10px;
 }
+
 button {
     background-color: #0051ba;
     border-radius: 4px;

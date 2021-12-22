@@ -36,7 +36,7 @@ export default {
 </script>
 
     
-<style >
+<style scoped>
 .test img {
     height: 400px;
 }

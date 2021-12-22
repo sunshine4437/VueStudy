@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Main from '../views/Main.vue'
-// import About from '../views/About.vue'
 
 Vue.use(VueRouter)
 
@@ -20,6 +19,10 @@ const routes = [
             }, {
                 path: "/test",
                 component: () => import ('@/components/mainPage/test.vue')
+            }, {
+                path: '/basket',
+                name: 'basket',
+                component: () => import ('../views/basket.vue')
             }
         ]
     }, {
@@ -29,12 +32,10 @@ const routes = [
     }, {
         path: '/blank',
         name: 'blank',
-
         component: () => import ('../views/blank.vue')
     }, {
         path: '/productDetail',
         name: 'productDetail',
-
         component: () => import ('../views/productDetail.vue')
     }, {
         path: '/signUp',
