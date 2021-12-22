@@ -16,7 +16,7 @@
                     </button>
                 </div>
                 <div class="cs1to1Q">
-                    <button type="button" onclick="location.href = 'otoQ.html'">
+                    <button type="button" onclick="location.href = 'otoQ.vue'">
                         1대1 문의하기
                     </button>
                 </div>
@@ -129,11 +129,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .customerService {
     text-align: center;
-    margin: 100px auto;
-    padding: 20px 20px;
     border: 1px black solid;
     width: 100%;
 }
@@ -142,11 +140,13 @@ export default {
     height: 100px;
     display: flex;
     align-items: center;
+    margin: 10px 10px;
 }
 
 .csSearch {
     width: 65%;
     padding: 0 0;
+    margin: 10px 10px;
 }
 
 #search {
@@ -175,6 +175,7 @@ button {
 .csFAQ,
 .csNotice {
     padding: 0 10px 10px 10px;
+    margin: 20px 20px;
 }
 
 .tableMain {
