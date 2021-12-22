@@ -1,11 +1,12 @@
 <template>
-<div>
-    <router-link v-bind:to="'/'">
-        <h1 class="content">
-            payment
-        </h1>
-    </router-link>
-</div>
+    <div class="payment">
+        <div class="orderProduct">
+            
+        </div>
+        <div class="coupon"></div>
+        <div class="delivery"></div>
+        <div class="pay"></div>
+    </div>
 </template>
 
 <script>
