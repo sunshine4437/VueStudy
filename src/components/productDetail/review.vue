@@ -51,7 +51,7 @@ export default {
 };
 </script>
  
-<style>
+<style scoped>
 .reviewMain {
     width: 100%;
 }
