@@ -108,7 +108,7 @@ export default {
                 link: "/blank",
                 name: '마이페이지'
             }, {
-                link: "/blank",
+                link: "/basket",
                 name: '장바구니'
             }, {
                 link: "/blank",
