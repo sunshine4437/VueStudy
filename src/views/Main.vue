@@ -108,7 +108,7 @@ export default {
                 link: "/blank",
                 name: '마이페이지'
             }, {
-                link: "/blank",
+                link: "/basket",
                 name: '장바구니'
             }, {
                 link: "/blank",
@@ -130,8 +130,8 @@ export default {
                 link: "/blank",
                 name: '특별'
             }, {
-                link: "/basket",
-                name: 'basket'
+                link: "/blank",
+                name: '기타'
             }],
             // rightMenuName: ['로그인', '회원가입', '기타'],
             rightMenuName: [{

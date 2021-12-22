@@ -7,47 +7,46 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: '/',
-        name: 'Main',
+        // name: 'Main',
         component: Main,
         children: [
             {
                 path: '',
+                // name: 'Main',
                 component: () => import ('@/components/mainPage/productTable.vue')
             }, {
                 path: "/productDetail",
+                // name: 'productDetail',
                 component: () => import ('@/views/productDetail.vue')
             }, {
                 path: "/test",
+                // name: 'test',
                 component: () => import ('@/components/mainPage/test.vue')
             }, {
                 path: '/basket',
-                name: 'basket',
+                // name: 'basket',
                 component: () => import ('../views/basket.vue')
             }
         ]
     }, {
         path: '/Login',
-        name: 'Login',
+        // name: 'Login',
         component: () => import ('../views/Login.vue')
     }, {
         path: '/blank',
-        name: 'blank',
+        // name: 'blank',
         component: () => import ('../views/blank.vue')
-    }, {
-        path: '/productDetail',
-        name: 'productDetail',
-        component: () => import ('../views/productDetail.vue')
-    }, {
+    },  {
         path: '/signUp',
-        name: 'signUp',
+        // name: 'signUp',
         component: () => import ('../views/signUp.vue')
     }, {
         path: '/payment',
-        name: 'payment',
+        // name: 'payment',
         component: () => import ('../views/payment.vue')
     }, {
         path: '/customerService',
-        name: 'customerService',
+        // name: 'customerService',
         component: () => import ('../views/customerService.vue')
     }
 ]
