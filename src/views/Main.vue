@@ -114,9 +114,6 @@ export default {
                 link: "/blank",
                 name: '기타'
             }, ],
-            // leftMenuName: [
-            //     '베스트', '최신', '인기', '특별', '기타'
-            // ],
             leftMenuName: [{
                 link: "/blank",
                 name: '베스트'

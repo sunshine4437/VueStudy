@@ -26,6 +26,11 @@ const routes = [
                 path: '/basket',
                 // name: 'basket',
                 component: () => import ('../views/basket.vue')
+            }, 
+            {
+                path: '/customerService',
+                // name: 'customerService',
+                component: () => import ('../views/customerService.vue')
             }
         ]
     }, {
@@ -44,11 +49,12 @@ const routes = [
         path: '/payment',
         // name: 'payment',
         component: () => import ('../views/payment.vue')
-    }, {
-        path: '/customerService',
-        // name: 'customerService',
-        component: () => import ('../views/customerService.vue')
-    }
+    }, 
+    // {
+    //     path: '/customerService',
+    //     // name: 'customerService',
+    //     component: () => import ('../views/customerService.vue')
+    // }
 ]
 
 const router = new VueRouter(

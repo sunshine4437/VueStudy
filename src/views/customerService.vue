@@ -129,11 +129,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .customerService {
     text-align: center;
-    margin: 100px auto;
-    padding: 20px 20px;
+    /* margin: 100px auto; */
+    /* padding: 20px 20px; */
     border: 1px black solid;
     width: 100%;
 }

@@ -18,7 +18,7 @@
                         <div><input type="checkbox"></div>
                     </li>
                     <li class="list2">
-                        <div class="listImage"><img src="http://placehold.it/200X200/" alt=""></div>
+                        <div class="listImage"><img src="http://placehold.it/125X125/" alt=""></div>
                     </li>
                     <li class="list3">
                         <div>상품명</div>
@@ -43,12 +43,19 @@
             </div>
             <div>
                 <div>상품금액</div>
+                <div class="price">67,400원</div>
+            </div>
+            <div>
+                <div>배송비(선결제)</div>
+                <div class="price">2,500원</div>
             </div>
             <div>
                 <div>할인금액</div>
+                <div class="price" style="color:red;">-4,920원</div>
             </div>
-            <div>
+            <div style="color:red; ">
                 <div>합계</div>
+                <div class="price" style="font-size:25px;">65,610원</div>
             </div>
         </div>
         <div class="orderBtn">
@@ -142,13 +149,29 @@ export default {
 .right {
     position: relative;
     display: inline-block;
-    width: 15%;
+    width: 20%;
     border: 1px solid black;
     padding: 10px;
 }
 
-.right div {
+.inform {
     border: 1px solid black;
+    position: absolute;
+   width: 90%;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.inform>div {
+    display: flex;
+   padding: 20px 5px;
+
+    border-bottom: 1px solid black;
+}
+
+.price {
+    margin-left: auto;
 }
 
 .orderBtn {
