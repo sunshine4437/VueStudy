@@ -26,7 +26,15 @@ const routes = [
                 path: '/basket',
                 // name: 'basket',
                 component: () => import ('../views/basket.vue')
-            }
+            }, {
+                path: '/customerService',
+                // name: 'customerService',
+                component: () => import ('../views/customerService.vue')
+            }, {
+                path: '/payment',
+                // name: 'payment',
+                component: () => import ('../views/payment.vue')
+            }, 
         ]
     }, {
         path: '/Login',
@@ -40,14 +48,6 @@ const routes = [
         path: '/signUp',
         // name: 'signUp',
         component: () => import ('../views/signUp.vue')
-    }, {
-        path: '/payment',
-        // name: 'payment',
-        component: () => import ('../views/payment.vue')
-    }, {
-        path: '/customerService',
-        // name: 'customerService',
-        component: () => import ('../views/customerService.vue')
     }
 ]
 
