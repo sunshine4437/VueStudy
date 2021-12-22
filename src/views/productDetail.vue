@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="productDetail">
         <hr />
         <div class="detailTop">
             <div class="leftBox">
@@ -39,14 +39,12 @@
                     </h4>
                     <button
                         class="myCartBtn"
-                        onclick="pdsClickLog('200000516', 'utlity', {});"
                     >
                         <em>장바구니</em>
                     </button>
                     &nbsp;
                     <button
                         class="buyBtn"
-                        onclick="pdsClickLog('200000517', 'utlity', {});"
                     >
                         <em>구매하기</em>
                     </button>
