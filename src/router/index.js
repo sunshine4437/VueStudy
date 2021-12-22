@@ -34,6 +34,9 @@ const routes = [
                 path: '/payment',
                 // name: 'payment',
                 component: () => import ('../views/payment.vue')
+            }, {
+                path: '/otoQ',
+                component: () => import ('../views/otoQ.vue')
             }
         ]
     }, {
@@ -49,22 +52,20 @@ const routes = [
         // name: 'signUp',
         component: () => import ('../views/signUp.vue')
     }, {
-        path: '/otoQ',
-        component: () => import ('../views/otoQ.vue')
-    }, {
         path: '/list',
         component: () => import ('../views/list.vue')
     }, {
         path: '/join1',
         component: () => import ('../views/Join1.vue')
-    }, 
-    {
+    }, {
         path: '/join2',
         component: () => import ('../views/Join2.vue')
-    }, 
-    {
+    }, {
         path: '/Mypage1',
         component: () => import ('../views/Mypage1.vue')
+    }, {
+        path: '/Mypage2',
+        component: () => import ('../views/Mypage2.vue')
     }, 
 ]
 

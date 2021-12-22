@@ -1,6 +1,6 @@
 <template>
 <div class="otoQ">
-    <form action="success.html" name="register" method="post">
+    <form class="otoQForm" action="success.html" name="register" method="post">
         <table>
             <tr>
                 <th colspan="2">문의글 작성</th>
@@ -60,7 +60,11 @@ export default {
 <style scoped>
 .otoQ {
     width: 60%;
-    padding: 20px 20px;
+    margin: 0 auto;
+    display:flex;
+}
+.otoQForm{ 
+    margin: auto
 }
 
 .otoTextarea {

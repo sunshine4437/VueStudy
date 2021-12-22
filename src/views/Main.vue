@@ -111,8 +111,8 @@ export default {
                 link: "/basket",
                 name: '장바구니'
             }, {
-                link: "/blank",
-                name: '기타'
+                link: "/otoQ",
+                name: '1대1'
             }, ],
             leftMenuName: [{
                 link: "/blank",
@@ -146,7 +146,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .nav {
     display: flex;
     /* align-items: center;

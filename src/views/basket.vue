@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="orderBtn">
-            <button>주문</button>
+            <router-link class="signUpLink" v-bind:to="'/payment'"> <button>주문</button></router-link>
         </div>
     </div>
 </div>
@@ -157,7 +157,7 @@ export default {
 .inform {
     border: 1px solid black;
     position: absolute;
-   width: 90%;
+    width: 90%;
     bottom: 10%;
     left: 50%;
     transform: translate(-50%);
@@ -165,7 +165,7 @@ export default {
 
 .inform>div {
     display: flex;
-   padding: 20px 5px;
+    padding: 20px 5px;
 
     border-bottom: 1px solid black;
 }
