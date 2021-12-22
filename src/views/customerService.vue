@@ -9,9 +9,11 @@
                 </button>
             </div>
             <div class="cs1to1Q">
-                <button type="button" onclick="location.href = 'otoQ.vue'">
-                    1대1 문의하기
-                </button>
+                <router-link v-bind:to="'/otoQ'">
+                    <button>
+                        1대1 문의하기
+                    </button>
+                </router-link>
             </div>
         </div>
         <hr />

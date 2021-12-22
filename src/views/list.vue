@@ -3,17 +3,17 @@
     <span class='span1'> 인기상품 </span>
     <div class="products">
         <a href="#">
-            <img src="./images/선글라스.jpg">
+            <img src="@/components/mainPage/productTableImage/1.jpg">
             <p>선글라스</p>
             <p class="price">49,000</p>
         </a>
         <a href="#">
-            <img src="./images/구두.jpg">
+             <img src="@/components/mainPage/productTableImage/1.jpg">
             <p>구두</p>
             <p class="price">89,000</p>
         </a>
         <a href="#">
-            <img src="./images/가방.jpg">
+      <img src="@/components/mainPage/productTableImage/1.jpg">
             <p>가방</p>
             <p class="price">69,000</p>
         </a>
@@ -23,7 +23,7 @@
         <ul>
             <li class="item">
                 <a href="#">
-                    <img src="./images/신발.jpg">
+            <img src="@/components/mainPage/productTableImage/1.jpg">
                 </a>
                 <span class="name"> 상품명:<br>운동화</span>
                 <span class="price"> 가격: <br>79,000</span>
@@ -31,7 +31,7 @@
             </li>
             <li class="item">
                 <a href="#">
-                    <img src="./images/로퍼.jpg">
+                    <img src="@/components/mainPage/productTableImage/1.jpg">
                 </a>
                 <span class="name"> 상품명:<br>로퍼</span>
                 <span class="price"> 가격: <br>99,000</span>
@@ -39,7 +39,7 @@
             </li>
             <li class="item">
                 <a href="#">
-                    <img src="./images/시계.png">
+                       <img src="@/components/mainPage/productTableImage/1.jpg">
                 </a>
                 <span class="name"> 상품명:<br>손목시계</span>
                 <span class="price"> 가격: <br>109,000</span>
