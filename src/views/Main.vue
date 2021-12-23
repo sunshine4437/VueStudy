@@ -100,7 +100,7 @@ export default {
                 alt: "logo"
             }],
             memberMenu: [{
-                link: "/blank",
+                link: "/Mypage1",
                 name: '마이페이지'
             }, {
                 link: "/basket",
