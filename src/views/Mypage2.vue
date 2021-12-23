@@ -88,7 +88,7 @@ export default {}
 
 .left {
     display: inline-block;
-    width: 15%;
+
     border: 1px solid black;
 }
 
