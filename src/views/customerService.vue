@@ -9,6 +9,7 @@
                 </button>
             </div>
             <div class="cs1to1Q">
+                <span style="margin: 0 20px; font-size: 200%;">1588-8000</span>
                 <router-link v-bind:to="'/otoQ'">
                     <button>
                         1대1 문의하기
