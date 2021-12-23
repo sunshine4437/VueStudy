@@ -1,17 +1,9 @@
 <template>
 <div class="main">
-    <!-- vuex 실습 -->
-    <!-- <button v-on:click="$store.commit('increment',{amount:3})"></button> -->
-    <!-- <button v-on:click="$store.commit({type:'increment',
-        amount:3})">증가</button> -->
-    <!-- {{count}} -->
-
     <!-- 상단 메뉴바 -->
     <div class="nav">
         <ul class="search">
-            <!-- <li v-for="n in searchMenu" v-bind:key="n"> <img v-if="n.id==1"
-                :src="n.content" :alt="n.logo"> <input v-if="n.id==2" type="text"> <button
-                v-if="n.id==3"></button> </li> -->
+
             <li>
                 <div class="dropDownMenu">
                     <button class="dropDownMenuBtn">
@@ -34,8 +26,9 @@
                         <option value="2">2</option>
                         <option value="3">3</option>
                     </select>
-                    <input type="text" style="font-size: 20px" placeholder="검색어 입력">
-                    <button v-on:click="print()" type="submit">검색</button>
+
+                    <input id="search" type="text" v-on:keyup.enter="search()" style="font-size: 20px" placeholder="검색어 입력">
+                    <button @click="search()">검색</button>
                 </div>
             </li>
         </ul>
@@ -84,9 +77,11 @@ export default {
     },
     //
     methods: {
-        print() {
-            const targetId = document.getElementById("searchBtn");
-            console.log(targetId.value); // returns 'foo'
+        search() {
+            const targetId = document.getElementById("search");
+            if (targetId.value === '신발') {
+                this.$router.push(`/shopping`);
+            }
         }
     },
     data() {
@@ -142,7 +137,7 @@ export default {
                 name: '결제페이지'
             }]
         }
-    }
+    },
 }
 </script>
 

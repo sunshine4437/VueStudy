@@ -1,6 +1,5 @@
 <template>
 <div>
-  
     <div style="text-align:center;">
            <router-link v-bind:to="'/'"> <img src="http://placehold.it/95X95" alt="logo"></router-link>
         <h1>회원가입</h1>

@@ -37,6 +37,9 @@ const routes = [
             }, {
                 path: '/otoQ',
                 component: () => import ('../views/otoQ.vue')
+            },{
+                path: '/shopping',
+                component: () => import ('../views/shopping.vue')
             }
         ]
     }, {
