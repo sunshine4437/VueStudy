@@ -187,7 +187,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .payment {
     border: 1px black solid;
     padding: 20px 10px;
