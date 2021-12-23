@@ -104,7 +104,7 @@ export default {
     methods: {
         range(start, end) {
             let list = []
-            for (let i = start; i <= end; i++)
+            for (let i = end; i >= start; i--)
                 list.push(i);
             return list;
         }
