@@ -35,7 +35,7 @@
             <div class="rightButton" style="padding: 10px;">
                 <h4 style="display:flex">
                     <label for="" style="margin-left:auto;">총 상품금액</label>
-                    <label for="" style="width: 190px; margin-right: 60px;">100,000,000원</label>
+                    <label for="" style="width: 190px; margin-right: 35px;">100,000,000원</label>
                 </h4>
                 <button class="myCartBtn" style="margin-right: 20px;" >
                     <em>장바구니</em>
