@@ -5,7 +5,7 @@
         </div>
         <div class="reviewMain">
             <table style="width: 100%">
-                <tr v-for="review in reviews" :key="review.id">
+                <tr v-for="(review, idx) in reviews" :key="idx">
                     <td style="width:10%"><img v-bind:src="review.image" /></td>
                     <td><span v-html="review.comment"></span></td>
                     <td style="width:10%"><span v-html="review.id"></span></td>

@@ -1,18 +1,23 @@
 <template>
 <div>
     <!--top-->
-    <div class="top">
+    <div class="top" style="text-align:center">
+             <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo"></router-link>
         <h1>마이페이지</h1>
     </div>
     <div class="container">
         <!--left-->
         <div class="left">
-            <div class="List">나의쇼핑내역</div>
+            <div class="List">
+                   <router-link v-bind:to="'/mypage1'">나의쇼핑내역</router-link>
+            </div>
             <div class="Check">
                 <li>주문/배송 조회</li>
                 <li>취소/환불 조회</li>
             </div>
-            <div class="List">회원정보 열람</div>
+            <div class="List">
+                  <router-link v-bind:to="'/mypage2'">회원정보 열람</router-link>
+            </div>
             <div class="Check">
                 <li>회원정보 수정</li>
             </div>
@@ -63,15 +68,13 @@
                     </div>
                 </div>
             </div>
-            <br>
             <div class="pList2">
                 <h2>주문내역 조회</h2>
             </div>
 
-            <br>
             <div class="date2">
                 <table class="table2">
-                    <tr id="tr1">
+                    <tr class="tr1">
                         <td>주문일자</td>
                         <td>주문 상품 정보</td>
                         <td>상품금액</td>
@@ -104,10 +107,9 @@
             <div class="pList3">
                 <h2>취소/환불 조회</h2>
             </div>
-            <br>
             <div class="date3">
                 <table class="table3">
-                    <tr id="tr1">
+                    <tr class="tr1">
                         <td>주문일자</td>
                         <td>주문 상품 정보</td>
                         <td>상품금액</td>
@@ -147,8 +149,8 @@ export default {
 </script>
 
 <style scoped>
-div {
-    border: 1px black solid;
+.top {
+    border-bottom: 1px solid black;
 }
 
 .container {
@@ -157,6 +159,7 @@ div {
 
 .left {
     display: inline-block;
+    border: 1px black solid;
 }
 
 .right {
@@ -168,13 +171,16 @@ div {
 .pList2,
 .pList3 {
     text-align: center;
+    border-bottom: 1px solid black;
 }
 
 .date1,
 .date2,
 .date3 {
     display: flex;
-
+    border-bottom: 1px solid black;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .table1st {
@@ -196,21 +202,25 @@ div {
     margin-right: auto;
     padding: 5px 15px;
 }
-.row2{
-  text-align: center;
+
+.row2 {
+    text-align: center;
 }
+
 .row3 {
-  display:flex;
-   padding: 5px 0px;
+    display: flex;
+    padding: 5px 0px;
 }
+
 .searchBar {
     margin-left: auto;
     margin-right: 1px;
 }
+
 .searchBtn {
     margin-left: 1px;
     margin-right: auto;
-        background-color: #0051ba;
+    background-color: #0051ba;
     border-radius: 4px;
     border: none;
     color: white;
@@ -234,9 +244,14 @@ div {
     padding: 5px 5px;
 }
 
+.left>div {
+    border-bottom: 1px solid black;
+}
+
 .List {
     text-align: center;
-    margin: 10px 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .Check {

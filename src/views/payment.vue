@@ -42,7 +42,7 @@
                 </tr>
                 <tr>
                     <td>포인트</td>
-                    <td class="couponNum">0원</td>
+                    <td class="couponNum">243원</td>
                     <td><input type="text" style="width: 100%"></td>
                     <td><button class="couponBtn">사용</button></td>
                 </tr>

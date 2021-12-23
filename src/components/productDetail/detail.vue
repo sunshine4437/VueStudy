@@ -41,7 +41,7 @@ export default {
             list: [{
                     id: 1,
                     label: "상품 상세 정보",
-                    content: "http://placehold.it/2000x5000",
+                    content: "http://placehold.it/1200x1500",
                 },
                 {
                     id: 2,

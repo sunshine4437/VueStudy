@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="orderBtn">
-            <button>주문</button>
+            <router-link class="signUpLink" v-bind:to="'/payment'"> <button>주문</button></router-link>
         </div>
     </div>
 </div>
@@ -71,9 +71,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
-
-</style><style scoped>
+<style scoped>
 .basket {
     display: flex;
 }
@@ -87,12 +85,12 @@ export default {
 .selectDiv {
     display: flex;
     width: 100%;
-    border: 1px solid black;
 }
 
-.selectDiv div {
+.selectDiv >div {
     width: 50%;
     border: 1px solid black;
+
 }
 
 .allSelectDiv {
@@ -102,7 +100,6 @@ export default {
 .list {
     list-style: none;
     display: flex;
-    border: 1px solid black;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -152,12 +149,13 @@ export default {
     width: 20%;
     border: 1px solid black;
     padding: 10px;
+    margin-left:10px;
 }
 
 .inform {
     border: 1px solid black;
     position: absolute;
-   width: 90%;
+    width: 90%;
     bottom: 10%;
     left: 50%;
     transform: translate(-50%);
@@ -165,7 +163,7 @@ export default {
 
 .inform>div {
     display: flex;
-   padding: 20px 5px;
+    padding: 20px 5px;
 
     border-bottom: 1px solid black;
 }
@@ -181,17 +179,5 @@ export default {
     text-align: center;
 }
 
-button {
-    background-color: #0051ba;
-    border-radius: 4px;
-    border: none;
-    color: white;
-    padding: 15px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 15px;
-    cursor: pointer;
-    margin: 0px 1px;
-}
+
 </style>
