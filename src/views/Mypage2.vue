@@ -1,18 +1,23 @@
 <template>
 <div>
     <!--top-->
-    <div class="top">
+  <div class="top" style="text-align:center">
+            <router-link v-bind:to="'/'"> <img src="http://placehold.it/95X95" alt="logo"></router-link>
         <h1>마이페이지</h1>
     </div>
     <!--left-->
     <div class="container">
         <div class="left">
-            <div class="List">나의쇼핑내역</div>
+         <div class="List">
+                   <router-link v-bind:to="'/mypage1'">나의쇼핑내역</router-link>
+            </div>
             <div class="check">
                 <li>주문/배송 조회</li>
                 <li>취소/환불 조회</li>
             </div>
-            <div class="List">회원정보 열람</div>
+              <div class="List">
+                  <router-link v-bind:to="'/mypage2'">회원정보 열람</router-link>
+            </div>
             <div class="check">
                 <li>회원정보 수정</li>
             </div>

@@ -1,7 +1,9 @@
 <template>
 <div class="signUp">
     <div class="header">
-        <div class="logo"> <router-link v-bind:to="'/'"> <img src="http://placehold.it/95X95" alt="logo"></router-link></div>
+        <div class="logo">
+            <router-link v-bind:to="'/'"> <img src="http://placehold.it/95X95" alt="logo"></router-link>
+        </div>
         <div class="sequence">
             <ul class="sequenceMenu">
                 <li>1 회원선택</li>
@@ -16,7 +18,7 @@
         <div class="Box">
             <div class="imgBox">
                 <img src="http://placehold.it/500X500/" alt="">
-                <button class="simpleSignUpBtn">간편 회원가입</button>
+                <router-link v-bind:to="'/join1'"> <button class="simpleSignUpBtn">간편 회원가입 </button></router-link>
             </div>
             <div class="content">
                 <div class="seller">
@@ -24,7 +26,8 @@
                 </div>
                 <div class="sellerSignUp">
                     <p>셀러 회원</p>
-                    <button class="sellerSignUpBtn">회원가입</button>
+                    <router-link v-bind:to="'/join2'"> <button class="sellerSignUpBtn">회원가입</button></router-link>
+
                 </div>
                 <!-- <table>
                     <tr class="tt">
