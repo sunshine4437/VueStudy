@@ -44,11 +44,11 @@
         <div class="container">
             <span class='span1'> 인기상품 </span>
             <div class="products">
-                <a href="#">
+                <router-link v-bind:to="'/productDetail'">
                     <img src="@/components/mainPage/productTableImage/1.jpg">
                     <p>선글라스</p>
                     <p class="price">49,000</p>
-                </a>
+                </router-link>
                 <a href="#">
                     <img src="@/components/mainPage/productTableImage/1.jpg">
                     <p>구두</p>
@@ -160,7 +160,7 @@ export default {
 .products a:visited,
 .products a:hover,
 .products a:link {
-      color: black;
+    color: black;
     text-decoration: none;
 }
 
