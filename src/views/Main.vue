@@ -63,7 +63,7 @@
 
 <script>
 // @ is an alias to /src
-
+import "@/css/common.css"
 export default {
     name: 'Main',
     components: {
@@ -141,7 +141,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped >
+
 .nav {
     display: flex;
     /* align-items: center;
@@ -291,7 +292,7 @@ export default {
     padding: 0;
 }
 
-button {
+/* button {
     background-color: #0051ba;
     border-radius: 4px;
     border: none;
@@ -303,7 +304,7 @@ button {
     font-size: 15px;
     cursor: pointer;
     margin: 0px 1px;
-}
+} */
 
 /* border: 1px solid rgb(37, 37, 37);
     border-radius: 4px;
