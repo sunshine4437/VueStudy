@@ -71,9 +71,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
-
-</style><style scoped>
+<style scoped>
 .basket {
     display: flex;
 }
@@ -87,12 +85,12 @@ export default {
 .selectDiv {
     display: flex;
     width: 100%;
-    border: 1px solid black;
 }
 
-.selectDiv div {
+.selectDiv >div {
     width: 50%;
     border: 1px solid black;
+
 }
 
 .allSelectDiv {
@@ -102,7 +100,6 @@ export default {
 .list {
     list-style: none;
     display: flex;
-    border: 1px solid black;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -152,6 +149,7 @@ export default {
     width: 20%;
     border: 1px solid black;
     padding: 10px;
+    margin-left:10px;
 }
 
 .inform {
