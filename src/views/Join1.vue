@@ -29,7 +29,7 @@
         </div>
         <div>
             <h3>
-                비밀번호확인
+                비밀번호 확인
             </h3>
             <input type="password" name="re_password" class="re_password">
         </div>
