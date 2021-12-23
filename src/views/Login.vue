@@ -1,7 +1,7 @@
 <template>
 <div class="login">
     <div class="inputForm">
-        <router-link v-bind:to="'/'"> <img src="http://placehold.it/95X95" alt="logo"></router-link>
+       <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo"></router-link>
         <input class="inputID" type="text" v-model="username" placeholder="아이디 입력"><br>
         <input class="inputPWD" type="password" v-model="password" placeholder="비밀번호 입력"><br>
         <input class="inputBtn" type="button" value="login" @click="login"><br>

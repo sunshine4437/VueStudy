@@ -61,9 +61,10 @@ export default {
 .otoQ {
     width: 60%;
     margin: 0 auto;
-    display:flex;
+    display: flex;
 }
-.otoQForm{ 
+
+.otoQForm {
     margin: auto
 }
 
