@@ -107,7 +107,7 @@ export default {
                 name: '장바구니'
             }, {
                 link: "/otoQ",
-                name: '1대1'
+                name: '일대일 문의'
             }, ],
             leftMenuName: [{
                 link: "/blank",
