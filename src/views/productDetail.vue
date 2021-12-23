@@ -131,7 +131,7 @@ export default {
 .rightSelected {
     width: 100%;
     float: right;
-    padding: 0 50px 0 0;
+    padding: 0 83px 0 0;
     border: 1px black solid;
     border-radius: 15px;
     text-align: right;
