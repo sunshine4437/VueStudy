@@ -37,12 +37,12 @@
                     <label for="" style="margin-left:auto;">총 상품금액</label>
                     <label for="" style="width: 190px; margin-right: 35px;">100,000,000원</label>
                 </h4>
-                <button class="myCartBtn" style="margin-right: 20px;" >
-                    <em>장바구니</em>
+                <button class="myCartBtn" style="margin-right: 20px;">
+                    장바구니
                 </button>
                 <router-link v-bind:to="'/payment'">
                     <button class="buyBtn">
-                        <em>구매하기</em>
+                        구매하기
                     </button>
                 </router-link>
             </div>

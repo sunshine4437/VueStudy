@@ -11,7 +11,7 @@
             <div class="findBoxDiv">| 아이디찾기 | 비밀번호찾기</div>
         </div>
         <div class="signUpBtn">
-            <router-link class="signUpLink" v-bind:to="'/blank'">회원가입</router-link>
+            <router-link class="signUpLink" v-bind:to="'/signUp'">회원가입</router-link>
         </div>
         <!-- <LoginPage /> -->
     </div>

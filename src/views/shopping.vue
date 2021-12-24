@@ -92,7 +92,6 @@
                         <div class="desc">
                             <span class="vendor">판매처:<br>백화점</span>
                         </div>
-
                     </li>
                     <li class="item">
                         <a href="#">
@@ -107,7 +106,6 @@
                         <div class="desc">
                             <span class="vendor">판매처:<br>아울렛</span>
                         </div>
-
                     </li>
                 </ul>
             </div>
