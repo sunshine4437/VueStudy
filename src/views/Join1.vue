@@ -107,7 +107,9 @@ export default {
 </script>
 
 <style scoped>
-.container {}
+.container {
+    background-color: rgba(123, 222, 255, 0.829);
+}
 
 .container>div {
     width: 40%;
