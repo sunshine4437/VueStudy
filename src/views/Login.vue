@@ -61,7 +61,7 @@ export default {
 .login {
     height: 1200px;
     text-align: center;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin: 0 auto;
     padding: 0;
 

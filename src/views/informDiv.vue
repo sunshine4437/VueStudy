@@ -77,12 +77,12 @@ export default {
 <style scoped>
 .container {
     display: flex;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .container>div {
     display: block;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: 300px;
     height: 200px;
     padding: 0;
@@ -91,12 +91,12 @@ export default {
 
 .temp2 {
     display: flex;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .temp2>div {
     display: block;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     height: 49%;
 }
 

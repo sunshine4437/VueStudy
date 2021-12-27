@@ -60,7 +60,7 @@ export default {
 
 <style scoped>
 .signUp div {
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .header {
@@ -120,7 +120,7 @@ export default {
 .content>div {
     width: 50%;
     height: 300px;
-    border: black 1px solid;
+    /* border: black 1px solid; */
 }
 
 .seller {

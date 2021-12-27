@@ -59,7 +59,7 @@ export default {
 
 <style scoped>
 .main {
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .banner img {
@@ -90,7 +90,7 @@ ul {
 .card_image>.imageDiv {
     width: 300px;
     height: 300px;
-    border: black 1px solid;
+    /* border: black 1px solid; */
     overflow: hidden;
     margin: 0 auto;
 }
@@ -105,7 +105,7 @@ ul {
     display: block;
     text-align: center;
     width: 300px;
-    border: black 1px solid;
+    /* border: black 1px solid; */
     overflow: hidden;
     margin: 0 auto;
 }
