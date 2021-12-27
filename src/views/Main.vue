@@ -56,6 +56,7 @@
             </li>
         </ul>
     </div>
+    <hr class="lineNav">
     <router-view></router-view>
     <!-- <productTable /> -->
 </div>
@@ -141,8 +142,7 @@ export default {
 }
 </script>
 
-<style scoped >
-
+<style scoped>
 .nav {
     display: flex;
     /* align-items: center;
@@ -292,28 +292,8 @@ export default {
     padding: 0;
 }
 
-/* button {
-    background-color: #0051ba;
-    border-radius: 4px;
-    border: none;
-    color: white;
-    padding: 15px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 15px;
-    cursor: pointer;
-    margin: 0px 1px;
-} */
-
-/* border: 1px solid rgb(37, 37, 37);
-    border-radius: 4px;
-    background-color: #0051ba;
-    font-weight: 400;
-    color: white;
-    padding: 12px;
-    width: 120px;
-    text-align: left;
-    cursor: pointer;
-    font-size: 12px; */
+.lineNav {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+}
 </style>

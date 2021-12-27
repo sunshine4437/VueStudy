@@ -1,9 +1,12 @@
 <template>
-<div>
+<div class="informDiv">
+    <hr>
     <div>
         <ul class="menu">
             <li v-for="(item, idx) in menuList" :key="idx">
-                <router-link :to="item.link">{{item.name}}</router-link>
+                <label for="">
+                    <router-link :to="item.link">{{item.name}}</router-link>
+                </label>
             </li>
         </ul>
     </div>
@@ -75,6 +78,10 @@ export default {
 </script>
 
 <style scoped>
+.informDiv {
+    background-color: #fafafa;
+}
+
 .container {
     display: flex;
     /* border: 1px solid black; */
@@ -111,5 +118,13 @@ export default {
 
 .menu li::after {
     content: " |";
+}
+:any-link{
+    text-decoration: none;
+    color: black;
+}
+hr {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
 }
 </style>

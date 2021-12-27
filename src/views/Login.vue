@@ -1,14 +1,14 @@
 <template>
 <div class="login">
     <div class="inputForm">
-       <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo"></router-link>
+        <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo"></router-link>
         <input class="inputID" type="text" v-model="username" placeholder="아이디 입력"><br>
         <input class="inputPWD" type="password" v-model="password" placeholder="비밀번호 입력"><br>
         <input class="inputBtn" type="button" value="login" @click="login"><br>
         <!-- <input type="button" value="회원가입" v-on:click="signUp()"> -->
         <div class="etc">
             <div class="checkBoxDiv"><input type="checkbox" id="a"> <label for="a">자동로그인</label></div>
-            <div class="findBoxDiv">| 아이디찾기 | 비밀번호찾기</div>
+            <div class="findBoxDiv"><label>| 아이디찾기 | 비밀번호찾기</label></div>
         </div>
         <div class="signUpBtn">
             <router-link class="signUpLink" v-bind:to="'/signUp'">회원가입</router-link>
@@ -41,7 +41,7 @@ export default {
                         alert("비밀번호를 입력하세요.");
                     } else {
                         alert("비밀번호가 맞지 않습니다.");
-                        this.password="";
+                        this.password = "";
                     }
                 } else if ("" === this.username)
                     alert("아이디를 입력하세요.")
@@ -67,18 +67,21 @@ export default {
 
 }
 
-.login>div {
+.inputForm {
     position: relative;
     display: block;
     left: 50%;
-    top: 25%;
+    top: 40%;
     transform: translate(-50%, -50%);
     text-align: center;
-    /* border: 1px solid black; */
     width: 400px;
-    height: 200px;
-    padding: 0;
+    padding: 50px;
     margin: 0;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+.etc{
+    background-color: white;
 }
 
 .inputID,
