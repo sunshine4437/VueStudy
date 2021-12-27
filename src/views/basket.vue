@@ -79,7 +79,7 @@ export default {
 .main {
     display: inline-block;
     width: 85%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .selectDiv {
@@ -89,7 +89,7 @@ export default {
 
 .selectDiv >div {
     width: 50%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 
 }
 
@@ -106,7 +106,7 @@ export default {
 }
 
 .list li {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     position: relative;
 }
 
@@ -147,13 +147,13 @@ export default {
     position: relative;
     display: inline-block;
     width: 20%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     padding: 10px;
     margin-left:10px;
 }
 
 .inform {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     position: absolute;
     width: 90%;
     bottom: 10%;
@@ -165,7 +165,7 @@ export default {
     display: flex;
     padding: 20px 5px;
 
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
 }
 
 .price {

@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="cs1to1Q">
-                <span style="margin: 0 20px; font-size: 200%;">1588-8000</span>
+                <span style="margin: 0 20px; font-size: 200%;">1234-5678</span>
                 <router-link v-bind:to="'/otoQ'">
                     <button>
                         1대1 문의하기
@@ -55,7 +55,8 @@
                             <span v-html="notice.number"></span>
                         </td>
                         <td class="notice">
-                            <span v-html="notice.notice"></span>
+                            <a href=""></a>
+                            <span  v-html="notice.notice"></span>
                         </td>
                     </tr>
                 </table>
@@ -71,7 +72,7 @@ export default {
         return {
             FAQs: [{
                     number: "1",
-                    question: "<a href='#'>[구매] 세금계산서를 발급받고 싶어요.</a>",
+                    question: "<a href='#''>[구매] 세금계산서를 발급받고 싶어요.</a>",
                 },
                 {
                     number: "2",
