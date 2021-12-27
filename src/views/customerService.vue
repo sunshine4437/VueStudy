@@ -55,7 +55,6 @@
                             <span v-html="notice.number"></span>
                         </td>
                         <td class="notice">
-                            <a href=""></a>
                             <span  v-html="notice.notice"></span>
                         </td>
                     </tr>
@@ -147,18 +146,6 @@ export default {
     margin-left: auto;
 }
 
-button {
-    background-color: #0051ba;
-    border-radius: 4px;
-    border: none;
-    color: white;
-    text-decoration: none;
-    padding: 0px 5px;
-    width: auto;
-    height: 40px;
-    font-size: 25px;
-    margin: 5px 2px;
-}
 
 .csFAQ,
 .csNotice {
@@ -187,5 +174,8 @@ td {
 }
 .link{
     text-decoration-line: none;
+}
+:any-link{
+    text-decoration: none;
 }
 </style>

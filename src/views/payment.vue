@@ -239,19 +239,6 @@ export default {
 td{
     padding: 3px 10px;
 }
-button {
-    background-color: #0051ba;
-    border-radius: 4px;
-    border: none;
-    color: white;
-    padding: 15px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 30px;
-    cursor: pointer;
-    margin: 0px 1px;
-}
 .buyBtn {
     width: 50%;
     border: 0px;
