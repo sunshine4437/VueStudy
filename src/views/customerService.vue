@@ -33,7 +33,6 @@
                             <span v-html="FAQ.number"></span>
                         </td>
                         <td class="question">
-                            <a href=""></a>
                             <span v-html="FAQ.question"></span>
                         </td>
                     </tr>
@@ -56,7 +55,6 @@
                             <span v-html="notice.number"></span>
                         </td>
                         <td class="notice">
-                            <a href=""></a>
                             <span v-html="notice.notice"></span>
                         </td>
                     </tr>
@@ -185,5 +183,8 @@ td {
     border-left: 1px black solid;
     text-align: left;
     padding: 7px 20px;
+}
+.link{
+    text-decoration-line: none;
 }
 </style>
