@@ -56,6 +56,7 @@ export default {
 
 .test {
     position: relative;
+    background-color: beige;
 }
 
 .prev::after {

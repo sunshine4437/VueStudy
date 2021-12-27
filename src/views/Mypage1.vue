@@ -164,6 +164,7 @@ export default {
 .right {
     display: inline-block;
     width: 85%;
+    margin-left: 20px;
 }
 
 .pList1,

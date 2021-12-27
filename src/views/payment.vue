@@ -1,7 +1,10 @@
 <template>
     <div class="payment">
         <div>
-            <h4>주문 상품 정보</h4>
+            <h1 >주문 상품 정보</h1>
+               <h2 >주문 상품 정보</h2>
+                  <h3 >주문 상품 정보</h3>
+                     <p >주문 상품 정보</p>
             <table class="orderProductTable">
                 <tr v-for="op in orderProducts" :key="op.number">
                     <td class="orderProduct" style="width: 10%">
