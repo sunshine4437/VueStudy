@@ -4,7 +4,7 @@
         <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo"></router-link>
         <input class="inputID" type="text" v-model="username" placeholder="아이디 입력"><br>
         <input class="inputPWD" type="password" v-model="password" placeholder="비밀번호 입력"><br>
-        <input class="inputBtn" type="button" value="login" @click="login"><br>
+        <input class="inputBtn" type="button" value="로그인" @click="signIn"><br>
         <!-- <input type="button" value="회원가입" v-on:click="signUp()"> -->
         <div class="etc">
             <div class="checkBoxDiv"><input type="checkbox" id="a"> <label for="a">자동로그인</label></div>
@@ -31,12 +31,14 @@ export default {
         }
     },
     methods: {
-        login() {
+        signIn() {
             try {
                 if (this.$store.getters.getUserInfo.username === this.username) {
                     if (this.$store.getters.getUserInfo.password === this.password) {
                         alert(this.username + "님 환영합니다");
+                        this.$store.commit('Login');
                         this.$router.push("/");
+
                     } else if ("" === this.password) {
                         alert("비밀번호를 입력하세요.");
                     } else {
@@ -51,8 +53,8 @@ export default {
             } catch (err) {
                 this.msg = "error";
             }
-        }
-    }
+        },
+    },
 
 }
 </script>
@@ -80,7 +82,8 @@ export default {
     background-color: #f0f0f0;
     border-radius: 4px;
 }
-.etc{
+
+.etc {
     background-color: white;
 }
 
