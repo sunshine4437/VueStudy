@@ -2,7 +2,6 @@
 <div>
     <!--top-->
   <div class="top" style="text-align:center">
-           <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo"></router-link>
         <h1>마이페이지</h1>
     </div>
     <!--left-->

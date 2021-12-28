@@ -40,7 +40,13 @@ const routes = [
             },{
                 path: '/shopping',
                 component: () => import ('../views/shopping.vue')
-            }
+            }, {
+                path: '/Mypage1',
+                component: () => import ('../views/Mypage1.vue')
+            }, {
+                path: '/Mypage2',
+                component: () => import ('../views/Mypage2.vue')
+            }, 
         ]
     }, {
         path: '/Login',
@@ -60,13 +66,7 @@ const routes = [
     }, {
         path: '/join2',
         component: () => import ('../views/Join2.vue')
-    }, {
-        path: '/Mypage1',
-        component: () => import ('../views/Mypage1.vue')
-    }, {
-        path: '/Mypage2',
-        component: () => import ('../views/Mypage2.vue')
-    }, 
+    }
 ]
 
 const router = new VueRouter(

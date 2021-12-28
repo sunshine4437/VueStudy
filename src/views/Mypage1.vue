@@ -2,7 +2,6 @@
 <div>
     <!--top-->
     <div class="top" style="text-align:center">
-             <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo"></router-link>
         <h1>마이페이지</h1>
     </div>
     <div class="container">
@@ -165,6 +164,7 @@ export default {
 .right {
     display: inline-block;
     width: 85%;
+    margin-left: 20px;
 }
 
 .pList1,

@@ -7,12 +7,12 @@
         <div class="selectDiv">
             <div class="allSelectDiv">
                 <div><input type="checkbox"></div>
-                <div>전체선택</div>
+                <div>전체선택 </div>
             </div>
-            <div>선택삭제</div>
+            <div>선택삭제 </div>
         </div>
         <div>
-            <div v-for="n in 5" :key="n">
+            <div class="listDiv" v-for="n in 5" :key="n">
                 <ul class="list">
                     <li class="list1">
                         <div><input type="checkbox"></div>
@@ -21,16 +21,22 @@
                         <div class="listImage"><img src="http://placehold.it/125X125/" alt=""></div>
                     </li>
                     <li class="list3">
-                        <div>상품명</div>
-                        <div>옵션변경</div>
+                        <div>
+                            <p>상품명</p>
+                        </div>
+                        <div>
+                            <p>옵션변경</p>
+                        </div>
                     </li>
                     <li class="list4">
                         <div>
-                            가격
+                            <p>가격</p>
                         </div>
                     </li>
                     <li class="list5">
-                        <div>배송정보</div>
+                        <div>
+                            <p>배송정보</p>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -39,23 +45,23 @@
     <div class="right">
         <div class="inform">
             <div>
-                <div>결제예정금액</div>
+                <label>결제예정금액</label>
             </div>
             <div>
-                <div>상품금액</div>
-                <div class="price">67,400원</div>
+                <label>상품금액</label>
+                <label class="price">67,400원</label>
             </div>
             <div>
-                <div>배송비(선결제)</div>
-                <div class="price">2,500원</div>
+                <label>배송비(선결제)</label>
+                <label class="price">2,500원</label>
             </div>
             <div>
-                <div>할인금액</div>
-                <div class="price" style="color:red;">-4,920원</div>
+                <label>할인금액</label>
+                <label class="price" style="color:red;">-4,920원</label>
             </div>
             <div style="color:red; ">
-                <div>합계</div>
-                <div class="price" style="font-size:25px;">65,610원</div>
+                <label>합계</label>
+                <label class="price" style="font-size:25px;">65,610원</label>
             </div>
         </div>
         <div class="orderBtn">
@@ -79,7 +85,7 @@ export default {
 .main {
     display: inline-block;
     width: 85%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .selectDiv {
@@ -87,9 +93,9 @@ export default {
     width: 100%;
 }
 
-.selectDiv >div {
+.selectDiv>div {
     width: 50%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 
 }
 
@@ -103,11 +109,18 @@ export default {
     width: 100%;
     margin: 0;
     padding: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #fafafa;
+    border-radius: 4px;
 }
 
 .list li {
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border-left: 1px solid rgb(189, 185, 185);
     position: relative;
+
+    padding: 5px;
 }
 
 /* .listImage{
@@ -147,25 +160,27 @@ export default {
     position: relative;
     display: inline-block;
     width: 20%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     padding: 10px;
-    margin-left:10px;
+    margin-left: 10px;
+
 }
 
 .inform {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     position: absolute;
     width: 90%;
     bottom: 10%;
     left: 50%;
     transform: translate(-50%);
+    background-color: #fafafa;
 }
 
 .inform>div {
     display: flex;
     padding: 20px 5px;
+    border-bottom: 1px rgb(189, 185, 185) solid;
 
-    border-bottom: 1px solid black;
 }
 
 .price {
@@ -179,5 +194,7 @@ export default {
     text-align: center;
 }
 
-
+h2 {
+    background-color: #fafafa;
+}
 </style>
