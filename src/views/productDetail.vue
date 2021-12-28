@@ -11,39 +11,69 @@
                     <h2>
                         네파 신상, 이월 다운/플리스 외 FW의류 + 연말 파이널 sale
                     </h2>
-                    <h1>27,000원~</h1>
+                    <h1>{{ price }}원</h1>
                 </div>
                 <hr />
                 <div class="rightTop">
-                    <h3>배송비 무료</h3>
+                    <p>15시 이전 주문 시 오늘 배송</p>
+                    <p>배송비 무료</p>
                 </div>
                 <hr />
                 <div class="rightSelect">
                     <h3>옵션 선택</h3>
                     <div class="searchBar">
-                        <select name="searchSelect" class="searchSelectBox">
-                            <option value="0">옵션 1</option>
-                            <option value="1">상품명 1</option>
-                            <option value="2">상품명 2</option>
-                            <option value="3">상품명 3</option>
-                            <option value="3">상품명 4</option>
-                            <option value="3">상품명 5</option>
-                        </select>                        
+                        <select
+                            name="searchSelect"
+                            class="searchSelectBox"
+                            @change="firstSelected($event)"
+                        >
+                            <option value="0">상품 번호</option>
+                            <option value="01_7G72068">01_7G72068</option>
+                            <option value="02_7G72054">02_7G72054</option>
+                            <option value="03_7G72072">03_7G72072</option>
+                            <option value="04_7G82072">04_7G82072</option>
+                            <option value="05_7F82042">05_7F82042</option>
+                        </select>
+                    </div>
+                    <div class="searchBar">
+                        <select
+                            name="searchSelect"
+                            class="searchSelectBox"
+                            v-show="isSelected"
+                            @change="secondSelected($event)"
+                        >
+                            <option value="0">사이즈</option>
+                            <option value="90">90</option>
+                            <option value="95">95</option>
+                            <option value="100">100</option>
+                            <option value="105">105</option>
+                            <option value="110">110</option>
+                        </select>
                     </div>
                 </div>
+                <hr />
                 <div class="rightSelected">
-                    <h4>상품명 2</h4>
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="text-align: left; padding: 0 0 0 20px">
+                                <h3>선택된 옵션</h3>
+                            </td>
+                        </tr>
+                        <tr v-for="item in items.slice(1)" :key="item">
+                            <td>
+                                <span
+                                    v-html="item.name + '/' + item.size"
+                                ></span>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="clear"></div>
-                <div class="rightButton" style="padding: 10px">
-                    <h4 style="display: flex">
-                        <label for="" style="margin-left: auto"
-                            >총 상품금액</label
-                        >
-                        <label for="" style="width: 190px; margin-right: 35px"
-                            >100,000,000원</label
-                        >
-                    </h4>
+                <hr>
+                <div class="rightButton">
+                    <h3 style="text-align: right; margin-right: 35px">
+                        총 상품금액 : {{ totalPrice }}원
+                    </h3>
                     <button class="myCartBtn" style="margin-right: 20px">
                         장바구니
                     </button>
@@ -71,6 +101,38 @@ export default {
     components: {
         detail: detail,
         shopInfo: shopInfo,
+    },
+    data: function () {
+        return {
+            isSelected: false,
+            firstOption: 0,
+            secondOption: 0,
+            items: [{}],
+            totalPrice: 0,
+            price: 27000,
+        };
+    },
+    methods: {
+        firstSelected(event) {
+            if (event.target.value != 0) {
+                this.isSelected = true;
+                this.firstOption = event.target.value;
+            } else {
+                this.isSelected = false;
+            }
+        },
+        secondSelected(event) {
+            if (event.target.value != 0) {
+                this.secondOption = event.target.value;
+                this.isSelected = false;
+                let newItem = {
+                    name: this.firstOption,
+                    size: this.secondOption,
+                };
+                this.items.push(newItem);
+                this.totalPrice += this.price;
+            }
+        },
     },
 };
 </script>
@@ -111,7 +173,7 @@ hr {
 
 .rightBox {
     width: 50%;
-    padding: 0 0;
+    padding: 0 20px;
     margin-left: auto;
 }
 
@@ -131,7 +193,7 @@ hr {
 
 .rightSelect {
     width: 100%;
-    height: 25%;
+    height: 20%;
     padding: 0 0 0 20px;
     float: right;
     /* background-color: #fafafa; */
@@ -140,13 +202,14 @@ hr {
 .rightSelected {
     width: 100%;
     float: right;
-    padding: 0 83px 0 0;
+    padding: 0 35px 20px 0;
     text-align: right;
     /* background-color: #fafafa; */
 }
 
 .searchBar {
     display: flex;
+    margin: 10px;
 }
 
 .searchSelectBox {
@@ -159,18 +222,18 @@ hr {
 .rightButton {
     width: 100%;
     float: right;
-    padding: 0 10px 20px 20px;
+    padding: 0;
     text-align: center;
     /* background-color: #fafafa; */
 }
 
 .myCartBtn {
-    width: 250px;
+    width: 200px;
     font-size: 150%;
 }
 
 .buyBtn {
-    width: 250px;
+    width: 200px;
     font-size: 150%;
 }
 
