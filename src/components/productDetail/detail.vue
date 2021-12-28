@@ -11,10 +11,10 @@
                     <img :src="current.content" alt="" />
                 </div>
                 <div v-else-if="currentId === 2">
-                    <review />
+                    <review></review>
                 </div>
                 <div v-else-if="currentId === 3">
-                    <qna />
+                    <qna></qna>
                 </div>
             </section>
         </transition>
@@ -41,7 +41,7 @@ export default {
             list: [{
                     id: 1,
                     label: "상품 상세 정보",
-                    content: "http://placehold.it/2000x5000",
+                    content: "http://placehold.it/1200x1500",
                 },
                 {
                     id: 2,
@@ -65,6 +65,9 @@ export default {
 </script>
 
 <style scoped>
+.tabs{
+    width: 200%;
+}
 .contents {
     position: relative;
     overflow: hidden;

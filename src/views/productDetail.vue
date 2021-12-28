@@ -1,213 +1,187 @@
 <template>
-  <div class="container">
+<div class="productDetail">
+    <hr />
     <div class="detailTop">
-      <div class="leftBox">
-        <img
-          class="scale-down"
-          src="http://gdimg.gmarket.co.kr/1513973750/still/600?ver=1639527436"
-          alt="메이킹유 맨투맨/원피스/블라우스/스커트/기모바지 상품이미지"
-        />
-      </div>
-      <div class="rightBox">
-        <div class="item-topinfo item-topinfo--additional">
-          <div class="item-topinfo_headline">
-            <div id="itemcase_basic">
-              <div class="box__item-title">
-                <h1 class="itemtit">
-                  메이킹유 맨투맨/원피스/블라우스/스커트/기모바지
-                </h1>
-                <!--PRICE CASE -->
-                <p class="price">9900원</p>
-                <p class="deliveryFee">배송비 무료</p>
-              </div>
-            </div>
-          </div>
-          <div class="item_option_area">
-            <div class="form_body">
-              <div>
-                <h3>옵션 선택</h3>
-                <b-dropdown id="dropdown-1" text="옵션 1" class="m-md-2">
-                  <b-dropdown-item>멘트기모후드티</b-dropdown-item>
-                  <b-dropdown-item>룩스기모팬츠</b-dropdown-item>
-                  <b-dropdown-item>파먼기모팬츠</b-dropdown-item>
-                </b-dropdown>
-              </div>
-              <div
-                class="section_seleted_list"
-                id="coreSelectedList"
-                style="display: none"
-              >
-                <ul class="selected-list"></ul>
-              </div>
-            </div>
-            <div class="form_bottom">
-              <p class="total" id="coreTotalPriceP" style="visibility: hidden">
-                <span class="tit"
-                  >총 상품금액<a
-                    href="#tooltip_priceguide"
-                    class="open_tooltip_priceguide"
-                    ><i class="icon i_question"
-                      >총 상품금액 안내 레이어 보기</i
-                    ></a
-                  ></span
-                >
-                <strong class="price" id="coreTotalPrice"
-                  >0<span class="unit">11000원</span></strong
-                >
-              </p>
-              <div class="section_bottombtns">
-                <button
-                  class="btn_primary btn_white btn_mycart"
-                  data-href="#layer_mycart"
-                  data-montelena-acode="200000516"
-                  id="coreAddCartBtn"
-                  onclick="pdsClickLog('200000516', 'utlity', {});"
-                >
-                  <em>장바구니</em>
-                </button>
-                <button
-                  class="btn_primary btn_blue"
-                  id="coreInsOrderBtn"
-                  data-montelena-acode="200000517"
-                  onclick="pdsClickLog('200000517', 'utlity', {});"
-                >
-                  <em>구매하기</em>
-                </button>
-              </div>
-            </div>
-          </div>
+        <div class="leftBox">
+            <img class="scale-down" src="http://placehold.it/500X500" />
         </div>
-      </div>
+        <div class="rightBox">
+            <br /><br /><br />
+            <div class="rightTitle">
+                <h2>상품명</h2>
+            </div>
+            <div class="rightTop">
+                <h2>9900원</h2>
+                <hr />
+                <h4>배송비 무료</h4>
+            </div>
+            <div class="rightSelect">
+                <h4>옵션 선택</h4>
+                <div class="searchBar">
+                    <select name="searchSelect" class="searchSelectBox">
+                        <option value="0">옵션 1</option>
+                        <option value="1">상품명 1</option>
+                        <option value="2">상품명 2</option>
+                        <option value="3">상품명 3</option>
+                        <option value="3">상품명 4</option>
+                        <option value="3">상품명 5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="rightSelected">
+                <h4>상품명 2</h4>
+            </div>
+            <div class="clear"></div>
+            <div class="rightButton" style="padding: 10px;">
+                <h4 style="display:flex">
+                    <label for="" style="margin-left:auto;">총 상품금액</label>
+                    <label for="" style="width: 190px; margin-right: 35px;">100,000,000원</label>
+                </h4>
+                <button class="myCartBtn" style="margin-right: 20px;" >
+                    <em>장바구니</em>
+                </button>
+                <router-link v-bind:to="'/payment'">
+                    <button class="buyBtn">
+                        <em>구매하기</em>
+                    </button>
+                </router-link>
+            </div>
+            <div class="clear"></div>
+        </div>
     </div>
     <div class="clear"></div>
-    <div class="shop-info">
-      <div class="shop-infoBox">
-        <div class="shop-title">메이킹 유</div>
-      </div>
-      <div class="shop-bestItem">
-        <h4 class="bestItemMore">
-          이 판매자의 인기상품이에요
-          <button>더 보기</button>
-        </h4>
-        <div>
-          <ul>
-            <li>
-              <img
-                class="bestPic"
-                src="http://gdimg.gmarket.co.kr/1513973750/still/600?ver=1639527436"
-              />
-            </li>
-            <li>
-              <img
-                class="bestPic"
-                src="http://gdimg.gmarket.co.kr/1513973750/still/600?ver=1639527436"
-              />
-            </li>
-            <li>
-              <img
-                class="bestPic"
-                src="http://gdimg.gmarket.co.kr/1513973750/still/600?ver=1639527436"
-              />
-            </li>
-            <li>
-              <img
-                class="bestPic"
-                src="http://gdimg.gmarket.co.kr/1513973750/still/600?ver=1639527436"
-              />
-            </li>
-            <li>
-              <img
-                class="bestPic"
-                src="http://gdimg.gmarket.co.kr/1513973750/still/600?ver=1639527436"
-              />
-            </li>
-          </ul>
-        </div>
-      </div>
+    <div class="shopInfo">
+        <shopInfo></shopInfo>
     </div>
     <div class="clear"></div>
     <div class="detail">
-        <detail></detail>      
+        <detail></detail>
     </div>
-  </div>
+</div>
 </template>
 
 <script>
 import detail from "@/components/productDetail/detail.vue";
+import shopInfo from "@/components/productDetail/shopInfo.vue";
 export default {
-  components: {
-    detail: detail,
-  },
+    components: {
+        detail: detail,
+        shopInfo: shopInfo,
+    },
 };
 </script>
 
 <style scoped>
-html {
-  overflow-y: scroll;
-}
+/* html {
+    overflow-y: scroll;
+} */
 * {
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-}
-.scale-down {
-  object-fit: scale-down;
-  width: 100%;
-}
-.detailTop {
-  width: 100%;
-  display: flex;
-}
-.leftBox {
-  width: 50%;
-  padding: 0 0;
-}
-.rightBox {
-  width: 50%;
-  padding: 0 0;
-  margin-left: auto;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
 }
 
-.shop-info {
-  width: 100%;
-  height: 200px;
-  border: 1px black solid;
-  overflow: hidden;
+.scale-down {
+    object-fit: scale-down;
+    width: 100%;
 }
-.shop-infoBox {
-  float: left;
-  position: relative;
-  width: 20%;
-  height: 100%;
-  border: 1px black solid;
+
+.detailTop {
+    width: 100%;
+    height: 700px;
+    display: flex;
 }
-.shop-title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 150%;
+
+.leftBox {
+    width: 50%;
+    padding: 0 0;
 }
-.shop-bestItem {
-  float: right;
-  width: 80%;
-  height: 198px;
-  padding: 0px 0px;
-  border: 1px black solid;
+
+.rightBox {
+    width: 50%;
+    padding: 0 0;
+    margin-left: auto;
 }
-.bestItemMore {
-  border: 1px black solid;
-  padding: 5px 10px;
+
+.rightTitle {
+    width: 100%;
+    padding: 0 0 0 20px;
+    border: 1px black solid;
+    border-radius: 15px;
+    float: right;
 }
-.bestPic {
-  height: 135px;
-  padding: 0px 22px 10px 23px;
+
+.rightTop {
+    width: 100%;
+    padding: 0 0 0 20px;
+    border: 1px black solid;
+    border-radius: 15px;
+    float: right;
 }
-li {
-  float: left;
+
+.rightSelect {
+    width: 100%;
+    height: 25%;
+    padding: 0 0 0 20px;
+    border: 1px black solid;
+    border-radius: 15px;
+    float: right;
+}
+
+.rightSelected {
+    width: 100%;
+    float: right;
+    padding: 0 83px 0 0;
+    border: 1px black solid;
+    border-radius: 15px;
+    text-align: right;
+}
+
+.searchBar {
+    display: flex;
+}
+
+.searchSelectBox {
+    min-width: 200px;
+    font-size: 20px;
+    border: 2px solid #0051ba;
+    border-radius: 4px;
+}
+
+.rightButton {
+    width: 100%;
+    float: right;
+    padding: 0 10px 20px 20px;
+    border: 1px black solid;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.myCartBtn {
+    width: 250px;
+    font-size: 150%;
+}
+
+.buyBtn {
+    width: 250px;
+    font-size: 150%;
+}
+
+button {
+    background-color: #0051ba;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 0px 1px;
 }
 
 .clear {
-  clear: both;
+    clear: both;
 }
 </style>

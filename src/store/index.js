@@ -6,6 +6,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     count:0,
+    userInfo:{
+      username:"sunshine",
+      password:"1234"
+    }
   },
   mutations: {
     increment(state, payload){
@@ -15,5 +19,11 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
+  },
+  getters:{
+    getUserInfo: function(state){
+      return state.userInfo;
+    }
+    // getIsUserSignIn:
   }
 })

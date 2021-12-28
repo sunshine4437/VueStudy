@@ -34,6 +34,12 @@ const routes = [
                 path: '/payment',
                 // name: 'payment',
                 component: () => import ('../views/payment.vue')
+            }, {
+                path: '/otoQ',
+                component: () => import ('../views/otoQ.vue')
+            },{
+                path: '/shopping',
+                component: () => import ('../views/shopping.vue')
             }
         ]
     }, {
@@ -48,18 +54,20 @@ const routes = [
         path: '/signUp',
         // name: 'signUp',
         component: () => import ('../views/signUp.vue')
+    },  {
+        path: '/join1',
+        component: () => import ('../views/Join1.vue')
     }, {
-        path: '/otoQ',
-        component: () => import ('../views/otoQ.vue')
+        path: '/join2',
+        component: () => import ('../views/Join2.vue')
     }, {
-        path: '/list',
-        component: () => import ('../views/list.vue')
+        path: '/Mypage1',
+        component: () => import ('../views/Mypage1.vue')
     }, {
-        path: '/shopping',
-        component: () => import ('../views/shopping.vue')
-       
-    
-    }
+        path: '/Mypage2',
+        component: () => import ('../views/Mypage2.vue')
+    }, 
+]
 
 const router = new VueRouter(
     {mode: 'history', base: process.env.BASE_URL, routes}

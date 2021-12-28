@@ -1,17 +1,9 @@
 <template>
 <div class="main">
-    <!-- vuex 실습 -->
-    <!-- <button v-on:click="$store.commit('increment',{amount:3})"></button> -->
-    <!-- <button v-on:click="$store.commit({type:'increment',
-        amount:3})">증가</button> -->
-    <!-- {{count}} -->
-
     <!-- 상단 메뉴바 -->
     <div class="nav">
         <ul class="search">
-            <!-- <li v-for="n in searchMenu" v-bind:key="n"> <img v-if="n.id==1"
-                :src="n.content" :alt="n.logo"> <input v-if="n.id==2" type="text"> <button
-                v-if="n.id==3"></button> </li> -->
+
             <li>
                 <div class="dropDownMenu">
                     <button class="dropDownMenuBtn">
@@ -25,7 +17,7 @@
                 </div>
             </li>
             <li>
-                <router-link v-bind:to="'/'"> <img src="http://placehold.it/95X95" alt="logo"></router-link>
+                <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo"></router-link>
             </li>
             <li>
                 <div class="searchBar">
@@ -34,8 +26,9 @@
                         <option value="2">2</option>
                         <option value="3">3</option>
                     </select>
-                    <input type="text" style="font-size: 20px" placeholder="검색어 입력">
-                    <button v-on:click="print()" type="submit">검색</button>
+
+                    <input id="search" type="text" v-on:keyup.enter="search()" style="font-size: 20px" placeholder="검색어 입력">
+                    <button @click="search()">검색</button>
                 </div>
             </li>
         </ul>
@@ -70,7 +63,7 @@
 
 <script>
 // @ is an alias to /src
-
+import "@/css/common.css"
 export default {
     name: 'Main',
     components: {
@@ -84,9 +77,11 @@ export default {
     },
     //
     methods: {
-        print() {
-            const targetId = document.getElementById("searchBtn");
-            console.log(targetId.value); // returns 'foo'
+        search() {
+            const targetId = document.getElementById("search");
+            if (targetId.value === '신발') {
+                this.$router.push(`/shopping`);
+            }
         }
     },
     data() {
@@ -105,18 +100,15 @@ export default {
                 alt: "logo"
             }],
             memberMenu: [{
-                link: "/blank",
+                link: "/Mypage1",
                 name: '마이페이지'
             }, {
-                link: "/blank",
+                link: "/basket",
                 name: '장바구니'
             }, {
-                link: "/blank",
-                name: '기타'
+                link: "/otoQ",
+                name: '일대일 문의'
             }, ],
-            // leftMenuName: [
-            //     '베스트', '최신', '인기', '특별', '기타'
-            // ],
             leftMenuName: [{
                 link: "/blank",
                 name: '베스트'
@@ -138,18 +130,19 @@ export default {
                 link: "/login",
                 name: '로그인'
             }, {
-                link: "/blank",
+                link: "/signUp",
                 name: '회원가입'
             }, {
-                link: "/blank",
-                name: '기타'
+                link: "/payment",
+                name: '결제페이지'
             }]
         }
-    }
+    },
 }
 </script>
 
-<style scoped>
+<style scoped >
+
 .nav {
     display: flex;
     /* align-items: center;
@@ -299,7 +292,7 @@ export default {
     padding: 0;
 }
 
-button {
+/* button {
     background-color: #0051ba;
     border-radius: 4px;
     border: none;
@@ -311,7 +304,7 @@ button {
     font-size: 15px;
     cursor: pointer;
     margin: 0px 1px;
-}
+} */
 
 /* border: 1px solid rgb(37, 37, 37);
     border-radius: 4px;

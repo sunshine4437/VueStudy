@@ -23,7 +23,9 @@
             <p>고객센터</p>
             <p>고객센터전화번호</p>
             <p>고객센터주소</p>
-            <p>고객센터 바로가기 ></p>
+            <router-link v-bind:to="'/customerService'">
+                <p>고객센터 바로가기 ></p>
+            </router-link>
         </div>
     </div>
 </div>

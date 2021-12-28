@@ -1,10 +1,10 @@
 <template>
 <div class="login">
     <div class="inputForm">
-        <router-link v-bind:to="'/'"> <img src="http://placehold.it/95X95" alt="logo"></router-link>
-        <input class="inputID" type="text" placeholder="아이디 입력"><br>
-        <input class="inputPWD" type="password" placeholder="비밀번호 입력"><br>
-        <input class="inputBtn" type="button" value="로그인"><br>
+       <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo"></router-link>
+        <input class="inputID" type="text" v-model="username" placeholder="아이디 입력"><br>
+        <input class="inputPWD" type="password" v-model="password" placeholder="비밀번호 입력"><br>
+        <input class="inputBtn" type="button" value="login" @click="login"><br>
         <!-- <input type="button" value="회원가입" v-on:click="signUp()"> -->
         <div class="etc">
             <div class="checkBoxDiv"><input type="checkbox" id="a"> <label for="a">자동로그인</label></div>
@@ -23,6 +23,36 @@
 // import LoginPage from '@/components/LoginPage.vue'
 
 export default {
+    data() {
+        return {
+            username: '',
+            password: '',
+            msg: '',
+        }
+    },
+    methods: {
+        login() {
+            try {
+                if (this.$store.getters.getUserInfo.username === this.username) {
+                    if (this.$store.getters.getUserInfo.password === this.password) {
+                        alert(this.username + "님 환영합니다");
+                        this.$router.push("/");
+                    } else if ("" === this.password) {
+                        alert("비밀번호를 입력하세요.");
+                    } else {
+                        alert("비밀번호가 맞지 않습니다.");
+                        this.password="";
+                    }
+                } else if ("" === this.username)
+                    alert("아이디를 입력하세요.")
+                else
+                    alert("아이디가 맞지 않습니다.")
+
+            } catch (err) {
+                this.msg = "error";
+            }
+        }
+    }
 
 }
 </script>
@@ -105,7 +135,7 @@ export default {
 }
 
 /* .signUpLink:link .signUpLink:hover .signUpLink:visited {
-    
+
     color: white;
 } */
 </style>
