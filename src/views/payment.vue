@@ -1,10 +1,10 @@
 <template>
     <div class="payment">
         <div>
-            <h1 >주문 상품 정보</h1>
-               <h2 >주문 상품 정보</h2>
-                  <h3 >주문 상품 정보</h3>
-                     <p >주문 상품 정보</p>
+            <h1>주문 상품 정보</h1>
+            <h2>주문 상품 정보</h2>
+            <h3>주문 상품 정보</h3>
+            <p>주문 상품 정보</p>
             <table class="orderProductTable">
                 <tr v-for="op in orderProducts" :key="op.number">
                     <td class="orderProduct" style="width: 10%">
@@ -46,7 +46,7 @@
                 <tr>
                     <td>포인트</td>
                     <td class="couponNum">243원</td>
-                    <td><input type="text" style="width: 100%"></td>
+                    <td><input type="text" style="width: 100%" /></td>
                     <td><button class="couponBtn">사용</button></td>
                 </tr>
             </table>
@@ -90,11 +90,7 @@
                 <tr>
                     <td>기본주소</td>
                     <td>
-                        <input
-                            type="text"
-                            name="base_addr"
-                            class="longInput"
-                        />
+                        <input type="text" name="base_addr" class="longInput" />
                     </td>
                 </tr>
                 <tr>
@@ -113,14 +109,33 @@
         <div class="payMethod">
             <h4>결제수단 선택</h4>
             <p>
-                <input type="radio" value="credit" name="payMethod" style="width: auto;" required>신용카드
-                &nbsp;&nbsp;
-                <input type="radio" value="credit" name="payMethod" style="width: auto;" required>무통장 입금
-                &nbsp;&nbsp;
-                <input type="radio" value="credit" name="payMethod" style="width: auto;" required>휴대폰 결제
+                <input
+                    type="radio"
+                    value="credit"
+                    v-model="radioPay"
+                    name="payMethod"
+                    style="width: auto"
+                    required
+                />신용카드
+                <input
+                    type="radio"
+                    value="cash"
+                    v-model="radioPay"
+                    name="payMethod"
+                    style="width: auto; margin-left: 30px"
+                    required
+                />무통장 입금
+                <input
+                    type="radio"
+                    value="phone"
+                    v-model="radioPay"
+                    name="payMethod"
+                    style="width: auto; margin-left: 30px"
+                    required
+                />휴대폰 결제
             </p>
-            <p>
-                <select name="" class="cardSelect">
+            <div v-if="radioPay === 'credit'">
+                <select>
                     <option value="">선택</option>
                     <option value="">신한카드</option>
                     <option value="">국민카드</option>
@@ -131,7 +146,20 @@
                     <option value="">우리카드</option>
                     <option value="">하나카드</option>
                 </select>
-            </p>
+            </div>
+            <div v-if="radioPay === 'cash'">
+                <select>
+                    <option value="">선택</option>
+                    <option value="">신한은행</option>
+                    <option value="">국민은행</option>
+                    <option value="">우리은행</option>
+                    <option value="">카카오뱅크</option>
+                </select>
+                <p>계좌번호 : <input type="text" /></p>
+            </div>
+            <div v-if="radioPay === 'phone'">
+                <button style="font-size: 50%; width:100px">휴대폰 결제</button>
+            </div>
         </div>
         <hr />
         <div class="payInfo">
@@ -165,6 +193,7 @@
 export default {
     data() {
         return {
+            radioPay: "",
             orderProducts: [
                 {
                     number: "1",
@@ -231,26 +260,13 @@ export default {
     border-collapse: collapse;
     padding: 10px 10px;
 }
-.couponTable{
+.couponTable {
     width: 50%;
     border-collapse: collapse;
     padding: 10px 30px;
 }
-td{
+td {
     padding: 3px 10px;
-}
-button {
-    background-color: #0051ba;
-    border-radius: 4px;
-    border: none;
-    color: white;
-    padding: 15px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 30px;
-    cursor: pointer;
-    margin: 0px 1px;
 }
 .buyBtn {
     width: 50%;
@@ -269,19 +285,19 @@ button {
 .longInput {
     width: 100%;
 }
-.cardSelect{
+.cardSelect {
     margin: 0 10px;
     width: 10%;
 }
-.couponSpan{
+.couponSpan {
     margin: 0 20px;
 }
-.couponBtn{
+.couponBtn {
     width: 100px;
     font-size: 17px;
     padding: 2px 5px;
 }
-.tableMiddle{
+.tableMiddle {
     font-size: 4px;
     padding: 0 0;
     color: white;

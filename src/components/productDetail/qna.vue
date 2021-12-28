@@ -5,21 +5,41 @@
         </div>
         <div class="qnaMain">
             <table class="tableMain">
-                <tr>
-                    <th>번호</th>
-                    <th>상태</th>
-                    <th>제목</th>
-                    <th>문의자</th>
-                    <th>등록일</th>
+                <tr style="width: 100%">
+                    <div>
+                        <th style="width: 7%">번호</th>
+                        <th style="width: 12%">상태</th>
+                        <th style="width: 54%">제목</th>
+                        <th style="width: 15%">문의자</th>
+                        <th style="width: 12%">등록일</th>
+                    </div>
                 </tr>
+
                 <tr v-for="qna in qnas" :key="qna.number">
-                    <td style="width: 7%"><span v-html="qna.number"></span></td>
-                    <td style="width: 12%"><span v-html="qna.state"></span></td>
-                    <td style="width: 54%; text-align: left">
-                        <span v-html="qna.question"></span>
-                    </td>
-                    <td style="width: 15%"><span v-html="qna.name"></span></td>
-                    <td style="width: 12%"><span v-html="qna.date"></span></td>
+                    <div>
+                        <collapse :selected="false">
+                            <div slot="collapse-header">
+                                <td style="width: 7%">
+                                    <span v-html="qna.number"></span>
+                                </td>
+                                <td style="width: 12%">
+                                    <span v-html="qna.state"></span>
+                                </td>
+                                <td style="width: 54%; text-align: left">
+                                    <span v-html="qna.question"></span>
+                                </td>
+                                <td style="width: 15%">
+                                    <span v-html="qna.name"></span>
+                                </td>
+                                <td style="width: 12%">
+                                    <span v-html="qna.date"></span>
+                                </td>
+                            </div>
+                            <div slot="collapse-body">
+                                <span v-html="qna.content"></span>
+                            </div>
+                        </collapse>
+                    </div>
                 </tr>
             </table>
         </div>
@@ -27,7 +47,11 @@
 </template>
 
 <script>
+import Collapse from "@/components/productDetail/Collapse.vue";
 export default {
+    components: {
+        Collapse: Collapse,
+    },
     data() {
         return {
             qnas: [
@@ -37,6 +61,7 @@ export default {
                     question: "질문입니다",
                     name: "nickname",
                     date: "2021-12-21",
+                    content: "내용입니다",
                 },
                 {
                     number: "9",
@@ -44,6 +69,7 @@ export default {
                     question: "질문입니다",
                     name: "nickname",
                     date: "2021-12-21",
+                    content: "내용입니다",
                 },
                 {
                     number: "8",
@@ -51,6 +77,7 @@ export default {
                     question: "질문입니다",
                     name: "nickname",
                     date: "2021-12-21",
+                    content: "내용입니다",
                 },
                 {
                     number: "7",
@@ -58,6 +85,7 @@ export default {
                     question: "질문입니다",
                     name: "nickname",
                     date: "2021-12-21",
+                    content: "내용입니다",
                 },
                 {
                     number: "6",
@@ -65,6 +93,7 @@ export default {
                     question: "질문입니다",
                     name: "nickname",
                     date: "2021-12-21",
+                    content: "내용입니다",
                 },
                 {
                     number: "5",
@@ -72,6 +101,7 @@ export default {
                     question: "질문입니다",
                     name: "nickname",
                     date: "2021-12-21",
+                    content: "내용입니다",
                 },
                 {
                     number: "4",
@@ -79,6 +109,7 @@ export default {
                     question: "질문입니다",
                     name: "nickname",
                     date: "2021-12-20",
+                    content: "내용입니다",
                 },
                 {
                     number: "3",
@@ -86,6 +117,7 @@ export default {
                     question: "질문입니다",
                     name: "nickname",
                     date: "2021-12-20",
+                    content: "내용입니다",
                 },
                 {
                     number: "2",
@@ -93,6 +125,7 @@ export default {
                     question: "질문입니다",
                     name: "nickname",
                     date: "2021-12-20",
+                    content: "내용입니다",
                 },
                 {
                     number: "1",
@@ -100,6 +133,7 @@ export default {
                     question: "질문입니다",
                     name: "nickname",
                     date: "2021-12-20",
+                    content: "내용입니다",
                 },
             ],
         };
