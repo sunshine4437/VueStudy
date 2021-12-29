@@ -18,16 +18,16 @@ export default {
 }
 </script>
 
-<sty>
+<style>
 html {
     overflow-y: scroll;
 }
 
 #app {
-
     max-width: 70%;
     margin: 0 auto;
 }
 
 h1 {
-   
+}
+</style>

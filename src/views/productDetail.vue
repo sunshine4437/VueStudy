@@ -22,7 +22,7 @@
             <div class="rightSelect">
                 <h3>옵션 선택</h3>
                 <div class="searchBar">
-                    <select name="searchSelect" class="searchSelectBox" @change="firstSelected($event)">
+                    <select name="searchSelect" class="searchSelectBox" @click="firstSelected($event)">
                         <option value="0">상품 번호</option>
                         <option value="01_7G72068">01_7G72068</option>
                         <option value="02_7G72054">02_7G72054</option>
@@ -32,7 +32,7 @@
                     </select>
                 </div>
                 <div class="searchBar">
-                    <select name="searchSelect" class="searchSelectBox" v-show="isSelected" @change="secondSelected($event)">
+                    <select name="searchSelect" class="searchSelectBox" v-show="isSelected" @click="secondSelected($event)">
                         <option value="0">사이즈</option>
                         <option value="90">90</option>
                         <option value="95">95</option>
@@ -124,6 +124,7 @@ export default {
                 };
                 this.items.push(newItem);
                 this.totalPrice += this.price;
+                event.target.value = 0;
             }
         },
     },
