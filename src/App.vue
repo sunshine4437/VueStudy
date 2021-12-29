@@ -18,7 +18,7 @@ export default {
 }
 </script>
 
-<style>
+<sty>
 html {
     overflow-y: scroll;
 }
@@ -30,6 +30,4 @@ html {
 }
 
 h1 {
-    text-align: center;
-}
-</style>
+   
