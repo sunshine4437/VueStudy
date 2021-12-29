@@ -198,7 +198,7 @@ export default {
                 {
                     number: "1",
                     shopName: "판매자",
-                    image: "http://placehold.it/100X100",
+                    image: "@/components/productDetail/product01.jpg",
                     productName: "상품명<br>옵션 : 선택된 옵션",
                     count: "1개",
                     price: "100,000원",

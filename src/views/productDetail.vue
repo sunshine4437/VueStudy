@@ -2,8 +2,14 @@
     <div class="productDetail">
         <hr />
         <div class="detailTop">
-            <div class="leftBox">
-                <img class="scale-down" src="http://placehold.it/500X500" />
+            <div
+                class="leftBox scale-down"
+                style="margin: auto; text-align: center"
+            >
+                <img
+                    style="width: 500px; height: 500px"
+                    src="@/components/productDetail/product01.jpg"
+                />
             </div>
             <div class="rightBox">
                 <div class="enter"></div>
@@ -25,7 +31,7 @@
                         <select
                             name="searchSelect"
                             class="searchSelectBox"
-                            @change="firstSelected($event)"
+                            @click="firstSelected($event)"
                         >
                             <option value="0">상품 번호</option>
                             <option value="01_7G72068">01_7G72068</option>
@@ -40,7 +46,7 @@
                             name="searchSelect"
                             class="searchSelectBox"
                             v-show="isSelected"
-                            @change="secondSelected($event)"
+                            @click="secondSelected($event)"
                         >
                             <option value="0">사이즈</option>
                             <option value="90">90</option>
@@ -53,12 +59,8 @@
                 </div>
                 <hr />
                 <div class="rightSelected">
-                    <table style="width: 100%">
-                        <tr>
-                            <td style="text-align: left; padding: 0 0 0 20px">
-                                <h3>선택된 옵션</h3>
-                            </td>
-                        </tr>
+                    <h3 style="text-align: left; padding: 0 0 0 20px">선택된 옵션</h3>
+                    <table class="rightSelectedTable" style="width: 100%">
                         <tr v-for="item in items.slice(1)" :key="item">
                             <td>
                                 <span
@@ -69,7 +71,7 @@
                     </table>
                 </div>
                 <div class="clear"></div>
-                <hr>
+                <hr />
                 <div class="rightButton">
                     <h3 style="text-align: right; margin-right: 35px">
                         총 상품금액 : {{ totalPrice }}원
@@ -131,6 +133,7 @@ export default {
                 };
                 this.items.push(newItem);
                 this.totalPrice += this.price;
+                event.target.value = 0;
             }
         },
     },
@@ -160,7 +163,7 @@ hr {
 
 .detailTop {
     width: 100%;
-    height: 700px;
+    height: auto;
     display: flex;
     background-color: #fafafa;
     margin: 0 0 30px 0;
@@ -193,7 +196,7 @@ hr {
 
 .rightSelect {
     width: 100%;
-    height: 20%;
+    height: 150px;
     padding: 0 0 0 20px;
     float: right;
     /* background-color: #fafafa; */
@@ -204,9 +207,12 @@ hr {
     float: right;
     padding: 0 35px 20px 0;
     text-align: right;
+    height: 150px;
     /* background-color: #fafafa; */
 }
-
+.rightSelectedTable{
+    overflow: scroll;
+}
 .searchBar {
     display: flex;
     margin: 10px;
