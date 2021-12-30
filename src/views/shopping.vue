@@ -5,7 +5,7 @@
         <div class="aside_info">
             <h2>가격비교</h2>
             <ul class="buy">
-                <li>숙박대전</li>
+                <a href="" class="blank"><li>숙박대전</li></a>
                 <li>배송선물</li>
                 <li>희망쇼핑</li>
                 <li>할인금액</li>
@@ -35,7 +35,7 @@
             <ul class="aside_delivery">
                 <li>무료배송</li>
                 <li>오늘발송</li>
-                <li>반품 배송비 지원</li>
+                <li>반품 배송비지원</li>
                 <li>무료선물포장</li>
             </ul>
         </div>
@@ -48,7 +48,7 @@
             <div class="products">
                 <router-link v-bind:to="'/productDetail'">
                     <img src="@/components/mainPage/productTableImage/1.jpg">
-                    <p>[뉴발란스] 운동화 MW880GR4 NBPQAS102G 15 </p>
+                    <p>[뉴발란스] 운동화 MW880GR4 NBPQAS102G</p>
                     <p class="price">125,000원</p>
                 </router-link>
                 <a href="#">
@@ -188,7 +188,7 @@ export default {
     margin: 0;
     padding: 0;
     display: inline;
-    border: 1px solid black;
+    border: 1px solid rgb(189, 185, 185);
     border-radius: 4px;
 }
 .products_fa{
@@ -238,7 +238,6 @@ export default {
 .products p {
     font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
     font-size: 16px;
-    text-align: center;
 }
 
 .products1 ul {
@@ -254,7 +253,7 @@ export default {
     align-items: center;
     background-color: #fafafa;
     border-radius: 4px;
-    margin-left:1px solid black ;
+    margin-left:1px solid rgb(189, 185, 185) ;
 }
 .products1 .item a>img {
     width: 200px;
@@ -272,6 +271,10 @@ export default {
     margin: 0 10px;
     width: 450px;
 }
+.products1 .item .desc p:nth-child(3){
+    font-weight: bold;
+}
+
 .desc .vendor {
     display: inline-block;
     border-left: 1px solid rgb(189, 185, 185);
@@ -289,10 +292,10 @@ export default {
 }
 
 .aside_info {
-    border: 1px solid black;
+    border: 1px solid rgb(189, 185, 185);
     width: 150px;
     background-color: #fafafa;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(189, 185, 185);
     border-radius: 4px;
 
 }
@@ -301,7 +304,7 @@ export default {
     margin: 0;
     display: flex;
     padding-left: 10px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(189, 185, 185);
     background-color: white;
     font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
     font-size: 22px;
@@ -314,10 +317,14 @@ export default {
     align-items: center;
 }
 .aside_info li{
+    list-style: none;
     font-size: 16px;
     font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
     padding: 5px;
     margin: 0;
+}
+.aside_info .buy a {
+    list-style: none;
 }
 
 .clearfix {
