@@ -9,7 +9,7 @@
     </div>
     <div></div>
     <div>
-        <h1 >추천상품</h1>
+        <h1>추천상품</h1>
         <div class="imageArea" v-for="n in length" v-bind:key="n">
             <ul>
                 <li class="card_image" v-for='j in 4' :key="j">
@@ -147,7 +147,7 @@ ul {
     text-align: center;
 }
 label{
-     font-weight: bold;
+     /* font-weight: bold; */
 }
 h1{
     text-align:left; 

@@ -130,7 +130,7 @@ export default {
                 this.isSelected = false;
             }
         },
-        secondSelected(event) {
+      secondSelected(event) {
             if (event.target.value != 0) {
                 this.secondOption = event.target.value;
                 this.isSelected = false;

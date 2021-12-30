@@ -151,38 +151,7 @@ export default {
 </script>
 
 <style scoped>
-button {
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    background-color: #0051ba;
-    /* background-color: #fafafa; */
-    border-radius: 4px;
-    border: none;
-    color: white;
-    padding: 15px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 0px 1px;
-    margin-left: 30px;
-}
-h1{
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 32px;
-}
-h2{
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 22px;
-}
-h3{
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 18px;
-}
-p, label, span, a{
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 16px;
-}
+
 .container {
     background-color: #fafafa;
     padding: 100px;
