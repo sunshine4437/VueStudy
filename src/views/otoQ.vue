@@ -43,21 +43,30 @@
                 </tr>
                 <tr>
                     <td>연락처</td>
-                    <td><input type="text" id="mobile" required /></td>
+                    <td>
+                        <p>
+                            <span>
+                                <input
+                                    type="text"
+                                    name="mobile"
+                                    class="shortInput"
+                                    placeholder="-없이 숫자만"
+                                    id="mobile"
+                                    required
+                                    @change="phoneCheck()"
+                                />
+                            </span>
+                            <span>
+                                <span class="validate" v-if="!phoneValidate"
+                                    >-없이 숫자 11자리만 입력해주세요</span
+                                >
+                            </span>
+                        </p>
+                    </td>
                 </tr>
                 <tr>
                     <td>파일 첨부</td>
-                    <td>
-                        <div class="filebox">
-                            <input
-                                class="upload-name"
-                                value="첨부파일"
-                                placeholder="첨부파일"
-                            />
-                            <label for="file">파일찾기</label>
-                            <input type="file" id="file" />
-                        </div>
-                    </td>
+                    <td><input type="file" /></td>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -77,9 +86,27 @@
 
 <script>
 export default {
-    methods: {},
+    data() {
+        return {
+            phoneValidate: true,
+        };
+    },
+    methods: {
+        phoneCheck() {
+            let mobile = document.getElementById("mobile").value;
+            if (
+                /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})[0-9]{3,4}[0-9]{4}$/.test(
+                    mobile
+                )
+            ) {
+                this.phoneValidate = true;
+            } else {
+                this.phoneValidate = false;
+            }
+        },
+    },
 };
-document.getElementById('file')
+document.getElementById("file");
 </script>
 
 <style scoped>
@@ -140,5 +167,16 @@ th,
 td {
     border: 1px black solid;
     padding: 20px 20px;
+}
+::-webkit-file-upload-button {
+    background: #0051ba;
+    color: #fafafa;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.validate {
+    margin-left: 10px;
+    color: red;
 }
 </style>

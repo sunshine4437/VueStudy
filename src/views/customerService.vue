@@ -25,15 +25,15 @@
             <div>
                 <table class="tableMain">
                     <tr>
-                        <th>번호</th>
-                        <th style="border-left: 1px black solid">제목</th>
+                        <td><span>번호</span></td>
+                        <td style="border-left: 1px black solid"><span>제목</span></td>
                     </tr>
                     <tr v-for="FAQ in FAQs" :key="FAQ.number">
                         <td style="width: 10%">
-                            <span v-html="FAQ.number"></span>
+                            <span v-html="FAQ.number" style="text-decoration: none"></span>
                         </td>
                         <td class="question">
-                            <span v-html="FAQ.question"></span>
+                            <a href="#">{{FAQ.question}}</a>
                         </td>
                     </tr>
                 </table>
@@ -47,15 +47,15 @@
             <div>
                 <table class="tableMain">
                     <tr>
-                        <th>번호</th>
-                        <th style="border-left: 1px black solid">제목</th>
+                        <td><span>번호</span></td>
+                        <td style="border-left: 1px black solid"><span>제목</span></td>
                     </tr>
                     <tr v-for="notice in notices" :key="notice.number">
                         <td style="width: 10%">
                             <span v-html="notice.number"></span>
                         </td>
                         <td class="notice">
-                            <span  v-html="notice.notice"></span>
+                            <a href="#">{{notice.notice}}</a>
                         </td>
                     </tr>
                 </table>
@@ -71,44 +71,44 @@ export default {
         return {
             FAQs: [{
                     number: "1",
-                    question: "<a href='#''>[구매] 세금계산서를 발급받고 싶어요.</a>",
+                    question: "[구매] 세금계산서를 발급받고 싶어요.",
                 },
                 {
                     number: "2",
-                    question: "<a href='#'>[구매] 취소/반품했는데, 언제 환불되나요.</a>",
+                    question: "[구매] 취소/반품했는데, 언제 환불되나요.",
                 },
                 {
                     number: "3",
-                    question: "<a href='#'>[구매] 고객센터 이용 시간은 어떻게되나요.(1:1 상담을 원합니다.)</a>",
+                    question: "[구매] 고객센터 이용 시간은 어떻게되나요.(1:1 상담을 원합니다.)",
                 },
                 {
                     number: "4",
-                    question: "<a href='#'>[배송] 주문한 상품은 언제 배송되나요?</a>",
+                    question: "[배송] 주문한 상품은 언제 배송되나요?",
                 },
                 {
                     number: "5",
-                    question: "<a href='#'>[구매] 간편회원도 쿠폰을 사용할 수 있나요?</a>",
+                    question: "[구매] 간편회원도 쿠폰을 사용할 수 있나요?",
                 },
             ],
             notices: [{
                     number: "1",
-                    notice: "<a href='#'>[공지] 구매이용약관 개정 공지 (2022년 1월 3일 시행)</a>",
+                    notice: "[공지] 구매이용약관 개정 공지 (2022년 1월 3일 시행)",
                 },
                 {
                     number: "2",
-                    notice: "<a href='#'>[공지] 정기점검으로 인한 서비스 일시중지 - 12월 14일(금)</a>",
+                    notice: "[공지] 정기점검으로 인한 서비스 일시중지 - 12월 14일(금)",
                 },
                 {
                     number: "3",
-                    notice: "<a href='#'>환경부 공고, '요소수 판매에 관한 조정명령' (12/8~ )</a>",
+                    notice: "환경부 공고, '요소수 판매에 관한 조정명령' (12/8~ )",
                 },
                 {
                     number: "4",
-                    notice: "<a href='#'>[공지] 정기점검으로 인한 서비스 일시중지 - 11월 17일(금)",
+                    notice: "[공지] 정기점검으로 인한 서비스 일시중지 - 11월 17일(금)",
                 },
                 {
                     number: "5",
-                    notice: "<a href='#'>[공지] 정기점검으로 인한 서비스 일시중지 - 10월 26일(금)</a>",
+                    notice: "[공지] 정기점검으로 인한 서비스 일시중지 - 10월 26일(금)",
                 },
             ],
         };
@@ -171,9 +171,6 @@ td {
     border-left: 1px black solid;
     text-align: left;
     padding: 7px 20px;
-}
-.link{
-    text-decoration-line: none;
 }
 :any-link{
     text-decoration: none;

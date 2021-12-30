@@ -1,10 +1,7 @@
 <template>
     <div class="payment">
         <div>
-            <h1>주문 상품 정보</h1>
             <h2>주문 상품 정보</h2>
-            <h3>주문 상품 정보</h3>
-            <p>주문 상품 정보</p>
             <table class="orderProductTable">
                 <tr v-for="op in orderProducts" :key="op.number">
                     <td class="orderProduct" style="width: 10%">
@@ -33,81 +30,101 @@
         </div>
         <hr />
         <div class="coupon">
-            <h4>할인/포인트</h4>
+            <h2>할인/포인트</h2>
             <table class="couponTable">
                 <tr>
                     <td>쿠폰 할인</td>
-                    <td class="couponNum">30,000원</td>
-                    <td><button class="couponBtn">쿠폰 변경</button></td>
+                    <td class="couponNum">{{ coupon }}원</td>
+                    <td>
+                        <button class="couponBtn" @click="applyCoupon()">
+                            쿠폰 변경
+                        </button>
+                    </td>
                 </tr>
                 <tr>
                     <td class="tableMiddle">1</td>
                 </tr>
                 <tr>
                     <td>포인트</td>
-                    <td class="couponNum">243원</td>
-                    <td><input type="text" style="width: 100%" /></td>
-                    <td><button class="couponBtn">사용</button></td>
+                    <td class="couponNum">{{ point }}원</td>
+                    <td>
+                        <input
+                            id="pointInput"
+                            type="text"
+                            style="width: 100%"
+                        />
+                    </td>
+                    <td>
+                        <button class="couponBtn" @click="applyPoint()">
+                            사용
+                        </button>
+                    </td>
                 </tr>
             </table>
         </div>
         <hr />
         <div class="delivery">
-            <h4>배송지 입력</h4>
-            <table class="deliveryTable">
-                <tr>
-                    <td>이름</td>
-                    <td>
-                        <input
-                            type="text"
-                            name="username"
-                            class="shortInput"
-                            required
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <td>전화번호</td>
-                    <td>
-                        <input
-                            type="text"
-                            name="mobile"
-                            class="shortInput"
-                            placeholder="-없이 숫자만"
-                            required
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <td>우편번호</td>
-                    <td>
-                        <input type="text" name="addr" class="shortInput" />
-                        <button class="addrBtn" onclick="searchAddress()">
+            <h2 style="margin: 20px 0 0 -10px">배송지 입력</h2>
+            <p>
+                <span style="margin-right: 30px">이름</span>
+                <span>
+                    <input
+                        type="text"
+                        name="username"
+                        class="shortInput"
+                        required
+                    />
+                </span>
+            </p>
+            <p>
+                <span>전화번호</span>
+                <span>
+                    <input
+                        type="text"
+                        name="mobile"
+                        class="shortInput"
+                        placeholder="-없이 숫자만"
+                        id="mobile"
+                        required
+                        @change="phoneCheck()"
+                    />
+                </span>
+                <span>
+                    <span class="validate" v-if="!phoneValidate"
+                        >-없이 숫자 11자리만 입력해주세요</span
+                    >
+                </span>
+            </p>
+            <p>
+                <span>우편번호</span>
+                <span>
+                    <input type="text" name="addr" class="shortInput" />
+                    <span>
+                        <window-popup v-model="open"
+                            ><deliverySelect></deliverySelect
+                        ></window-popup>
+                        <button class="addrBtn" @click="open = true">
                             검색
                         </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>기본주소</td>
-                    <td>
-                        <input type="text" name="base_addr" class="longInput" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>상세주소</td>
-                    <td>
-                        <input
-                            type="text"
-                            name="detail_addr"
-                            class="longInput"
-                        />
-                    </td>
-                </tr>
-            </table>
+                    </span>
+                </span>
+            </p>
+            <p>
+                <span>기본주소</span>
+                <span colspan="2">
+                    <input type="text" name="base_addr" class="longInput" />
+                </span>
+            </p>
+            <p>
+                <span>상세주소</span>
+                <span colspan="2">
+                    <input type="text" name="detail_addr" class="longInput" />
+                </span>
+            </p>
         </div>
         <hr />
         <div class="payMethod">
-            <h4>결제수단 선택</h4>
+            <h2 style="margin: 20px 0 0 -10px">결제수단 선택</h2>
             <p>
                 <input
                     type="radio"
@@ -158,31 +175,33 @@
                 <p>계좌번호 : <input type="text" /></p>
             </div>
             <div v-if="radioPay === 'phone'">
-                <button style="font-size: 50%; width:100px">휴대폰 결제</button>
+                <button style="font-size: 50%; width: 100px">
+                    휴대폰 결제
+                </button>
             </div>
         </div>
         <hr />
         <div class="payInfo">
-            <h4>최종 결제 정보</h4>
+            <h2>최종 결제 정보</h2>
             <table class="payInfoTable">
                 <tr>
                     <td class="payIf">상품금액</td>
-                    <td class="payNum">200,000원</td>
+                    <td class="payNum">{{ totalPrice }}원</td>
                     <td rowspan="4" class="buyBtn">
                         <button>결제하기</button>
                     </td>
                 </tr>
                 <tr>
                     <td class="payIf">할인금액</td>
-                    <td class="payNum">30,243원</td>
+                    <td class="payNum">{{ sale }}원</td>
                 </tr>
                 <tr>
                     <td class="payIf">배송비</td>
-                    <td class="payNum">0원</td>
+                    <td class="payNum">{{ delivery }}원</td>
                 </tr>
                 <tr style="border-top: 2px black solid">
                     <td class="payIf">결제 금액</td>
-                    <td class="payNum">169,757원</td>
+                    <td class="payNum">{{ finalPrice }}원</td>
                 </tr>
             </table>
         </div>
@@ -190,15 +209,26 @@
 </template>
 
 <script>
+import WindowPopup from "@/components/payment/WindowPopup.vue";
+import deliverySelect from "@/components/payment/deliverySelect.vue";
 export default {
+    components: { WindowPopup, deliverySelect },
     data() {
         return {
+            point: 0,
+            totalPrice: 108000,
+            coupon: 0,
+            sale: 0,
+            finalPrice: 110500,
             radioPay: "",
+            delivery: 2500,
+            phoneValidate: true,
+            open: false,
             orderProducts: [
                 {
                     number: "1",
                     shopName: "판매자",
-                    image: "http://placehold.it/100X100",
+                    image: "@/components/productDetail/product01.jpg",
                     productName: "상품명<br>옵션 : 선택된 옵션",
                     count: "1개",
                     price: "100,000원",
@@ -215,6 +245,31 @@ export default {
                 },
             ],
         };
+    },
+    methods: {
+        applyPoint() {
+            let pt = document.getElementById("pointInput").value;
+            this.point = pt;
+            this.sale = parseInt(this.coupon) + parseInt(this.point);
+            this.finalPrice = this.totalPrice - this.sale + this.delivery;
+        },
+        applyCoupon() {
+            this.coupon = this.totalPrice * 0.1;
+            this.sale = parseInt(this.coupon) + parseInt(this.point);
+            this.finalPrice = this.totalPrice - this.sale + this.delivery;
+        },
+        phoneCheck() {
+            let mobile = document.getElementById("mobile").value;
+            if (
+                /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})[0-9]{3,4}[0-9]{4}$/.test(
+                    mobile
+                )
+            ) {
+                this.phoneValidate = true;
+            } else {
+                this.phoneValidate = false;
+            }
+        },
     },
 };
 </script>
@@ -255,11 +310,6 @@ export default {
     padding: 5px 20px;
     border-left: 1px black solid;
 }
-.deliveryTable {
-    width: 50%;
-    border-collapse: collapse;
-    padding: 10px 10px;
-}
 .couponTable {
     width: 50%;
     border-collapse: collapse;
@@ -278,12 +328,18 @@ td {
     width: 50px;
     margin: 0 10px;
 }
+.delivery,
+.payMethod {
+    padding: 0 10px;
+}
 .shortInput {
-    width: 50%;
+    width: 250px;
+    margin-left: 10px;
 }
 
 .longInput {
-    width: 100%;
+    width: 500px;
+    margin-left: 10px;
 }
 .cardSelect {
     margin: 0 10px;
@@ -306,5 +362,9 @@ td {
     width: 20%;
     text-align: right;
     padding: 5px 20px;
+}
+.validate {
+    margin-left: 10px;
+    color: red;
 }
 </style>
