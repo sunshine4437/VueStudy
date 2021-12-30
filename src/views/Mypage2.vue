@@ -39,7 +39,7 @@
                 <h3>
                     비밀번호
                     <input v-model="signup.password" type="password" class="mdText" id="m2" @blur="passwordValid">
-                    <button class="mdBtn"> 수정하기 </button>
+                    <button class="mdBtn" @click="pwMod"> 수정하기 </button>
                     <div v-if="!passwordValidFlag" class="pwFlag"> 유효하지 않은 비밀번호 입니다. </div>
                 </h3>
                 <br>
@@ -47,9 +47,10 @@
 
             <div class="content">
                 <h3>
-                    연락처
-                    <input type="text" class="mdText" id="m3" v-model="putNum" placeholder="- 없이 숫자만" maxlength="11">
+                    전화번호
+                    <input  v-model="putNum" type="text" class="mdText" id="m3" @blur="numValid" placeholder="- 없이 숫자만" maxlength="11">
                     <button class="mdBtn" @click="numMod"> 수정하기 </button>
+                    <div v-if="!numValidFlag" class="numFlag"> 유효하지 않은 전화번호 입니다. </div>
                 </h3>
             </div>
             <div class="content">
@@ -66,8 +67,7 @@
                 </h3>
             </div>
             <div class="content">
-                <button class="mod">수정하기</button>
-                <router-link v-bind:to="'/'"> <button class="quit">회원탈퇴</button></router-link>
+                <router-link v-bind:to="'/'"> <button class="quit" @click="quitBtn">회원탈퇴</button></router-link>
             </div>
         </div>
     </div>
@@ -81,11 +81,13 @@ export default {
             signup: {
                 password: null,
                 pwhint: '',
-                pwhintans: null
+                pwhintans: null,
+                putNum: null,
             },
             passwordValidFlag: true,
             passwordCheck: '',
             passwordCheckFlag: true,
+            numValidFlag: true,
             putNum: '',
             putnick: '',
             msg: '',
@@ -113,6 +115,29 @@ export default {
             }
 
         },
+        pwMod() {
+            try {
+                if ("" === this.signup.password) {
+                    alert("공백 입니다.");
+                } else if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$/.test(this.signup.password)){
+                    if(this.passwordValidFlag == true)
+                    alert("수정되었습니다.");
+                } else {
+                    if(!this.passwordValidFlag == true)
+                    alert("비밀번호 형식은 대문자,소문자,숫자 포함 8~16글자 입니다.");
+                }
+            } catch (err) {
+                this.msg = "error";
+            }
+        },
+        numValid() {
+            if (/^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/.test(this.putNum)) {
+                this.numValidFlag = true
+            } else {
+                this.numValidFlag = false
+            }
+
+        },
         numMod() {
             try {
                 if ("" === this.putNum) {
@@ -126,49 +151,14 @@ export default {
                 this.msg = "error";
             }
         },
+        quitBtn(){
+            alert("정말 탈퇴하시겠습니까?")
+        }
     }
 }
 </script>
 
 <style scoped>
-button {
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    background-color: #0051ba;
-    /* background-color: #fafafa; */
-    border-radius: 4px;
-    border: none;
-    color: white;
-    padding: 15px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 0px 1px;
-}
-
-h1 {
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 32px;
-}
-
-h2 {
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 22px;
-}
-
-h3 {
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 18px;
-}
-
-p,
-label,
-span,
-a {
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 16px;
-}
 
 .top {
     margin-left: 70px;
@@ -251,16 +241,10 @@ a {
     margin-top: 300px;
     margin-left: 35px;
 }
-
-.mod {
-    margin-left: 400px;
-    margin-right: 30px;
-}
-
 .quit {
+    margin-left: 480px;
     background-color: #00ba54;
 }
-
 #m1 {
     margin-left: 47px;
 }
@@ -270,7 +254,7 @@ a {
 }
 
 #m3 {
-    margin-left: 47px;
+    margin-left: 29px;
 }
 
 #m4 {
@@ -281,8 +265,7 @@ a {
     margin-left: 45px;
     width: 450px;
 }
-
-.pwFlag {
+.pwFlag, .numFlag {
     color: red;
 }
 </style>

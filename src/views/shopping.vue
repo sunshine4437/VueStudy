@@ -1,5 +1,6 @@
 <template>
-<div class="asdf">
+<div>
+    <div class="all">
     <div class="container2">
         <div class="aside_info">
             <h2>가격비교</h2>
@@ -43,126 +44,140 @@
     <div class="container0">
         <div class="container">
             <div class="products_fa">
-                <h2 class='span1'> 인기상품</h2>
-                <div class="products">
-                    <router-link v-bind:to="'/productDetail'">
-                        <img src="@/components/mainPage/productTableImage/1.jpg">
-                        <p>[뉴발란스] 운동화 MW880GR4 NBPQAS102G 15 </p>
-                        <p class="price">125,000원</p>
-                    </router-link>
-                    <a href="#">
-                        <img src="@/components/mainPage/productTableImage/1.jpg">
-                        <p>[뉴발란스] 327 스니커즈 MS327FE</p>
-                        <p class="price">150,900원</p>
-                    </a>
-                    <a href="#">
-                        <img src="@/components/mainPage/productTableImage/1.jpg">
-                        <p>아디다스 울트라부스트 21_FY0379</p>
-                        <p class="price">114,500원</p>
-                    </a>
-                    <a href="#">
-                        <img src="@/components/mainPage/productTableImage/1.jpg">
-                        <p>나이키 남성 에어맥스 90 EOI DA5562-001</p>
-                        <p class="price">129,000원</p>
-                    </a>
-                </div>
+            <h2 class='span1'> 인기상품</h2>
+            <div class="products">
+                <router-link v-bind:to="'/productDetail'">
+                    <img src="@/components/mainPage/productTableImage/1.jpg">
+                    <p>[뉴발란스] 운동화 MW880GR4 NBPQAS102G 15 </p>
+                    <p class="price">125,000원</p>
+                </router-link>
+                <a href="#">
+                    <img src="@/components/mainPage/productTableImage/1.jpg">
+                    <p>[뉴발란스] 327 스니커즈 MS327FE</p>
+                    <p class="price">150,900원</p>
+                </a>
+                <a href="#">
+                    <img src="@/components/mainPage/productTableImage/1.jpg">
+                    <p>아디다스 울트라부스트 21_FY0379</p>
+                    <p class="price">114,500원</p>
+                </a>
+                <a href="#">
+                    <img src="@/components/mainPage/productTableImage/1.jpg">
+                    <p>나이키 남성 에어맥스 90 EOI DA5562-001</p>
+                    <p class="price">129,000원</p>
+                </a>
             </div>
+        </div>
 
             <h2 class="span1"> 관련상품</h2>
             <div class="products1">
                 <ul>
-                    <li class="item" v-for="(item, idx) in items" :key="idx">
+                    <li class="item">
                         <a href="#">
                             <img src="@/components/mainPage/productTableImage/1.jpg">
                         </a>
                         <div class="desc">
-                            <span class="name">{{item.brand}}<br>
-                                {{item.name}}<br><br>
-                                {{item.color}}</span>
+                            <p class="name">나이키 에어맥스97 트리플블랙</p>
+                            <p class="price"> 가격: 173,000원</p>
+                            <p class="rate"> 10%할인: 163,000원</p>
+                            <p class="delivery"> 무료배송</p>
                         </div>
                         <div class="desc">
-                            <span class="name"> 가격<br><br>
-                                {{item.price}}</span>
+                            <span class="vendor"> 판매처: two_step</span>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <a href="#">
+                            <img src="@/components/mainPage/productTableImage/1.jpg">
+                        </a>
+                        <div class="desc">
+                            <p class="name">아키클래식 어반트래터 트래캥슈즈</p>
+                            <p class="price"> 가격: 54,900원</p>
+                            <p class="rate"> 9%할인: 45,959원</p>
+                            <p class="delivery"> 배송비: 2,500원</p>
                         </div>
                         <div class="desc">
-                            <span class="name"> 판매처<br>{{item.selling}}</span>
+                            <span class="vendor"> 판매처: 월터스</span>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <a href="#">
+                            <img src="@/components/mainPage/productTableImage/1.jpg">
+                        </a>
+                        <div class="desc">
+                            <p class="name">뉴발란스 327 운동화 MS327FE</p>
+                            <p class="price"> 가격: 110,00원</p>
+                            <p class="rate"> 15%할인: 93,500원</p>
+                            <p class="delivery"> 무료배송</p>
+                        </div>
+                        <div class="desc">
+                            <span class="vendor"> 판매처: 신세계몰</span>
+                        </div>
+                    </li>
+                     <li class="item">
+                        <a href="#">
+                            <img src="@/components/mainPage/productTableImage/1.jpg">
+                        </a>
+                        <div class="desc">
+                            <p class="name">아디다스 갤럭시 5 FY6718</p>
+                            <p class="price"> 가격: 35,000원</p>
+                            <p class="rate"> 할인: 35,000원</p>
+                            <h class="delivery"> 배송비: 3,000원</h>
+                        </div>
+                        <div class="desc">
+                            <span class="vendor"> 판매처: CJONSTYLE</span>
+                        </div>
+                    </li>
+                     <li class="item">
+                        <a href="#">
+                            <img src="@/components/mainPage/productTableImage/1.jpg">
+                        </a>
+                        <div class="desc">
+                            <p class="name">리복클래식 레더 레거시 GZ0741</p>
+                            <p class="price"> 가격: 77,000원</p>
+                            <p class="rate"> 5%할인: 73,150원</p>
+                            <p class="delivery"> 무료배송</p>
+                        </div>
+                        <div class="desc">
+                            <span class="vendor"> 판매처: 롯데백화점</span>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <a href="#">
+                            <img src="@/components/mainPage/productTableImage/1.jpg">
+                        </a>
+                        <div class="desc">
+                            <p class="name">휠라 공용 레인져 1RM01141-100</p>
+                            <p class="price"> 가격: 40,200원</p>
+                            <p class="rate"> 할인: 40,200원</p>
+                            <p class="delivery"> 배송비: 2,500원</p>
+                        </div>
+                        <div class="desc">
+                            <span class="vendor"> 판매처: 홈앤쇼핑몰</span>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="clearfix"></div>
+        <div class="clearfix"></div>
+    </div>
 </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            items: [{
-                    brand: "나이키",
-                    name: "에어맥스",
-                    color: "트리플블랙",
-                    price: "173,000",
-                    selling: "two_step"
-                },
-                {
-                    brand: "아디다스",
-                    name: "에어ddd맥스",
-                    color: "트리sdsds플블랙",
-                    price: "173,0dsds00",
-                    selling: "two_dsdstep"
-                },
-                {
-                    brand: "아디다스",
-                    name: "에어ddd맥스",
-                    color: "트리sdsds플블랙",
-                    price: "173,0dsds00",
-                    selling: "two_dsdstep"
-                },
-                {
-                    brand: "아디다스",
-                    name: "에어ddd맥스",
-                    color: "트리sdsds플블랙",
-                    price: "173,0dsds00",
-                    selling: "two_dsdstep"
-                },
-                {
-                    brand: "아디다스",
-                    name: "에어ddd맥스",
-                    color: "트리sdsds플블랙",
-                    price: "173,0dsds00",
-                    selling: "two_dsdstep"
-                },
-                {
-                    brand: "아디다스",
-                    name: "에어ddd맥스",
-                    color: "트리sdsds플블랙",
-                    price: "173,0dsds00",
-                    selling: "two_dsdstep"
-                },
-                {
-                    brand: "아디다스",
-                    name: "에어ddd맥스",
-                    color: "트리sdsds플블랙",
-                    price: "173,0dsds00",
-                    selling: "two_dsdstep"
-                }
-            ]
-        }
-    }
+
 }
 </script>
 
 <style scoped>
-.asdf {
+.all{
     display: flex;
     justify-content: space-evenly;
     margin: 0;
     padding: 0;
 }
-
 .container0 {
     margin: 0;
     padding: 0;
@@ -176,11 +191,9 @@ export default {
     border: 1px solid black;
     border-radius: 4px;
 }
-
-.products_fa {
-    display: inline;
+.products_fa{
+   display: inline;
 }
-
 .span1 {
     display: flex;
     font-size: 22px;
@@ -197,15 +210,13 @@ export default {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
-.products router-link {
+.products router-link{
     font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
     font-size: 16px;
 }
-
 .products a {
     display: inline;
-    width: 225px;
+    width: 200px;
     margin: 0 10px;
     background-color: #fafafa;
     border-radius: 4px;
@@ -219,9 +230,9 @@ export default {
 }
 
 .products img {
-    width: 225px;
-    height: 225px;
-
+    width: 200px;
+    height: 200px;
+    
 }
 
 .products p {
@@ -240,37 +251,40 @@ export default {
     margin: 10px 10px;
     padding: 0;
     display: flex;
-    justify-content: space-between;
-    /* align-items: center; */
+    align-items: center;
     background-color: #fafafa;
     border-radius: 4px;
-    margin-left: 1px solid black;
+    margin-left:1px solid black ;
 }
-
 .products1 .item a>img {
-    width: 225px;
+    width: 200px;
 }
 
-.desc {
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-    width: 200px;
-    height: 200px;
-    border-left: 1px solid rgb(189, 185, 185);
-    border-right: 1px solid rgb(189, 185, 185);
-    padding-top: 20px;
-    padding-bottom: 20px;
+ .desc {
+    margin: 0;
+    display: inline-block;
     font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
     font-size: 16px;
-    /* text-align: center; */
+}
+.products1 .item .desc p {
+    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
+    font-size: 16px;
+    margin: 0 10px;
+    width: 450px;
+}
+.products1 .item .desc p:nth-child(3){
+    font-weight: bold;
 }
 
-br {
-    padding-top: 10px;
+.desc .vendor {
+    display: inline-block;
+    border-left: 1px solid rgb(189, 185, 185);
+    width: 200px;
+    margin: 0;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: 10px;
 }
-
-.desc::before {}
 
 .container2 {
     display: inline-block;
@@ -285,6 +299,9 @@ br {
     border-bottom: 1px solid black;
     border-radius: 4px;
 
+    border: 1px solid rgb(197, 195, 195);
+    background-color: #fafafa;
+    border-radius: 4px;
 }
 
 .aside_info h2 {
@@ -303,8 +320,7 @@ br {
     padding: 0;
     align-items: center;
 }
-
-.aside_info li {
+.aside_info li{
     font-size: 16px;
     font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
     padding: 5px;

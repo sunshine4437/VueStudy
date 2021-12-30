@@ -110,6 +110,7 @@ export default {
 .menu {
     list-style: none;
     display: flex;
+    text-align: center;
 }
 
 .menu li::before {
