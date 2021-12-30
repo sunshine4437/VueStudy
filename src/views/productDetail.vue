@@ -176,7 +176,7 @@ hr {
 .detailTop {
     display: block;
     width: 100%;
-    height: 700px;
+    height: 750px;
     display: flex;
     background-color: #fafafa;
     margin: 0 0 30px 0;
