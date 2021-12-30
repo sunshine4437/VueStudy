@@ -5,8 +5,8 @@
         <div class="aside_info">
             <h2>가격비교</h2>
             <ul class="buy">
-                <a href="" class="blank"><li>숙박대전</li></a>
-                <li>배송선물</li>
+              <li> <input type="checkbox" name="" id=""> <a href="" class="blank">숙박대전</a></li>
+                <li><input type="checkbox" name="" id="">배송선물</li>
                 <li>희망쇼핑</li>
                 <li>할인금액</li>
             </ul>
