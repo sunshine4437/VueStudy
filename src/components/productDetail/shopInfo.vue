@@ -1,11 +1,11 @@
 <template>
 <div class="shop-info">
     <div class="shop-infoBox">
-        <div class="shop-title">판매자</div>
+        <div class="shop-title"><h2>NEPA</h2></div>
     </div>
     <div class="shop-bestItem">
         <div class="bestItemMore">
-            이 판매자의 인기상품이에요
+            <span>이 판매자의 인기상품이에요</span>
             <button class="showMore">더 보기</button>
         </div>
         <hr />
