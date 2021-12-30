@@ -21,8 +21,8 @@
                     </div>
                     <div class="imageTitle">
                         <a v-bind:href="images[(j-1)+(n-1)*4].link">
-                            <label for="">{{images[(j-1)+(n-1)*4].name}}</label><br>
-                            <label for="">1,000,000 원</label>
+                            <temp class="temp"><label for="">{{images[(j-1)+(n-1)*4].name}}</label></temp>
+                            <h3 for="">1,000,000 원</h3>
                         </a>
                     </div>
                 </li>
@@ -114,7 +114,7 @@ ul {
 .card_image>.imageTitle {
     display: block;
     text-align: left;
-    width: 300px;
+    width: 290px;
     /* border: black 1px solid; */
     overflow: hidden;
     /* margin: 0 auto; */
@@ -122,6 +122,8 @@ ul {
     margin-bottom: 5px;
     background-color: #fafafa;
     border-radius: 4px;
+    padding-top: 5px;
+    padding-left: 10px;
 }
 
 .imageTitle a:link {
@@ -146,13 +148,20 @@ ul {
 .moreImageDiv {
     text-align: center;
 }
-label{
-     /* font-weight: bold; */
+
+label {
+    font-weight: 600;
 }
-h1{
-    text-align:left; 
+.temp{
+    height: 48px;
+    display: block;
+}
+
+h1 {
+    text-align: left;
     background-color: #fafafa;
     padding: 10px;
 }
+
 /*  */
 </style>

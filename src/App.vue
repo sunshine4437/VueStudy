@@ -18,7 +18,7 @@ export default {
 }
 </script>
 
-<sty>
+<style>
 html {
     overflow-y: scroll;
 }
@@ -29,9 +29,5 @@ html {
 }
 
 h1 {
-<<<<<<< HEAD
-   
-=======
 }
 </style>
->>>>>>> 498dc73984ef1911210869cb62386763efad7b21

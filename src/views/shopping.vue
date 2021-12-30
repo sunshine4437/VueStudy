@@ -152,6 +152,11 @@
                             <p class="rate"> 할인: 40,200원</p>
                             <p class="delivery"> 배송비: 2,500원</p>
                         </div>
+                    </li>
+                     <li class="item">
+                        <a href="#">
+                            <img src="@/components/mainPage/productTableImage/1.jpg">
+                        </a>
                         <div class="desc">
                             <span class="vendor"> 판매처: 홈앤쇼핑몰</span>
                         </div>
@@ -298,6 +303,9 @@ export default {
     border-bottom: 1px solid rgb(189, 185, 185);
     border-radius: 4px;
 
+    border: 1px solid rgb(197, 195, 195);
+    background-color: #fafafa;
+    border-radius: 4px;
 }
 
 .aside_info h2 {
