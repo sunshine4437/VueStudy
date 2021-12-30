@@ -1,5 +1,30 @@
+@font-face {
+    font-family: 'GowunDodum-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cafe24SsurroundAir';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Y_Spotlight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/Y_Spotlight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 button {
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
+    font-family:  'IBMPlexSansKR-Regular','맑은 고딕';
     background-color: #0051ba;
     /* background-color: #fafafa; */
     border-radius: 4px;
@@ -14,18 +39,18 @@ button {
     margin: 0px 1px;
 }
 h1{
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
+    font-family:  'IBMPlexSansKR-Regular','맑은 고딕';
     font-size: 32px;
 }
 h2{
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
+    font-family:  'IBMPlexSansKR-Regular','맑은 고딕';
     font-size: 22px;
 }
 h3{
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
+    font-family: 'IBMPlexSansKR-Regular','맑은 고딕';
     font-size: 18px;
 }
 p, label, span, a{
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
+    font-family:  'IBMPlexSansKR-Regular','맑은 고딕';
     font-size: 16px;
 }

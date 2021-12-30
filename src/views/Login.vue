@@ -70,8 +70,9 @@ export default {
 }
 
 .inputForm {
-    position: relative;
     display: block;
+
+    position: relative;
     left: 50%;
     top: 40%;
     transform: translate(-50%, -50%);
