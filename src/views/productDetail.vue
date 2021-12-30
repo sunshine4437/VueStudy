@@ -29,6 +29,7 @@
                     <h3>옵션 선택</h3>
                     <div class="searchBar">
                         <select
+                            id="search1"
                             name="searchSelect"
                             class="searchSelectBox"
                             @click="firstSelected($event)"
@@ -59,15 +60,20 @@
                 </div>
                 <hr />
                 <div class="rightSelected">
-                    <h3 style="text-align: left; padding: 0 0 0 20px">선택된 옵션</h3>
-                    <table class="rightSelectedTable" style="width: 100%">
-                        <tr v-for="item in items.slice(1)" :key="item">
-                            <td>
-                                <span
-                                    v-html="item.name + '/' + item.size"
-                                ></span>
-                            </td>
-                        </tr>
+                    <h3 style="text-align: left; padding: 0 0 0 20px">
+                        선택된 옵션
+                    </h3>
+                    <table style="width: 100%">
+                        <div class="rightSelectedTable">
+                            <tr v-for="item in items.slice(1)" :key="item">
+                                <td>
+                                    <span v-html="item.name"></span>
+                                </td>
+                                <td style="width: 50px">
+                                    <span v-html="item.size"></span>
+                                </td>
+                            </tr>
+                        </div>
                     </table>
                 </div>
                 <div class="clear"></div>
@@ -96,6 +102,7 @@
         </div>
     </div>
 </template>
+
 <script>
 import detail from "@/components/productDetail/detail.vue";
 import shopInfo from "@/components/productDetail/shopInfo.vue";
@@ -134,6 +141,7 @@ export default {
                 this.items.push(newItem);
                 this.totalPrice += this.price;
                 event.target.value = 0;
+                document.getElementById("search1").value = 0;
             }
         },
     },
@@ -146,24 +154,29 @@ export default {
     box-sizing: border-box;
     list-style: none;
 }
+
 h1 {
     text-align: left;
 }
+
 hr {
     padding: 0 0;
     margin: 0 0;
 }
+
 .enter {
     margin: 60px;
 }
+
 .scale-down {
     object-fit: scale-down;
     width: 100%;
 }
 
 .detailTop {
+    display: block;
     width: 100%;
-    height: auto;
+    height: 700px;
     display: flex;
     background-color: #fafafa;
     margin: 0 0 30px 0;
@@ -175,7 +188,9 @@ hr {
 }
 
 .rightBox {
+    display: inline-block;
     width: 50%;
+    height: auto;
     padding: 0 20px;
     margin-left: auto;
 }
@@ -210,8 +225,11 @@ hr {
     height: 150px;
     /* background-color: #fafafa; */
 }
-.rightSelectedTable{
-    overflow: scroll;
+.rightSelectedTable {
+    overflow-y: scroll;
+    height: 80px;
+    width: 200px;
+    margin: 0 0 0 auto;
 }
 .searchBar {
     display: flex;
@@ -226,6 +244,7 @@ hr {
 }
 
 .rightButton {
+    display: inline-block;
     width: 100%;
     float: right;
     padding: 0;
