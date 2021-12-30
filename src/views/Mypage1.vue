@@ -2,21 +2,21 @@
 <div>
     <!--top-->
     <div class="top" style="text-align:center">
-            
+
         <h1>마이페이지</h1>
     </div>
     <div class="container">
         <!--left-->
         <div class="left">
             <div class="List">
-                   <router-link v-bind:to="'/mypage1'">나의쇼핑내역</router-link>
+                <router-link v-bind:to="'/mypage1'">나의쇼핑내역</router-link>
             </div>
             <div class="Check">
                 <li>주문/배송 조회</li>
                 <li>취소/환불 조회</li>
             </div>
             <div class="List">
-                  <router-link v-bind:to="'/mypage2'">회원정보 열람</router-link>
+                <router-link v-bind:to="'/mypage2'">회원정보 열람</router-link>
             </div>
             <div class="Check">
                 <li>회원정보 수정</li>
@@ -134,9 +134,9 @@
                         <td>취소</td>
                     </tr>
                 </table>
-                
+
             </div>
-            
+
         </div>
 
     </div>
@@ -146,51 +146,21 @@
 
 <script>
 export default {
-    method:{
+    method: {
 
-}
+    }
 }
 </script>
 
 <style scoped>
-button {
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    background-color: #0051ba;
-    /* background-color: #fafafa; */
-    border-radius: 4px;
-    border: none;
-    color: white;
-    padding: 15px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 0px 1px;
-}
-h1{
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 32px;
-}
-h2{
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 22px;
-}
-h3{
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 18px;
-}
-p, label, span, a{
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 16px;
-}
+
 .top {
     margin-left: 70px;
 }
 
 .container {
     display: flex;
-    border:none;
+    border: none;
 }
 
 .left {
@@ -214,7 +184,7 @@ p, label, span, a{
 .pList3 {
     text-align: center;
     border-bottom: 1px solid rgb(197, 195, 195);
-    
+
 }
 
 .date1,
@@ -230,20 +200,19 @@ p, label, span, a{
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    
+
 }
 
 .tables_header {
     width: 100px;
     padding: 10px;
-    padding-top: 20px;
     text-align: center;
-    line-height: 84px;
+    line-height: 110px;
     font-weight: bold;
     border: 1px solid;
     border-radius: 4px;
-     background-color: #00ba54;;
-     color: white;
+    background-color: #00ba54;
+    color: white;
 }
 
 .row1,
@@ -256,7 +225,7 @@ p, label, span, a{
 
 .row2 {
     text-align: center;
-    
+
 }
 
 .row3 {
@@ -272,8 +241,6 @@ p, label, span, a{
     border: 1px solid;
 }
 
-
-
 .table2,
 .table3 {
     margin-left: auto;
@@ -282,18 +249,18 @@ p, label, span, a{
     border-collapse: collapse;
     padding: 10px 10px;
     text-align: center;
-    
+
 }
 
 .table2 td,
 .table3 td {
     border: 1px black solid;
     padding: 5px 5px;
-    
+
 }
 
 .left>div {
-   border-bottom: 1px solid rgb(197, 195, 195);
+    border-bottom: 1px solid rgb(197, 195, 195);
 }
 
 .List {
@@ -314,7 +281,7 @@ p, label, span, a{
 }
 
 .dateBtn {
-    background-color: #0051ba;
+    background-color: rgb(0, 153, 255);
     border-radius: 4px;
     border: none;
     color: white;
@@ -326,12 +293,11 @@ p, label, span, a{
     cursor: pointer;
     margin: 0px 1px;
     margin: 0px 5px;
-    
+
 }
 
-.logoutbtn{
+.logoutbtn {
     margin-top: 300px;
     margin-left: 35px;
 }
-
 </style>

@@ -8,28 +8,28 @@
     <form class="container" name="login_member">
         <div>
             <h3>
-                아이디
+                *아이디
                 <input type="text" name="아이디" class="inputValues" id="id" v-model="signup.putid">
-                <button class="classBtn" @click.prevent="idcheck"> 중복확인 </button>
+                <button class="classBtn" @click.prevent="idCheck"> 중복확인 </button>
             </h3>
         </div>
         <div>
             <h3>
-                닉네임
+                *닉네임
                 <input type="text" name="닉네임" class="inputValues" id="nick" v-model="signup.putnick">
-                <button class="nickBtn" @click.prevent="nickcheck"> 중복확인 </button>
+                <button class="nickBtn" @click.prevent="nickCheck"> 중복확인 </button>
             </h3>
         </div>
         <div>
             <h3>
-                비밀번호
+                *비밀번호
                 <input v-model="signup.password" type="password" name="비밀번호" class="inputValues" id="pw" @blur="passwordValid">
                 <div v-if="!passwordValidFlag" class="pwFlag"> 유효하지 않은 비밀번호 입니다. </div>
             </h3>
         </div>
         <div>
             <h3>
-                비밀번호확인
+                *비밀번호확인
                 <input v-model="passwordCheck" type="password" name="비밀번호 확인" class="inputValues" @blur="passwordCheckValid">
                 <div v-if="!passwordCheckFlag" class="re_pwFlag"> 비밀번호가 동일하지 않습니다. </div>
             </h3>
@@ -42,8 +42,8 @@
         </div>
         <div>
             <h3>
-                전화번호
-                <input v-model="signup.mobile" type="text" name="mobile" class="mobile" placeholder="-없이 숫자만" maxlength="11" @blur="mobileCheckValid">
+                *전화번호
+                <input v-model="signup.mobile" type="text" name="전화번호" class="inputValues" @blur="mobileCheckValid" placeholder="-없이 숫자만" maxlength="11" id="mobile">
                 <div v-if="!mobileValidFlag" class="pwFlag"> 유효하지 않은 전화번호 입니다. </div>
             </h3>
         </div>
@@ -65,13 +65,18 @@
     <hr>
     <div class="footer">
         <div class="CheckBox">
-            <label class="Agree" id="agreement">약관동의</label><br>
-            <input type="checkbox" name="cb1" class="agree" id="agreement1">귀하의 쇼핑몰에 회원으로 가입합니다(필수)<br>
-            <input type="checkbox" name="cb2" class="agree" id="agreement2">개인정보 수집 이용동의(필수)<br>
-            <input type="checkbox" name="cb3" class="agree" id="agreement3">마케팅 활용 및 광고성 정보 수신 동의 (선택)
+            <label class="Agree" id="agreement">
+                <h2>약관동의</h2>
+                <hr>
+            </label><br>
+            <div class="miniBox">
+            <input type="checkbox" name="cb1" id="agreement1">귀하의 쇼핑몰에 회원으로 가입합니다(필수)<br>
+            <input type="checkbox" name="cb2" id="agreement2">개인정보 수집 이용동의(필수)<br>
+            <input type="checkbox" name="cb3" class="agree">마케팅 활용 및 광고성 정보 수신 동의 (선택)
+            </div>
         </div>
         <div class="joinBtnArea">
-            <button type="button" class="joinBtn" @click.prevent="submit()"> <span>가입하기</span> </button>
+            <button type="button" class="joinBtn" @click="submit"> <span>가입하기</span> </button>
         </div>
     </div>
 </div>
@@ -92,6 +97,7 @@ export default {
             passwordValidFlag: true,
             passwordCheck: '',
             passwordCheckFlag: true,
+            mobileValidFlag: true,
             msg: '',
             checkIdFlag: false,
             checkNickFlag: false,
@@ -101,9 +107,9 @@ export default {
             agreement: false,
         }
     },
-    methods: {
+    methods: { 
 
-        idcheck() {
+        idCheck() {
             try {
                 if ("" === this.signup.putid) {
                     alert("공백 입니다.");
@@ -118,7 +124,7 @@ export default {
                 this.msg = "error";
             }
         },
-        nickcheck() {
+        nickCheck() {
             try {
                 if ("" === this.signup.putnick) {
                     alert("공백 입니다.");
@@ -154,10 +160,10 @@ export default {
         mobileCheckValid() {
             if (/^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/.test(this.signup.mobile)) {
                 this.mobileValidFlag = true;
-
+                this.checkTelFlag = true;
             } else {
                 this.mobileValidFlag = false;
-
+                this.checkTelFlag = false;
             }
         },
         submit() {
@@ -186,21 +192,19 @@ export default {
                 alert("비밀 번호가 일치 하지 않습니다")
                 return;
             }
-            /*if (!this.checkTelFlag) {
-                alert("숫자만 입력하세요")
+            if (!this.checkTelFlag) {
+                alert("전화번호를 확인하세요")
                 return;
-            }*/
-
+            }
             let agreement1 = document.getElementById('agreement1');
             let agreement2 = document.getElementById('agreement2');
-            // let agreement3 = document.getElementById('agreement3');
             if (!agreement1.checked) {
-                alert("1");
+                alert("약관을 확인해 주세요");
             } else if (!agreement2.checked) {
-                alert("2");
+                alert("약관을 확인해 주세요");
             } else {
-                alert("환영합니다");
-
+                alert("회원가입이 완료 되었습니다."); 
+                <router-link v-bind:to="'/'"> </router-link>
             }
 
         }
@@ -226,27 +230,40 @@ export default {
     width: 300%;
     margin: 12px 0;
 }
-
-/* .container>div>input {
-    display: inline-block;
-    height: 25px;
-    margin-right: 10px;
-    width: 300px;
-    text-align: center;
-    border-radius: 4px;
+.miniBox{
     border: 1px solid;
-    
-} */
+    border-radius: 4px;
+    border-width: 2px;
+    border-color: rgb(156, 151, 151);
+    padding-top: 35px;
+    margin-top: 1px;
+    margin-left: 400px;
+    margin-right: 400px;
+    height: 100px;
+    font-size:18px;
+    background-color: #00ba54;
+    color: white;
+}
+
 
 .CheckBox {
     text-align: center;
     padding: 10px 0;
 }
+.CheckBox hr {
+    margin-left: 400px;
+    margin-right: 400px;
+    padding: 1px;
+    background-color: rgb(156, 151, 151);
+    margin-bottom: 1px;
+}
 
 .footer {
     background-color: #fafafa;
 }
-
+.joinBtn{
+    margin-top:20px;
+}
 .joinBtnArea {
     text-align: center;
     padding-bottom: 30px;
@@ -277,19 +294,19 @@ export default {
 }
 
 .username {
-    margin-left: 73px;
+    margin-left: 79px;
 }
 
-.mobile {
+#mobile {
     margin-left: 37px;
 }
 
 .total_add {
-    margin-left: 73px;
+    margin-left: 79px;
 }
 
 .detail_add {
-    margin-left: 36px;
+    margin-left: 43px;
 }
 
 .pwFlag,
