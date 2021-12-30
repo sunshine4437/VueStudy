@@ -4,16 +4,17 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  
   state: {
-    count:0,
+    flag: false,
     userInfo:{
       username:"sunshine",
       password:"1234"
     }
   },
   mutations: {
-    increment(state, payload){
-      state.count += payload.amount;
+    Login(state){
+      state.flag = true;
     },
   },
   actions: {
@@ -23,6 +24,9 @@ export default new Vuex.Store({
   getters:{
     getUserInfo: function(state){
       return state.userInfo;
+    },
+    getLogin: function(state){
+      return state.flag;
     }
     // getIsUserSignIn:
   }

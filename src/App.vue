@@ -24,10 +24,14 @@ html {
 }
 
 #app {
-
     max-width: 70%;
     margin: 0 auto;
 }
 
 h1 {
+<<<<<<< HEAD
    
+=======
+}
+</style>
+>>>>>>> 498dc73984ef1911210869cb62386763efad7b21

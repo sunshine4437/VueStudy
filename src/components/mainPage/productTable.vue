@@ -9,7 +9,7 @@
     </div>
     <div></div>
     <div>
-        <h1 >베스트</h1>
+        <h1>추천상품</h1>
         <div class="imageArea" v-for="n in length" v-bind:key="n">
             <ul>
                 <li class="card_image" v-for='j in 4' :key="j">
@@ -21,7 +21,8 @@
                     </div>
                     <div class="imageTitle">
                         <a v-bind:href="images[(j-1)+(n-1)*4].link">
-                            <label for="">{{images[(j-1)+(n-1)*4].name}}</label>
+                            <label for="">{{images[(j-1)+(n-1)*4].name}}</label><br>
+                            <label for="">1,000,000 원</label>
                         </a>
                     </div>
                 </li>
@@ -112,7 +113,7 @@ ul {
 
 .card_image>.imageTitle {
     display: block;
-    text-align: center;
+    text-align: left;
     width: 300px;
     /* border: black 1px solid; */
     overflow: hidden;
@@ -146,7 +147,7 @@ ul {
     text-align: center;
 }
 label{
-     font-weight: bold;
+     /* font-weight: bold; */
 }
 h1{
     text-align:left; 

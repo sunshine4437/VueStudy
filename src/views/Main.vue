@@ -51,7 +51,11 @@
         <ul class="rightMenu">
             <li v-for="(link, i) in rightMenuName" :key="i">
                 <router-link v-bind:to="link.link">
-                    <button>{{link.name}}</button>
+                    <!-- <button v-if="login">23</button>
+                    <button v-else>1</button> -->
+                    <button for="" v-if="link.name === '로그인' && login">sunshine님</button>
+                    <button v-else-if="link.name === '로그인' && !login">{{link.name}}</button>
+                    <button v-else>{{link.name}}</button>
                 </router-link>
             </li>
         </ul>
@@ -74,6 +78,9 @@ export default {
     computed: {
         count() {
             return this.$store.state.count;
+        },
+        login() {
+            return this.$store.getters.getLogin;
         }
     },
     //

@@ -1,63 +1,146 @@
 <template>
-<div class="otoQ">
-    <form class="otoQForm" action="success.html" name="register" method="post">
-        <table>
-            <tr>
-                <th colspan="2">문의글 작성</th>
-            </tr>
-            <tr>
-                <td style="width: 20%">문의 유형</td>
-                <td>
-                    <select name="qnaType1" id="qnaType1">
-                        <option value="회원">회원</option>
-                        <option value="쿠폰/혜택/이벤트">
-                            쿠폰/혜택/이벤트
-                        </option>
-                        <option value="주문/결제">주문/결제</option>
-                        <option value="배송">배송</option>
-                        <option value="취소/반품/교환">
-                            취소/반품/교환
-                        </option>
-                        <option value="기타">기타</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>문의 내용</td>
-                <td>
-                    <textarea name="otoTextarea" id="otoTextarea" class="otoTextarea" maxlength="2000" placeholder="문의 내용을 입력해주세요." required></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td>연락처</td>
-                <td><input type="text" id="mobile" required /></td>
-            </tr>
-            <tr>
-                <td>파일 첨부</td>
-                <td><input type="file" /></td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <router-link class="signUpLink" v-bind:to="'/customerService'"> <button>
-                            취소하기
-                        </button></router-link>
-                    <button type=" submit">등록하기</button>
-                </td>
-            </tr>
-        </table>
-    </form>
-</div>
+    <div class="otoQ">
+        <form
+            class="otoQForm"
+            action="success.html"
+            name="register"
+            method="post"
+        >
+            <table>
+                <tr>
+                    <th colspan="2">문의글 작성</th>
+                </tr>
+                <tr>
+                    <td style="width: 20%">문의 유형</td>
+                    <td>
+                        <select name="qnaType1" id="qnaType1">
+                            <option value="회원">회원</option>
+                            <option value="쿠폰/혜택/이벤트">
+                                쿠폰/혜택/이벤트
+                            </option>
+                            <option value="주문/결제">주문/결제</option>
+                            <option value="배송">배송</option>
+                            <option value="취소/반품/교환">
+                                취소/반품/교환
+                            </option>
+                            <option value="기타">기타</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>문의 내용</td>
+                    <td>
+                        <textarea
+                            name="otoTextarea"
+                            id="otoTextarea"
+                            class="otoTextarea"
+                            maxlength="2000"
+                            placeholder="문의 내용을 입력해주세요."
+                            style="resize: none"
+                            required
+                        ></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>연락처</td>
+                    <td>
+                        <p>
+                            <span>
+                                <input
+                                    type="text"
+                                    name="mobile"
+                                    class="shortInput"
+                                    placeholder="-없이 숫자만"
+                                    id="mobile"
+                                    required
+                                    @change="phoneCheck()"
+                                />
+                            </span>
+                            <span>
+                                <span class="validate" v-if="!phoneValidate"
+                                    >-없이 숫자 11자리만 입력해주세요</span
+                                >
+                            </span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>파일 첨부</td>
+                    <td><input type="file" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <router-link
+                            class="signUpLink"
+                            v-bind:to="'/customerService'"
+                        >
+                            <button>취소하기</button></router-link
+                        >
+                        <button type=" submit">등록하기</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
 </template>
 
 <script>
 export default {
+    data() {
+        return {
+            phoneValidate: true,
+        };
+    },
     methods: {
-
+        phoneCheck() {
+            let mobile = document.getElementById("mobile").value;
+            if (
+                /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})[0-9]{3,4}[0-9]{4}$/.test(
+                    mobile
+                )
+            ) {
+                this.phoneValidate = true;
+            } else {
+                this.phoneValidate = false;
+            }
+        },
     },
 };
+document.getElementById("file");
 </script>
 
 <style scoped>
+.filebox label {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #999999;
+    cursor: pointer;
+    height: 40px;
+    margin-left: 10px;
+}
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+.input-file-button {
+    background-color: #0051ba;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0px 1px;
+}
 .otoQ {
     width: 60%;
     margin: 0 auto;
@@ -65,7 +148,7 @@ export default {
 }
 
 .otoQForm {
-    margin: auto
+    margin: auto;
 }
 
 .otoTextarea {
@@ -84,5 +167,16 @@ th,
 td {
     border: 1px black solid;
     padding: 20px 20px;
+}
+::-webkit-file-upload-button {
+    background: #0051ba;
+    color: #fafafa;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.validate {
+    margin-left: 10px;
+    color: red;
 }
 </style>

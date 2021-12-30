@@ -3,9 +3,11 @@
     <div class="test">
         <carousel v-bind="options">
             <!-- // @initialized="init" -->
-            <div class="test" v-for="(n,idx) in 7" :key="idx">
-                <!-- <img :src="`https://placeimg.com/900/500/any?${n}`" alt=""></div> -->
-                <h1 style=" font-size: 200px">{{n}}</h1>
+            <div class="test" v-for="(banners,idx) in bannerImage" :key="idx">
+                <!-- <a v-bind:href="'/#'"> -->
+                <img :src="require(`@/assets/bannerImage/${banners.image}`)" alt="banner">
+                <!-- </a>  -->
+                <!-- {{n}} -->
             </div>
         </carousel>
 
@@ -13,29 +15,29 @@
 </div>
 </template>
 
-    
-<script >
+<script>
 import carousel from 'vue-owl-carousel2'
+import BannerImage from './banner.json'
 export default {
     components: {
-        carousel
+        carousel,
+    
     },
     data() {
         return {
-            
             options: {
                 autoplay: true,
                 items: 1,
                 autoplayTimeout: 3000,
                 nav: true,
                 navText: ["<i class='prev'></i>", "<i class='next'></i>"]
-            }
+            },
+                bannerImage: BannerImage
         }
     }
 }
 </script>
 
-    
 <style>
 .test img {
     height: 400px;
@@ -55,8 +57,7 @@ export default {
 }
 
 .test {
-    position: relative;
-    background-color: beige;
+    /* width: 100; */
 }
 
 .prev::after {
