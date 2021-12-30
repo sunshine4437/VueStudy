@@ -11,7 +11,7 @@
         <hr />
         <div>
             <li>
-                <img class="bestPic" src="http://placehold.it/100x100" />
+                <img class="bestPic" style="border-radius: 30px" src="http://placehold.it/135x135" />
             </li>
             <li>
                 <img class="bestPic" src="http://placehold.it/100x100" />

@@ -7,7 +7,7 @@
                 style="margin: auto; text-align: center"
             >
                 <img
-                    style="width: 500px; height: 500px"
+                    style="width: 500px; height: 500px; border-radius: 10px"
                     src="@/components/productDetail/product01.jpg"
                 />
             </div>
