@@ -44,7 +44,7 @@
     <div class="container0">
         <div class="container">
             <div class="products_fa">
-            <h2 class='span1'> 인기 상품</h2>
+            <h2 class='span1'> 인기상품</h2>
             <div class="products">
                 <router-link v-bind:to="'/productDetail'">
                     <img src="@/components/mainPage/productTableImage/1.jpg">
@@ -77,27 +77,13 @@
                             <img src="@/components/mainPage/productTableImage/1.jpg">
                         </a>
                         <div class="desc">
-                            <span class="name">나이키<br>에어맥스97<br>트리플블랙</span>
+                            <p class="name">나이키 에어맥스97 트리플블랙</p>
+                            <p class="price"> 가격: 173,000원</p>
+                            <p class="rate"> 10%할인: 163,000원</p>
+                            <p class="delivery"> 무료배송</p>
                         </div>
                         <div class="desc">
-                            <span class="name"> 가격: <br>173,000원</span>
-                        </div>
-                        <div class="desc">
-                            <span class="name"> 판매처:<br>two_step</span>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <a href="#">
-                            <img src="@/components/mainPage/productTableImage/1.jpg">
-                        </a>
-                        <div class="desc">
-                            <span class="name">아키클래식<br>어반트래커<br>트래킹슈즈</span>
-                        </div>
-                        <div class="desc">
-                            <span class="price"> 가격: <br>54,900원</span>
-                        </div>
-                        <div class="desc">
-                            <span class="vendor">판매처:<br>월터스</span>
+                            <span class="vendor"> 판매처: two_step</span>
                         </div>
                     </li>
                     <li class="item">
@@ -105,13 +91,27 @@
                             <img src="@/components/mainPage/productTableImage/1.jpg">
                         </a>
                         <div class="desc">
-                            <span class="name">뉴발란스<br>327 운동화<br>MS327FE</span>
+                            <p class="name">아키클래식 어반트래터 트래캥슈즈</p>
+                            <p class="price"> 가격: 54,900원</p>
+                            <p class="rate"> 9%할인: 45,959원</p>
+                            <p class="delivery"> 배송비: 2,500원</p>
                         </div>
                         <div class="desc">
-                            <span class="price"> 가격: <br>110,000원</span>
+                            <span class="vendor"> 판매처: 월터스</span>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <a href="#">
+                            <img src="@/components/mainPage/productTableImage/1.jpg">
+                        </a>
+                        <div class="desc">
+                            <p class="name">뉴발란스 327 운동화 MS327FE</p>
+                            <p class="price"> 가격: 110,00원</p>
+                            <p class="rate"> 15%할인: 93,500원</p>
+                            <p class="delivery"> 무료배송</p>
                         </div>
                         <div class="desc">
-                            <span class="vendor">판매처:<br>신세계몰</span>
+                            <span class="vendor"> 판매처: 신세계몰</span>
                         </div>
                     </li>
                      <li class="item">
@@ -119,41 +119,41 @@
                             <img src="@/components/mainPage/productTableImage/1.jpg">
                         </a>
                         <div class="desc">
-                            <span class="name">아디다스<br>갤럭시 5<br>FY6718</span>
+                            <p class="name">아디다스 갤럭시 5 FY6718</p>
+                            <p class="price"> 가격: 35,000원</p>
+                            <p class="rate"> 할인: 35,000원</p>
+                            <p class="delivery"> 배송비: 3,000원</p>
                         </div>
                         <div class="desc">
-                            <span class="price"> 가격: <br>35,000원</span>
-                        </div>
-                        <div class="desc">
-                            <span class="vendor">판매처:<br>CJONSTYLE</span>
+                            <span class="vendor"> 판매처: CJONSTYLE</span>
                         </div>
                     </li>
-                      <li class="item">
+                     <li class="item">
                         <a href="#">
                             <img src="@/components/mainPage/productTableImage/1.jpg">
                         </a>
                         <div class="desc">
-                            <span class="name">리복클래식<br>레더 레거시<br>GZ0741</span>
+                            <p class="name">리복클래식 레더 레거시 GZ0741</p>
+                            <p class="price"> 가격: 77,000원</p>
+                            <p class="rate"> 5%할인: 73,150원</p>
+                            <p class="delivery"> 무료배송</p>
                         </div>
                         <div class="desc">
-                            <span class="price"> 가격: <br>77,660원</span>
-                        </div>
-                        <div class="desc">
-                            <span class="vendor">판매처:<br>롯데백화점</span>
+                            <span class="vendor"> 판매처: 롯데백화점</span>
                         </div>
                     </li>
-                      <li class="item">
+                    <li class="item">
                         <a href="#">
                             <img src="@/components/mainPage/productTableImage/1.jpg">
                         </a>
                         <div class="desc">
-                            <span class="name">휠라 공용<br>레인져<br>1RM01141-100</span>
+                            <p class="name">휠라 공용 레인져 1RM01141-100</p>
+                            <p class="price"> 가격: 40,200원</p>
+                            <p class="rate"> 할인: 40,200원</p>
+                            <p class="delivery"> 배송비: 2,500원</p>
                         </div>
                         <div class="desc">
-                            <span class="price"> 가격: <br>40,200원</span>
-                        </div>
-                        <div class="desc">
-                            <span class="vendor">판매처:<br>홈앤쇼핑몰</span>
+                            <span class="vendor"> 판매처: 홈앤쇼핑몰</span>
                         </div>
                     </li>
                 </ul>
@@ -199,8 +199,8 @@ export default {
     font-size: 22px;
     font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
     margin: 10px;
-    background-color: rgb(189, 185, 185);
-     border-radius: 4px;
+    background-color: #fafafa;
+    border-radius: 4px;
 }
 
 .products {
@@ -216,9 +216,9 @@ export default {
 }
 .products a {
     display: inline;
-    width: 225px;
+    width: 200px;
     margin: 0 10px;
-    background-color: rgb(189, 185, 185);
+    background-color: #fafafa;
     border-radius: 4px;
 }
 
@@ -230,8 +230,8 @@ export default {
 }
 
 .products img {
-    width: 225px;
-    height: 225px;
+    width: 200px;
+    height: 200px;
     
 }
 
@@ -251,43 +251,39 @@ export default {
     margin: 10px 10px;
     padding: 0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background-color: rgb(189, 185, 185);
+    background-color: #fafafa;
     border-radius: 4px;
+    margin-left:1px solid black ;
 }
-
 .products1 .item a>img {
-    width: 225px;
-    margin-top: 3px;
-    text-decoration: none;
-    
+    width: 200px;
 }
 
-.products1 .item .name {
+ .desc {
+    margin: 0;
+    display: inline-block;
     font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
     font-size: 16px;
-    
 }
-
-.products1 .item .price {
-   font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 16px;
-   
-}
-
-.products1 .item .vendor {
+.products1 .item .desc p {
     font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
     font-size: 16px;
-    
+    margin: 0 10px;
+    width: 450px;
 }
-
-.desc {
-    width: 100px;
+.desc .vendor {
+    display: inline-block;
+    border-left: 1px solid rgb(189, 185, 185);
+    width: 200px;
+    margin: 0;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: 10px;
 }
 
 .container2 {
-    display: inline;
+    display: inline-block;
     margin: 0;
     padding: 0;
 }
@@ -295,7 +291,7 @@ export default {
 .aside_info {
     border: 1px solid black;
     width: 150px;
-    background-color: rgb(189, 185, 185);
+    background-color: #fafafa;
     border-bottom: 1px solid black;
     border-radius: 4px;
 
@@ -317,37 +313,10 @@ export default {
     padding: 0;
     align-items: center;
 }
-
-.aside_info .buy {
+.aside_info li{
     font-size: 16px;
     font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    padding: 10px;
-    margin: 0;
-   
-}
-.aside_info .size{
-    font-size: 16px;
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    padding: 10px;
-    margin: 0;
-   
-}
-.aside_info .color{
-    font-size: 16px;
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    padding: 10px;
-    margin: 0;
-}
-.aside_info .aside_vendor{
-    font-size: 16px;
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    padding: 10px;
-    margin: 0;
-}
-.aside_info .aside_delivery{
-    font-size: 16px;
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    padding: 10px;
+    padding: 5px;
     margin: 0;
 }
 
