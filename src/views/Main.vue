@@ -329,6 +329,9 @@ export default {
     margin-left: 5px;
     padding: 0;
 }
+.leftMenu button{
+    width:90px;
+}
 
 .rightMenu {
     /* display: inline-block; */
