@@ -8,18 +8,23 @@
     <div class="container">
         <!--left-->
         <div class="left">
-            <div class="List">
+            <div class="List1">
                 <router-link v-bind:to="'/mypage1'">나의쇼핑내역</router-link>
+                <hr>
             </div>
             <div class="Check">
-                <li>주문/배송 조회</li>
-                <li>취소/환불 조회</li>
+                <a href="">주문/배송 조회</a><br>
+                <a href="">취소/환불 조회</a><br>
             </div>
-            <div class="List">
+            <div class="List2">
                 <router-link v-bind:to="'/mypage2'">회원정보 열람</router-link>
+                <hr>
             </div>
             <div class="Check">
-                <li>회원정보 수정</li>
+                <a href="">닉네임 수정</a><br>
+                <a href="">비밀번호 수정</a><br>
+                <a href="">전화번호 수정</a><br>
+                <a href="">주소 수정</a>
             </div>
             <router-link v-bind:to="'/'"> <button class="logoutbtn" @click="logout"> 로그아웃 </button></router-link>
         </div>
@@ -153,6 +158,15 @@ export default {
 </script>
 
 <style scoped>
+a {
+    text-decoration: none;
+    color: inherit;
+    margin-left: 15px;
+}
+
+hr {
+    width: 200px;
+}
 
 .top {
     margin-left: 70px;
@@ -165,13 +179,19 @@ export default {
 
 .left {
     display: inline-block;
+    height: 725px;
     border: 1px solid rgb(197, 195, 195);
     background-color: #fafafa;
     border-radius: 4px;
+    width: 210px;
+    padding: 15px;
+    padding-top: 40px;
+    font-size: 18px;
 }
 
 .right {
     display: inline-block;
+    height: 780px;
     width: 85%;
     border: 1px solid rgb(197, 195, 195);
     margin-left: 50px;
@@ -188,14 +208,16 @@ export default {
 }
 
 .date1,
-.date2,
-.date3 {
+.date2 {
     display: flex;
     border-bottom: 1px solid rgb(197, 195, 195);
     padding-top: 20px;
     padding-bottom: 20px;
 }
-
+.date3{
+    margin-top: 20px;
+    padding-top: 15px;
+}
 .table1st {
     margin-left: auto;
     margin-right: auto;
@@ -206,12 +228,14 @@ export default {
 .tables_header {
     width: 100px;
     padding: 10px;
+    padding-top: 20px;
     text-align: center;
-    line-height: 110px;
+    line-height: 84px;
     font-weight: bold;
     border: 1px solid;
     border-radius: 4px;
     background-color: #00ba54;
+    ;
     color: white;
 }
 
@@ -245,33 +269,39 @@ export default {
 .table3 {
     margin-left: auto;
     margin-right: auto;
-    border: 1px black solid;
     border-collapse: collapse;
-    padding: 10px 10px;
     text-align: center;
-
 }
 
 .table2 td,
 .table3 td {
-    border: 1px black solid;
-    padding: 5px 5px;
-
+    border: 1px rgb(133, 126, 126) solid;
+    padding: 7px;
 }
 
-.left>div {
-    border-bottom: 1px solid rgb(197, 195, 195);
-}
 
-.List {
+.List1 {
     text-align: center;
     padding-top: 15px;
     padding-bottom: 10px;
+    margin-right: 20px;
+    font-size: 22px;
+}
+
+.List2 {
+    text-align: center;
+    padding-top: 70px;
+    padding-bottom: 10px;
+    margin-right: 20px;
+    font-size: 22px
 }
 
 .Check {
-    text-align: center;
-    padding: 0px 10px;
+    margin-left: 20px;
+    color: rgb(129, 124, 124);
+    border-color: inherit;
+    line-height: 35px;
+    font-size: 18px
 }
 
 .Check li {
@@ -281,7 +311,7 @@ export default {
 }
 
 .dateBtn {
-    background-color: rgb(0, 153, 255);
+    background-color: #0051ba;
     border-radius: 4px;
     border: none;
     color: white;
@@ -297,7 +327,7 @@ export default {
 }
 
 .logoutbtn {
-    margin-top: 300px;
-    margin-left: 35px;
+    margin-top: 170px;
+    margin-left: 40px;
 }
 </style>

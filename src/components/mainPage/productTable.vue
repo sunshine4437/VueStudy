@@ -35,14 +35,13 @@
 </div>
 </template>
 
-    
 <script>
 import imageJson from './image.json'
 import bannerImage from '@/components/mainPage/mainPageBanner.vue'
 export default {
     data() {
         return {
-            length: 1,
+            length: 3,
             imageLength: imageJson.length / 4,
             images: imageJson
         }
@@ -53,9 +52,11 @@ export default {
     methods: {
         moreImage() {
             // console.log(this.length, this.imageLength);
-            if (this.length < this.imageLength)
-                return this.length++;
-            else
+            if (this.length < this.imageLength) {
+                if (this.imageLength - this.length == 1)
+                    return this.length++;
+                return this.length += 2;
+            } else
                 return this.length;
 
         }
@@ -63,7 +64,6 @@ export default {
 }
 </script>
 
-    
 <style scoped>
 .main {
     /* border: 1px solid black; */
@@ -91,6 +91,8 @@ ul {
 .card_image {
     margin-left: auto;
     margin-right: auto;
+    border: 1px solid rgb(197, 195, 195);
+    border-radius: 4px;
 }
 
 .card_image>.imageDiv {
@@ -99,9 +101,9 @@ ul {
     /* border: black 1px solid; */
     overflow: hidden;
     /* margin: 0 auto; */
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border-radius: 4px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-radius: 4px 4px 0 0;
 }
 
 .imageDiv img {
@@ -118,31 +120,32 @@ ul {
     /* border: black 1px solid; */
     overflow: hidden;
     /* margin: 0 auto; */
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
     background-color: #fafafa;
-    border-radius: 4px;
+    border-radius: 0 0 4px 4px;
     padding-top: 5px;
     padding-left: 10px;
 }
 
 .imageTitle a:link {
-    color: black;
+    color: rgb(78, 76, 76);
     text-decoration: none;
 }
 
 .imageTitle a:hover {
-    color: navy;
+    color: rgb(78, 76, 76);
     text-decoration: none;
 }
 
 .imageTitle a:visited {
-    color: black;
+    color: rgb(78, 76, 76);
     text-decoration: none;
 }
 
 .imageTitle a {
     font-weight: none;
+    color: rgb(78, 76, 76);
 }
 
 .moreImageDiv {
@@ -152,7 +155,8 @@ ul {
 label {
     font-weight: 600;
 }
-.temp{
+
+.temp {
     height: 48px;
     display: block;
 }
@@ -161,6 +165,9 @@ h1 {
     text-align: left;
     background-color: #fafafa;
     padding: 10px;
+    border: 1px solid rgb(197, 195, 195);
+    border-radius: 4px;
+    color: rgb(78, 76, 76);
 }
 
 /*  */

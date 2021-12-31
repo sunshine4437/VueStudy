@@ -26,8 +26,7 @@ html {
 #app {
     max-width: 70%;
     margin: 0 auto;
+  
 }
 
-h1 {
-}
 </style>

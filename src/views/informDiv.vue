@@ -1,34 +1,63 @@
 <template>
 <div class="informDiv">
     <hr>
-    <div>
-        <ul class="menu">
-            <li v-for="(item, idx) in menuList" :key="idx">
-                <label for="">
-                    <router-link :to="item.link">{{item.name}}</router-link>
-                </label>
-            </li>
-        </ul>
+    <div class="upper">
+        <div>
+            <ul class="menu">
+                <li v-for="(item, idx) in menuList" :key="idx">
+                    <label v-if="idx==4 || idx==6" style="font-weight:bold;" for="">
+                        <router-link :to="item.link">{{item.name}}</router-link>
+                    </label>
+                    <label v-else for="">
+                        <router-link :to="item.link">{{item.name}}</router-link>
+                    </label>
+
+                </li>
+            </ul>
+        </div>
+        <div class="selectDiv">
+            <select name="" id="" class="selectBox">
+                <option value="">셀러오피스</option>
+                <option value="">셀러존</option>
+                <option value="">애드오피스</option>
+                <option value="">판매자광고센터</option>
+            </select>
+            <select name="" id="" class="selectBox">
+                <option value="default">FAMILY SITE</option>
+                <option value="">Fomily 주식화사</option>
+                <option value="">기프티콘</option>
+                <option value="">행복스토어</option>
+                <option value="">Editor Office</option>
+            </select>
+        </div>
     </div>
+
     <div class="container">
         <div class="temp1">
-            <p>회사명</p>
-            <p>회사전화번호</p>
-            <p>회사 주소</p>
+            <p class="first">Fomily(주)</p><br>
+            <p class="second">대표이사 : 가나다, 주소: 서울특별시 중구 한강대로 123, Tel: 1234-5678</p>
+            <p class="second">사업자등록번호 : 123-45-67890, 통신판매업신고 : 2021-서울중구-0000사업자정보확인</p>
+            <p class="">
+                <box>최저가110%보상제</box>
+                <box>위조품110%보상제</box>
+                <box>고객실수 보상서비스</box>
+                <box>앱다운로드</box>
+            </p>
+            <p class="fourth">Fomily(주)는 통신판매중개자로서 오픈마켓 Fomily의 거래당사자가 아니며, 입점판매자가 등록한 상품정보 및 거래에 대해 Fomily(주)는 일체 책임을 지지 않습니다.</p>
+            <p class="fourth">Copyright © 2021 Fomily Co.,Ltd. All Rights Reserved.</p>
         </div>
-        <div class="temp2">
-            <div class="temp2-1">
-                2-1
-            </div>
-            <div class="temp2-2">2-2</div>
-        </div>
+
         <div class="temp3">
-            <p>고객센터</p>
-            <p>고객센터전화번호</p>
-            <p>고객센터주소</p>
+            <p>고객센터 8765-4321</p>
+            <p class="second">01234) 서울특별시 구로구 디지털로 123 (구로동)</p>
+            <p class="second">Fax : 02-111-2222 / E-mail : customerservice@Fomily.co.kr</p>
             <router-link v-bind:to="'/customerService'">
                 <p>고객센터 바로가기 ></p>
             </router-link>
+            <p class="first">전자금융거래분쟁담당</p>
+            <p class="fourth">Tel : 2222-3333 / Fax : 02-222-3333</p>
+            <p class="fourth">E-mail : customerservice@Fomily.co.kr</p>
+            <p> <a href="/blank">안전거래센터</a> <a href="/blank">지식재산권보호센터</a></p>
         </div>
     </div>
 </div>
@@ -87,45 +116,86 @@ export default {
     /* border: 1px solid black; */
 }
 
-.container>div {
-    display: block;
-    /* border: 1px solid black; */
-    width: 300px;
-    height: 200px;
-    padding: 0;
-    margin: auto;
-}
-
-.temp2 {
+.upper {
+    width: 100%;
     display: flex;
-    /* border: 1px solid black; */
+    align-items: center;
 }
 
-.temp2>div {
-    display: block;
-    /* border: 1px solid black; */
-    height: 49%;
+.selectDiv {
+    margin-left: auto;
+}
+
+.selectBox {
+    width: 160px;
+    height: 30px;
+    margin-right: 15px;
+}
+
+.temp1 {
+    width: 762px;
+    margin-right: auto;
+}
+
+.temp3 {
+    width: 350px;
+    margin-left: auto;
+    margin-right: 0px;
 }
 
 .menu {
+    padding: 0;
     list-style: none;
     display: flex;
     text-align: center;
 }
 
-.menu li::before {
-    content: "| ";
+.menu>li {
+    margin-right: 13px;
 }
 
-.menu li::after {
+/* .menu li::before {
+    content: "| ";
+} */
+
+/* .menu li::after {
     content: " |";
-}
-:any-link{
+} */
+
+:any-link {
     text-decoration: none;
     color: black;
 }
+
 hr {
     width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    margin-left: calc(-15vw);
+}
+
+.first,
+.second,
+.fourth {
+    margin: 0;
+    padding: 0;
+}
+
+.first {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.second {
+    font-size: 13px;
+}
+
+.fourth {
+    font-size: 11px;
+}
+
+box {
+    border: 1px solid gray;
+    margin-right: 10px;
+    padding: 0 2px 0 2px;
+    font-size: 12px;
 }
 </style>
