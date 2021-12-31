@@ -1,6 +1,5 @@
 <template>
     <div class="productDetail">
-        <hr />
         <div class="detailTop">
             <div
                 class="leftBox scale-down"
@@ -19,12 +18,13 @@
                     </h2>
                     <h1>{{ price }}원</h1>
                 </div>
-                <hr />
                 <div class="rightTop">
                     <p>15시 이전 주문 시 오늘 배송</p>
-                    <p>배송비 무료</p>
+                    <p>
+                        배송비 {{ delivery }}원 ( {{ delivery_low }}원 이상 구매
+                        시 배송비 무료)
+                    </p>
                 </div>
-                <hr />
                 <div class="rightSelect">
                     <h3>옵션 선택</h3>
                     <div class="searchBar">
@@ -58,7 +58,6 @@
                         </select>
                     </div>
                 </div>
-                <hr />
                 <div class="rightSelected">
                     <h3 style="text-align: left; padding: 0 0 0 20px">
                         선택된 옵션
@@ -77,9 +76,8 @@
                     </table>
                 </div>
                 <div class="clear"></div>
-                <hr />
                 <div class="rightButton">
-                    <h3 style="text-align: right; margin-right: 35px">
+                    <h3 style="text-align: right; margin: 20px 35px 30px 0">
                         총 상품금액 : {{ totalPrice }}원
                     </h3>
                     <button class="myCartBtn" style="margin-right: 20px">
@@ -119,6 +117,9 @@ export default {
             items: [{}],
             totalPrice: 0,
             price: 27000,
+            delivery: 2500,
+            delivery_low: 50000,
+            delivery_fee: 2500,
         };
     },
     methods: {
@@ -130,7 +131,7 @@ export default {
                 this.isSelected = false;
             }
         },
-      secondSelected(event) {
+        secondSelected(event) {
             if (event.target.value != 0) {
                 this.secondOption = event.target.value;
                 this.isSelected = false;
@@ -140,6 +141,11 @@ export default {
                 };
                 this.items.push(newItem);
                 this.totalPrice += this.price;
+
+                if (this.totalPrice >= 50000) {
+                    this.delivery_fee = 0;
+                }
+
                 event.target.value = 0;
                 document.getElementById("search1").value = 0;
             }
@@ -199,14 +205,14 @@ hr {
     width: 100%;
     padding: 0 0 0 20px;
     float: right;
-    /* background-color: #fafafa; */
+    border-bottom: 1px solid rgb(197, 195, 195);
 }
 
 .rightTop {
     width: 100%;
     padding: 0 0 0 20px;
     float: right;
-    /* background-color: #fafafa; */
+    border-bottom: 1px solid rgb(197, 195, 195);
 }
 
 .rightSelect {
@@ -214,7 +220,7 @@ hr {
     height: 150px;
     padding: 0 0 0 20px;
     float: right;
-    /* background-color: #fafafa; */
+    border-bottom: 1px solid rgb(197, 195, 195);
 }
 
 .rightSelected {
@@ -222,8 +228,8 @@ hr {
     float: right;
     padding: 0 35px 20px 0;
     text-align: right;
-    height: 150px;
-    /* background-color: #fafafa; */
+    height: 160px;
+    border-bottom: 1px solid rgb(197, 195, 195);
 }
 .rightSelectedTable {
     overflow-y: scroll;
@@ -239,17 +245,15 @@ hr {
 .searchSelectBox {
     min-width: 200px;
     font-size: 20px;
-    border: 2px solid #0051ba;
+    border: 1px solid rgb(0, 153, 255);
     border-radius: 4px;
 }
 
 .rightButton {
     display: inline-block;
     width: 100%;
-    float: right;
     padding: 0;
     text-align: center;
-    /* background-color: #fafafa; */
 }
 
 .myCartBtn {
