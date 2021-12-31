@@ -1,17 +1,17 @@
 <template>
 <div class="shop-info">
     <div class="shop-infoBox">
-        <div class="shop-title">판매자</div>
+        <div class="shop-title"><h2>NEPA</h2></div>
     </div>
     <div class="shop-bestItem">
         <div class="bestItemMore">
-            이 판매자의 인기상품이에요
+            <span>이 판매자의 인기상품이에요</span>
             <button class="showMore">더 보기</button>
         </div>
         <hr />
         <div>
             <li>
-                <img class="bestPic" src="http://placehold.it/100x100" />
+                <img class="bestPic" style="border-radius: 30px" src="http://placehold.it/135x135" />
             </li>
             <li>
                 <img class="bestPic" src="http://placehold.it/100x100" />

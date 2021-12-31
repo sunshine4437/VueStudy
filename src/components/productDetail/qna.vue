@@ -5,13 +5,13 @@
         </div>
         <div class="qnaMain">
             <table class="tableMain">
-                <tr style="width: 100%">
-                    <div>
-                        <th style="width: 7%">번호</th>
-                        <th style="width: 12%">상태</th>
-                        <th style="width: 54%">제목</th>
-                        <th style="width: 15%">문의자</th>
-                        <th style="width: 12%">등록일</th>
+                <tr>
+                    <div style="margin-left: 38px">
+                        <th style="width: 78px">번호</th>
+                        <th style="width: 135px">상태</th>
+                        <th style="width: 605px">제목</th>
+                        <th style="width: 167px">문의자</th>
+                        <th style="width: 135px">등록일</th>
                     </div>
                 </tr>
 

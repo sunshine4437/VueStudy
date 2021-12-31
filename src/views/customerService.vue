@@ -1,75 +1,86 @@
 <template>
-<div>
-    <div class="customerService">
-        <div class="csTop">
-            <div class="csSearch">
-                <input type="text" id="search" placeholder="자주 묻는 질문 검색" />
-                <button type="button" onclick="location.href = 'success.html'">
-                    검색
-                </button>
-            </div>
-            <div class="cs1to1Q">
-                <span style="margin: 0 20px; font-size: 200%;">1234-5678</span>
-                <router-link v-bind:to="'/otoQ'">
-                    <button>
-                        1대1 문의하기
-                    </button>
-                </router-link>
-            </div>
-        </div>
-        <hr />
-        <div class="csFAQ">
-            <div>
-                <h2 style="text-align: left">자주 묻는 질문</h2>
-            </div>
-            <div>
-                <table class="tableMain">
+    <div>
+        <div class="customerService">
+            <div class="csTop">
+                <table style="width: 100%">
                     <tr>
-                        <td><span>번호</span></td>
-                        <td style="border-left: 1px black solid"><span>제목</span></td>
-                    </tr>
-                    <tr v-for="FAQ in FAQs" :key="FAQ.number">
-                        <td style="width: 10%">
-                            <span v-html="FAQ.number" style="text-decoration: none"></span>
+                        <td style="border: none; width:50%" colspan="2">
+                            <input
+                                type="text"
+                                class="search"
+                                placeholder="자주 묻는 질문 검색"
+                                style="padding: 0 20px;"
+                            />
+                            <button class="search">검색</button>
                         </td>
-                        <td class="question">
-                            <a href="#">{{FAQ.question}}</a>
+                        <td style="border: none"><h2>전화 문의 : 1234-5678</h2></td>
+                        <td style="border: none">
+                            <router-link v-bind:to="'/otoQ'">
+                                <button class="toOtoQ">1대1 문의하기</button>
+                            </router-link>
                         </td>
                     </tr>
                 </table>
             </div>
-        </div>
-        <hr />
-        <div class="csNotice">
-            <div>
-                <h2 style="text-align: left">공지 사항</h2>
+            <div class="csFAQ">
+                <div>
+                    <h2 style="text-align: left">자주 묻는 질문</h2>
+                </div>
+                <div>
+                    <table class="tableMain">
+                        <tr>
+                            <td><span>번호</span></td>
+                            <td style="border-left: 1px black solid">
+                                <span>제목</span>
+                            </td>
+                        </tr>
+                        <tr v-for="FAQ in FAQs" :key="FAQ.number">
+                            <td style="width: 10%">
+                                <span
+                                    v-html="FAQ.number"
+                                    style="text-decoration: none"
+                                ></span>
+                            </td>
+                            <td class="question">
+                                <a href="#">{{ FAQ.question }}</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <div>
-                <table class="tableMain">
-                    <tr>
-                        <td><span>번호</span></td>
-                        <td style="border-left: 1px black solid"><span>제목</span></td>
-                    </tr>
-                    <tr v-for="notice in notices" :key="notice.number">
-                        <td style="width: 10%">
-                            <span v-html="notice.number"></span>
-                        </td>
-                        <td class="notice">
-                            <a href="#">{{notice.notice}}</a>
-                        </td>
-                    </tr>
-                </table>
+            <div class="csNotice">
+                <div>
+                    <h2 style="text-align: left">공지 사항</h2>
+                </div>
+                <div>
+                    <table class="tableMain">
+                        <tr>
+                            <td><span>번호</span></td>
+                            <td style="border-left: 1px black solid">
+                                <span>제목</span>
+                            </td>
+                        </tr>
+                        <tr v-for="notice in notices" :key="notice.number">
+                            <td style="width: 10%">
+                                <span v-html="notice.number"></span>
+                            </td>
+                            <td class="notice">
+                                <a href="#">{{ notice.notice }}</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </template>
 
 <script>
 export default {
     data() {
         return {
-            FAQs: [{
+            FAQs: [
+                {
                     number: "1",
                     question: "[구매] 세금계산서를 발급받고 싶어요.",
                 },
@@ -79,7 +90,8 @@ export default {
                 },
                 {
                     number: "3",
-                    question: "[구매] 고객센터 이용 시간은 어떻게되나요.(1:1 상담을 원합니다.)",
+                    question:
+                        "[구매] 고객센터 이용 시간은 어떻게되나요.(1:1 상담을 원합니다.)",
                 },
                 {
                     number: "4",
@@ -90,7 +102,8 @@ export default {
                     question: "[구매] 간편회원도 쿠폰을 사용할 수 있나요?",
                 },
             ],
-            notices: [{
+            notices: [
+                {
                     number: "1",
                     notice: "[공지] 구매이용약관 개정 공지 (2022년 1월 3일 시행)",
                 },
@@ -119,8 +132,8 @@ export default {
 <style scoped>
 .customerService {
     text-align: center;
-    border: 1px black solid;
     width: 100%;
+    background-color: #fafafa;
 }
 
 .csTop {
@@ -130,27 +143,19 @@ export default {
     margin: 10px 10px;
 }
 
-.csSearch {
-    width: 65%;
-    padding: 0 0;
-    margin: 10px 10px;
+.search,
+toOtoQ {
+    font-size: 22px;
+    height: 40px;
+    padding: 5px 20px;
+    margin: 10px;
 }
-
-#search {
-    font-size: 170%;
-}
-
-.cs1to1Q {
-    width: 35%;
-    padding: 0 0;
-    margin-left: auto;
-}
-
 
 .csFAQ,
 .csNotice {
     padding: 0 10px 10px 10px;
     margin: 20px 20px;
+    border-top: 1px solid rgb(197, 195, 195);
 }
 
 .tableMain {
@@ -172,7 +177,7 @@ td {
     text-align: left;
     padding: 7px 20px;
 }
-:any-link{
+:any-link {
     text-decoration: none;
 }
 </style>
