@@ -59,7 +59,9 @@
                             사용
                         </button>
                     </td>
-                    <td style="width: 200px">사용 가능 포인트 : {{ usable }}원</td>
+                    <td style="width: 200px">
+                        사용 가능 포인트 : {{ usable }}원
+                    </td>
                 </tr>
             </table>
         </div>
@@ -244,7 +246,7 @@ export default {
             radioPay: "",
             delivery: 2500,
             phoneValidate: true,
-            usable: 548,
+            usable: 3548,
             open: false,
             orderProducts: [
                 {
@@ -273,7 +275,7 @@ export default {
             let pt = document.getElementById("pointInput").value;
             if (pt > parseInt(this.usable) + parseInt(this.point)) {
                 alert("포인트가 부족합니다.");
-            } else {                
+            } else {
                 this.usable = this.usable - pt + parseInt(this.point);
                 this.point = pt;
                 this.sale = parseInt(this.coupon) + parseInt(this.point);
@@ -315,7 +317,6 @@ export default {
 
 .orderProductTable {
     width: 100%;
-    border: 1px black solid;
     border-collapse: collapse;
     padding: 10px 10px;
     text-align: center;
@@ -323,7 +324,7 @@ export default {
 }
 
 .orderProductTd {
-    border: 1px black solid;
+    border: 1px rgb(197, 195, 195) solid;
     padding: 5px 5px;
 }
 
@@ -378,7 +379,7 @@ td {
 .payMethod {
     padding: 0 10px;
 }
-.payMethod{
+.payMethod {
     height: 170px;
 }
 
@@ -418,13 +419,20 @@ td {
     text-align: right;
     padding: 5px 20px;
 }
-.paySelectBox{
-    min-width: 100px;
+.paySelectBox {
+    min-width: 125px;
     font-size: 16px;
-    border: 1px solid rgb(0, 153, 255);
+    border: 2px solid rgb(0, 153, 255);
     border-radius: 4px;
 }
 
+/* #pointInput,
+.shortInput,
+.longInput {
+    outline: 1px solid rgb(0, 153, 255);
+    -webkit-appearance: none;
+    border: none;
+} */
 .validate {
     margin-left: 10px;
     color: red;

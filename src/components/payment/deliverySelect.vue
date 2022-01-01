@@ -19,9 +19,10 @@ export default {
     },
     methods: {
         addressSearch() {
-            let addr = document.getElementById("addressInput");
-            console.log("addr");
-            if (addr == "멀티캠퍼스") {
+            console.log("A");
+            let addr = document.getElementById("addressInput");            
+            console.log(addr);
+            if (addr == '멀티캠퍼스') {
                 this.isErrorOpen = false;
                 this.isToShowOpen = true;
             } else {
