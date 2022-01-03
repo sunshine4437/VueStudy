@@ -75,7 +75,7 @@
                     </button>
                 </router-link>
             </div>
-            <div class="rightSelectedTable">
+            <!-- <div class="rightSelectedTable">
                 <tr v-for="item in getBasketList.slice(1)" :key="item">
                     <td>
                         <span v-html="item.name"></span>
@@ -87,7 +87,7 @@
                         <span v-html="item.price"></span>
                     </td>
                 </tr>
-            </div>
+            </div> -->
             <div class="clear"></div>
 
         </div>
