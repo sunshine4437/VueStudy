@@ -72,7 +72,8 @@ export default {
     position: relative;
     overflow: hidden;
     width: 100%;
-    border: 2px solid #000;
+    border: 1px solid rgb(0, 153, 255);
+    margin-left: 1px;
 }
 
 .item {

@@ -3,7 +3,6 @@
     margin-bottom: 2px;
 }
 .collapse .collapse-header {
-    padding: 20px 20px 20px 40px;
     background: #f7f7f7;
     border-radius: 3px;
     position: relative;
@@ -25,8 +24,8 @@
     content: url("./arrow-down.svg");
     position: absolute;
     font-size: 0.4em;
-    top: calc(50% - 0.4em);
-    left: 20px;
+    top: calc(50% - 1em);
+    left: 10px;
     color: #c5c9d0;
     -moz-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);

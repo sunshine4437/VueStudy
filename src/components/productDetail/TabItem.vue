@@ -1,7 +1,10 @@
 <template>
-<button @click="$emit('input', id)" :class="[active, 'tab']">
-    {{ label }}
-</button>
+    <button
+        @click="$emit('input', id)"
+        :class="[active, 'tab']"
+    >
+        {{ label }}
+    </button>
 </template>
 
 <script>
@@ -9,29 +12,34 @@ export default {
     props: {
         id: Number,
         label: String,
-        value: Number
+        value: Number,
     },
     computed: {
         active() {
-            return this.value === this.id ? 'active' : false
-        }
-    }
-}
+            return this.value === this.id ? "active" : false;
+        },
+    },
+};
 </script>
 
 <style scoped>
 .tab {
     border-radius: 2px 2px 0 0;
-    background: #fff;
-    color: #311d0a;
+    background: rgba(0, 153, 255, 0.5);
+    color: white;
     line-height: 24px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    width: 140px
 }
 
 .tab:hover {
-    background: #eeeeee;
+    background: rgb(0, 153, 255);
+    color: white;
 }
 
 .active {
-    background: #f7c9c9;
+    background: rgb(0, 153, 255);
+    color: white;
 }
 </style>
