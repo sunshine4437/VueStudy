@@ -124,6 +124,7 @@
                 </span>
             </p>
         </div>
+
         <div class="payMethod">
             <h2 style="margin: 20px 0 0 -10px">결제수단 선택</h2>
             <p>
