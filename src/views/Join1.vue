@@ -5,7 +5,7 @@
         <h1>회원가입</h1>
         <hr>
     </div>
-    <form class="container" name="login_member">
+    <form class="container" name="login_member" preva>
         <div>
             <div class="tempDiv">
                 <label class="labelClass" for="">*아이디</label>
@@ -19,12 +19,12 @@
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">*비밀번호</label>
-                <input v-model="signup.password" type="password" name="비밀번호" class="inputValues" id="pw" @blur="passwordValid">
+                <input v-model="signup.password" type="password" name="비밀번호" class="inputValues" id="pw" @keyup="passwordValid">
                 <div v-if="!passwordValidFlag" class="pwFlag"> 유효하지 않은 비밀번호 입니다. </div>
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">*비밀번호확인</label>
-                <input v-model="passwordCheck" type="password" name="비밀번호 확인" class="inputValues" @blur="passwordCheckValid">
+                <input v-model="passwordCheck" type="password" name="비밀번호 확인" class="inputValues" @keyup="passwordCheckValid">
                 <div v-if="!passwordCheckFlag" class="re_pwFlag"> 비밀번호가 동일하지 않습니다. </div>
             </div>
             <div class="tempDiv">
@@ -33,17 +33,28 @@
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">*전화번호</label>
-                <input v-model="signup.mobile" type="text" name="전화번호" class="inputValues" @blur="mobileCheckValid" placeholder="-없이 숫자만" maxlength="11" id="mobile">
+                <input v-model="signup.mobile" type="text" name="전화번호" class="inputValues" @keyup="mobileCheckValid" placeholder="-없이 숫자만" maxlength="11" id="mobile">
                 <div v-if="!mobileValidFlag" class="pwFlag"> 유효하지 않은 전화번호 입니다. </div>
             </div>
             <div class="tempDiv">
+                <label class="labelClass" for="">*우편번호</label>
+
+                <input type="text" class="inputValues" v-model="postcode" placeholder="우편번호">
+                <span>
+                    <button type="button" class="classBtn" @click="execDaumPostcode()">주소검색</button>
+                </span>
+         
+                <!-- <input type="text" name="total_add" class="total_add"> -->
+
+            </div>
+            <div class="tempDiv">
                 <label class="labelClass" for="">*주소</label>
-                <input type="text" name="total_add" class="total_add">
-                <button class="classBtn">주소검색</button>
+                       <input type="text" class="inputValues" id="address" v-model="address" placeholder="주소">
+
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">*상세주소</label>
-                <input type="text" name="detail_add" class="detail_add">
+                <input type="text" class="inputValues" id="detailAddress" placeholder="상세주소">
             </div>
         </div>
     </form>
@@ -71,6 +82,9 @@
 export default {
     data() {
         return {
+            postcode: "",
+            address: "",
+            extraAddress: "",
             signup: {
                 password: null,
                 pwhint: '',
@@ -191,7 +205,47 @@ export default {
                 alert("회원가입이 완료 되었습니다.");
             }
 
-        }
+        },
+        execDaumPostcode() {
+            new window.daum.Postcode({
+                oncomplete: (data) => {
+                    if (this.extraAddress !== "") {
+                        this.extraAddress = "";
+                    }
+                    if (data.userSelectedType === "R") {
+                        // 사용자가 도로명 주소를 선택했을 경우
+                        this.address = data.roadAddress;
+                    } else {
+                        // 사용자가 지번 주소를 선택했을 경우(J)
+                        this.address = data.jibunAddress;
+                    }
+
+                    // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                    if (data.userSelectedType === "R") {
+                        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                        if (data.bname !== "" && /[동|로|가]$/g.test(data.bname)) {
+                            this.extraAddress += data.bname;
+                        }
+                        // 건물명이 있고, 공동주택일 경우 추가한다.
+                        if (data.buildingName !== "" && data.apartment === "Y") {
+                            this.extraAddress +=
+                                this.extraAddress !== "" ?
+                                `, ${data.buildingName}` :
+                                data.buildingName;
+                        }
+                        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                        if (this.extraAddress !== "") {
+                            this.extraAddress = `(${this.extraAddress})`;
+                        }
+                    } else {
+                        this.extraAddress = "";
+                    }
+                    // 우편번호를 입력한다.
+                    this.postcode = data.zonecode;
+                },
+            }).open();
+        },
     }
 }
 </script>
@@ -206,7 +260,7 @@ export default {
 }
 
 .container>div {
-   width: 750px;
+    width: 750px;
     padding-left: 185px;
 }
 
@@ -261,7 +315,7 @@ export default {
 .mobile,
 .total_add,
 .detail_add {
-    text-align: center;
+    text-align: left;
     height: 25px;
     border-radius: 4px;
     border: 1px solid;
