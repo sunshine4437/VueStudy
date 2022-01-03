@@ -38,18 +38,16 @@
         </ul>
         <ul class="member">
             <li v-for="(link, i) in memberMenu" :key="i">
-                <router-link v-if="login && i < 2" v-bind:to="link.link">
+                <router-link v-if="getLogin && i < 2" v-bind:to="link.link">
                     <button>{{link.name}}</button>
                 </router-link>
-                <router-link v-else-if="!login && i < 2" v-bind:to="'/Login'">
+                <router-link v-else-if="!getLogin && i < 2" v-bind:to="'/Login'">
                     <button>{{link.name}}</button>
                 </router-link>
                 <router-link v-else v-bind:to="'/Login'">
                     <button>{{link.name}}</button>
                 </router-link>
-                <!-- <router-link v-bind:to="link.link">
-                        <button>{{link.name}}</button>
-                    </router-link> -->
+
             </li>
         </ul>
     </div>
@@ -63,10 +61,10 @@
         </ul>
         <ul class="rightMenu">
             <li v-for="(link, i) in rightMenuName" :key="i">
-                <router-link v-if="i==0 && login" v-bind:to="'/Mypage2'">
+                <router-link v-if="i==0 && getLogin" v-bind:to="'/Mypage2'">
                     <button>admin님</button>
                 </router-link>
-                <router-link v-else-if="i==1 && login" v-bind:to="'/blank'">
+                <router-link v-else-if="i==1 && getLogin" v-bind:to="'/blank'">
                     <button>100 P</button>
                 </router-link>
                 <router-link v-else v-bind:to="link.link">
@@ -84,19 +82,19 @@
 <script>
 // @ is an alias to /src
 import "@/css/common.css"
+import {
+    createNamespacedHelpers
+} from 'vuex';
+const loginStore = createNamespacedHelpers('loginStore');
 export default {
     name: 'Main',
     components: {
-        // productTable,
+
     },
-    // vuex 실습
     computed: {
-        count() {
-            return this.$store.state.count;
-        },
-        login() {
-            return this.$store.getters.getLogin;
-        }
+        ...loginStore.mapGetters([
+            'getLogin'
+        ])
     },
     //
     methods: {

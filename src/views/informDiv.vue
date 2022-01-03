@@ -11,7 +11,6 @@
                     <label v-else for="">
                         <router-link :to="item.link">{{item.name}}</router-link>
                     </label>
-
                 </li>
             </ul>
         </div>

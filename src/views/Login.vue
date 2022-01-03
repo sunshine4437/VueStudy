@@ -24,7 +24,10 @@
 <script>
 // @ is an alias to /src
 // import LoginPage from '@/components/LoginPage.vue'
-
+// import { mapState, mapActions, mapMutations, mapGetters } from 'vuex'
+// import {mapGetters, mapMutations } from 'vuex';
+import { createNamespacedHelpers } from 'vuex'
+const loginStore = createNamespacedHelpers('loginStore')
 export default {
     data() {
         return {
@@ -36,12 +39,11 @@ export default {
     methods: {
         signIn() {
             try {
-                if (this.$store.getters.getUserInfo.username === this.username) {
-                    if (this.$store.getters.getUserInfo.password === this.password) {
+                if (this.getUserInfo.username === this.username) {
+                    if (this.getUserInfo.password === this.password) {
                         alert(this.username + "님 환영합니다");
-                        this.$store.commit('Login');
+                        this.Login();
                         this.$router.push("/");
-
                     } else if ("" === this.password) {
                         alert("비밀번호를 입력하세요.");
                     } else {
@@ -54,11 +56,19 @@ export default {
                     alert("아이디가 맞지 않습니다.")
 
             } catch (err) {
+                alert(err);
                 this.msg = "error";
             }
         },
+        ...loginStore.mapMutations([
+            'Login'
+        ])
     },
-
+    computed:{
+       ...loginStore.mapGetters([
+             'getUserInfo'
+        ])
+    }
 }
 </script>
 

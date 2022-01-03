@@ -15,29 +15,31 @@
             <div class="listDiv" v-for="(item, idx) in items" :key="idx">
                 <ul class="list">
                     <li class="list1">
-                        <div><input type="checkbox"></div>
+                        <div><input class="checkedList" type="checkbox" @click="sumPrice()"></div>
                     </li>
                     <li class="list2">
-                        <div class="listImage"><img src="http://placehold.it/125X125/" alt=""></div>
+                        <div class="listImage">
+                            <img class="productImage" :src="require(`@/components/mainPage/productTableImage/${item.image}`)" alt="">
+                        </div>
                     </li>
                     <li class="list3">
                         <div>
                             <p>{{item.name}}</p>
                         </div>
                         <div>
-                            <p><input type="number" class="option" min="0" max="100">{{item.option}}</p> 
+                            <p><input type="number" class="option" min="0" max="100">{{item.option}}</p>
                         </div>
                     </li>
                     <li class="list4">
                         <div>
-                            <p class="price">{{item.price}}</p>
+                            <p class="price">{{item.price}}원</p>
                             <p class="rate">{{item.rate}}</p>
                         </div>
                     </li>
                     <li class="list5">
                         <div>
-                             <p>{{item.info}}</p>
-                             <p>{{item.fee}}</p>
+                            <p>{{item.info}}</p>
+                            <p>{{item.fee}}</p>
                         </div>
                     </li>
                 </ul>
@@ -47,7 +49,7 @@
     <div class="right">
         <div class="inform">
             <div class="line">
-                <label >결제예정금액</label>
+                <label>결제예정금액</label>
             </div>
             <div>
                 <label>상품금액</label>
@@ -63,7 +65,7 @@
             </div>
             <div style="color:red; ">
                 <label>합계</label>
-                <label class="price" style="font-size:25px;">65,610원</label>
+                <label class="price" style="font-size:25px;" id="totalSum">0원</label>
             </div>
         </div>
         <div class="orderBtn">
@@ -76,44 +78,67 @@
 
 <script>
 export default {
-    data(){
+    data() {
         return {
-            items:[
-            {
-                name: "[뉴발란스] 운동화 MW880GR4 NBPQAS102G",
-                option: "옵션변경",
-                price:"125,000원",
-                rate: "125,000원",
-                info: "무료배송",
-            },
-             {
-                name: "나이키 에어맥스97 트리플블랙",
-                option: "옵션변경",
-                price:"173,000원",
-                rate:"10% 163,000원",
-                info: "무료배송",
-            },{
-                name: "[네파]21년 신상 남성용 벨키자 미드 구스 다운자켓(7H7026)",
-                option: "옵션변경",
-                price:"129,000원",
-                rate:"24% 98,040원",
-                info: "무료배송",
-            },{
-                name: "LG Gram 17Z90N 노트북 17인치 IPS 초경량, (2560 x 1600), 10세대 인텔 코어 i7, 8GB RAM, 512GB SSD, 윈도우 10 홈, 17시간 배터리",
-                option: "옵션변경",
-                price:"1,382,490원",
-                rate:"14% 1,175,120원",
-                info: "155,360원",
-                fee:"예상 통관대행료"
-            },{
-                name: "벌레퇴치 영국방역회사인정 초파리 페로몬 삼각트랩(1개입)",
-                option: "옵션변경",
-                price:"1,980원",
-                rate:"1,980원",
-                info: "2,500원",
-                fee:"배송비",
-            },
-        ]
+            sum: 0,
+            items: [{
+                    image: "1.jpg",
+                    name: "[뉴발란스] 운동화 MW880GR4 NBPQAS102G",
+                    option: "옵션변경",
+                    price: "125000",
+                    rate: "125,000원",
+                    info: "무료배송",
+                },
+                {
+                    image: "2.jpg",
+                    name: "나이키 에어맥스97 트리플블랙",
+                    option: "옵션변경",
+                    price: "173000",
+                    rate: "10% 163,000원",
+                    info: "무료배송",
+                }, {
+                    image: "3.jpg",
+                    name: "[네파]21년 신상 남성용 벨키자 미드 구스 다운자켓(7H7026)",
+                    option: "옵션변경",
+                    price: "129000",
+                    rate: "24% 98,040원",
+                    info: "무료배송",
+                }, {
+                    image: "4.jpg",
+                    name: "LG Gram 17Z90N 노트북 17인치 IPS 초경량, (2560 x 1600), 10세대 인텔 코어 i7, 8GB RAM, 512GB SSD, 윈도우 10 홈, 17시간 배터리",
+                    option: "옵션변경",
+                    price: "1382490",
+                    rate: "14% 1,175,120원",
+                    info: "155,360원",
+                    fee: "예상 통관대행료"
+                }, {
+                    image: "5.jpg",
+                    name: "벌레퇴치 영국방역회사인정 초파리 페로몬 삼각트랩(1개입)",
+                    option: "옵션변경",
+                    price: "1980",
+                    rate: "1980",
+                    info: "2500",
+                    fee: "배송비",
+                },
+            ]
+        }
+    },
+    methods: {
+        sumPrice() {
+            let checkedList = document.getElementsByClassName("checkedList");
+            let totalSum = document.getElementById("totalSum");
+
+            for (let i = 0; i < checkedList.length; i++) {
+                if (checkedList[i].checked == true) {
+                    this.sum += Number(this.items[i].price);
+                }
+            }
+
+            totalSum.textContent = this.sum + "원";
+        },
+        AddComma(num) {
+            var regexp = /\B(?=(\d{3})+(?!\d))/g;
+            return num.toString().replace(regexp, ',');
         }
     }
 }
@@ -156,28 +181,35 @@ export default {
     background-color: #fafafa;
     border-radius: 4px;
 }
+
 .list3 p {
     margin: 10px;
     padding: 0px;
 }
+
 .list3 .option {
     margin-right: 10px;
 }
+
 .list4 .price {
     font-size: 16px;
     margin: 10px 0;
     text-decoration: line-through;
 }
+
 .list4 .rate {
     font-weight: bold;
-} 
+}
+
 .list :nth-child(3) {
     width: 50%;
 }
+
 .list :nth-child(4) {
     width: 20%;
 
 }
+
 .list :nth-child(5) {
     width: 20%;
 }
@@ -243,14 +275,14 @@ export default {
     background-color: #fafafa;
     border-radius: 4px;
 }
+
 .inform .line {
-    border-bottom:1px solid rgb(197, 195, 195);
+    border-bottom: 1px solid rgb(197, 195, 195);
 }
 
 .inform>div {
     display: flex;
     padding: 20px 5px;
-   
 
 }
 
@@ -263,6 +295,11 @@ export default {
     bottom: 10px;
     width: 90%;
     text-align: center;
+}
+.productImage{
+    width:150px;
+    height:150px;
+    object-fit: cover;
 }
 
 h2 {
