@@ -33,7 +33,8 @@
                         height: 20px;
                         padding: 0;
                     "
-                    @click="window.close()"
+                    @click="setAddrRoad()"
+                    onclick="window.close();"
                 >
                     서울 강남구 테헤란로 212 (멀티캠퍼스)
                 </button>
@@ -58,6 +59,8 @@
                         height: 20px;
                         padding: 0;
                     "
+                    @click="setAddr()"
+                    onclick="window.close();"
                 >
                     서울 강남구 역삼동 718-5
                 </button>
@@ -65,18 +68,20 @@
         </div>
         <div class="Error" v-if="isErrorOpen">멀티캠퍼스를 입력해주세요</div>
     </div>
-    <div class="toShow" v-if="getFlag1">1</div>
-    <div class="Error" v-if="getFlag2">2</div>
-</div>
 </template>
 
 <script>
 export default {
+    name: "zipCode",
+    props: {},
     data() {
         return {
-            isToShowOpen: true,
+            isToShowOpen: false,
             isErrorOpen: false,
             addressInput: "",
+            zipCode: "06220",
+            baseAddrRoad: "서울 강남구 테헤란로 212 (멀티캠퍼스)",
+            baseAddr: "서울 강남구 역삼동 718-5",
         };
     },
     methods: {
@@ -90,14 +95,17 @@ export default {
                 this.isToShowOpen = false;
             }
         },
-        addAddr(){
-            window.close();
-        }
+        setAddr() {
+            document.getElementById("zipCode").value = this.zipCode;
+            document.getElementById("baseAddr").value = this.baseAddr;
+        },
+        setAddrRoad() {
+            document.getElementById("zipCode").value = this.zipCode;
+            document.getElementById("baseAddr").value = this.baseAddrRoad;
+        },
     },
-    computed: {
-
-    }
-}
+    computed: {},
+};
 </script>
  
 <style>
