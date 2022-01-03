@@ -7,7 +7,7 @@
             >
                 <img
                     style="width: 500px; height: 500px; border-radius: 10px"
-                    src="@/components/productDetail/product01.jpg"
+                    src="@/components/productDetail/image/product01.jpg"
                 />
             </div>
             <div class="rightBox">
