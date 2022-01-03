@@ -12,7 +12,7 @@
             <div>선택삭제 </div>
         </div>
         <div>
-            <div class="listDiv" v-for="n in 5" :key="n">
+            <div class="listDiv" v-for="(item, idx) in items" :key="idx">
                 <ul class="list">
                     <li class="list1">
                         <div><input type="checkbox"></div>
@@ -22,20 +22,22 @@
                     </li>
                     <li class="list3">
                         <div>
-                            <p>상품명</p>
+                            <p>{{item.name}}</p>
                         </div>
                         <div>
-                            <p>옵션변경</p>
+                            <p><input type="number" class="option" min="0" max="100">{{item.option}}</p> 
                         </div>
                     </li>
                     <li class="list4">
                         <div>
-                            <p>가격</p>
+                            <p class="price">{{item.price}}</p>
+                            <p class="rate">{{item.rate}}</p>
                         </div>
                     </li>
                     <li class="list5">
                         <div>
-                            <p>배송정보</p>
+                             <p>{{item.info}}</p>
+                             <p>{{item.fee}}</p>
                         </div>
                     </li>
                 </ul>
@@ -44,8 +46,8 @@
     </div>
     <div class="right">
         <div class="inform">
-            <div>
-                <label>결제예정금액</label>
+            <div class="line">
+                <label >결제예정금액</label>
             </div>
             <div>
                 <label>상품금액</label>
@@ -67,13 +69,53 @@
         <div class="orderBtn">
             <router-link class="signUpLink" v-bind:to="'/payment'"> <button>주문</button></router-link>
         </div>
+
     </div>
 </div>
 </template>
 
 <script>
 export default {
-
+    data(){
+        return {
+            items:[
+            {
+                name: "[뉴발란스] 운동화 MW880GR4 NBPQAS102G",
+                option: "옵션변경",
+                price:"125,000원",
+                rate: "125,000원",
+                info: "무료배송",
+            },
+             {
+                name: "나이키 에어맥스97 트리플블랙",
+                option: "옵션변경",
+                price:"173,000원",
+                rate:"10% 163,000원",
+                info: "무료배송",
+            },{
+                name: "[네파]21년 신상 남성용 벨키자 미드 구스 다운자켓(7H7026)",
+                option: "옵션변경",
+                price:"129,000원",
+                rate:"24% 98,040원",
+                info: "무료배송",
+            },{
+                name: "LG Gram 17Z90N 노트북 17인치 IPS 초경량, (2560 x 1600), 10세대 인텔 코어 i7, 8GB RAM, 512GB SSD, 윈도우 10 홈, 17시간 배터리",
+                option: "옵션변경",
+                price:"1,382,490원",
+                rate:"14% 1,175,120원",
+                info: "155,360원",
+                fee:"예상 통관대행료"
+            },{
+                name: "벌레퇴치 영국방역회사인정 초파리 페로몬 삼각트랩(1개입)",
+                option: "옵션변경",
+                price:"1,980원",
+                rate:"1,980원",
+                info: "2,500원",
+                fee:"배송비",
+            },
+        ]
+        }
+    }
 }
 </script>
 
@@ -114,10 +156,35 @@ export default {
     background-color: #fafafa;
     border-radius: 4px;
 }
+.list3 p {
+    margin: 10px;
+    padding: 0px;
+}
+.list3 .option {
+    margin-right: 10px;
+}
+.list4 .price {
+    font-size: 16px;
+    margin: 10px 0;
+    text-decoration: line-through;
+}
+.list4 .rate {
+    font-weight: bold;
+} 
+.list :nth-child(3) {
+    width: 50%;
+}
+.list :nth-child(4) {
+    width: 20%;
+
+}
+.list :nth-child(5) {
+    width: 20%;
+}
 
 .list li {
     /* border: 1px solid black; */
-    border-left: 1px solid rgb(189, 185, 185);
+    border-left: 1px solid rgb(197, 195, 195);
     position: relative;
 
     padding: 5px;
@@ -144,7 +211,7 @@ export default {
     padding: 0;
 }
 
-.list3 {
+/* .list3 {
     width: 15%;
 }
 
@@ -154,7 +221,7 @@ export default {
 
 .list5 {
     width: 70%;
-}
+} */
 
 .right {
     position: relative;
@@ -174,12 +241,16 @@ export default {
     left: 50%;
     transform: translate(-50%);
     background-color: #fafafa;
+    border-radius: 4px;
+}
+.inform .line {
+    border-bottom:1px solid rgb(197, 195, 195);
 }
 
 .inform>div {
     display: flex;
     padding: 20px 5px;
-    border-bottom: 1px rgb(189, 185, 185) solid;
+   
 
 }
 

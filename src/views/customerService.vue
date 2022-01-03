@@ -4,16 +4,18 @@
             <div class="csTop">
                 <table style="width: 100%">
                     <tr>
-                        <td style="border: none; width:50%" colspan="2">
+                        <td style="border: none; width: 50%" colspan="2">
                             <input
                                 type="text"
                                 class="search"
                                 placeholder="자주 묻는 질문 검색"
-                                style="padding: 0 20px;"
+                                style="padding: 0 20px"
                             />
-                            <button class="search">검색</button>
+                            <button class="searchBtn">검색</button>
                         </td>
-                        <td style="border: none"><h2>전화 문의 : 1234-5678</h2></td>
+                        <td style="border: none">
+                            <h2>전화 문의 : 1234-5678</h2>
+                        </td>
                         <td style="border: none">
                             <router-link v-bind:to="'/otoQ'">
                                 <button class="toOtoQ">1대1 문의하기</button>
@@ -30,7 +32,11 @@
                     <table class="tableMain">
                         <tr>
                             <td><span>번호</span></td>
-                            <td style="border-left: 1px black solid">
+                            <td
+                                style="
+                                    border-left: 1px rgb(197, 195, 195) solid;
+                                "
+                            >
                                 <span>제목</span>
                             </td>
                         </tr>
@@ -56,7 +62,11 @@
                     <table class="tableMain">
                         <tr>
                             <td><span>번호</span></td>
-                            <td style="border-left: 1px black solid">
+                            <td
+                                style="
+                                    border-left: 1px rgb(197, 195, 195) solid;
+                                "
+                            >
                                 <span>제목</span>
                             </td>
                         </tr>
@@ -143,12 +153,23 @@ export default {
     margin: 10px 10px;
 }
 
-.search,
-toOtoQ {
+.search {
     font-size: 22px;
     height: 40px;
     padding: 5px 20px;
     margin: 10px;
+}
+.searchBtn,
+.toOtoQ {
+    font-size: 22px;
+    height: 42px;
+    padding: 5px 20px;
+    margin: 10px;
+}
+.search {
+    outline: 1px solid rgb(0, 153, 255);
+    -webkit-appearance: none;
+    border: none;
 }
 
 .csFAQ,
@@ -160,25 +181,25 @@ toOtoQ {
 
 .tableMain {
     width: 100%;
-    border: 1px black solid;
+    border: 1px rgb(197, 195, 195) solid;
     border-collapse: collapse;
     padding: 10px 10px;
 }
 
 th,
 td {
-    border-bottom: 2px black solid;
+    border-bottom: 2px rgb(197, 195, 195) solid;
     padding: 5px 5px;
 }
 
 .question,
 .notice {
-    border-left: 1px black solid;
+    border-left: 1px rgb(197, 195, 195) solid;
     text-align: left;
     padding: 7px 20px;
 }
 :any-link {
     text-decoration: none;
-     color:black;
+    color: black;
 }
 </style>

@@ -8,10 +8,12 @@
         >
             <table>
                 <tr>
-                    <th colspan="2" style="padding: 0 0;"><h2>문의글 작성</h2></th>
+                    <th colspan="2" style="padding: 0 0">
+                        <h2>문의글 작성</h2>
+                    </th>
                 </tr>
                 <tr>
-                    <td style="width: 20%;"><span>문의 유형</span></td>
+                    <td style="width: 20%"><span>문의 유형</span></td>
                     <td>
                         <select name="qnaType1" id="qnaType1">
                             <option value="회원">회원</option>
@@ -74,7 +76,9 @@
                             class="signUpLink"
                             v-bind:to="'/customerService'"
                         >
-                            <button class="otoQBtn">취소하기</button></router-link
+                            <button class="otoQBtn">
+                                취소하기
+                            </button></router-link
                         >
                         <button class="otoQBtn" type=" submit">등록하기</button>
                     </td>
@@ -148,17 +152,19 @@ td {
     color: #fafafa;
     border-radius: 4px;
     font-size: 16px;
+    -webkit-appearance: none;
+    border: none;
 }
 
 .validate {
     margin-left: 10px;
     color: red;
 }
-.otoQBtn{
+.otoQBtn {
     height: 40px;
     width: 100px;
     font-size: 22px;
     padding: 0 0;
-    margin: 0 10px
+    margin: 0 10px;
 }
 </style>

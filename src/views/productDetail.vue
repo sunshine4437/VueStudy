@@ -7,7 +7,7 @@
             >
                 <img
                     style="width: 500px; height: 500px; border-radius: 10px"
-                    src="@/components/productDetail/product01.jpg"
+                    src="@/components/productDetail/image/product01.jpg"
                 />
             </div>
             <div class="rightBox">
@@ -245,8 +245,9 @@ hr {
 .searchSelectBox {
     min-width: 200px;
     font-size: 20px;
-    border: 1px solid rgb(0, 153, 255);
     border-radius: 4px;
+    outline: 2px solid rgb(0, 153, 255);
+    border: none;
 }
 
 .rightButton {

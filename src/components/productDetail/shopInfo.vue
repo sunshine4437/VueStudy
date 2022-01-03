@@ -1,36 +1,37 @@
 <template>
-<div class="shop-info">
-    <div class="shop-infoBox">
-        <div class="shop-title"><h2>NEPA</h2></div>
-    </div>
-    <div class="shop-bestItem">
-        <div class="bestItemMore">
-            <span>이 판매자의 인기상품이에요</span>
-            <button class="showMore">더 보기</button>
+    <div class="shop-info">
+        <div class="shop-infoBox">
+            <div class="shop-title"><h2>NEPA</h2></div>
         </div>
-        <hr />
-        <div>
-            <li>
-                <img class="bestPic" style="border-radius: 30px" src="http://placehold.it/135x135" />
-            </li>
-            <li>
-                <img class="bestPic" src="http://placehold.it/100x100" />
-            </li>
-            <li>
-                <img class="bestPic" src="http://placehold.it/100x100" />
-            </li>
-            <li>
-                <img class="bestPic" src="http://placehold.it/100x100" />
-            </li>
-            <li>
-                <img class="bestPic" src="http://placehold.it/100x100" />
-            </li>
-            <li>
-                <img class="bestPic" src="http://placehold.it/100x100" />
-            </li>
+        <div class="shop-bestItem">
+            <div class="bestItemMore">
+                <span style="margin-right: 10px"
+                    >이 판매자의 인기상품이에요</span
+                >
+                <button class="showMore">더 보기</button>
+            </div>
+            <div class="bestPicDiv">
+                <div class="bestPic">
+                    <img class="bestImg" src="http://placehold.it/140x140" />
+                </div>
+                <div class="bestPic">
+                    <img class="bestImg" src="http://placehold.it/140x140" />
+                </div>
+                <div class="bestPic">
+                    <img class="bestImg" src="http://placehold.it/140x140" />
+                </div>
+                <div class="bestPic">
+                    <img class="bestImg" src="http://placehold.it/140x140" />
+                </div>
+                <div class="bestPic">
+                    <img class="bestImg" src="http://placehold.it/140x140" />
+                </div>
+                <div class="bestPic">
+                    <img class="bestImg" src="http://placehold.it/140x140" />
+                </div>
+            </div>
         </div>
     </div>
-</div>
 </template>
 
        
@@ -38,9 +39,10 @@
 .shop-info {
     width: 100%;
     height: 210px;
-    border: 1px black solid;
+    border: 1px rgb(197, 195, 195) solid;
     overflow: hidden;
     margin: 0 0 5px 0;
+    background-color: #fafafa;
 }
 
 .shop-infoBox {
@@ -64,39 +66,33 @@
     width: 83%;
     height: 100%;
     padding: 0px 0px;
-    border: 1px black solid;
+    border-left: 1px rgb(197, 195, 195) solid;
 }
 
 .bestItemMore {
     padding: 10px 10px 5px 10px;
+    border-bottom: 1px rgb(197, 195, 195) solid;
+}
+.bestPicDiv {
+    height: 162px;
+    text-align: center;
+    display: flex;
+    padding: 10px 10px;
 }
 
 .bestPic {
-    height: 135px;
-    padding: 0px 20px 0 20px;
+    height: 140px;
+    width: 140px;
+    margin: 0px 20px 0 20px;
+    border-radius: 4px;
+    overflow: hidden;
 }
-
-li {
-    float: left;
-    list-style-type: none;
+.bestImg{
+    height: 140px;
+    width: 140px;
 }
-
 .showMore {
     height: 30px;
     padding: 5px 10px;
-}
-
-button {
-    background-color: #0051ba;
-    border-radius: 4px;
-    border: none;
-    color: white;
-    padding: 15px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 15px;
-    cursor: pointer;
-    margin: 0px 1px;
 }
 </style>
