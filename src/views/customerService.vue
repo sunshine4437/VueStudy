@@ -179,5 +179,6 @@ td {
 }
 :any-link {
     text-decoration: none;
+     color:black;
 }
 </style>
