@@ -37,12 +37,12 @@
             <p class="first">Fomily(주)</p><br>
             <p class="second">대표이사 : 가나다, 주소: 서울특별시 중구 한강대로 123, Tel: 1234-5678</p>
             <p class="second">사업자등록번호 : 123-45-67890, 통신판매업신고 : 2021-서울중구-0000사업자정보확인</p>
-            <p class="">
-                <box>최저가110%보상제</box>
-                <box>위조품110%보상제</box>
-                <box>고객실수 보상서비스</box>
-                <box>앱다운로드</box>
-            </p>
+            <div class="">
+                <span class="box">최저가110%보상제</span>
+                <span class="box">위조품110%보상제</span>
+                <span class="box">고객실수 보상서비스</span>
+                <span class="box">앱다운로드</span>
+            </div>
             <p class="fourth">Fomily(주)는 통신판매중개자로서 오픈마켓 Fomily의 거래당사자가 아니며, 입점판매자가 등록한 상품정보 및 거래에 대해 Fomily(주)는 일체 책임을 지지 않습니다.</p>
             <p class="fourth">Copyright © 2021 Fomily Co.,Ltd. All Rights Reserved.</p>
         </div>
@@ -192,7 +192,7 @@ hr {
     font-size: 11px;
 }
 
-box {
+.box {
     border: 1px solid gray;
     margin-right: 10px;
     padding: 0 2px 0 2px;

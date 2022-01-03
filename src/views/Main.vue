@@ -38,9 +38,18 @@
         </ul>
         <ul class="member">
             <li v-for="(link, i) in memberMenu" :key="i">
-                <router-link v-bind:to="link.link">
+                <router-link v-if="login && i < 2" v-bind:to="link.link">
                     <button>{{link.name}}</button>
                 </router-link>
+                <router-link v-else-if="!login && i < 2" v-bind:to="'/Login'">
+                    <button>{{link.name}}</button>
+                </router-link>
+                <router-link v-else v-bind:to="'/Login'">
+                    <button>{{link.name}}</button>
+                </router-link>
+                <!-- <router-link v-bind:to="link.link">
+                        <button>{{link.name}}</button>
+                    </router-link> -->
             </li>
         </ul>
     </div>
@@ -54,12 +63,14 @@
         </ul>
         <ul class="rightMenu">
             <li v-for="(link, i) in rightMenuName" :key="i">
-                <router-link v-bind:to="link.link">
-                    <!-- <button v-if="login">23</button>
-                    <button v-else>1</button> -->
-                    <button for="" v-if="link.name === '로그인' && login">sunshine님</button>
-                    <button v-else-if="link.name === '로그인' && !login">{{link.name}}</button>
-                    <button v-else>{{link.name}}</button>
+                <router-link v-if="i==0 && login" v-bind:to="'/Mypage2'">
+                    <button>admin님</button>
+                </router-link>
+                <router-link v-else-if="i==1 && login" v-bind:to="'/blank'">
+                    <button>100 P</button>
+                </router-link>
+                <router-link v-else v-bind:to="link.link">
+                    <button>{{link.name}}</button>
                 </router-link>
             </li>
         </ul>
@@ -112,15 +123,17 @@ export default {
                 alt: "logo"
             }],
             memberMenu: [{
-                link: "/Mypage1",
-                name: '마이페이지'
-            }, {
-                link: "/basket",
-                name: '장바구니'
-            }, {
-                link: "/otoQ",
-                name: '일대일 문의'
-            }, ],
+                    link: "/Mypage1",
+                    name: '마이페이지'
+                }, {
+                    link: "/basket",
+                    name: '장바구니'
+                },
+                {
+                    link: "/otoQ",
+                    name: '고객센터'
+                },
+            ],
             leftMenuName: [{
                 link: "/blank",
                 name: '베스트'
@@ -136,15 +149,17 @@ export default {
             }, ],
             // rightMenuName: ['로그인', '회원가입', '기타'],
             rightMenuName: [{
-                link: "/login",
-                name: '로그인'
-            }, {
-                link: "/signUp",
-                name: '회원가입'
-            }, {
-                link: "/payment",
-                name: '결제페이지'
-            }]
+                    link: "/login",
+                    name: '로그인'
+                }, {
+                    link: "/signUp",
+                    name: '회원가입'
+                },
+                //  {
+                //     link: "/customerService",
+                //     name: '고객센터'
+                // }
+            ]
         }
     },
 }
@@ -168,7 +183,7 @@ export default {
     display: flex;
     list-style: none;
     padding: 0;
-    width: 52.7%;
+    width: 51.4%;
     margin: 0;
     height: 80px;
 }
@@ -181,6 +196,7 @@ export default {
     display: flex;
     /* flex-direction: row; */
     align-items: center;
+
 }
 
 .search li:first-child {
@@ -266,6 +282,10 @@ export default {
     align-items: center;
 }
 
+.member button {
+    width: 115px;
+}
+
 .searchBar {
     display: flex;
 }
@@ -274,8 +294,8 @@ export default {
     min-width: 100px;
     font-size: 20px;
     border: 2px solid rgb(0, 153, 255);
-    /* border-radius: 4px; */
     border-radius: 4px 0 0 4px;
+    outline: none;
 }
 
 .searchBar input {
@@ -329,8 +349,9 @@ export default {
     margin-left: 5px;
     padding: 0;
 }
-.leftMenu button{
-    width:90px;
+
+.leftMenu button {
+    width: 90px;
 }
 
 .rightMenu {
@@ -339,6 +360,10 @@ export default {
     margin-right: 5px;
     margin-left: auto;
     padding: 0;
+}
+
+.rightMenu button {
+    width: 100px;
 }
 
 .lineNav {
@@ -368,4 +393,36 @@ export default {
     font-size: 50px;
     font-weight: bold;
 }
+
+/* select::selection{
+     -webkit-appearance: none;
+      appearance: none;
+    border: red
+}
+
+select:focus{
+       -webkit-appearance: none;
+        appearance: none;
+           border: red
+} */
+/* 
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    /* font-family: "Noto Sansf KR", sans-serif; 
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+
+    color: #444;
+    background-color: #fff;
+
+    padding: 0.6em 1.4em 0.5em 0.8em;
+    margin: 0;
+
+    border: 1px solid #aaa;
+    border-radius: 0.5em;
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+} */
 </style>

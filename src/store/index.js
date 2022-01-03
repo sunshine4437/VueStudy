@@ -4,30 +4,28 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  
-  state: {
-    flag: false,
-    userInfo:{
-      username:"sunshine",
-      password:"1234"
-    }
-  },
-  mutations: {
-    Login(state){
-      state.flag = true;
+    state: {
+        flag: false,
+        userInfo: {
+            username: "admin",
+            password: "admin"
+        },
+        
     },
-  },
-  actions: {
-  },
-  modules: {
-  },
-  getters:{
-    getUserInfo: function(state){
-      return state.userInfo;
+    mutations: {
+        Login(state) {
+            state.flag = true;
+        },
     },
-    getLogin: function(state){
-      return state.flag;
+    actions: {},
+    modules: {},
+    getters: {
+        getUserInfo: function (state) {
+            return state.userInfo;
+        },
+        getLogin: function (state) {
+            return state.flag;
+        },
+        // getIsUserSignIn:
     }
-    // getIsUserSignIn:
-  }
 })

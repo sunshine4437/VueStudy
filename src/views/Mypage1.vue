@@ -26,7 +26,8 @@
                 <a href="">전화번호 수정</a><br>
                 <a href="">주소 수정</a>
             </div>
-            <router-link v-bind:to="'/'"> <button class="logoutbtn" @click="logout"> 로그아웃 </button></router-link>
+            <!-- <router-link v-bind:to="'/'"> <button class="logoutbtn" @click="logout"> 로그아웃 </button></router-link> -->
+            <router-link v-bind:to="'/'"> <button class="logoutbtn"> 로그아웃 </button></router-link>
         </div>
         <!--right-->
         <div class="right">
@@ -42,29 +43,21 @@
                             <button class="dateBtn">1주일</button>
                             <button class="dateBtn">1개월</button>
                             <button class="dateBtn">6개월</button>
-                            <button class="dateBtn">11월</button>
-                            <button class="dateBtn">10월</button>
-                            <button class="dateBtn">09월</button>
+                            <button class="dateBtn">1년</button>
                         </div>
                         <div class="row2">
-                            <select>
-                                <option>2021</option>
-                            </select>년
-                            <select>
-                                <option>1</option>
-                            </select>월
-                            <select>
-                                <option>1</option>
-                            </select>일 ~
-                            <select>
-                                <option>2021</option>
-                            </select>년
-                            <select>
-                                <option>12</option>
-                            </select>월
-                            <select>
-                                <option>23</option>
-                            </select>일
+                            <select name="" id="">
+                                <option v-for="n in years" :key="n" :selected="n == getYear()">{{n}}</option>
+                            </select>
+                            <label for="">년</label>
+                            <select name="" id="">
+                                <option v-for="n in 12" :key="n" value="" :selected="n == getMonth()">{{n}}</option>
+                            </select>
+                            <label for="">월</label>
+                            <select name="" id="">
+                                <option v-for="n in 31" :key="n" value="" :selected="n == getDate()">{{n}}</option>
+                            </select>
+                            <label for="">일</label>
                         </div>
                         <div class="row3">
                             <input type="text" class="searchBar" placeholder="  주문 상품명을 검색하세요!">&nbsp; &nbsp;
@@ -85,26 +78,15 @@
                         <td>상품금액</td>
                         <td>수량</td>
                         <td>배송비</td>
-                        <td>배송현황</td>
                         <td>주문상태</td>
                     </tr>
-                    <tr>
-                        <td>2021-1-1</td>
-                        <td>2020 다우니 퍼퓸 초고농축 섬유유연제 미스티크 본품</td>
-                        <td>38800<br>(19,400)</td>
-                        <td>2</td>
-                        <td>2500</td>
-                        <td>배송준비</td>
-                        <td>결제확인</td>
-                    </tr>
-                    <tr>
-                        <td>2021-1-1</td>
-                        <td>다이슨 싸이클론 V10 무선 진공 청소기</td>
-                        <td>602,940</td>
-                        <td>1</td>
-                        <td>무료</td>
-                        <td>배송중</td>
-                        <td>결제완료</td>
+                    <tr v-for="(item, idx) in orderList" :key="idx">
+                        <td v-if="item.id<getID">{{item.date}}</td>
+                        <td v-if="item.id<getID">{{item.inform}}</td>
+                        <td v-if="item.id<getID">{{item.price}}</td>
+                        <td v-if="item.id<getID">{{item.amount}}</td>
+                        <td v-if="item.id<getID">{{item.fee}}</td>
+                        <td v-if="item.id<getID">{{item.Status}}</td>
                     </tr>
                 </table>
             </div>
@@ -151,8 +133,89 @@
 
 <script>
 export default {
-    method: {
+    data() {
+        return {
+            selectTerm: 7,
+            years: [],
+            months: [],
+            dates: [],
+            orderList: [{
+                    id: "1",
+                    date: this.getDate(),
+                    inform: "12",
+                    price: "13",
+                    amount: "14",
+                    fee: "15",
+                    Status: "16",
+                },
+                {
+                    id: "2",
+                    date: "21",
+                    inform: "22",
+                    price: "23",
+                    amount: "24",
+                    fee: "25",
+                    Status: "26",
+                },
+                {
+                    id: "3",
+                    date: "21",
+                    inform: "22",
+                    price: "23",
+                    amount: "24",
+                    fee: "25",
+                    Status: "26",
+                },
+                {
+                    id: "4",
+                    date: "21",
+                    inform: "22",
+                    price: "23",
+                    amount: "24",
+                    fee: "25",
+                    Status: "26",
+                },
+                {
+                    id: "5",
+                    date: "21",
+                    inform: "22",
+                    price: "23",
+                    amount: "24",
+                    fee: "25",
+                    Status: "26",
+                }
+            ]
+        }
+    },
+    computed: {
+        getID() {
+            return this.selectTerm;
+        },
+    },
+    methods: {
+        getDate() {
+            let today = new Date();
+            let date = today.getDate();
+            return date;
+        },
+        getMonth() {
+            let today = new Date();
+            let month = today.getMonth() + 1;
+            return month;
+        },
+        getYear() {
+            let today = new Date();
+            let year = today.getFullYear();
+            return year;
+        },
 
+    },
+    mounted() {
+        {
+            for (let i = this.getYear() - 10; i <= this.getYear(); i++) {
+                this.years.push(i);
+            }
+        }
     }
 }
 </script>
@@ -214,10 +277,12 @@ hr {
     padding-top: 20px;
     padding-bottom: 20px;
 }
-.date3{
+
+.date3 {
     margin-top: 20px;
     padding-top: 15px;
 }
+
 .table1st {
     margin-left: auto;
     margin-right: auto;
@@ -279,7 +344,6 @@ hr {
     padding: 7px;
 }
 
-
 .List1 {
     text-align: center;
     padding-top: 15px;
@@ -311,7 +375,6 @@ hr {
 }
 
 .dateBtn {
-    background-color: #0051ba;
     border-radius: 4px;
     border: none;
     color: white;

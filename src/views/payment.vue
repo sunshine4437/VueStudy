@@ -322,7 +322,6 @@ export default {
 .payMethod {
     border-bottom: 1px solid rgb(197, 195, 195);
 }
-
 .orderProductTable {
     width: 100%;
     border-collapse: collapse;
@@ -330,7 +329,6 @@ export default {
     text-align: center;
     margin: 10px 0;
 }
-
 .orderProductTd {
     border: 1px rgb(197, 195, 195) solid;
     padding: 5px 5px;
@@ -344,31 +342,26 @@ export default {
     padding: 10px 10px;
     text-align: center;
 }
-
 .payIf {
     width: 25%;
     text-align: left;
     padding: 5px 20px;
     border-left: 1px solid rgb(197, 195, 195);
 }
-
 .payNum {
     width: 25%;
     text-align: right;
     padding: 5px 20px;
     border-right: 1px solid rgb(197, 195, 195);
 }
-
 .couponTable {
     width: 850px;
     border-collapse: collapse;
     padding: 10px 30px;
 }
-
 td {
     padding: 3px 10px;
 }
-
 .buyBtnTd {
     width: 50%;
     border: 0px;
@@ -377,14 +370,12 @@ td {
     width: 200px;
     font-size: 150%;
 }
-
 .addrBtn {
     font-size: 15px;
     padding: 0 5px;
     width: 50px;
     margin: 0 10px;
 }
-
 .delivery,
 .payMethod {
     padding: 0 10px;
@@ -392,38 +383,31 @@ td {
 .payMethod {
     height: 170px;
 }
-
 .shortInput {
     width: 250px;
     margin-left: 10px;
 }
-
 .longInput {
     width: 500px;
     margin-left: 10px;
 }
-
 .cardSelect {
     margin: 0 10px;
     width: 10%;
 }
-
 .couponSpan {
     margin: 0 20px;
 }
-
 .couponBtn {
     width: 100px;
     font-size: 17px;
     padding: 2px 5px;
 }
-
 .tableMiddle {
     font-size: 4px;
     padding: 0 0;
     color: white;
 }
-
 .couponNum {
     width: 20%;
     text-align: right;
