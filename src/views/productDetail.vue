@@ -74,28 +74,22 @@
                         장바구니
                     </button>
                 </router-link>
-                <router-link v-bind:to="'/payment'">
-                    <button class="buyBtn">구매하기</button>
-                </router-link>
-                    <button class="myCartBtn" style="margin-right: 20px" @click="addBasketList()">
-                        장바구니
-                    </button>
             </div>
-             <div class="rightSelectedTable">
-                        <tr v-for="item in getBasketList.slice(1)" :key="item">
-                            <td>
-                                <span v-html="item.name"></span>
-                            </td>
-                            <td style="width: 50px">
-                                <span v-html="item.size"></span>
-                            </td>
-                              <td style="width: 50px">
-                                <span v-html="item.price"></span>
-                            </td>
-                        </tr>
-                    </div>
+            <div class="rightSelectedTable">
+                <tr v-for="item in getBasketList.slice(1)" :key="item">
+                    <td>
+                        <span v-html="item.name"></span>
+                    </td>
+                    <td style="width: 50px">
+                        <span v-html="item.size"></span>
+                    </td>
+                    <td style="width: 50px">
+                        <span v-html="item.price"></span>
+                    </td>
+                </tr>
+            </div>
             <div class="clear"></div>
-            
+
         </div>
     </div>
     <div class="clear"></div>
