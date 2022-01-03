@@ -8,8 +8,13 @@
                         <span v-html="op.shopName"></span>
                     </td>
                     <td class="orderProductTd" style="width: 10%">
-                        <!-- <img :src="require(`@/components/productDetail/${op.image}`)" alt="productImage"> -->
-                        <img v-bind:src="op.image" />
+                        <img
+                            class="orderProductImg"
+                            :src="
+                                require(`@/components/productDetail/image/${op.image}`)
+                            "
+                            alt="productImage"
+                        />
                     </td>
                     <td
                         class="orderProductTd"
@@ -68,7 +73,7 @@
         <div class="delivery">
             <h2 style="margin: 20px 0 0 -10px">배송지 입력</h2>
             <p>
-                <span style="margin-right: 30px">이름</span>
+                <span style="margin-right: 28px">이름</span>
                 <span>
                     <input
                         type="text"
@@ -100,7 +105,7 @@
             <p>
                 <span>우편번호</span>
                 <span>
-                    <input type="text" name="addr" class="shortInput" />
+                    <input type="text" id="zipCode" class="shortInput" />
                     <span>
                         <window-popup v-model="open">
                             <deliverySelect></deliverySelect>
@@ -114,13 +119,13 @@
             <p>
                 <span>기본주소</span>
                 <span colspan="2">
-                    <input type="text" name="base_addr" class="longInput" />
+                    <input type="text" id="baseAddr" class="longInput" />
                 </span>
             </p>
             <p>
                 <span>상세주소</span>
                 <span colspan="2">
-                    <input type="text" name="detail_addr" class="longInput" />
+                    <input type="text" name="detailAddr" class="longInput" />
                 </span>
             </p>
         </div>
@@ -174,7 +179,7 @@
                     <option value="">우리은행</option>
                     <option value="">카카오뱅크</option>
                 </select>
-                <p>계좌번호 : <input type="text" /></p>
+                <p>계좌번호 : <input class="payInput" type="text" /></p>
             </div>
             <div v-if="radioPay === 'phone'">
                 <button style="width: 100px; padding: 10px 10px">
@@ -262,7 +267,7 @@ export default {
                 {
                     number: "2",
                     shopName: "판매자",
-                    image: "http://placehold.it/100X100",
+                    image: "product01.jpg",
                     productName: "상품명<br>옵션 : 선택된 옵션",
                     count: "1개",
                     price: "100,000원",
@@ -274,7 +279,9 @@ export default {
     methods: {
         applyPoint() {
             let pt = document.getElementById("pointInput").value;
-            if (pt > parseInt(this.usable) + parseInt(this.point)) {
+            if (pt === '') {
+                alert('숫자를 입력해주세요')
+            } else if (pt > parseInt(this.usable) + parseInt(this.point)) {
                 alert("포인트가 부족합니다.");
             } else {
                 this.usable = this.usable - pt + parseInt(this.point);
@@ -328,7 +335,9 @@ export default {
     border: 1px rgb(197, 195, 195) solid;
     padding: 5px 5px;
 }
-
+.orderProductImg {
+    height: 140px;
+}
 .payInfoTable {
     width: 100%;
     border-collapse: collapse;
@@ -351,7 +360,7 @@ export default {
 }
 
 .couponTable {
-    width: 800px;
+    width: 850px;
     border-collapse: collapse;
     padding: 10px 30px;
 }
@@ -427,13 +436,12 @@ td {
     border-radius: 4px;
 }
 
-/* #pointInput,
+#pointInput,
 .shortInput,
-.longInput {
-    outline: 1px solid rgb(0, 153, 255);
-    -webkit-appearance: none;
-    border: none;
-} */
+.longInput,
+.payInput {
+    font-size: 16px;
+}
 .validate {
     margin-left: 10px;
     color: red;
