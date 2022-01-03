@@ -15,7 +15,7 @@
                 <tr>
                     <td style="width: 20%"><span>문의 유형</span></td>
                     <td>
-                        <select name="qnaType1" id="qnaType1">
+                        <select class="qnaType">
                             <option value="회원">회원</option>
                             <option value="쿠폰/혜택/이벤트">
                                 쿠폰/혜택/이벤트
@@ -55,12 +55,12 @@
                                     placeholder="-없이 숫자만"
                                     id="mobile"
                                     required
-                                    @change="phoneCheck()"
+                                    @keyup="phoneCheck()"
                                 />
                             </span>
                             <span>
                                 <span class="validate" v-if="!phoneValidate"
-                                    >-없이 숫자 11자리만 입력해주세요</span
+                                    >- 없이 숫자 10~11자리만 입력해주세요</span
                                 >
                             </span>
                         </p>
@@ -146,6 +146,7 @@ td {
 .shortInput {
     width: 150px;
     border: 1px rgb(197, 195, 195) solid;
+    font-size: 16px;
 }
 ::-webkit-file-upload-button {
     background: rgb(0, 153, 255);
@@ -166,5 +167,8 @@ td {
     font-size: 22px;
     padding: 0 0;
     margin: 0 10px;
+}
+.qnaType {
+    font-size: 16px;
 }
 </style>

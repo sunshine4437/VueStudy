@@ -158,6 +158,9 @@ export default {
     height: 40px;
     padding: 5px 20px;
     margin: 10px;
+    outline: 1px solid rgb(0, 153, 255);
+    -webkit-appearance: none;
+    border: none;
 }
 .searchBtn,
 .toOtoQ {
@@ -165,11 +168,6 @@ export default {
     height: 42px;
     padding: 5px 20px;
     margin: 10px;
-}
-.search {
-    outline: 1px solid rgb(0, 153, 255);
-    -webkit-appearance: none;
-    border: none;
 }
 
 .csFAQ,
