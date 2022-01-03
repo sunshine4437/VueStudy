@@ -3,29 +3,23 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-    state: {
-        flag: false,
-        userInfo: {
-            username: "admin",
-            password: "admin"
-        },
-        
+import createPersistedState from 'vuex-persistedstate';
+import loginStore from "@/store/modules/loginStore.js";
+import basketList from "@/store/modules/basketList.js";
+const store = new Vuex.Store({
+    modules: {
+        loginStore: loginStore,
+        basketList: basketList
     },
-    mutations: {
-        Login(state) {
-            state.flag = true;
-        },
-    },
-    actions: {},
-    modules: {},
-    getters: {
-        getUserInfo: function (state) {
-            return state.userInfo;
-        },
-        getLogin: function (state) {
-            return state.flag;
-        },
-        // getIsUserSignIn:
-    }
+    plugins: [
+        createPersistedState({
+            storage: window.sessionStorage,
+            paths: [
+                "loginStore",
+                "basketList",
+             
+            ]})]
+
 })
+
+export default store;

@@ -74,7 +74,7 @@
                                 <td style="width: 50px">
                                     <span v-html="item.size"></span>
                                 </td>
-                                <td style="width:30px">
+                                <td style="width: 30px">
                                     <button
                                         @click="removeSelected(index)"
                                         class="removeSelectedBtn"
@@ -91,13 +91,33 @@
                     <h3 style="text-align: right; margin: 20px 35px 30px 0">
                         총 상품금액 : {{ AddComma(totalPrice) }}원
                     </h3>
-                    <button class="myCartBtn" style="margin-right: 20px">
-                        장바구니
-                    </button>
+                    <router-link v-if="Login" v-bind:to="'/basket'">
+                        <button class="myCartBtn" style="margin-right: 20px">
+                            장바구니
+                        </button>
+                    </router-link>
+                    <router-link v-else v-bind:to="'/Login'">
+                        <button class="myCartBtn" style="margin-right: 20px">
+                            장바구니
+                        </button>
+                    </router-link>
                     <router-link v-bind:to="'/payment'">
                         <button class="buyBtn">구매하기</button>
                     </router-link>
                 </div>
+                <!-- <div class="rightSelectedTable">
+                        <tr v-for="item in getBasketList.slice(1)" :key="item">
+                            <td>
+                                <span v-html="item.name"></span>
+                            </td>
+                            <td style="width: 50px">
+                                <span v-html="item.size"></span>
+                            </td>
+                            <td style="width: 50px">
+                                <span v-html="item.price"></span>
+                            </td>
+                        </tr>
+                    </div> -->
                 <div class="clear"></div>
             </div>
         </div>
@@ -115,6 +135,9 @@
 <script>
 import detail from "@/components/productDetail/detail.vue";
 import shopInfo from "@/components/productDetail/shopInfo.vue";
+import { createNamespacedHelpers } from "vuex";
+const loginStore = createNamespacedHelpers("loginStore");
+const basketList = createNamespacedHelpers("basketList");
 export default {
     components: {
         detail: detail,
@@ -152,6 +175,7 @@ export default {
                     price: this.price,
                 };
                 this.items.push(newItem);
+                // this.addList(newItem);
                 this.totalPrice += this.price;
 
                 if (this.totalPrice >= 50000) {
@@ -160,6 +184,11 @@ export default {
 
                 event.target.value = 0;
                 document.getElementById("search1").value = 0;
+            }
+        },
+        addBasketList() {
+            for (let i = 1; i < this.items.length; i++) {
+                this.addList(this.items[i]);
             }
         },
         removeSelected(idx) {
@@ -174,6 +203,11 @@ export default {
             var regexp = /\B(?=(\d{3})+(?!\d))/g;
             return num.toString().replace(regexp, ",");
         },
+        ...loginStore.mapMutations(["Login"]),
+        ...basketList.mapMutations(["addList"]),
+    },
+    computed: {
+        ...basketList.mapGetters(["getBasketList"]),
     },
 };
 </script>
@@ -255,6 +289,7 @@ hr {
     height: 160px;
     border-bottom: 1px solid rgb(197, 195, 195);
 }
+
 .rightSelectedTable {
     overflow-y: scroll;
     height: 80px;
