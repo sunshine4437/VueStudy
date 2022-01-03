@@ -16,13 +16,13 @@
                     <h2>
                         네파 신상, 이월 다운/플리스 외 FW의류 + 연말 파이널 sale
                     </h2>
-                    <h1>{{ price }}원</h1>
+                    <h1>{{ AddComma(price) }}원</h1>
                 </div>
                 <div class="rightTop">
-                    <p>15시 이전 주문 시 오늘 배송</p>
+                    <p>15시 이전 주문 시 오늘 출발</p>
                     <p>
-                        배송비 {{ delivery }}원 ( {{ delivery_low }}원 이상 구매
-                        시 배송비 무료)
+                        배송비 {{ AddComma(delivery) }}원 (
+                        {{ AddComma(delivery_low) }}원 이상 구매 시 배송비 무료)
                     </p>
                 </div>
                 <div class="rightSelect">
@@ -64,12 +64,23 @@
                     </h3>
                     <table style="width: 100%">
                         <div class="rightSelectedTable">
-                            <tr v-for="item in items.slice(1)" :key="item">
+                            <tr
+                                v-for="(item, index) in items.slice(1)"
+                                :key="index"
+                            >
                                 <td>
                                     <span v-html="item.name"></span>
                                 </td>
                                 <td style="width: 50px">
                                     <span v-html="item.size"></span>
+                                </td>
+                                <td style="width:30px">
+                                    <button
+                                        @click="removeSelected(index)"
+                                        class="removeSelectedBtn"
+                                    >
+                                        X
+                                    </button>
                                 </td>
                             </tr>
                         </div>
@@ -78,7 +89,7 @@
                 <div class="clear"></div>
                 <div class="rightButton">
                     <h3 style="text-align: right; margin: 20px 35px 30px 0">
-                        총 상품금액 : {{ totalPrice }}원
+                        총 상품금액 : {{ AddComma(totalPrice) }}원
                     </h3>
                     <button class="myCartBtn" style="margin-right: 20px">
                         장바구니
@@ -138,6 +149,7 @@ export default {
                 let newItem = {
                     name: this.firstOption,
                     size: this.secondOption,
+                    price: this.price,
                 };
                 this.items.push(newItem);
                 this.totalPrice += this.price;
@@ -149,6 +161,18 @@ export default {
                 event.target.value = 0;
                 document.getElementById("search1").value = 0;
             }
+        },
+        removeSelected(idx) {
+            this.items.splice(idx + 1, 1);
+            this.totalPrice -= this.price;
+
+            if (this.totalPrice < 50000) {
+                this.delivery_fee = 2500;
+            }
+        },
+        AddComma(num) {
+            var regexp = /\B(?=(\d{3})+(?!\d))/g;
+            return num.toString().replace(regexp, ",");
         },
     },
 };
@@ -237,6 +261,14 @@ hr {
     width: 200px;
     margin: 0 0 0 auto;
 }
+.removeSelectedBtn {
+    width: 16px;
+    height: 18px;
+    padding: 0 0;
+    font-size: 14px;
+    color: #fafafa;
+    background-color: rgb(0, 153, 255);
+}
 .searchBar {
     display: flex;
     margin: 10px;
@@ -244,7 +276,7 @@ hr {
 
 .searchSelectBox {
     min-width: 200px;
-    font-size: 20px;
+    font-size: 18px;
     border-radius: 4px;
     outline: 2px solid rgb(0, 153, 255);
     border: none;
