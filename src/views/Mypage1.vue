@@ -47,15 +47,15 @@
                         </div>
                         <div class="row2">
                             <select name="" id="">
-                                <option v-for="n in years" :key="n" :selected="n == getYear()">{{n}}</option>
+                                <option v-for="n in years" :key="n" :value="n" :selected="n == getYear()">{{n}}</option>
                             </select>
                             <label for="">년</label>
                             <select name="" id="">
-                                <option v-for="n in 12" :key="n" value="" :selected="n == getMonth()">{{n}}</option>
+                                <option v-for="n in 12" :key="n" :value="n" :selected="n == getMonth()">{{n}}</option>
                             </select>
                             <label for="">월</label>
                             <select name="" id="">
-                                <option v-for="n in 31" :key="n" value="" :selected="n == getDate()">{{n}}</option>
+                                <option v-for="n in 31" :key="n" :value="n" :selected="n == getDate()">{{n}}</option>
                             </select>
                             <label for="">일</label>
                         </div>
