@@ -205,11 +205,15 @@ export default {
                 this.isSelected = false;
                 let title = document.getElementById("title").innerHTML;
                 let newItem = {
+                    img:"product01.jpg",
+                    seller:"네파",
                     title: title,
                     name: this.firstOption,
                     size: this.secondOption,
                     price: this.price,
                     amount: 1,
+                    delivery_fee: 2500,
+                    delivery_low: 50000,
                 };
                 this.items.push(newItem);
                 this.addList(newItem);

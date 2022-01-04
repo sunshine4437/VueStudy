@@ -79,6 +79,7 @@
                     </div>
                 </div>
             </div>
+           
             <div class="pList2">
                 <h2>주문내역 조회</h2>
             </div>
@@ -87,19 +88,26 @@
                 <table class="table2">
                     <tr class="tr1" style="height:50px;">
                         <td>주문일자</td>
-                        <td>주문 상품 정보</td>
-                        <td>상품금액</td>
+                        <td>이미지</td>
+                        <td>판매자명</td>
+                        <td>상품명</td>
+                        <td>옵션</td>
                         <td>수량</td>
+                        <td>가격</td>
                         <td>배송비</td>
-                        <td>주문상태</td>
                     </tr>
-                    <tr v-for="(item, idx) in orderList" :key="idx" v-show="compareDate(item) && compareInform(item)">
-                        <td style="height:30px;">{{item.date}}</td>
-                        <td style="height:30px;">{{item.inform}}</td>
-                        <td style="height:30px;">{{item.price}}</td>
+                    <!-- v-show="compareDate(item) && compareInform(item)" -->
+                     <tr v-for="(item, idx) in users" :key="idx" v-show="compareDate(item) && compareInform(item)">
+                        <td style="height:30px;">{{item.orderDate}}</td>
+                        <td style="height:30px;">
+                            <img :src="require(`@/components/mainPage/productTableImage/${item.img}`)"  alt="banner" style="width:50px; height:50px;">
+                        </td>
+                        <td style="height:30px;">{{item.name}}</td>
+                        <td style="height:30px;">{{item.product}}</td>
+                        <td style="height:30px;">{{item.option}}</td>
                         <td style="height:30px;">{{item.amount}}</td>
-                        <td style="height:30px;">{{item.fee}}</td>
-                        <td style="height:30px;">{{item.Status}}</td>
+                        <td style="height:30px;">{{item.price}}</td>
+                        <td style="height:30px;">{{item.charge}}</td>
                     </tr>
                 </table>
             </div>
@@ -141,6 +149,8 @@
 </template>
 
 <script>
+
+import userList from "../assets/data/orderList.json";
 export default {
     data() {
         return {
@@ -158,118 +168,17 @@ export default {
             months: [],
             dates: [],
             target: "",
-            orderList: [{
-                    id: "1",
-                    date: "2021-01-10",
-                    inform: "12",
-                    price: "13",
-                    amount: "14",
-                    fee: "15",
-                    Status: "16",
-                },
-                {
-                    id: "2",
-                    date: "2021-02-09",
-                    inform: "22",
-                    price: "23",
-                    amount: "24",
-                    fee: "25",
-                    Status: "26",
-                },
-                {
-                    id: "3",
-                    date: "2021-03-10",
-                    inform: "22",
-                    price: "23",
-                    amount: "24",
-                    fee: "25",
-                    Status: "26",
-                },
-                {
-                    id: "4",
-                    date: "2021-04-10",
-                    inform: "22",
-                    price: "23",
-                    amount: "24",
-                    fee: "25",
-                    Status: "26",
-                },
-                {
-                    id: "5",
-                    date: "2021-05-10",
-                    inform: "22",
-                    price: "23",
-                    amount: "24",
-                    fee: "25",
-                    Status: "26",
-                },
-                {
-                    id: "5",
-                    date: "2021-05-10",
-                    inform: "22",
-                    price: "23",
-                    amount: "24",
-                    fee: "25",
-                    Status: "26",
-                },
-                {
-                    id: "5",
-                    date: "2021-05-10",
-                    inform: "22",
-                    price: "23",
-                    amount: "24",
-                    fee: "25",
-                    Status: "26",
-                },
-                {
-                    id: "5",
-                    date: "2021-05-10",
-                    inform: "22",
-                    price: "23",
-                    amount: "24",
-                    fee: "25",
-                    Status: "26",
-                },
-                {
-                    id: "5",
-                    date: "2020-05-10",
-                    inform: "22",
-                    price: "23",
-                    amount: "24",
-                    fee: "25",
-                    Status: "26",
-                },
-                {
-                    id: "5",
-                    date: "2015-06-10",
-                    inform: "22",
-                    price: "23",
-                    amount: "24",
-                    fee: "25",
-                    Status: "26",
-                },
-                {
-                    id: "5",
-                    date: "2021-05-10",
-                    inform: "22",
-                    price: "23",
-                    amount: "24",
-                    fee: "25",
-                    Status: "26",
-                },
-                {
-                    id: "5",
-                    date: "2021-03-10",
-                    inform: "22",
-                    price: "23",
-                    amount: "24",
-                    fee: "25",
-                    Status: "26",
-                }
-            ]
+            
         }
     },
-    computed: {},
+    name: "userList",
+    computed: {
+         users() { 
+      return userList.users.map((items) => {
+        return items;
+      })
+    },
+    },
     methods: {
         getDate() {
             let today = new Date();
@@ -323,8 +232,8 @@ export default {
         compareDate(target) {
             // alert(`${this.selectTerm.year}-${this.selectTerm.month}-${this.selectTerm.date}`)
             // alert(target.date)
-            if (`${this.startPoint.year}-${this.startPoint.month}-${this.startPoint.date}` <= target.date)
-                if (target.date <= `${this.endPoint.year}-${this.endPoint.month}-${this.endPoint.date}`)
+            if (`${this.startPoint.year}-${this.startPoint.month}-${this.startPoint.date}` <= target.orderDate)
+                if (target.orderDate <= `${this.endPoint.year}-${this.endPoint.month}-${this.endPoint.date}`)
                     return true;
         },
         search() {
@@ -335,7 +244,7 @@ export default {
                 return true;
             else {
                 // if (this.target == event.inform)
-                if (event.inform.indexOf(this.target) !== -1)
+                if (event.product.indexOf(this.target) !== -1)
                     return true;
                 else
                     return false;
@@ -377,7 +286,7 @@ hr {
 
 .left {
     display: inline-block;
-    height: 725px;
+    height: 1000px;
     border: 1px solid rgb(197, 195, 195);
     background-color: #fafafa;
     border-radius: 4px;
@@ -389,7 +298,7 @@ hr {
 
 .right {
     display: inline-block;
-    height: 780px;
+    height: 105px;
     width: 85%;
     border: 1px solid rgb(197, 195, 195);
     margin-left: 50px;

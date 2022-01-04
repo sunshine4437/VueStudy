@@ -6,7 +6,7 @@ Vue.use(Vuex);
 const basketList = {
     namespaced: true,
     state: {
-        basketList : [{}],
+        basketList : [],
         // flag: false,
         // userInfo: {
         //     username: "admin",
