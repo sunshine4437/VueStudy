@@ -9,7 +9,7 @@
                 <div><input type="checkbox" @click="allCheck()" id="allCheckedList"></div>
                 <div>전체선택 </div>
             </div>
-            <div>선택삭제 </div>
+            <div @click="removeList()">선택삭제 </div>
         </div>
         <div>
             <div class="listDiv" v-for="(item, idx) in getBasketList" :key="idx">
@@ -162,12 +162,24 @@ export default {
                     checkedList[i].checked = false;
                 }
             }
-        }
+
         },
-        computed: {
-            ...basketList.mapGetters(["getBasketList"]),
-        }
+        removeList() {
+            let checkedList = document.getElementsByClassName("checkedList");
+            for (let i = 0; i < checkedList.length; i++) {
+                if (checkedList[i].checked == true) {
+                    this.delList(i);
+                    checkedList[i].checked = false;
+                }
+            }
+
+        },
+        ...basketList.mapMutations(["delList"]),
+    },
+    computed: {
+        ...basketList.mapGetters(["getBasketList"]),
     }
+}
 </script>
 
 <style scoped>

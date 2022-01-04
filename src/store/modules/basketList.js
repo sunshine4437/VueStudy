@@ -19,7 +19,11 @@ const basketList = {
         // },
         addList(state, item){
             state.basketList.push(item);
+        },
+        delList(state, idx){
+            state.basketList.splice(idx, 1);
         }
+
     },
     actions: {
     },
