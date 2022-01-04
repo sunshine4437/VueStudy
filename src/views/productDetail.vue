@@ -231,7 +231,7 @@ export default {
             firstOption: 0,
             secondOption: 0,
             items: [],
-            price: 27000,
+            price: 73800,
             delivery: 0,
             delivery_low: 50000,
             delivery_fee: 2500,
