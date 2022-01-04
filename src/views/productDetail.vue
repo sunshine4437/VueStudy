@@ -14,7 +14,7 @@
                 <div class="enter"></div>
                 <div class="rightTitle">
                     <h2 id="title">
-                        네파 신상, 이월 다운/플리스 외 FW의류 + 연말 파이널 sale
+                        [뉴발란스] 남여공용 574/327/530 운동화 씨쏠트 문빔
                     </h2>
                     <h1>{{ AddComma(price) }}원</h1>
                 </div>
@@ -36,11 +36,47 @@
                             @click="firstSelected($event)"
                         >
                             <option value="0">상품 번호</option>
-                            <option value="01_7G72068">01_7G72068</option>
-                            <option value="02_7G72054">02_7G72054</option>
-                            <option value="03_7G72072">03_7G72072</option>
-                            <option value="04_7G82072">04_7G82072</option>
-                            <option value="05_7F82042">05_7F82042</option>
+                            <option value="01.NB_CM997HCA">
+                                01.NB_CM997HCA
+                            </option>
+                            <option value="02.NB_CM997HCC">
+                                02.NB_CM997HCC
+                            </option>
+                            <option value="03.NB_ML574RC2">
+                                03.NB_ML574RC2
+                            </option>
+                            <option value="04.NB_MR530SG">04.NB_MR530SG</option>
+                            <option value="05.NB_MR530KA">05.NB_MR530KA</option>
+                            <option value="06.NB_MS327FE">06.NB_MS327FE</option>
+                            <option value="07.NB_MS327LAB">
+                                07.NB_MS327LAB
+                            </option>
+                            <option value="08.NB_MS327CPG">
+                                08.NB_MS327CPG
+                            </option>
+                            <option value="09.NB_MS327LH1">
+                                09.NB_MS327LH1
+                            </option>
+                            <option value="10.NB_WS327KC">10.NB_WS327KC</option>
+                            <option value="11.NB_MS327WE">11.NB_MS327WE</option>
+                            <option value="12.NB_MS327BD">12.NB_MS327BD</option>
+                            <option value="13.NB_MR530SH">13.NB_MR530SH</option>
+                            <option value="14.NB_WS327LW">14.NB_WS327LW</option>
+                            <option value="15.NB_MS327CLA">
+                                15.NB_MS327CLA
+                            </option>
+                            <option value="16.NB_ML574EVB">
+                                16.NB_ML574EVB
+                            </option>
+                            <option value="17.NB_ML574EVG">
+                                17.NB_ML574EVG
+                            </option>
+                            <option value="18.NB_ML574EVW">
+                                18.NB_ML574EVW
+                            </option>
+                            <option value="19.NB_ML574EVE">
+                                19.NB_ML574EVE
+                            </option>
                         </select>
                     </div>
                     <div class="searchBar">
@@ -51,11 +87,20 @@
                             @click="secondSelected($event)"
                         >
                             <option value="0">사이즈</option>
-                            <option value="90">90</option>
-                            <option value="95">95</option>
-                            <option value="100">100</option>
-                            <option value="105">105</option>
-                            <option value="110">110</option>
+                            <option value="225">225</option>
+                            <option value="230">230</option>
+                            <option value="235">235</option>
+                            <option value="240">240</option>
+                            <option value="245">245</option>
+                            <option value="250">250</option>
+                            <option value="255">255</option>
+                            <option value="260">260</option>
+                            <option value="265">265</option>
+                            <option value="270">270</option>
+                            <option value="275">275</option>
+                            <option value="280">280</option>
+                            <option value="285">285</option>
+                            <option value="290">290</option>
                         </select>
                     </div>
                 </div>
@@ -67,10 +112,12 @@
                         <div class="rightSelectedTable">
                             <tr v-for="(item, index) in items" :key="index">
                                 <td style="width: 200px">
-                                    <span>옵션1 : </span><span v-html="item.name"></span>
+                                    <span>옵션1 : </span
+                                    ><span v-html="item.name"></span>
                                 </td>
                                 <td style="width: 100px">
-                                    <span>옵션2 : </span><span v-html="item.size"></span>
+                                    <span>옵션2 : </span
+                                    ><span v-html="item.size"></span>
                                 </td>
                                 <td style="width: 10px; padding: 0 0 0 20px">
                                     <button
@@ -80,7 +127,7 @@
                                         "
                                         @click="amountDec(index)"
                                     >
-                                        &lt;
+                                        -
                                     </button>
                                 </td>
                                 <td
@@ -100,7 +147,7 @@
                                         "
                                         @click="amountInc(index)"
                                     >
-                                        &gt;
+                                        +
                                     </button>
                                 </td>
                                 <td style="width: 30px">
@@ -205,11 +252,15 @@ export default {
                 this.isSelected = false;
                 let title = document.getElementById("title").innerHTML;
                 let newItem = {
+                    img: "product01.jpg",
+                    seller: "네파",
                     title: title,
                     name: this.firstOption,
                     size: this.secondOption,
                     price: this.price,
                     amount: 1,
+                    delivery_fee: 2500,
+                    delivery_low: 50000,
                 };
                 this.items.push(newItem);
                 this.addList(newItem);

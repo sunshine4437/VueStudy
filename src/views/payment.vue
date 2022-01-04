@@ -4,15 +4,15 @@
             <div class="orderProduct">
                 <h2>주문 상품 정보</h2>
                 <table class="orderProductTable">
-                    <tr v-for="(op, idx) in orderProducts" :key="idx">
+                    <tr v-for="(op, idx) in getBasketList" :key="idx">
                         <td class="orderProductTd" style="width: 10%">
-                            <h3 v-html="op.shopName"></h3>
+                            <h3 v-html="op.seller"></h3>
                         </td>
                         <td class="orderProductTd" style="width: 10%">
                             <img
                                 class="orderProductImg"
                                 :src="
-                                    require(`@/components/productDetail/image/${op.image}`)
+                                    require(`@/components/productDetail/image/${op.img}`)
                                 "
                                 alt="productImage"
                             />
@@ -21,14 +21,15 @@
                             class="orderProductTd"
                             style="width: 50%; text-align: left"
                         >
-                            <p v-html="op.productName"></p>
+                            <p v-html="op.title"></p>
+                            <p v-html="op.name"></p>
                             <p>
                                 <span>옵션 : </span
-                                ><span v-html="op.productOption"></span>
+                                ><span v-html="op.size"></span>
                             </p>
                         </td>
                         <td class="orderProductTd" style="width: 10%">
-                            <span v-html="AddComma(op.count)"></span
+                            <span v-html="AddComma(op.amount)"></span
                             ><span>개</span>
                         </td>
                         <td class="orderProductTd" style="width: 10%">
@@ -36,8 +37,8 @@
                             ><span>원</span>
                         </td>
                         <td class="orderProductTd" style="width: 10%">
-                            <span v-html="AddComma(op.delivery)"></span
-                            ><span v-if="op.delivery > 0">원</span>
+                            <span v-html="AddComma(op.delivery_fee)"></span
+                            ><span v-if="op.delivery_fee > 0">원</span>
                         </td>
                     </tr>
                 </table>
