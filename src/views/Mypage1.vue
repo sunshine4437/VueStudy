@@ -46,22 +46,35 @@
                             <button class="dateBtn">1년</button>
                         </div>
                         <div class="row2">
-                            <select name="" id="">
+                            <select name="" id="" @change="setStartYear">
                                 <option v-for="n in years" :key="n" :value="n" :selected="n == getYear()">{{n}}</option>
                             </select>
                             <label for="">년</label>
-                            <select name="" id="">
+                            <select name="" id="" @change="setStartMonth">
                                 <option v-for="n in 12" :key="n" :value="n" :selected="n == getMonth()">{{n}}</option>
                             </select>
                             <label for="">월</label>
-                            <select name="" id="">
+                            <select name="" id="" @change="setStartDate">
+                                <option v-for="n in 31" :key="n" :value="n" :selected="n == getDate()">{{n}}</option>
+                            </select>
+                            <label for="">일</label>
+                            -
+                            <select name="" id="" @change="setEndYear">
+                                <option v-for="n in years" :key="n" :value="n" :selected="n == getYear()">{{n}}</option>
+                            </select>
+                            <label for="">년</label>
+                            <select name="" id="" @change="setEndMonth">
+                                <option v-for="n in 12" :key="n" :value="n" :selected="n == getMonth()">{{n}}</option>
+                            </select>
+                            <label for="">월</label>
+                            <select name="" id="" @change="setEndDate">
                                 <option v-for="n in 31" :key="n" :value="n" :selected="n == getDate()">{{n}}</option>
                             </select>
                             <label for="">일</label>
                         </div>
                         <div class="row3">
-                            <input type="text" class="searchBar" placeholder="  주문 상품명을 검색하세요!">&nbsp; &nbsp;
-                            <button class="searchBtn">조회하기</button>
+                            <input type="text" class="searchBar" id="searchInput" placeholder="주문 상품명을 검색하세요!">
+                            <button class="searchBtn" @click="search">조회하기</button>
                         </div>
                     </div>
                 </div>
@@ -72,7 +85,7 @@
 
             <div class="date2">
                 <table class="table2">
-                    <tr class="tr1">
+                    <tr class="tr1" style="height:50px;">
                         <td>주문일자</td>
                         <td>주문 상품 정보</td>
                         <td>상품금액</td>
@@ -80,13 +93,13 @@
                         <td>배송비</td>
                         <td>주문상태</td>
                     </tr>
-                    <tr v-for="(item, idx) in orderList" :key="idx">
-                        <td v-if="item.id<getID">{{item.date}}</td>
-                        <td v-if="item.id<getID">{{item.inform}}</td>
-                        <td v-if="item.id<getID">{{item.price}}</td>
-                        <td v-if="item.id<getID">{{item.amount}}</td>
-                        <td v-if="item.id<getID">{{item.fee}}</td>
-                        <td v-if="item.id<getID">{{item.Status}}</td>
+                    <tr v-for="(item, idx) in orderList" :key="idx" v-show="compareDate(item) && compareInform(item)">
+                        <td style="height:30px;">{{item.date}}</td>
+                        <td style="height:30px;">{{item.inform}}</td>
+                        <td style="height:30px;">{{item.price}}</td>
+                        <td style="height:30px;">{{item.amount}}</td>
+                        <td style="height:30px;">{{item.fee}}</td>
+                        <td style="height:30px;">{{item.Status}}</td>
                     </tr>
                 </table>
             </div>
@@ -121,13 +134,9 @@
                         <td>취소</td>
                     </tr>
                 </table>
-
             </div>
-
         </div>
-
     </div>
-
 </div>
 </template>
 
@@ -135,13 +144,23 @@
 export default {
     data() {
         return {
-            selectTerm: 7,
+            startPoint: {
+                year: "1900",
+                month: "01",
+                date: "01",
+            },
+            endPoint: {
+                year: this.getYear(),
+                month: this.getMonth(),
+                date: this.getDate(),
+            },
             years: [],
             months: [],
             dates: [],
+            target: "",
             orderList: [{
                     id: "1",
-                    date: this.getDate(),
+                    date: "2021-01-10",
                     inform: "12",
                     price: "13",
                     amount: "14",
@@ -150,7 +169,7 @@ export default {
                 },
                 {
                     id: "2",
-                    date: "21",
+                    date: "2021-02-09",
                     inform: "22",
                     price: "23",
                     amount: "24",
@@ -159,7 +178,7 @@ export default {
                 },
                 {
                     id: "3",
-                    date: "21",
+                    date: "2021-03-10",
                     inform: "22",
                     price: "23",
                     amount: "24",
@@ -168,7 +187,7 @@ export default {
                 },
                 {
                     id: "4",
-                    date: "21",
+                    date: "2021-04-10",
                     inform: "22",
                     price: "23",
                     amount: "24",
@@ -177,7 +196,70 @@ export default {
                 },
                 {
                     id: "5",
-                    date: "21",
+                    date: "2021-05-10",
+                    inform: "22",
+                    price: "23",
+                    amount: "24",
+                    fee: "25",
+                    Status: "26",
+                },
+                {
+                    id: "5",
+                    date: "2021-05-10",
+                    inform: "22",
+                    price: "23",
+                    amount: "24",
+                    fee: "25",
+                    Status: "26",
+                },
+                {
+                    id: "5",
+                    date: "2021-05-10",
+                    inform: "22",
+                    price: "23",
+                    amount: "24",
+                    fee: "25",
+                    Status: "26",
+                },
+                {
+                    id: "5",
+                    date: "2021-05-10",
+                    inform: "22",
+                    price: "23",
+                    amount: "24",
+                    fee: "25",
+                    Status: "26",
+                },
+                {
+                    id: "5",
+                    date: "2020-05-10",
+                    inform: "22",
+                    price: "23",
+                    amount: "24",
+                    fee: "25",
+                    Status: "26",
+                },
+                {
+                    id: "5",
+                    date: "2015-06-10",
+                    inform: "22",
+                    price: "23",
+                    amount: "24",
+                    fee: "25",
+                    Status: "26",
+                },
+                {
+                    id: "5",
+                    date: "2021-05-10",
+                    inform: "22",
+                    price: "23",
+                    amount: "24",
+                    fee: "25",
+                    Status: "26",
+                },
+                {
+                    id: "5",
+                    date: "2021-03-10",
                     inform: "22",
                     price: "23",
                     amount: "24",
@@ -187,11 +269,7 @@ export default {
             ]
         }
     },
-    computed: {
-        getID() {
-            return this.selectTerm;
-        },
-    },
+    computed: {},
     methods: {
         getDate() {
             let today = new Date();
@@ -208,13 +286,70 @@ export default {
             let year = today.getFullYear();
             return year;
         },
-
+        // 2000-01-01
+        replaceAt(input, index, character) {
+            return input.substr(0, index) + character + input.substr(index + character.length);
+        },
+        setStartDate(event) {
+            if (event.target.value < 10)
+                this.startPoint.date = 0 + event.target.value;
+            else
+                this.startPoint.date = event.target.value;
+        },
+        setStartMonth(event) {
+            if (event.target.value < 10)
+                this.startPoint.month = 0 + event.target.value;
+            else
+                this.startPoint.month = event.target.value;
+        },
+        setStartYear(event) {
+            this.startPoint.year = event.target.value;
+        },
+        setEndDate(event) {
+            if (event.target.value < 10)
+                this.endPoint.date = 0 + event.target.value;
+            else
+                this.endPoint.date = event.target.value;
+        },
+        setEndMonth(event) {
+            if (event.target.value < 10)
+                this.endPoint.month = 0 + event.target.value;
+            else
+                this.endPoint.month = event.target.value;
+        },
+        setEndYear(event) {
+            this.endPoint.year = event.target.value;
+        },
+        compareDate(target) {
+            // alert(`${this.selectTerm.year}-${this.selectTerm.month}-${this.selectTerm.date}`)
+            // alert(target.date)
+            if (`${this.startPoint.year}-${this.startPoint.month}-${this.startPoint.date}` <= target.date)
+                if (target.date <= `${this.endPoint.year}-${this.endPoint.month}-${this.endPoint.date}`)
+                    return true;
+        },
+        search() {
+            this.target = document.getElementById("searchInput").value
+        },
+        compareInform(event) {
+            if (this.target == "")
+                return true;
+            else {
+                // if (this.target == event.inform)
+                if (event.inform.indexOf(this.target) !== -1)
+                    return true;
+                else
+                    return false;
+            }
+        }
     },
     mounted() {
         {
             for (let i = this.getYear() - 10; i <= this.getYear(); i++) {
                 this.years.push(i);
             }
+            this.year = this.getYear();
+            this.month = this.getMonth();
+            this.date = this.getDate();
         }
     }
 }
@@ -272,10 +407,17 @@ hr {
 
 .date1,
 .date2 {
-    display: flex;
+  
     border-bottom: 1px solid rgb(197, 195, 195);
     padding-top: 20px;
     padding-bottom: 20px;
+}
+.date1{
+  display: flex;
+}
+.date2 {
+    height: 300px;
+    overflow: scroll;
 }
 
 .date3 {
@@ -310,6 +452,7 @@ hr {
     margin-right: auto;
     padding: 5px 15px;
     border-radius: 4px;
+
 }
 
 .row2 {

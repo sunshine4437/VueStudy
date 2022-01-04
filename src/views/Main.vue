@@ -44,7 +44,7 @@
                 <router-link v-else-if="!getLogin && i < 2" v-bind:to="'/Login'">
                     <button>{{link.name}}</button>
                 </router-link>
-                <router-link v-else v-bind:to="'/Login'">
+                <router-link v-else v-bind:to="link.link">
                     <button>{{link.name}}</button>
                 </router-link>
 
@@ -61,15 +61,21 @@
         </ul>
         <ul class="rightMenu">
             <li v-for="(link, i) in rightMenuName" :key="i">
-                <router-link v-if="i==0 && getLogin" v-bind:to="'/Mypage2'">
-                    <button>admin님</button>
-                </router-link>
-                <router-link v-else-if="i==1 && getLogin" v-bind:to="'/blank'">
-                    <button>100 P</button>
-                </router-link>
-                <router-link v-else v-bind:to="link.link">
+                <router-link v-if="i==0 && !getLogin" v-bind:to="link.link">
                     <button>{{link.name}}</button>
                 </router-link>
+                <router-link v-else-if="i==1 && !getLogin" v-bind:to="link.link">
+                    <button>{{link.name}}</button>
+                </router-link>
+                <router-link v-else-if="i==2 && getLogin" v-bind:to="link.link">
+                    <button>{{link.name}}</button>
+                </router-link>
+                <router-link v-else-if="i==3 && getLogin" v-bind:to="link.link">
+                    <button @click="LogOut">{{link.name}}</button>
+                </router-link>
+                <!-- <router-link v-else v-bind:to="link.link">
+                    <button>{{link.name}}</button>
+                </router-link> -->
             </li>
         </ul>
     </div>
@@ -103,7 +109,10 @@ export default {
             if (targetId.value === '신발') {
                 this.$router.push(`/shopping`);
             }
-        }
+        },
+            ...loginStore.mapMutations([
+            'LogOut'
+        ])
     },
     data() {
         return {
@@ -128,7 +137,7 @@ export default {
                     name: '장바구니'
                 },
                 {
-                    link: "/otoQ",
+                    link: "/customerService",
                     name: '고객센터'
                 },
             ],
@@ -152,6 +161,12 @@ export default {
                 }, {
                     link: "/signUp",
                     name: '회원가입'
+                }, {
+                    link: "/Mypage1",
+                    name: 'admin님'
+                }, {
+                    link: "/",
+                    name: '로그아웃'
                 },
                 //  {
                 //     link: "/customerService",

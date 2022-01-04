@@ -16,6 +16,9 @@ const loginStore = {
         Login(state) {
             state.flag = true;
         },
+        LogOut(state) {
+            state.flag = false;
+        },
     },
     actions: {
     },
