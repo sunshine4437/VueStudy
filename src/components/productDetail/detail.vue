@@ -1,28 +1,40 @@
 <template>
-<div class="example">
-    <div class="tabs">
-        <TabItem v-for="item in list" v-bind="item" :key="item.id" v-model="currentId" />
+    <div class="example">
+        <div class="tabs">
+            <TabItem
+                v-for="item in list"
+                v-bind="item"
+                :key="item.id"
+                v-model="currentId"
+                class="tabTop"
+            />
+        </div>
+        <div class="contents">
+            <transition>
+                <section class="item" :key="currentId">
+                    <!-- {{ current.content }} -->
+                    <div v-if="currentId === 1">
+                        <img :src="current.content" alt="" />
+                    </div>
+                    <div v-else-if="currentId === 2">
+                        <review></review>
+                    </div>
+                    <div v-else-if="currentId === 3">
+                        <qna></qna>
+                    </div>
+                </section>
+            </transition>
+        </div>
+        <div class="tabs">
+            <TabItem
+                v-for="item in list"
+                v-bind="item"
+                :key="item.id"
+                v-model="currentId"
+                class="tabBottom"
+            />
+        </div>
     </div>
-    <div class="contents">
-        <transition>
-            <section class="item" :key="currentId">
-                <!-- {{ current.content }} -->
-                <div v-if="currentId === 1">
-                    <img :src="current.content" alt="" />
-                </div>
-                <div v-else-if="currentId === 2">
-                    <review></review>
-                </div>
-                <div v-else-if="currentId === 3">
-                    <qna></qna>
-                </div>
-            </section>
-        </transition>
-    </div>
-    <div class="tabs">
-        <TabItem v-for="item in list" v-bind="item" :key="item.id" v-model="currentId" />
-    </div>
-</div>
 </template>
 
 <script>
@@ -38,7 +50,8 @@ export default {
     data() {
         return {
             currentId: 1,
-            list: [{
+            list: [
+                {
                     id: 1,
                     label: "상품 상세 정보",
                     content: "http://placehold.it/1200x1500",
@@ -65,8 +78,18 @@ export default {
 </script>
 
 <style scoped>
-.tabs{
+.tabs {
     width: 200%;
+}
+.tabTop {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.tabBottom {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
 }
 .contents {
     position: relative;
