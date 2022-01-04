@@ -13,7 +13,7 @@
                     </th>
                 </tr>
                 <tr>
-                    <td style="width: 20%"><span>문의 유형</span></td>
+                    <td style="width: 20%"><span>유형</span></td>
                     <td>
                         <select class="qnaType">
                             <option value="회원">회원</option>
@@ -30,7 +30,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><span>문의 내용</span></td>
+                    <td><span>제목</span></td>
+                    <td><input type="text" class="longInput" required /></td>
+                </tr>
+                <tr>
+                    <td><span>내용</span></td>
                     <td>
                         <textarea
                             name="otoTextarea"
@@ -145,6 +149,11 @@ td {
 }
 .shortInput {
     width: 150px;
+    border: 1px rgb(197, 195, 195) solid;
+    font-size: 16px;
+}
+.longInput {
+    width: 100%;
     border: 1px rgb(197, 195, 195) solid;
     font-size: 16px;
 }

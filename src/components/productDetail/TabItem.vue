@@ -28,9 +28,7 @@ export default {
     background: rgba(0, 153, 255, 0.5);
     color: white;
     line-height: 24px;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    width: 140px
+    width: 140px;
 }
 
 .tab:hover {
