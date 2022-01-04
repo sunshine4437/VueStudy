@@ -4,7 +4,7 @@
         <div class="orderProduct">
             <h2>주문 상품 정보</h2>
             <table class="orderProductTable">
-                <tr v-for="(op, idx) in getBasketList" :key="idx">
+                <tr v-for="(op, idx) in getOrderList" :key="idx">
                     <td class="orderProductTd" style="width: 10%">
                         <h3 v-html="op.seller"></h3>
                     </td>
@@ -179,7 +179,7 @@
 import {
     createNamespacedHelpers
 } from "vuex";
-const basketList = createNamespacedHelpers("basketList");
+const orderList = createNamespacedHelpers("orderList");
 export default {
     data() {
         return {
@@ -303,7 +303,7 @@ export default {
         payCheck() {},
     },
     computed: {
-        ...basketList.mapGetters(["getBasketList"]),
+        ...orderList.mapGetters(["getOrderList"]),
     }
 };
 </script>

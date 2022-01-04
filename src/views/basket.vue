@@ -74,7 +74,7 @@
             </div>
         </div>
         <div class="orderBtn">
-            <router-link class="signUpLink" v-bind:to="'/payment'"> <button>주문</button></router-link>
+            <router-link class="signUpLink" v-bind:to="'/payment'"> <button @click="selectList">주문</button></router-link>
         </div>
 
     </div>
@@ -86,6 +86,7 @@ import {
     createNamespacedHelpers
 } from "vuex";
 const basketList = createNamespacedHelpers("basketList");
+const orderList = createNamespacedHelpers("orderList");
 export default {
     data() {
         return {
@@ -174,7 +175,18 @@ export default {
             }
 
         },
+        selectList() {
+            let checkedList = document.getElementsByClassName("checkedList");
+            this.clearOrderList();
+            for (let i = 0; i < checkedList.length; i++) {
+                if (checkedList[i].checked == true) {
+                    this.addOrderList(this.getBasketList[i])
+                }
+            }
+        },
         ...basketList.mapMutations(["delList"]),
+        ...orderList.mapMutations(["addOrderList"]),
+          ...orderList.mapMutations(["clearOrderList"]),
     },
     computed: {
         ...basketList.mapGetters(["getBasketList"]),
