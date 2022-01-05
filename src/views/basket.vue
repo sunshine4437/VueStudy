@@ -218,6 +218,7 @@ export default {
                     checkedList[i].checked = false;
                 }
             }
+            this.getBasketList;
         },
         selectList() {
             let checkedList = document.getElementsByClassName("checkedList");

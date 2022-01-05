@@ -8,108 +8,134 @@
             <div class="enter"></div>
             <div class="rightTitle">
                 <h2 id="title">
-                    [뉴발란스] 남여공용 574/327/530 운동화 씨쏠트 문빔
+                    네파 신상, 이월 다운/플리스 외 FW의류 + 연말 파이널 sale
                 </h2>
                 <h1>{{ AddComma(price) }}원</h1>
             </div>
-            <div class="rightTop">
-                <p>15시 이전 주문 시 오늘 출발</p>
-                <p v-if="delivery == 0">무료 배송</p>
-                <p v-if="delivery > 0">
-                    배송비 {{ AddComma(delivery) }}원 (
-                    {{ AddComma(delivery_low) }}원 이상 구매 시 배송비 무료)
-                </p>
-            </div>
-            <div class="rightSelect">
-                <h3>옵션 선택</h3>
-                <div class="searchBar">
-                    <select id="search1" name="searchSelect" class="searchSelectBox" @click="firstSelected($event)">
-                        <option value="0">상품 번호</option>
-                        <option value="01.NB_CM997HCA">
-                            01.NB_CM997HCA
-                        </option>
-                        <option value="02.NB_CM997HCC">
-                            02.NB_CM997HCC
-                        </option>
-                        <option value="03.NB_ML574RC2">
-                            03.NB_ML574RC2
-                        </option>
-                        <option value="04.NB_MR530SG">04.NB_MR530SG</option>
-                        <option value="05.NB_MR530KA">05.NB_MR530KA</option>
-                        <option value="06.NB_MS327FE">06.NB_MS327FE</option>
-                        <option value="07.NB_MS327LAB">
-                            07.NB_MS327LAB
-                        </option>
-                        <option value="08.NB_MS327CPG">
-                            08.NB_MS327CPG
-                        </option>
-                        <option value="09.NB_MS327LH1">
-                            09.NB_MS327LH1
-                        </option>
-                        <option value="10.NB_WS327KC">10.NB_WS327KC</option>
-                        <option value="11.NB_MS327WE">11.NB_MS327WE</option>
-                        <option value="12.NB_MS327BD">12.NB_MS327BD</option>
-                        <option value="13.NB_MR530SH">13.NB_MR530SH</option>
-                        <option value="14.NB_WS327LW">14.NB_WS327LW</option>
-                        <option value="15.NB_MS327CLA">
-                            15.NB_MS327CLA
-                        </option>
-                        <option value="16.NB_ML574EVB">
-                            16.NB_ML574EVB
-                        </option>
-                        <option value="17.NB_ML574EVG">
-                            17.NB_ML574EVG
-                        </option>
-                        <option value="18.NB_ML574EVW">
-                            18.NB_ML574EVW
-                        </option>
-                        <option value="19.NB_ML574EVE">
-                            19.NB_ML574EVE
-                        </option>
-                    </select>
+            <div class="rightBox">
+                <div class="enter"></div>
+                <div class="rightTitle">
+                    <h2 id="title">
+                        [뉴발란스] 남여공용 574/327/530 운동화 씨쏠트 문빔
+                    </h2>
+                    <h1>{{ AddComma(price) }}원</h1>
                 </div>
                 <div class="searchBar">
                     <select name="searchSelect" class="searchSelectBox" v-show="isSelected" @click="secondSelected($event)">
                         <option value="0">사이즈</option>
-                        <option value="225">225</option>
-                        <option value="230">230</option>
-                        <option value="235">235</option>
-                        <option value="240">240</option>
-                        <option value="245">245</option>
-                        <option value="250">250</option>
-                        <option value="255">255</option>
-                        <option value="260">260</option>
-                        <option value="265">265</option>
-                        <option value="270">270</option>
-                        <option value="275">275</option>
-                        <option value="280">280</option>
-                        <option value="285">285</option>
-                        <option value="290">290</option>
+                        <option value="90">90</option>
+                        <option value="95">95</option>
+                        <option value="100">100</option>
+                        <option value="105">105</option>
+                        <option value="110">110</option>
                     </select>
                 </div>
-            </div>
-            <div class="rightSelected">
-                <h3 style="text-align: left; padding: 0 0 0 20px">
-                    선택된 옵션
-                </h3>
-                <table style="width: 100%">
-                    <div class="rightSelectedTable">
-                        <tr v-for="(item, index) in items" :key="index">
-                            <td style="width: 200px">
-                                <span>옵션1 : </span><span v-html="item.name"></span>
-                            </td>
-                            <td style="width: 100px">
-                                <span>옵션2 : </span><span v-html="item.size"></span>
-                            </td>
-                            <td style="width: 10px; padding: 0 0 0 20px">
-                                <button style="
+                <div class="rightSelect">
+                    <h3>옵션 선택</h3>
+                    <div class="searchBar">
+                        <select
+                            id="search1"
+                            name="searchSelect"
+                            class="searchSelectBox"
+                            @click="firstSelected($event)"
+                        >
+                            <option value="0">상품 번호</option>
+                            <option value="01.NB_CM997HCA">
+                                01.NB_CM997HCA
+                            </option>
+                            <option value="02.NB_CM997HCC">
+                                02.NB_CM997HCC
+                            </option>
+                            <option value="03.NB_ML574RC2">
+                                03.NB_ML574RC2
+                            </option>
+                            <option value="04.NB_MR530SG">04.NB_MR530SG</option>
+                            <option value="05.NB_MR530KA">05.NB_MR530KA</option>
+                            <option value="06.NB_MS327FE">06.NB_MS327FE</option>
+                            <option value="07.NB_MS327LAB">
+                                07.NB_MS327LAB
+                            </option>
+                            <option value="08.NB_MS327CPG">
+                                08.NB_MS327CPG
+                            </option>
+                            <option value="09.NB_MS327LH1">
+                                09.NB_MS327LH1
+                            </option>
+                            <option value="10.NB_WS327KC">10.NB_WS327KC</option>
+                            <option value="11.NB_MS327WE">11.NB_MS327WE</option>
+                            <option value="12.NB_MS327BD">12.NB_MS327BD</option>
+                            <option value="13.NB_MR530SH">13.NB_MR530SH</option>
+                            <option value="14.NB_WS327LW">14.NB_WS327LW</option>
+                            <option value="15.NB_MS327CLA">
+                                15.NB_MS327CLA
+                            </option>
+                            <option value="16.NB_ML574EVB">
+                                16.NB_ML574EVB
+                            </option>
+                            <option value="17.NB_ML574EVG">
+                                17.NB_ML574EVG
+                            </option>
+                            <option value="18.NB_ML574EVW">
+                                18.NB_ML574EVW
+                            </option>
+                            <option value="19.NB_ML574EVE">
+                                19.NB_ML574EVE
+                            </option>
+                        </select>
+                    </div>
+                    <div class="searchBar">
+                        <select
+                            name="searchSelect"
+                            class="searchSelectBox"
+                            v-show="isSelected"
+                            @click="secondSelected($event)"
+                        >
+                            <option value="0">사이즈</option>
+                            <option value="225">225</option>
+                            <option value="230">230</option>
+                            <option value="235">235</option>
+                            <option value="240">240</option>
+                            <option value="245">245</option>
+                            <option value="250">250</option>
+                            <option value="255">255</option>
+                            <option value="260">260</option>
+                            <option value="265">265</option>
+                            <option value="270">270</option>
+                            <option value="275">275</option>
+                            <option value="280">280</option>
+                            <option value="285">285</option>
+                            <option value="290">290</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="rightSelected">
+                    <h3 style="text-align: left; padding: 0 0 0 20px">
+                        선택된 옵션
+                    </h3>
+                    <table style="width: 100%">
+                        <div class="rightSelectedTable">
+                            <tr v-for="(item, index) in items" :key="index">
+                                <td style="width: 200px">
+                                    <span>옵션1 : </span
+                                    ><span v-html="item.name"></span>
+                                </td>
+                                <td style="width: 100px">
+                                    <span>옵션2 : </span
+                                    ><span v-html="item.size"></span>
+                                </td>
+                                <td style="width: 10px; padding: 0 0 0 20px">
+                                    <button
+                                        style="
                                             color: black;
                                             background-color: #fafafa;
-                                        " @click="amountDec(index)">
-                                    -
-                                </button>
-                            </td>
-                            <td style="
+                                        "
+                                        @click="amountDec(index)"
+                                    >
+                                        -
+                                    </button>
+                                </td>
+                                <td
+                                    style="
                                         padding: 0 3px;
                                         width: 25px;
                                         text-align: center;
@@ -120,38 +146,43 @@
                                 <button style="
                                             color: black;
                                             background-color: #fafafa;
-                                        " @click="amountInc(index)">
-                                    +
-                                </button>
-                            </td>
-                            <td style="width: 30px">
-                                <button @click="removeSelected(index)" class="removeSelectedBtn">
-                                    X
-                                </button>
-                            </td>
-                        </tr>
-                    </div>
-                </table>
-            </div>
-            <div class="clear"></div>
-            <div class="rightButton">
-                <h3 style="text-align: right; margin: 20px 35px 30px 0">
-                    총 상품금액 : {{ AddComma(totalPrice) }}원
-                </h3>
-                <router-link v-if="getLogin" v-bind:to="'/basket'">
-                    <button class="myCartBtn" style="margin-right: 20px">
-                        장바구니
-                    </button>
-                </router-link>
-                <router-link v-else v-bind:to="'/Login'">
-                    <button class="myCartBtn" style="margin-right: 20px">
-                        장바구니
-                    </button>
-                </router-link>
-                <router-link v-bind:to="'/payment'">
-                    <button class="buyBtn">구매하기</button>
-                </router-link>
-            </div>
+                                        "
+                                        @click="amountInc(index)"
+                                    >
+                                        +
+                                    </button>
+                                </td>
+                                <td style="width: 30px">
+                                    <button
+                                        @click="removeSelected(index)"
+                                        class="removeSelectedBtn"
+                                    >
+                                        X
+                                    </button>
+                                </td>
+                            </tr>
+                        </div>
+                    </table>
+                </div>
+                <div class="clear"></div>
+                <div class="rightButton">
+                    <h3 style="text-align: right; margin: 20px 35px 30px 0">
+                        총 상품금액 : {{ AddComma(totalPrice) }}원
+                    </h3>
+                    <router-link v-if="getLogin" v-bind:to="'/basket'">
+                        <button class="myCartBtn" style="margin-right: 20px">
+                            장바구니
+                        </button>
+                    </router-link>
+                    <router-link v-else v-bind:to="'/Login'">
+                        <button class="myCartBtn" style="margin-right: 20px">
+                            장바구니
+                        </button>
+                    </router-link>
+                    <router-link v-bind:to="'/payment'">
+                        <button class="buyBtn">구매하기</button>
+                    </router-link>
+                </div>
 
             <!--  -->
             <!-- <button class="myCartBtn" style="margin-right: 20px" @click="addBasketList">
@@ -238,7 +269,6 @@ export default {
                 };
                 this.items.push(newItem);
                 this.addList(newItem);
-
                 if (this.totalPrice >= 50000) {
                     this.delivery_fee = 0;
                 }
@@ -259,7 +289,7 @@ export default {
         },
         removeSelected(idx) {
             this.items.splice(idx, 1);
-
+            this.delList(idx);
             if (this.totalPrice < 50000) {
                 this.delivery_fee = 2500;
             }
