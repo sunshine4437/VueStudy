@@ -60,6 +60,22 @@ export default {
 </script>
 
 <style scoped>
+.logo{
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+h1{
+    font-size: 32px;
+}
+h2{
+    font-size: 22px;
+}
+h3{
+    font-size: 18px;
+}
+p, label, span{
+    font-size: 16px;
+}
 
 li{
     font-size: 17px;
@@ -125,6 +141,7 @@ hr{
     left: 50%;
     top: 45%;
     transform: translate(-50%, -50%);
+    background-color: #00ba54;
     border: 1px solid;
     border-color: white;
 }

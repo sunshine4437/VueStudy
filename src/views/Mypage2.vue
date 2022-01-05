@@ -5,7 +5,7 @@
         <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo"></router-link>
         <h1>마이페이지</h1>
     </div>
-    <div class="container">
+    <div class="container" name="login_member" preva>
         <!--left-->
         <div class="left">
             <div class="List1">
@@ -13,8 +13,11 @@
                 <hr>
             </div>
             <div class="Check">
-                <a href="">주문/배송 조회</a><br>
-                <a href="">취소/환불 조회</a><br>
+                  <a href="">주문/배송 조회</a><br>
+                <a href="">취소/반품/교환 신청</a><br>
+                <a href="">취소/반품/교환 현황</a><br>
+                <a href="">환불/입금내역</a><br>
+                <a href="">영수증/소득공제</a><br>
             </div>
             <div class="List2">
                 <router-link v-bind:to="'/mypage2'">회원정보 열람</router-link>
@@ -24,7 +27,10 @@
                 <a href="">닉네임 수정</a><br>
                 <a href="">비밀번호 수정</a><br>
                 <a href="">전화번호 수정</a><br>
-                <a href="">주소 수정</a>
+                <a href="">주소 수정</a><br>
+                <a href="">회원정보 변경/ 탈퇴</a><br>
+                <a href="">로그인 관리</a><br>
+                <a href="">개인정보 이용내역</a>
             </div>
             <router-link v-bind:to="'/'"> <button class="logoutbtn">로그아웃</button></router-link>
         </div>
@@ -33,51 +39,51 @@
             <div class="pList1">
                 <h2>회원 정보 열람</h2>
             </div>
-            <div class="content">
-                <h3>
-                    닉네임
-                    <input type="text" class="mdText" id="m1" v-model="putnick">
-                    <button class="mdBtn" @click="nickMod"> 수정하기 </button>
-                </h3>
+            <div class="tempDiv">
+               <label class="labelClass" for="">닉네임</label>
+                    <input type="text" class="mdText"  v-model="putnick">
+                    <button class="classBtn" @click="nickMod"> 수정하기 </button>  
             </div>
-            <div class="content">
-                <h3>
-                    비밀번호
-                    <input v-model="signup.password" type="password" class="mdText" id="m2" @blur="passwordValid">
+            <div class="tempDiv">
+                <label class="labelClass" for="">비밀번호</label>
+                    <input v-model="signup.password" type="password" class="mdText"  @blur="passwordValid">
                     <div v-if="!passwordValidFlag" class="pwFlag"> 유효하지 않은 비밀번호 입니다. </div>
-                </h3>
                 <br>
             </div>
-            <div class="content">
-            <h3>
-                비밀번호확인
-                <input v-model="passwordCheck" type="password" name="비밀번호 확인" class="mdText" id="m3" @blur="passwordCheckValid">
-                <button class="mdBtn" @click="pwMod"> 수정하기 </button>
+            <div class="tempDiv">
+                <label class="labelClass" for="">비밀번호확인</label>
+                <input v-model="passwordCheck" type="password" name="비밀번호 확인" class="mdText"  @blur="passwordCheckValid">
+                <button class="classBtn" @click="pwMod"> 수정하기 </button>
                 <div v-if="!passwordCheckFlag" class="re_pwFlag"> 비밀번호가 동일하지 않습니다. </div>
-            </h3>
+     
             </div>
-            <div class="content">
-                <h3>
-                    전화번호
-                    <input v-model="putNum" type="text" class="mdText" id="m4" @blur="numValid" placeholder="- 없이 숫자만" maxlength="11">
-                    <button class="mdBtn" @click="numMod"> 수정하기 </button>
+            <div class="tempDiv">
+                <label class="labelClass" for="">전화번호</label>
+                    <input v-model="putNum" type="text" class="mdText"  @blur="numValid" placeholder="- 없이 숫자만" maxlength="11">
+                    <button class="classBtn" @click="numMod"> 수정하기 </button>
                     <div v-if="!numValidFlag" class="numFlag"> 유효하지 않은 전화번호 입니다. </div>
-                </h3>
             </div>
-            <div class="content">
-                <h3>
-                    주소
-                    <input type="text" class="mdText" id="m5">
-                    <button class="mdBtn"> 주소조회 </button>
-                </h3>
+            <div class="tempDiv">
+                <label class="labelClass" for="">*우편번호</label>
+
+                <input type="text" class="mdText" v-model="postcode" placeholder="우편번호">
+                <span>
+                    <button type="button" class="classBtn" @click="execDaumPostcode()">주소검색</button>
+                </span>
+         
+                <!-- <input type="text" name="total_add" class="total_add"> -->
+
             </div>
-            <div class="content">
-                <h3>
-                    <label>상세주소</label>
-                    <input type="text" class="mdText" id="m6">
-                </h3>
+            <div class="tempDiv">
+                <label class="labelClass" for="">*주소</label>
+                       <input type="text" class="mdText" id="address" v-model="address" placeholder="주소">
+
             </div>
-            <div class="content">
+            <div class="tempDiv">
+                <label class="labelClass" for="">*상세주소</label>
+                <input type="text" class="mdText" id="detailAddress" placeholder="상세주소">
+            </div>
+            <div class="content1">
                 <router-link v-bind:to="'/'"> <button class="quit" @click="quitBtn">회원탈퇴</button></router-link>
             </div>
         </div>
@@ -89,6 +95,9 @@
 export default {
     data() {
         return {
+            postcode: "",
+            address: "",
+            extraAddress: "",
             signup: {
                 password: null,
                 pwhint: '',
@@ -174,7 +183,47 @@ export default {
         },
         quitBtn() {
             alert("정말 탈퇴하시겠습니까?")
-        }
+        },
+         execDaumPostcode() {
+            new window.daum.Postcode({
+                oncomplete: (data) => {
+                    if (this.extraAddress !== "") {
+                        this.extraAddress = "";
+                    }
+                    if (data.userSelectedType === "R") {
+                        // 사용자가 도로명 주소를 선택했을 경우
+                        this.address = data.roadAddress;
+                    } else {
+                        // 사용자가 지번 주소를 선택했을 경우(J)
+                        this.address = data.jibunAddress;
+                    }
+
+                    // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                    if (data.userSelectedType === "R") {
+                        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                        if (data.bname !== "" && /[동|로|가]$/g.test(data.bname)) {
+                            this.extraAddress += data.bname;
+                        }
+                        // 건물명이 있고, 공동주택일 경우 추가한다.
+                        if (data.buildingName !== "" && data.apartment === "Y") {
+                            this.extraAddress +=
+                                this.extraAddress !== "" ?
+                                `, ${data.buildingName}` :
+                                data.buildingName;
+                        }
+                        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                        if (this.extraAddress !== "") {
+                            this.extraAddress = `(${this.extraAddress})`;
+                        }
+                    } else {
+                        this.extraAddress = "";
+                    }
+                    // 우편번호를 입력한다.
+                    this.postcode = data.zonecode;
+                },
+            }).open();
+         },
     }
 }
 </script>
@@ -200,7 +249,7 @@ hr {
 
 .left {
     display: inline-block;
-    height: 725px;
+    height: 887px;
     border: 1px solid rgb(197, 195, 195);
     background-color: #fafafa;
     border-radius: 4px;
@@ -219,7 +268,7 @@ hr {
     border-radius: 4px;
 }
 
-.right>div {
+.right>div:not(.content1){
     border-bottom: 1px solid rgb(197, 195, 195);
 }
 
@@ -281,43 +330,40 @@ hr {
 }
 
 .logoutbtn {
-    margin-top: 170px;
-    margin-left: 32px;
+    margin-top: 100px;
+    margin-left: 45px;
 }
 
 .quit {
     width: 130px;
     height: 65px;
-    margin-top: 10px;
     margin-left: 450px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     background-color: #00ba54;
-}
-
-#m1 {
-    margin-left: 80px;
-}
-#m2 {
-    margin-left: 62px;
-}
-#m3 {
-    margin-left: 29px;
-}
-#m4 {
-    margin-left: 67px;
-}
-#m5 {
-    margin-left: 105px;
-    width: 450px;
-}
-#m6 {
-    margin-left: 72px;
-    width: 450px;
 }
 
 .pwFlag,
 .re_pwFlag,
 .numFlag {
     color: red;
+    margin-left: 20px;
+}
+
+.tempDiv {
+    display: flex;
+    margin: 40px 0 40px 0;
+}
+.labelClass {
+    margin-left: 150px;
+    padding-bottom: 40px;
+    min-width: 120px;
+    font-weight: bold;
+}
+
+.classBtn {
+    width: 100px;
+    height: 30px;
+    margin-left: 10px;
+    padding: 0;
 }
 </style>

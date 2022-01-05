@@ -14,17 +14,23 @@
             </div>
             <div class="Check">
                 <a href="">주문/배송 조회</a><br>
-                <a href="">취소/환불 조회</a><br>
+                <a href="">취소/반품/교환 신청</a><br>
+                <a href="">취소/반품/교환 현황</a><br>
+                <a href="">환불/입금내역</a><br>
+                <a href="">영수증/소득공제</a><br>
             </div>
             <div class="List2">
                 <router-link v-bind:to="'/mypage2'">회원정보 열람</router-link>
                 <hr>
             </div>
             <div class="Check">
-                <a href="">닉네임 수정</a><br>
+               <a href="">닉네임 수정</a><br>
                 <a href="">비밀번호 수정</a><br>
                 <a href="">전화번호 수정</a><br>
-                <a href="">주소 수정</a>
+                <a href="">주소 수정</a><br>
+                <a href="">회원정보 변경/ 탈퇴</a><br>
+                <a href="">로그인 관리</a><br>
+                <a href="">개인정보 이용내역</a>
             </div>
             <!-- <router-link v-bind:to="'/'"> <button class="logoutbtn" @click="logout"> 로그아웃 </button></router-link> -->
             <router-link v-bind:to="'/'"> <button class="logoutbtn"> 로그아웃 </button></router-link>
@@ -43,7 +49,9 @@
                             <button class="dateBtn">1주일</button>
                             <button class="dateBtn">1개월</button>
                             <button class="dateBtn">6개월</button>
-                            <button class="dateBtn">1년</button>
+                            <button class="dateBtn">12월</button>
+                            <button class="dateBtn">11월</button>
+                            <button class="dateBtn">10월</button>
                         </div>
                         <div class="row2">
                             <select name="" id="" @change="setStartYear">
@@ -87,27 +95,27 @@
             <div class="date2">
                 <table class="table2">
                     <tr class="tr1" style="height:50px;">
-                        <td>주문일자</td>
+                        <td id="edge1">주문일자</td>
                         <td>이미지</td>
                         <td>판매자명</td>
                         <td>상품명</td>
                         <td>옵션</td>
                         <td>수량</td>
                         <td>가격</td>
-                        <td>배송비</td>
+                        <td id="edge2">배송비</td>
                     </tr>
                     <!-- v-show="compareDate(item) && compareInform(item)" -->
-                     <tr v-for="(item, idx) in users" :key="idx" v-show="compareDate(item) && compareInform(item)">
+                     <tr v-for="(item, idx) in users" :key="idx" v-show="compareDate(item) && compareInform(item) ">
                         <td style="height:30px;">{{item.orderDate}}</td>
                         <td style="height:30px;">
                             <img :src="require(`@/components/mainPage/productTableImage/${item.img}`)"  alt="banner" style="width:50px; height:50px;">
                         </td>
-                        <td style="height:30px;">{{item.name}}</td>
-                        <td style="height:30px;">{{item.product}}</td>
-                        <td style="height:30px;">{{item.option}}</td>
-                        <td style="height:30px;">{{item.amount}}</td>
-                        <td style="height:30px;">{{item.price}}</td>
-                        <td style="height:30px;">{{item.charge}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.product}}</td>
+                        <td>{{item.option}}</td>
+                        <td>{{item.amount}}</td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.charge}}</td>
                     </tr>
                 </table>
             </div>
@@ -117,29 +125,28 @@
             </div>
             <div class="date3">
                 <table class="table3">
-                    <tr class="tr1">
-                        <td>주문일자</td>
-                        <td>주문 상품 정보</td>
-                        <td>상품금액</td>
-                        <td>판매자</td>
+                      <tr class="tr1" style="height:50px;">
+                        <td id="edge1">주문일자</td>
+                        <td>이미지</td>
+                        <td>판매자명</td>
+                        <td>상품명</td>
+                        <td>옵션</td>
+                        <td>가격</td>
                         <td>처리상태</td>
-                        <td>확인/취소</td>
+                        <td id="edge2">결과</td>
                     </tr>
-                    <tr>
-                        <td>2021-1-1</td>
-                        <td>Apple 2021 에어팟 프로 블루투스 이어폰 맥세이프 호환</td>
-                        <td>268,450</td>
-                        <td>1</td>
-                        <td>환불처리중</td>
-                        <td>확인</td>
-                    </tr>
-                    <tr>
-                        <td>2021-1-1</td>
-                        <td>[쿠팡 직수입] 로지텍 G102 2세대 LIGHTSYNC 유선마우스</td>
-                        <td>25,250</td>
-                        <td>1</td>
-                        <td>환불완료</td>
-                        <td>취소</td>
+                    <!-- v-show="compareDate(item) && compareInform(item)" -->
+                     <tr v-for="(item, asd) in users2" :key="asd" v-show="compareDate(item) && compareInform(item) ">
+                        <td style="height:30px;">{{item.orderDate}}</td>
+                        <td style="height:30px;">
+                            <img :src="require(`@/components/mainPage/productTableImage/${item.img}`)"  alt="banner" style="width:50px; height:50px;">
+                        </td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.product}}</td>
+                        <td>{{item.option}}</td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.process}}</td>
+                        <td>{{item.result}}</td>
                     </tr>
                 </table>
             </div>
@@ -151,6 +158,7 @@
 <script>
 
 import userList from "../assets/data/orderList.json";
+import userList2 from "../assets/data/refundList.json";
 export default {
     data() {
         return {
@@ -172,12 +180,17 @@ export default {
         }
     },
     name: "userList",
+    name2:"userList2",
     computed: {
          users() { 
       return userList.users.map((items) => {
         return items;
       })
-    },
+    }, users2() { 
+      return userList2.users2.map((items) => {
+        return items;
+      })
+    }
     },
     methods: {
         getDate() {
@@ -232,7 +245,7 @@ export default {
         compareDate(target) {
             // alert(`${this.selectTerm.year}-${this.selectTerm.month}-${this.selectTerm.date}`)
             // alert(target.date)
-            if (`${this.startPoint.year}-${this.startPoint.month}-${this.startPoint.date}` <= target.orderDate)
+            if (`${this.startPoint.year}-${this.startPoint.month}-${this.startPoint.orderDate}` <= target.orderDate)
                 if (target.orderDate <= `${this.endPoint.year}-${this.endPoint.month}-${this.endPoint.date}`)
                     return true;
         },
@@ -274,7 +287,9 @@ a {
 hr {
     width: 200px;
 }
-
+tr{
+    border: inherit;
+}
 .top {
     margin-left: 70px;
 }
@@ -286,7 +301,7 @@ hr {
 
 .left {
     display: inline-block;
-    height: 1000px;
+    height: 1090px;
     border: 1px solid rgb(197, 195, 195);
     background-color: #fafafa;
     border-radius: 4px;
@@ -298,7 +313,7 @@ hr {
 
 .right {
     display: inline-block;
-    height: 105px;
+    height: 1150px;
     width: 85%;
     border: 1px solid rgb(197, 195, 195);
     margin-left: 50px;
@@ -316,7 +331,7 @@ hr {
 
 .date1,
 .date2 {
-  
+    
     border-bottom: 1px solid rgb(197, 195, 195);
     padding-top: 20px;
     padding-bottom: 20px;
@@ -332,6 +347,8 @@ hr {
 .date3 {
     margin-top: 20px;
     padding-top: 15px;
+    height: 300px;
+    overflow: scroll;
 }
 
 .table1st {
@@ -342,44 +359,40 @@ hr {
 }
 
 .tables_header {
-    width: 100px;
-    padding: 10px;
+    width: 150px;
     padding-top: 20px;
     text-align: center;
-    line-height: 84px;
+    line-height: 90px;
     font-weight: bold;
     border: 1px solid;
     border-radius: 4px;
     background-color: #00ba54;
-    ;
     color: white;
+    margin-right: 20px;
 }
-
+.searchBtn{
+    margin-left: 20px;
+}
 .row1,
 .row2 {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5px 15px;
+    padding: 1px ;
     border-radius: 4px;
-
 }
-
-.row2 {
-    text-align: center;
-
+.row2{
+    margin-left: 6px;
 }
-
 .row3 {
     display: flex;
     padding: 5px 0px;
 }
 
 .searchBar {
-    width: 300px;
+    width: 400px;
     margin-left: auto;
     margin-right: 1px;
     border-radius: 4px;
     border: 1px solid;
+    padding: 20px;
 }
 
 .table2,
@@ -388,11 +401,12 @@ hr {
     margin-right: auto;
     border-collapse: collapse;
     text-align: center;
+    background-color: white;
 }
 
-.table2 td,
-.table3 td {
-    border: 1px rgb(133, 126, 126) solid;
+.table2 td ,
+.table3 td  {
+    border-bottom: 2px solid rgb(184, 181, 181);
     padding: 7px;
 }
 
@@ -444,5 +458,15 @@ hr {
 .logoutbtn {
     margin-top: 170px;
     margin-left: 40px;
+}
+.tr1{
+    background-color: rgb(0, 153, 255);
+    color: white;
+}
+#edge1{
+    border-top-left-radius: 8px;
+}
+#edge2{
+    border-top-right-radius: 8px;
 }
 </style>
