@@ -6,10 +6,11 @@
         </div>
         <div class="selectDiv">
             <div class="allSelectDiv">
-                <div><input type="checkbox" @click="allCheck()" id="allCheckedList"></div>
-                <div>전체선택 </div>
+                <!-- <div><input type="checkbox" @click="allCheck()" id="allCheckedList"></div> -->
+                <button class="selectBtn" @click="allCheck">전체선택</button>
+                <button class="selectBtn" @click="allDisCheck">전체해제</button>
+                <button class="selectBtn" @click="removeList">선택삭제</button>
             </div>
-            <div @click="removeList()">선택삭제 </div>
         </div>
         <div>
             <div class="listDiv" v-for="(item, idx) in getBasketList" :key="idx">
@@ -57,15 +58,15 @@
             </div>
             <div>
                 <label>상품금액</label>
-                <label class="price" id="totalPro">원</label>
+                <label class="price" id="totalPro">0원</label>
             </div>
             <div>
                 <label>배송비(선결제)</label>
-                <label class="price" id="totalDel">원</label>
+                <label class="price" id="totalDel">0원</label>
             </div>
             <div>
                 <label>할인금액</label>
-                <label class="price" style="color:red;" id="totalSale">원</label>
+                <label class="price" style="color:red;" id="totalSale">0원</label>
             </div>
             <div style="color:red; ">
                 <label>합계</label>
@@ -213,17 +214,31 @@ export default {
         //     totalSum.textContent = this.sum - this.sale + +"원";
         // },
         allCheck() {
-            let allCheck = document.getElementById("allCheckedList");
+            // let allCheck = document.getElementById("allCheckedList");
             let checkedList = document.getElementsByClassName("checkedList");
-            if (allCheck.checked == true)
-                for (let i = 0; i < checkedList.length; i++) {
-                    checkedList[i].checked = true;
-                }
-            else {
-                for (let i = 0; i < checkedList.length; i++) {
-                    checkedList[i].checked = false;
-                }
+            // if (allCheck.checked == true)
+            for (let i = 0; i < checkedList.length; i++) {
+                checkedList[i].checked = true;
+                // }
+                // else {
+                //     for (let i = 0; i < checkedList.length; i++) {
+                //         checkedList[i].checked = false;
+                //     }
             }
+            this.calcPrice();
+        },
+        allDisCheck() {
+            // let allCheck = document.getElementById("allCheckedList");
+            let checkedList = document.getElementsByClassName("checkedList");
+            // if (allCheck.checked == true)
+            //     for (let i = 0; i < checkedList.length; i++) {
+            //         checkedList[i].checked = true;
+            //     }
+            // else {
+            for (let i = 0; i < checkedList.length; i++) {
+                checkedList[i].checked = false;
+            }
+            // }
             this.calcPrice();
         },
         AddComma(num) {
@@ -237,8 +252,16 @@ export default {
                     this.delList(i);
                     checkedList[i].checked = false;
                 }
-
             }
+            let totalPro = document.getElementById("totalPro");
+            let totalDel = document.getElementById("totalDel")
+            let totalSale = document.getElementById("totalSale");
+            let totalSum = document.getElementById("totalSum");
+
+            totalPro.textContent = "0원";
+            totalDel.textContent = "0원";
+            totalSale.textContent = "0원";
+            totalSum.textContent = "0원";
         },
         selectList() {
             let checkedList = document.getElementsByClassName("checkedList");
@@ -429,5 +452,12 @@ export default {
 
 h2 {
     background-color: #fafafa;
+}
+
+.selectBtn {
+    font-size: 15px;
+    height: 22px;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
 </style>
