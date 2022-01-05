@@ -21,6 +21,7 @@
                         <div class="listImage">
                             <!-- <img class="productImage" :src="require(`@/assets/listImage/${item.image}`)" alt=""> -->
                             {{item.img}}
+                            {{idx}}
                         </div>
                     </li>
                     <li class="list3">
@@ -209,6 +210,11 @@ export default {
             for (let i = 0; i < checkedList.length; i++) {
                 if (checkedList[i].checked == true) {
                     this.delList(i);
+                }
+
+            }
+            for (let i = 0; i < checkedList.length; i++) {
+                if (checkedList[i].checked == true) {
                     checkedList[i].checked = false;
                 }
             }
