@@ -1,20 +1,13 @@
 <template>
-    <div>
-        <div class="tabs">
-            <TabItem
-                v-for="item in list"
-                v-bind="item"
-                :key="item.id"
-                v-model="currentId"
-                class="tabTop"
-            />
-        </div>
-        <div class="contents">
-            <transition>
-                <section class="item" :key="currentId">
-                    <div v-if="currentId === 1">
-                        <img
-                            :src="
+<div>
+    <div class="tabs">
+        <TabItem v-for="item in list" v-bind="item" :key="item.id" v-model="currentId" class="tabTop" />
+    </div>
+    <div class="contents">
+        <transition>
+            <section class="item" :key="currentId">
+                <div v-if="currentId === 1">
+                    <img :src="
                                 require(`@/components/productDetail/image/${current.content}`)
                             "
                             style="margin: 0 auto"

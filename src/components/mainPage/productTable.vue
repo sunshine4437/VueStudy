@@ -22,7 +22,7 @@
                     <div class="imageTitle">
                         <a v-bind:href="images[(j-1)+(n-1)*4].link">
                             <temp class="temp"><label for="">{{images[(j-1)+(n-1)*4].name}}</label></temp>
-                            <h3 for="">1,000,000 원</h3>
+                            <h3 for="">{{AddComma(images[(j-1)+(n-1)*4].price) }}원</h3>
                         </a>
                     </div>
                 </li>
@@ -59,8 +59,13 @@ export default {
             } else
                 return this.length;
 
-        }
-    }
+        },
+        AddComma(num) {
+            let regexp = /\B(?=(\d{3})+(?!\d))/g;
+            return num.toString().replace(regexp, ",");
+        },
+    },
+
 }
 </script>
 

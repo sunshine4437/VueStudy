@@ -259,7 +259,7 @@ export default {
     data() {
         return {
             point: 0,
-            totalPrice: 108000,
+            totalPrice: 0,
             coupon: 0,
             sale: 0,
             finalPrice: 110500,
@@ -385,6 +385,14 @@ export default {
     },
     computed: {
         ...orderList.mapGetters(["getOrderList"]),
+    },
+    mounted() {
+        {
+            for (let i = 0; i < this.getOrderList.length; i++) {
+                this.totalPrice += this.getOrderList[i].price;
+                this.sale += this.getOrderList[i].price * 0.1;
+            }
+        }
     },
 };
 </script>

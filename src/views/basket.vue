@@ -6,44 +6,43 @@
         </div>
         <div class="selectDiv">
             <div class="allSelectDiv">
-                <div><input type="checkbox" @click="allCheck()" id="allCheckedList"></div>
-                <div>전체선택 </div>
+                <!-- <div><input type="checkbox" @click="allCheck()" id="allCheckedList"></div> -->
+                <button class="selectBtn" @click="allCheck">전체선택</button>
+                <button class="selectBtn" @click="allDisCheck">전체해제</button>
+                <button class="selectBtn" @click="removeList">선택삭제</button>
             </div>
-            <div @click="removeList()">선택삭제 </div>
         </div>
         <div>
             <div class="listDiv" v-for="(item, idx) in getBasketList" :key="idx">
                 <ul class="list">
                     <li class="list1">
-                        <div><input class="checkedList" type="checkbox" @click="[productPrice(),sumPrice(),sumDelivery(),discount()]"></div>
+                        <!-- <div><input class="checkedList" type="checkbox" @click="[productPrice(),sumPrice(),sumDelivery(),discount()]"></div> -->
+                        <div><input class="checkedList" type="checkbox" @click="calcPrice"></div>
                     </li>
                     <li class="list2">
                         <div class="listImage">
-                            <!-- <img class="productImage" :src="require(`@/assets/listImage/${item.image}`)" alt=""> -->
-                            {{item.img}}
-                            {{idx}}
+                            <!-- <img style="width: 500px; height: 500px; border-radius: 10px" src="@/components/productDetail/image/product01.jpg" /> -->
+                            <img class="productImage" :src="require(`@/components/productDetail/image/${item.img}`)" alt="">
                         </div>
                     </li>
                     <li class="list3">
                         <div>
-                            {{ item.seller}}
+                            <!-- {{ item.seller}} -->
                             <p>{{item.title}}</p>
-                            <p>{{item.name}}</p>
-                            {{ item.amount}}
-                        </div>
-                        <div>
-                            {{item.size}}
+                            <p>옵션1 : {{item.name}}</p>
+                            <p>옵션2 : {{item.size}}</p>
+                            <p>수량 : {{item.amount}}</p>
                         </div>
                     </li>
                     <li class="list4">
                         <div>
-                            <p class="price">{{item.price}}원</p>
-                            <!-- <p class="rate">{{item.rate}}%</p>
-                            <p> {{item.totalRate}}원</p> -->
+                            <p class="price">{{AddComma(item.price)}}원</p>
+                            <p class="rate">{{AddComma(item.price*0.9)}}원</p>
                         </div>
                     </li>
                     <li class="list5">
                         <div>
+                            <p>{{AddComma(item.delivery_fee)}}원</p>
                             <!-- <p class="info">{{item.info}}</p>
                             <p class="fee">{{item.fee}}</p> -->
                         </div>
@@ -59,15 +58,15 @@
             </div>
             <div>
                 <label>상품금액</label>
-                <label class="price" id="totalPro">원</label>
+                <label class="price" id="totalPro">0원</label>
             </div>
             <div>
                 <label>배송비(선결제)</label>
-                <label class="price" id="totalDel">원</label>
+                <label class="price" id="totalDel">0원</label>
             </div>
             <div>
                 <label>할인금액</label>
-                <label class="price" style="color:red;" id="totalSale">원</label>
+                <label class="price" style="color:red;" id="totalSale">0원</label>
             </div>
             <div style="color:red; ">
                 <label>합계</label>
@@ -143,63 +142,56 @@ export default {
         }
     },
     methods: {
-        sumPrice() {
+        calcPrice() {
             let checkedList = document.getElementsByClassName("checkedList");
+            let totalPro = document.getElementById("totalPro");
+            let totalDel = document.getElementById("totalDel")
+            let totalSale = document.getElementById("totalSale");
             let totalSum = document.getElementById("totalSum");
-
+            this.product = 0;
+            this.delivery = 0;
+            this.sale = 0;
             this.sum = 0;
             for (let i = 0; i < checkedList.length; i++) {
                 if (checkedList[i].checked == true) {
+                    this.product += Number(this.getBasketList[i].price);
+                    this.delivery += Number(this.getBasketList[i].delivery_fee);
+                    this.sale += this.getBasketList[i].price * 0.1;
                     this.sum += Number(this.getBasketList[i].price);
                 }
             }
-            totalSum.textContent = this.sum + "원";
-        },
-        sumDelivery() {
-            let checkedList = document.getElementsByClassName("checkedList");
-            let totalDel = document.getElementById("totalDel");
-            this.delivery = 0;
-            for (let i = 0; i < checkedList.length; i++) {
-                if (checkedList[i].checked == true) {
-                    this.delivery += Number(this.getBasketList[i].fee);
-                }
-            }
-            totalDel.textContent = this.delivery + "원";
-        },
-        productPrice() {
-            let checkedList = document.getElementsByClassName("checkedList");
-            let totalPro = document.getElementById("totalPro");
-            this.product = 0;
-            for (let i = 0; i < checkedList.length; i++) {
-                if (checkedList[i].checked == true) {
-                    this.product += Number(this.getBasketList[i].price);
-                }
-            }
-            totalPro.textContent = this.product + "원";
-        },
-        discount() {
-            let checkedList = document.getElementsByClassName("checkedList");
-            let totalSale = document.getElementById("totalSale");
-            this.sale = 0;
-            for (let i = 0; i < checkedList.length; i++) {
-                if (checkedList[i].checked == true) {
-                    this.sale += Number(this.items[i].totalRate - this.items[i].price);
-                }
-            }
-            totalSale.textContent = this.sale + "원";
+            totalPro.textContent = this.AddComma( this.product) + "원";
+            totalDel.textContent = this.AddComma(this.delivery) + "원";
+            totalSale.textContent = "-" + this.AddComma(this.sale) + "원";
+            totalSum.textContent = this.AddComma(this.sum + this.delivery - this.sale) + "원";
         },
         allCheck() {
-            let allCheck = document.getElementById("allCheckedList");
+            // let allCheck = document.getElementById("allCheckedList");
             let checkedList = document.getElementsByClassName("checkedList");
-            if (allCheck.checked == true)
-                for (let i = 0; i < checkedList.length; i++) {
-                    checkedList[i].checked = true;
-                }
-            else {
-                for (let i = 0; i < checkedList.length; i++) {
-                    checkedList[i].checked = false;
-                }
+            // if (allCheck.checked == true)
+            for (let i = 0; i < checkedList.length; i++) {
+                checkedList[i].checked = true;
+                // }
+                // else {
+                //     for (let i = 0; i < checkedList.length; i++) {
+                //         checkedList[i].checked = false;
+                //     }
             }
+            this.calcPrice();
+        },
+        allDisCheck() {
+            // let allCheck = document.getElementById("allCheckedList");
+            let checkedList = document.getElementsByClassName("checkedList");
+            // if (allCheck.checked == true)
+            //     for (let i = 0; i < checkedList.length; i++) {
+            //         checkedList[i].checked = true;
+            //     }
+            // else {
+            for (let i = 0; i < checkedList.length; i++) {
+                checkedList[i].checked = false;
+            }
+            // }
+            this.calcPrice();
         },
         AddComma(num) {
             var regexp = /\B(?=(\d{3})+(?!\d))/g;
@@ -207,18 +199,21 @@ export default {
         },
         removeList() {
             let checkedList = document.getElementsByClassName("checkedList");
-            for (let i = 0; i < checkedList.length; i++) {
+            for (let i = checkedList.length - 1; i >= 0; i--) {
                 if (checkedList[i].checked == true) {
                     this.delList(i);
-                }
-
-            }
-            for (let i = 0; i < checkedList.length; i++) {
-                if (checkedList[i].checked == true) {
                     checkedList[i].checked = false;
                 }
             }
-            this.getBasketList;
+            let totalPro = document.getElementById("totalPro");
+            let totalDel = document.getElementById("totalDel")
+            let totalSale = document.getElementById("totalSale");
+            let totalSum = document.getElementById("totalSum");
+
+            totalPro.textContent = "0원";
+            totalDel.textContent = "0원";
+            totalSale.textContent = "0원";
+            totalSum.textContent = "0원";
         },
         selectList() {
             let checkedList = document.getElementsByClassName("checkedList");
@@ -236,13 +231,6 @@ export default {
     computed: {
         ...basketList.mapGetters(["getBasketList"]),
     },
-    // mounted() {
-    //     {
-    //         for (let i = 0; i < this.items.length; i++) {
-    //             this.items[i].totalRate = Number(this.items[i].price * this.items[i].rate * 0.01);
-    //         }
-    //     }
-    // }
 }
 </script>
 
@@ -416,5 +404,12 @@ export default {
 
 h2 {
     background-color: #fafafa;
+}
+
+.selectBtn {
+    font-size: 15px;
+    height: 22px;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
 </style>
