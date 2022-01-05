@@ -1,29 +1,34 @@
 <template>
-<div class="example">
-    <div class="tabs">
-        <TabItem v-for="item in list" v-bind="item" :key="item.id" v-model="currentId" class="tabTop" />
-    </div>
-    <div class="contents">
-        <transition>
-            <section class="item" :key="currentId">
-                <!-- {{ current.content }} -->
-                <div v-if="currentId === 1">
-                    <img style="margin:0" :src="current.content" alt="" />
-                    <!-- <img style="margin:0" :src="require(`@/components/productDetail/image/B.jpg`)" />
-                     <img style="margin:0" :src="require(`@/components/productDetail/image/NB_top.jpg`)" /> -->
-                </div>
-                <div v-else-if="currentId === 2">
-                    <review></review>
-                </div>
-                <div v-else-if="currentId === 3">
-                    <qna></qna>
-                </div>
-            </section>
-        </transition>
-    </div>
-    <div class="tabs">
-        <TabItem v-for="item in list" v-bind="item" :key="item.id" v-model="currentId" class="tabBottom" />
-    </div>
+    <div>
+        <div class="tabs">
+            <TabItem
+                v-for="item in list"
+                v-bind="item"
+                :key="item.id"
+                v-model="currentId"
+                class="tabTop"
+            />
+        </div>
+        <div class="contents">
+            <transition>
+                <section class="item" :key="currentId">
+                    <div v-if="currentId === 1">
+                        <img
+                            :src="
+                                require(`@/components/productDetail/image/${current.content}`)
+                            "
+                            style="margin: 0 auto"
+                        />
+                    </div>
+                    <div v-else-if="currentId === 2">
+                        <review></review>
+                    </div>
+                    <div v-else-if="currentId === 3">
+                        <qna></qna>
+                    </div>
+                </section>
+            </transition>
+        </div>       
 </div>
 </template>
 
@@ -43,8 +48,7 @@ export default {
             list: [{
                     id: 1,
                     label: "상품 상세 정보",
-                    content: "product01.jpg",
-
+                    content: "productDetail01.jpg",
                 },
                 {
                     id: 2,
@@ -86,10 +90,12 @@ export default {
 
 .contents {
     position: relative;
-    overflow: hidden;
     width: 100%;
     border: 1px solid rgb(0, 153, 255);
     margin-left: 1px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 1600px;
 }
 
 .item {
@@ -113,7 +119,8 @@ export default {
 }
 
 img {
-    object-fit: scale-down;
-    width: 100%;
+    width: 80%;
+    display: block;
+    margin: 0px auto;
 }
 </style>
