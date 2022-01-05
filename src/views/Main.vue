@@ -19,7 +19,7 @@
                 <!-- <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo"></router-link> -->
                 <router-link class="logoLink" v-bind:to="'/'">
                     <div class="logo">
-                        <p>4</p>
+                           <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo" style="width:65px; height:65px; "></router-link>
                     </div>
                 </router-link>
             </li>

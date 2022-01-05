@@ -2,7 +2,7 @@
 <div class="signUp">
     <div class="header">
         <div class="logo">
-              <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo"></router-link>
+              <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo" style="width:65px; height:65px"></router-link>
         </div>
         <div class="sequence">
             <ul class="sequenceMenu">

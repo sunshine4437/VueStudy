@@ -3,7 +3,7 @@
     <div class="inputForm">
         <router-link class="logoLink" v-bind:to="'/'">
             <div class="logo">
-                <p>4</p>
+                    <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo" style="width:130px; height:130px;"></router-link>
             </div>
         </router-link>
         <input class="inputID" type="text" v-model="username" placeholder="아이디 입력">
