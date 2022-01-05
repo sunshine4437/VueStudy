@@ -1,6 +1,5 @@
 <template>
-<div class="payment">
-    <form action="" method="post">
+    <div class="payment">
         <div class="orderProduct">
             <h2>주문 상품 정보</h2>
             <table class="orderProductTable">
@@ -9,25 +8,34 @@
                         <h3 v-html="op.seller"></h3>
                     </td>
                     <td class="orderProductTd" style="width: 10%">
-                        <img class="orderProductImg" :src="
-                                    require(`@/components/productDetail/image/${op.img}`)
-                                " alt="productImage" />
+                        <img
+                            class="orderProductImg"
+                            :src="
+                                require(`@/components/productDetail/image/${op.img}`)
+                            "
+                            alt="productImage"
+                        />
                     </td>
-                    <td class="orderProductTd" style="width: 50%; text-align: left">
-                          <p v-html="op.title"></p>
+                    <td
+                        class="orderProductTd"
+                        style="width: 50%; text-align: left"
+                    >
+                        <p v-html="op.title"></p>
                         <p v-html="op.name"></p>
                         <p>
                             <span>옵션 : </span><span v-html="op.size"></span>
                         </p>
                     </td>
                     <td class="orderProductTd" style="width: 10%">
-                        <span v-html="AddComma(op.amount)"></span><span>개</span>
+                        <span v-html="AddComma(op.amount)"></span
+                        ><span>개</span>
                     </td>
                     <td class="orderProductTd" style="width: 10%">
                         <span v-html="AddComma(op.price)"></span><span>원</span>
                     </td>
                     <td class="orderProductTd" style="width: 10%">
-                        <span v-html="AddComma(op.delivery_fee)"></span><span v-if="op.delivery_fee > 0">원</span>
+                        <span v-html="AddComma(op.delivery_fee)"></span
+                        ><span v-if="op.delivery_fee > 0">원</span>
                     </td>
                 </tr>
             </table>
@@ -51,7 +59,11 @@
                     <td><span>포인트</span></td>
                     <td class="couponNum">{{ AddComma(point) }}원</td>
                     <td>
-                        <input id="pointInput" type="text" style="width: 100%" />
+                        <input
+                            id="pointInput"
+                            type="text"
+                            style="width: 100%"
+                        />
                     </td>
                     <td>
                         <button class="couponBtn" @click="applyPoint()">
@@ -69,22 +81,42 @@
             <p>
                 <span style="margin-right: 28px">이름</span>
                 <span>
-                    <input type="text" id="username" class="shortInput" required />
+                    <input
+                        type="text"
+                        id="username"
+                        class="shortInput inputValues"
+                        name="이름"
+                    />
                 </span>
             </p>
             <p>
                 <span>전화번호</span>
                 <span>
-                    <input type="text" class="shortInput" placeholder="-없이 숫자만" id="mobile" required @keyup="phoneCheck()" />
+                    <input
+                        type="text"
+                        class="shortInput inputValues"
+                        placeholder="-없이 숫자만"
+                        id="mobile"
+                        name="전화번호"
+                        @keyup="phoneCheck()"
+                    />
                 </span>
                 <span>
-                    <span class="validate" v-if="!phoneValidate">-없이 숫자 11자리만 입력해주세요</span>
+                    <span class="validate" v-if="!phoneValidate"
+                        >- 없이 숫자만 입력해주세요</span
+                    >
                 </span>
             </p>
             <p>
                 <span>우편번호</span>
                 <span>
-                    <input class="shortInput" type="text" v-model="postcode" placeholder="우편번호" required />
+                    <input
+                        class="shortInput inputValues"
+                        type="text"
+                        v-model="postcode"
+                        placeholder="우편번호"
+                        name="우편번호"
+                    />
                     <span>
                         <button class="addrBtn" @click="execDaumPostcode()">
                             검색
@@ -95,13 +127,26 @@
             <p>
                 <span>기본주소</span>
                 <span colspan="2">
-                    <input type="text" class="longInput" id="address" v-model="address" placeholder="주소" required />
+                    <input
+                        type="text"
+                        class="longInput inputValues"
+                        id="address"
+                        v-model="address"
+                        placeholder="주소"
+                        name="주소"
+                    />
                 </span>
             </p>
             <p>
                 <span>상세주소</span>
                 <span colspan="2">
-                    <input type="text" class="longInput" id="detailAddress" placeholder="상세주소" required />
+                    <input
+                        type="text"
+                        class="longInput inputValues"
+                        id="detailAddress"
+                        placeholder="상세주소"
+                        name="상세주소"
+                    />
                 </span>
             </p>
         </div>
@@ -109,9 +154,30 @@
         <div class="payMethod">
             <h2 style="margin: 20px 0 0 -10px">결제수단 선택</h2>
             <p>
-                <input type="radio" value="credit" v-model="radioPay" name="payMethod" style="width: auto" required />신용카드
-                <input type="radio" value="cash" v-model="radioPay" name="payMethod" style="width: auto; margin-left: 30px" required />무통장 입금
-                <input type="radio" value="phone" v-model="radioPay" name="payMethod" style="width: auto; margin-left: 30px" required />휴대폰 결제
+                <input
+                    type="radio"
+                    value="credit"
+                    v-model="radioPay"
+                    name="payMethodRadio"
+                    id="payMethodRadio"
+                    style="width: auto"
+                />신용카드
+                <input
+                    type="radio"
+                    value="cash"
+                    v-model="radioPay"
+                    name="payMethodRadio"
+                    id="payMethodRadio"
+                    style="width: auto; margin-left: 30px"
+                />무통장 입금
+                <input
+                    type="radio"
+                    value="phone"
+                    v-model="radioPay"
+                    name="payMethodRadio"
+                    id="payMethodRadio"
+                    style="width: auto; margin-left: 30px"
+                />휴대폰 결제
             </p>
             <div v-if="radioPay === 'credit'">
                 <select class="creditPay">
@@ -141,10 +207,16 @@
             <h2>최종 결제 정보</h2>
             <table class="payInfoTable">
                 <tr>
-                    <td class="payIf" style="border-top: 1px solid rgb(197, 195, 195)">
+                    <td
+                        class="payIf"
+                        style="border-top: 1px solid rgb(197, 195, 195)"
+                    >
                         상품금액
                     </td>
-                    <td class="payNum" style="border-top: 1px solid rgb(197, 195, 195)">
+                    <td
+                        class="payNum"
+                        style="border-top: 1px solid rgb(197, 195, 195)"
+                    >
                         {{ AddComma(totalPrice) }}원
                     </td>
                     <td rowspan="4" class="buyBtnTd">
@@ -162,23 +234,26 @@
                     <td class="payNum">{{ AddComma(delivery) }}원</td>
                 </tr>
                 <tr style="border-top: 2px rgb(197, 195, 195) solid">
-                    <td class="payIf" style="border-bottom: 1px solid rgb(197, 195, 195)">
+                    <td
+                        class="payIf"
+                        style="border-bottom: 1px solid rgb(197, 195, 195)"
+                    >
                         결제 금액
                     </td>
-                    <td class="payNum" style="border-bottom: 1px solid rgb(197, 195, 195)">
+                    <td
+                        class="payNum"
+                        style="border-bottom: 1px solid rgb(197, 195, 195)"
+                    >
                         {{ AddComma(finalPrice) }}원
                     </td>
                 </tr>
             </table>
         </div>
-    </form>
-</div>
+    </div>
 </template>
 
 <script>
-import {
-    createNamespacedHelpers
-} from "vuex";
+import { createNamespacedHelpers } from "vuex";
 const orderList = createNamespacedHelpers("orderList");
 export default {
     data() {
@@ -196,27 +271,6 @@ export default {
             postcode: "",
             address: "",
             extraAddress: "",
-            // orderProducts: [{
-            //         number: "1",
-            //         shopName: "NEPA",
-            //         image: "product01.jpg",
-            //         productName: "네파 신상, 이월 다운/플리스 외 FW의류 + 연말 파이널 sale",
-            //         productOption: "02_7G72054/100",
-            //         count: 1,
-            //         price: 100000,
-            //         delivery: "무료배송",
-            //     },
-            //     {
-            //         number: "2",
-            //         shopName: "NEPA",
-            //         image: "product01.jpg",
-            //         productName: "네파 신상, 이월 다운/플리스 외 FW의류 + 연말 파이널 sale",
-            //         productOption: "03_7G72072/105",
-            //         count: 1,
-            //         price: 100000,
-            //         delivery: 2500,
-            //     },
-            // ],
         };
     },
     methods: {
@@ -227,15 +281,17 @@ export default {
             } else if (pt > parseInt(this.usable) + parseInt(this.point)) {
                 alert("포인트가 부족합니다.");
             } else {
+                this.sale -= parseInt(this.point);
                 this.usable = this.usable - pt + parseInt(this.point);
                 this.point = pt;
-                this.sale = parseInt(this.coupon) + parseInt(this.point);
+                this.sale += parseInt(this.point);
                 this.finalPrice = this.totalPrice - this.sale + this.delivery;
             }
         },
         applyCoupon() {
+            this.sale -= parseInt(this.coupon);
             this.coupon = this.totalPrice * 0.1;
-            this.sale = parseInt(this.coupon) + parseInt(this.point);
+            this.sale += parseInt(this.coupon);
             this.finalPrice = this.totalPrice - this.sale + this.delivery;
         },
         phoneCheck() {
@@ -280,9 +336,9 @@ export default {
                             data.apartment === "Y"
                         ) {
                             this.extraAddress +=
-                                this.extraAddress !== "" ?
-                                `, ${data.buildingName}` :
-                                data.buildingName;
+                                this.extraAddress !== ""
+                                    ? `, ${data.buildingName}`
+                                    : data.buildingName;
                         }
                         // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
                         if (this.extraAddress !== "") {
@@ -300,11 +356,36 @@ export default {
             var regexp = /\B(?=(\d{3})+(?!\d))/g;
             return num.toString().replace(regexp, ",");
         },
-        payCheck() {},
+        payCheck() {
+            const checked = document.getElementsByClassName("inputValues");
+            for (var i = 0; i < checked.length; i++) {
+                if (checked[i].value.length == 0) {
+                    alert(`${checked[i].name}을/를 입력하세요`);
+                    checked[i].focus();
+                    return;
+                }
+            }
+
+            const radioCheck = document.querySelector(
+                'input[name = "payMethodRadio"]:checked'
+            );
+            if (radioCheck == null) {
+                alert("결제수단을 선택해주세요");
+                radioCheck.focus();
+                return;
+            }
+
+            if (!this.phoneValidate) {
+                alert("전화번호를 확인하세요");
+                return;
+            } else {
+                alert("결제를 완료했습니다");
+            }
+        },
     },
     computed: {
         ...orderList.mapGetters(["getOrderList"]),
-    }
+    },
 };
 </script>
 

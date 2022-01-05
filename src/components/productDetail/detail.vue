@@ -28,8 +28,17 @@
                     </div>
                 </section>
             </transition>
-        </div>       
-</div>
+        </div>
+        <div class="tabs">
+            <TabItem
+                v-for="item in list"
+                v-bind="item"
+                :key="item.id"
+                v-model="currentId"
+                class="tabBottom"
+            />
+        </div>
+    </div>
 </template>
 
 <script>
@@ -45,7 +54,8 @@ export default {
     data() {
         return {
             currentId: 1,
-            list: [{
+            list: [
+                {
                     id: 1,
                     label: "상품 상세 정보",
                     content: "productDetail01.jpg",
