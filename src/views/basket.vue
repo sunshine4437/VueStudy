@@ -36,13 +36,13 @@
                     </li>
                     <li class="list4">
                         <div>
-                            <p class="price">{{item.price}}원</p>
-                            <p class="rate">{{item.price*0.9}}원</p>
+                            <p class="price">{{AddComma(item.price)}}원</p>
+                            <p class="rate">{{AddComma(item.price*0.9)}}원</p>
                         </div>
                     </li>
                     <li class="list5">
                         <div>
-                            <p>{{item.delivery_fee}}원</p>
+                            <p>{{AddComma(item.delivery_fee)}}원</p>
                             <!-- <p class="info">{{item.info}}</p>
                             <p class="fee">{{item.fee}}</p> -->
                         </div>
@@ -160,59 +160,11 @@ export default {
                     this.sum += Number(this.getBasketList[i].price);
                 }
             }
-            totalPro.textContent = this.product + "원";
-            totalDel.textContent = this.delivery + "원";
-            totalSale.textContent = "-" + this.sale + "원";
-            totalSum.textContent = this.sum + this.delivery - this.sale + "원";
+            totalPro.textContent = this.AddComma( this.product) + "원";
+            totalDel.textContent = this.AddComma(this.delivery) + "원";
+            totalSale.textContent = "-" + this.AddComma(this.sale) + "원";
+            totalSum.textContent = this.AddComma(this.sum + this.delivery - this.sale) + "원";
         },
-
-        // sumPrice() {
-        //     let checkedList = document.getElementsByClassName("checkedList");
-        //     // let totalSum = document.getElementById("totalSum");
-
-        //     this.sum = 0;
-        //     for (let i = 0; i < checkedList.length; i++) {
-        //         if (checkedList[i].checked == true) {
-        //             this.sum += Number(this.getBasketList[i].price);
-        //         }
-        //     }
-        //     // totalSum.textContent = this.sum + "원";
-        // },
-        // sumDelivery() {
-        //     let checkedList = document.getElementsByClassName("checkedList");
-        //     let totalDel = document.getElementById("totalDel");
-        //     this.delivery = 0;
-        //     for (let i = 0; i < checkedList.length; i++) {
-        //         if (checkedList[i].checked == true) {
-        //             this.delivery += Number(this.getBasketList[i].delivery_fee);
-        //         }
-        //     }
-        //     totalDel.textContent = this.delivery + "원";
-        // },
-        // productPrice() {
-        //     let checkedList = document.getElementsByClassName("checkedList");
-        //     let totalPro = document.getElementById("totalPro");
-        //     this.product = 0;
-        //     for (let i = 0; i < checkedList.length; i++) {
-        //         if (checkedList[i].checked == true) {
-        //             this.product += Number(this.getBasketList[i].price);
-        //         }
-        //     }
-        //     totalPro.textContent = this.product + "원";
-        // },
-        // discount() {
-        //     let checkedList = document.getElementsByClassName("checkedList");
-        //     let totalSale = document.getElementById("totalSale");
-        //     let totalSum = document.getElementById("totalSum");
-        //     this.sale = 0;
-        //     for (let i = 0; i < checkedList.length; i++) {
-        //         if (checkedList[i].checked == true) {
-        //             this.sale += this.getBasketList[i].price * 0.1;
-        //         }
-        //     }
-        //     totalSale.textContent = this.sale + "원";
-        //     totalSum.textContent = this.sum - this.sale + +"원";
-        // },
         allCheck() {
             // let allCheck = document.getElementById("allCheckedList");
             let checkedList = document.getElementsByClassName("checkedList");
