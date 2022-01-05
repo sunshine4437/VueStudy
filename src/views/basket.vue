@@ -207,18 +207,13 @@ export default {
         },
         removeList() {
             let checkedList = document.getElementsByClassName("checkedList");
-            for (let i = 0; i < checkedList.length; i++) {
+            for (let i = checkedList.length - 1; i >= 0; i--) {
                 if (checkedList[i].checked == true) {
                     this.delList(i);
+                    checkedList[i].checked = false;
                 }
 
             }
-            for (let i = 0; i < checkedList.length; i++) {
-                if (checkedList[i].checked == true) {
-                    checkedList[i].checked = false;
-                }
-            }
-            this.getBasketList;
         },
         selectList() {
             let checkedList = document.getElementsByClassName("checkedList");
@@ -236,13 +231,6 @@ export default {
     computed: {
         ...basketList.mapGetters(["getBasketList"]),
     },
-    // mounted() {
-    //     {
-    //         for (let i = 0; i < this.items.length; i++) {
-    //             this.items[i].totalRate = Number(this.items[i].price * this.items[i].rate * 0.01);
-    //         }
-    //     }
-    // }
 }
 </script>
 

@@ -149,7 +149,7 @@
                     </button>
                 </router-link>
                 <router-link v-bind:to="'/payment'">
-                    <button class="buyBtn">구매하기</button>
+                    <button class="buyBtn" @click="insertOrderList">구매하기</button>
                 </router-link>
             </div>
 
