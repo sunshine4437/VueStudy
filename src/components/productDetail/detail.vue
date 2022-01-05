@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
     <div>
         <div class="tabs">
             <TabItem
@@ -29,43 +28,7 @@
                     </div>
                 </section>
             </transition>
-        </div>
-        <div class="tabs">
-            <TabItem
-                v-for="item in list"
-                v-bind="item"
-                :key="item.id"
-                v-model="currentId"
-                class="tabBottom"
-            />
-        </div>
-=======
-<div class="example">
-    <div class="tabs">
-        <TabItem v-for="item in list" v-bind="item" :key="item.id" v-model="currentId" class="tabTop" />
->>>>>>> 0a94d3d5e0cea3ca0eeae61366f7b0616f5fdb09
-    </div>
-    <div class="contents">
-        <transition>
-            <section class="item" :key="currentId">
-                <!-- {{ current.content }} -->
-                <div v-if="currentId === 1">
-                    <img style="margin:0" :src="current.content" alt="" />
-                    <!-- <img style="margin:0" :src="require(`@/components/productDetail/image/B.jpg`)" />
-                     <img style="margin:0" :src="require(`@/components/productDetail/image/NB_top.jpg`)" /> -->
-                </div>
-                <div v-else-if="currentId === 2">
-                    <review></review>
-                </div>
-                <div v-else-if="currentId === 3">
-                    <qna></qna>
-                </div>
-            </section>
-        </transition>
-    </div>
-    <div class="tabs">
-        <TabItem v-for="item in list" v-bind="item" :key="item.id" v-model="currentId" class="tabBottom" />
-    </div>
+        </div>       
 </div>
 </template>
 
@@ -85,12 +48,7 @@ export default {
             list: [{
                     id: 1,
                     label: "상품 상세 정보",
-<<<<<<< HEAD
                     content: "productDetail01.jpg",
-=======
-                    content: "product01.jpg",
-
->>>>>>> 0a94d3d5e0cea3ca0eeae61366f7b0616f5fdb09
                 },
                 {
                     id: 2,
