@@ -6,40 +6,45 @@
         </div>
         <div class="selectDiv">
             <div class="allSelectDiv">
-                <div><input type="checkbox"></div>
+                <div><input type="checkbox" @click="allCheck()" id="allCheckedList"></div>
                 <div>전체선택 </div>
             </div>
-            <div>선택삭제 </div>
+            <div @click="removeList()">선택삭제 </div>
         </div>
         <div>
-            <div class="listDiv" v-for="(item, idx) in items" :key="idx">
+            <div class="listDiv" v-for="(item, idx) in getBasketList" :key="idx">
                 <ul class="list">
                     <li class="list1">
-                        <div><input class="checkedList" type="checkbox" @click="sumPrice()"></div>
+                        <div><input class="checkedList" type="checkbox" @click="[productPrice(),sumPrice(),sumDelivery(),discount()]"></div>
                     </li>
                     <li class="list2">
                         <div class="listImage">
-                            <img class="productImage" :src="require(`@/components/mainPage/productTableImage/${item.image}`)" alt="">
+                            <!-- <img class="productImage" :src="require(`@/assets/listImage/${item.image}`)" alt=""> -->
+                            {{item.img}}
                         </div>
                     </li>
                     <li class="list3">
                         <div>
+                            {{ item.seller}}
+                            <p>{{item.title}}</p>
                             <p>{{item.name}}</p>
+                            {{ item.amount}}
                         </div>
                         <div>
-                            <p><input type="number" class="option" min="0" max="100">{{item.option}}</p>
+                            {{item.size}}
                         </div>
                     </li>
                     <li class="list4">
                         <div>
                             <p class="price">{{item.price}}원</p>
-                            <p class="rate">{{item.rate}}</p>
+                            <!-- <p class="rate">{{item.rate}}%</p>
+                            <p> {{item.totalRate}}원</p> -->
                         </div>
                     </li>
                     <li class="list5">
                         <div>
-                            <p>{{item.info}}</p>
-                            <p>{{item.fee}}</p>
+                            <!-- <p class="info">{{item.info}}</p>
+                            <p class="fee">{{item.fee}}</p> -->
                         </div>
                     </li>
                 </ul>
@@ -53,23 +58,25 @@
             </div>
             <div>
                 <label>상품금액</label>
-                <label class="price">67,400원</label>
+                <label class="price" id="totalPro">원</label>
             </div>
             <div>
                 <label>배송비(선결제)</label>
-                <label class="price">2,500원</label>
+                <label class="price" id="totalDel">원</label>
             </div>
             <div>
                 <label>할인금액</label>
-                <label class="price" style="color:red;">-4,920원</label>
+                <label class="price" style="color:red;" id="totalSale">원</label>
             </div>
             <div style="color:red; ">
                 <label>합계</label>
+
                 <label class="price" style="font-size:25px;" id="totalSum">0원</label>
+
             </div>
         </div>
         <div class="orderBtn">
-            <router-link class="signUpLink" v-bind:to="'/payment'"> <button>주문</button></router-link>
+            <router-link class="signUpLink" v-bind:to="'/payment'"> <button @click="selectList">주문</button></router-link>
         </div>
 
     </div>
@@ -77,50 +84,61 @@
 </template>
 
 <script>
+import {
+    createNamespacedHelpers
+} from "vuex";
+const basketList = createNamespacedHelpers("basketList");
+const orderList = createNamespacedHelpers("orderList");
 export default {
     data() {
         return {
             sum: 0,
-            items: [{
-                    image: "1.jpg",
-                    name: "[뉴발란스] 운동화 MW880GR4 NBPQAS102G",
-                    option: "옵션변경",
-                    price: "125000",
-                    rate: "125,000원",
-                    info: "무료배송",
-                },
-                {
-                    image: "2.jpg",
-                    name: "나이키 에어맥스97 트리플블랙",
-                    option: "옵션변경",
-                    price: "173000",
-                    rate: "10% 163,000원",
-                    info: "무료배송",
-                }, {
-                    image: "3.jpg",
-                    name: "[네파]21년 신상 남성용 벨키자 미드 구스 다운자켓(7H7026)",
-                    option: "옵션변경",
-                    price: "129000",
-                    rate: "24% 98,040원",
-                    info: "무료배송",
-                }, {
-                    image: "4.jpg",
-                    name: "LG Gram 17Z90N 노트북 17인치 IPS 초경량, (2560 x 1600), 10세대 인텔 코어 i7, 8GB RAM, 512GB SSD, 윈도우 10 홈, 17시간 배터리",
-                    option: "옵션변경",
-                    price: "1382490",
-                    rate: "14% 1,175,120원",
-                    info: "155,360원",
-                    fee: "예상 통관대행료"
-                }, {
-                    image: "5.jpg",
-                    name: "벌레퇴치 영국방역회사인정 초파리 페로몬 삼각트랩(1개입)",
-                    option: "옵션변경",
-                    price: "1980",
-                    rate: "1980",
-                    info: "2500",
-                    fee: "배송비",
-                },
-            ]
+            delivery: 0,
+            product: 0,
+            sale: 0,
+            // items: [{
+            //     image: "f1.jpg",
+            //     name: "[뉴발란스] 운동화 MW880GR4 NBPQAS102G",
+            //     option: "옵션변경",
+            //     price: "125000",
+            //     rate: "0",
+            //     totalRate: "",
+            //     info: "무료배송",
+            // }, {
+            //     image: "s1.jpg",
+            //     name: "나이키 에어맥스97 트리플블랙",
+            //     option: "옵션변경",
+            //     price: "173000",
+            //     rate: "10",
+            //     totalRate: "",
+            //     info: "무료배송",
+            // }, {
+            //     image: "b1.jpg",
+            //     name: "[네파]21년 신상 남성용 벨키자 미드 구스 다운자켓(7H7026)",
+            //     option: "옵션변경",
+            //     price: "129000",
+            //     rate: "24",
+            //     totalRate: "",
+            //     info: "무료배송",
+            // }, {
+            //     image: "b2.jpg",
+            //     name: "LG Gram 17Z90N 노트북 17인치 IPS 초경량, (2560 x 1600), 10세대 인텔 코어 i7, 8GB RAM, 512GB SSD, 윈도우 10 홈, 17시간 배터리",
+            //     option: "옵션변경",
+            //     price: "1382490",
+            //     rate: "14",
+            //     totalRate: "",
+            //     info: "예상 통관대행료",
+            //     fee: "155360",
+            // }, {
+            //     image: "b3.jpg",
+            //     name: "벌레퇴치 영국방역회사인정 초파리 페로몬 삼각트랩(1개입)",
+            //     option: "옵션변경",
+            //     price: "1980",
+            //     rate: "0",
+            //     totalRate: "",
+            //     info: "배송비",
+            //     fee: "2500",
+            // }, ]
         }
     },
     methods: {
@@ -128,19 +146,96 @@ export default {
             let checkedList = document.getElementsByClassName("checkedList");
             let totalSum = document.getElementById("totalSum");
 
+            this.sum = 0;
             for (let i = 0; i < checkedList.length; i++) {
                 if (checkedList[i].checked == true) {
-                    this.sum += Number(this.items[i].price);
+                    this.sum += Number(this.getBasketList[i].price);
                 }
             }
-
             totalSum.textContent = this.sum + "원";
+        },
+        sumDelivery() {
+            let checkedList = document.getElementsByClassName("checkedList");
+            let totalDel = document.getElementById("totalDel");
+            this.delivery = 0;
+            for (let i = 0; i < checkedList.length; i++) {
+                if (checkedList[i].checked == true) {
+                    this.delivery += Number(this.getBasketList[i].fee);
+                }
+            }
+            totalDel.textContent = this.delivery + "원";
+        },
+        productPrice() {
+            let checkedList = document.getElementsByClassName("checkedList");
+            let totalPro = document.getElementById("totalPro");
+            this.product = 0;
+            for (let i = 0; i < checkedList.length; i++) {
+                if (checkedList[i].checked == true) {
+                    this.product += Number(this.getBasketList[i].price);
+                }
+            }
+            totalPro.textContent = this.product + "원";
+        },
+        discount() {
+            let checkedList = document.getElementsByClassName("checkedList");
+            let totalSale = document.getElementById("totalSale");
+            this.sale = 0;
+            for (let i = 0; i < checkedList.length; i++) {
+                if (checkedList[i].checked == true) {
+                    this.sale += Number(this.items[i].totalRate - this.items[i].price);
+                }
+            }
+            totalSale.textContent = this.sale + "원";
+        },
+        allCheck() {
+            let allCheck = document.getElementById("allCheckedList");
+            let checkedList = document.getElementsByClassName("checkedList");
+            if (allCheck.checked == true)
+                for (let i = 0; i < checkedList.length; i++) {
+                    checkedList[i].checked = true;
+                }
+            else {
+                for (let i = 0; i < checkedList.length; i++) {
+                    checkedList[i].checked = false;
+                }
+            }
         },
         AddComma(num) {
             var regexp = /\B(?=(\d{3})+(?!\d))/g;
             return num.toString().replace(regexp, ',');
-        }
-    }
+        },
+        removeList() {
+            let checkedList = document.getElementsByClassName("checkedList");
+            for (let i = 0; i < checkedList.length; i++) {
+                if (checkedList[i].checked == true) {
+                    this.delList(i);
+                    checkedList[i].checked = false;
+                }
+            }
+        },
+        selectList() {
+            let checkedList = document.getElementsByClassName("checkedList");
+            this.clearOrderList();
+            for (let i = 0; i < checkedList.length; i++) {
+                if (checkedList[i].checked == true) {
+                    this.addOrderList(this.getBasketList[i])
+                }
+            }
+        },
+        ...basketList.mapMutations(["delList"]),
+        ...orderList.mapMutations(["addOrderList"]),
+        ...orderList.mapMutations(["clearOrderList"]),
+    },
+    computed: {
+        ...basketList.mapGetters(["getBasketList"]),
+    },
+    // mounted() {
+    //     {
+    //         for (let i = 0; i < this.items.length; i++) {
+    //             this.items[i].totalRate = Number(this.items[i].price * this.items[i].rate * 0.01);
+    //         }
+    //     }
+    // }
 }
 </script>
 
@@ -183,7 +278,7 @@ export default {
 }
 
 .list3 p {
-    margin: 10px;
+    margin: 10px 0;
     padding: 0px;
 }
 
@@ -195,6 +290,11 @@ export default {
     font-size: 16px;
     margin: 10px 0;
     text-decoration: line-through;
+}
+
+.list5 .info {
+    margin: 10px 0;
+    padding: 0px;
 }
 
 .list4 .rate {
@@ -262,16 +362,12 @@ export default {
     /* border: 1px solid black; */
     padding: 10px;
     margin-left: 10px;
-
+    min-height: 600px;
 }
 
 .inform {
     /* border: 1px solid black; */
-    position: absolute;
     width: 90%;
-    bottom: 10%;
-    left: 50%;
-    transform: translate(-50%);
     background-color: #fafafa;
     border-radius: 4px;
 }
@@ -291,14 +387,23 @@ export default {
 }
 
 .orderBtn {
-    position: absolute;
-    bottom: 10px;
+
+    margin-top: 20px;
     width: 90%;
     text-align: center;
+    background-color: #0099ff;
+    border-radius: 4px;
 }
-.productImage{
-    width:150px;
-    height:150px;
+
+.productImage {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.productImage {
+    width: 150px;
+    height: 150px;
     object-fit: cover;
 }
 
