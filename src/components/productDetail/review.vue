@@ -4,11 +4,15 @@
             <h2>상품평</h2>
         </div>
         <div class="reviewMain">
-            <table style="width: 100%">
+            <table class="reviewTable">
                 <tr v-for="(review, idx) in reviews" :key="idx">
-                    <td style="width:10%"><img v-bind:src="review.image" /></td>
-                    <td><span v-html="review.comment"></span></td>
-                    <td style="width:10%"><span v-html="review.id"></span></td>
+                    <td style="width: 10%">
+                        <img v-bind:src="review.image" />
+                    </td>
+                    <td style="text-align: left">
+                        <span v-html="review.comment"></span>
+                    </td>
+                    <td style="width: 10%"><span v-html="review.id"></span></td>
                 </tr>
             </table>
         </div>
@@ -55,10 +59,15 @@ export default {
 .reviewMain {
     width: 100%;
 }
+.reviewTable {
+    width: 100%;
+    text-align: center;
+}
 td,
 th {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(197, 195, 195);
+    border-radius: 4px;
 }
 body {
     padding: 1rem;

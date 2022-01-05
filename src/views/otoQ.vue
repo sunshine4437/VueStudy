@@ -8,12 +8,14 @@
         >
             <table>
                 <tr>
-                    <th colspan="2">문의글 작성</th>
+                    <th colspan="2" style="padding: 0 0">
+                        <h2>문의글 작성</h2>
+                    </th>
                 </tr>
                 <tr>
-                    <td style="width: 20%">문의 유형</td>
+                    <td style="width: 20%"><span>유형</span></td>
                     <td>
-                        <select name="qnaType1" id="qnaType1">
+                        <select class="qnaType">
                             <option value="회원">회원</option>
                             <option value="쿠폰/혜택/이벤트">
                                 쿠폰/혜택/이벤트
@@ -28,7 +30,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>문의 내용</td>
+                    <td><span>제목</span></td>
+                    <td><input type="text" class="longInput" required /></td>
+                </tr>
+                <tr>
+                    <td><span>내용</span></td>
                     <td>
                         <textarea
                             name="otoTextarea"
@@ -42,7 +48,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>연락처</td>
+                    <td><span>연락처</span></td>
                     <td>
                         <p>
                             <span>
@@ -53,30 +59,32 @@
                                     placeholder="-없이 숫자만"
                                     id="mobile"
                                     required
-                                    @change="phoneCheck()"
+                                    @keyup="phoneCheck()"
                                 />
                             </span>
                             <span>
                                 <span class="validate" v-if="!phoneValidate"
-                                    >-없이 숫자 11자리만 입력해주세요</span
+                                    >- 없이 숫자 10~11자리만 입력해주세요</span
                                 >
                             </span>
                         </p>
                     </td>
                 </tr>
                 <tr>
-                    <td>파일 첨부</td>
+                    <td><span>파일 첨부</span></td>
                     <td><input type="file" /></td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="2" style="text-align: center">
                         <router-link
                             class="signUpLink"
                             v-bind:to="'/customerService'"
                         >
-                            <button>취소하기</button></router-link
+                            <button class="otoQBtn">
+                                취소하기
+                            </button></router-link
                         >
-                        <button type=" submit">등록하기</button>
+                        <button class="otoQBtn" type=" submit">등록하기</button>
                     </td>
                 </tr>
             </table>
@@ -110,41 +118,11 @@ document.getElementById("file");
 </script>
 
 <style scoped>
-.filebox label {
-    display: inline-block;
-    padding: 10px 20px;
-    color: #fff;
-    vertical-align: middle;
-    background-color: #999999;
-    cursor: pointer;
-    height: 40px;
-    margin-left: 10px;
-}
-.filebox input[type="file"] {
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 0;
-}
-.input-file-button {
-    background-color: #0051ba;
-    border-radius: 4px;
-    border: none;
-    color: white;
-    padding: 15px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 0px 1px;
-}
 .otoQ {
-    width: 60%;
+    width: 700px;
     margin: 0 auto;
     display: flex;
+    background-color: #fafafa;
 }
 
 .otoQForm {
@@ -154,10 +132,11 @@ document.getElementById("file");
 .otoTextarea {
     height: 500px;
     width: 100%;
+    border: 1px solid rgb(197, 195, 195);
 }
 
 table {
-    border: 1px black solid;
+    border: 1px rgb(197, 195, 195) solid;
     border-collapse: collapse;
     padding: 20px 20px;
     width: 700px;
@@ -165,18 +144,40 @@ table {
 
 th,
 td {
-    border: 1px black solid;
+    border: 1px rgb(197, 195, 195) solid;
     padding: 20px 20px;
 }
+.shortInput {
+    width: 150px;
+    border: 1px rgb(197, 195, 195) solid;
+    font-size: 16px;
+}
+.longInput {
+    width: 100%;
+    border: 1px rgb(197, 195, 195) solid;
+    font-size: 16px;
+}
 ::-webkit-file-upload-button {
-    background: #0051ba;
+    background: rgb(0, 153, 255);
     color: #fafafa;
     border-radius: 4px;
     font-size: 16px;
+    -webkit-appearance: none;
+    border: none;
 }
 
 .validate {
     margin-left: 10px;
     color: red;
+}
+.otoQBtn {
+    height: 40px;
+    width: 100px;
+    font-size: 22px;
+    padding: 0 0;
+    margin: 0 10px;
+}
+.qnaType {
+    font-size: 16px;
 }
 </style>

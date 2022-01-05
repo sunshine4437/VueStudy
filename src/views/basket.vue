@@ -6,40 +6,54 @@
         </div>
         <div class="selectDiv">
             <div class="allSelectDiv">
+
                    <div><input type="checkbox" @click="allCheck()" id="allCheckedList"></div>
+
                 <div>전체선택 </div>
             </div>
-            <div>선택삭제 </div>
+            <div @click="removeList()">선택삭제 </div>
         </div>
         <div>
-            <div class="listDiv" v-for="(item, idx) in items" :key="idx">
+            <div class="listDiv" v-for="(item, idx) in getBasketList" :key="idx">
                 <ul class="list">
                     <li class="list1">
+
                         <div><input class="checkedList" type="checkbox" @click="[poductPrice(),sumPrice(),sumDelivery(),discount()]"></div>
                     </li>
                     <li class="list2">
                         <div class="listImage">
                             <img class="productImage" :src="require(`@/assets/listImage/${item.image}`)" alt="">
+
                         </div>
                     </li>
                     <li class="list3">
                         <div>
-                            <p class="name">{{item.name}}</p>
+
+                            {{ item.seller}}
+                            <p>{{item.title}}</p>
+                            <p>{{item.name}}</p>
+                            {{ item.amount}}
                         </div>
                         <div>
-                            <p><input type="number" class="option" min="0" max="100">{{item.option}}</p>
+                            <!-- <p><input type="number" class="option" min="0" max="100">{{item.option}}</p> -->
+                            {{item.size}}
+
                         </div>
                     </li>
                     <li class="list4">
                         <div>
+
                             <p class="price">{{item.price}}원</p>
                             <p class="rate">{{item.rate}}% {{item.totalRate}}원</p>
+
                         </div>
                     </li>
                     <li class="list5">
                         <div>
+
                             <p class="info">{{item.info}}</p>
                             <p class="fee">{{item.fee}}</p>
+
                         </div>
                     </li>
                 </ul>
@@ -65,11 +79,13 @@
             </div>
             <div style="color:red; ">
                 <label>합계</label>
-                <label class="price" style="font-size:25px;" id="totalSum">원</label>
+
+                <label class="price" style="font-size:25px;" id="totalSum">0원</label>
+
             </div>
         </div>
         <div class="orderBtn">
-            <router-link class="signUpLink" v-bind:to="'/payment'"> <button>주문</button></router-link>
+            <router-link class="signUpLink" v-bind:to="'/payment'"> <button @click="selectList">주문</button></router-link>
         </div>
 
     </div>
@@ -77,10 +93,16 @@
 </template>
 
 <script>
+import {
+    createNamespacedHelpers
+} from "vuex";
+const basketList = createNamespacedHelpers("basketList");
+const orderList = createNamespacedHelpers("orderList");
 export default {
     data() {
         return {
             sum: 0,
+
             delivery: 0,
             product: 0,
             sale: 0,
@@ -129,21 +151,25 @@ export default {
                     fee: "2500",
                 },
             ]
+
         }
     },
     methods: {
         sumPrice() {
             let checkedList = document.getElementsByClassName("checkedList");
             let totalSum = document.getElementById("totalSum");
+
             this.sum=0;
             for (let i = 0; i < checkedList.length; i++) {
                 if (checkedList[i].checked == true) {
                     this.sum += Number(this.items[i].price);  
+
                 }
             }
 
             totalSum.textContent = this.sum + "원";
         },
+
          sumDelivery(){
             let checkedList =document.getElementsByClassName("checkedList");
             let totalDel =document.getElementById("totalDel");
@@ -199,7 +225,7 @@ export default {
         },
 
         
-         allCheck() {
+        allCheck() {
             let allCheck = document.getElementById("allCheckedList");
             let checkedList = document.getElementsByClassName("checkedList");
             if (allCheck.checked == true)
@@ -211,6 +237,7 @@ export default {
                     checkedList[i].checked = false;
                 }
             }
+
         },
         AddComma(num) {
             var regexp = /\B(?=(\d{3})+(?!\d))/g;
@@ -218,6 +245,34 @@ export default {
         },
   
 
+
+
+        },
+        removeList() {
+            let checkedList = document.getElementsByClassName("checkedList");
+            for (let i = 0; i < checkedList.length; i++) {
+                if (checkedList[i].checked == true) {
+                    this.delList(i);
+                    checkedList[i].checked = false;
+                }
+            }
+
+        },
+        selectList() {
+            let checkedList = document.getElementsByClassName("checkedList");
+            this.clearOrderList();
+            for (let i = 0; i < checkedList.length; i++) {
+                if (checkedList[i].checked == true) {
+                    this.addOrderList(this.getBasketList[i])
+                }
+            }
+        },
+        ...basketList.mapMutations(["delList"]),
+        ...orderList.mapMutations(["addOrderList"]),
+          ...orderList.mapMutations(["clearOrderList"]),
+    },
+    computed: {
+        ...basketList.mapGetters(["getBasketList"]),
     }
 }
 </script>
@@ -274,10 +329,12 @@ export default {
     margin: 10px 0;
     text-decoration: line-through;
 }
+
 .list5 .info {
     margin: 10px 0;
     padding: 0px;
 }
+
 
 
 .list4 .rate {
@@ -345,7 +402,7 @@ export default {
     /* border: 1px solid black; */
     padding: 10px;
     margin-left: 10px;
-
+    min-height: 600px;
 }
 
 .inform {
@@ -370,9 +427,9 @@ export default {
 }
 
 .orderBtn {
-    position: absolute;
+
     margin-top: 20px;
-    width: 80%;
+    width: 90%;
     text-align: center;
     background-color: #0099ff;
     border-radius: 4px ;
@@ -382,6 +439,12 @@ export default {
 .productImage{
     width:150px;
     height:150px;
+    object-fit: cover;
+}
+
+.productImage {
+    width: 150px;
+    height: 150px;
     object-fit: cover;
 }
 
