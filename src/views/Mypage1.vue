@@ -24,7 +24,7 @@
                 <hr>
             </div>
             <div class="Check">
-               <a href="">닉네임 수정</a><br>
+                <a href="">닉네임 수정</a><br>
                 <a href="">비밀번호 수정</a><br>
                 <a href="">전화번호 수정</a><br>
                 <a href="">주소 수정</a><br>
@@ -33,7 +33,7 @@
                 <a href="">개인정보 이용내역</a>
             </div>
             <!-- <router-link v-bind:to="'/'"> <button class="logoutbtn" @click="logout"> 로그아웃 </button></router-link> -->
-            <router-link v-bind:to="'/'"> <button class="logoutbtn"> 로그아웃 </button></router-link>
+            <!-- <router-link v-bind:to="'/'"> <button class="logoutbtn"> 로그아웃 </button></router-link> -->
         </div>
         <!--right-->
         <div class="right">
@@ -87,35 +87,37 @@
                     </div>
                 </div>
             </div>
-           
+
             <div class="pList2">
                 <h2>주문내역 조회</h2>
             </div>
 
             <div class="date2">
-                <table class="table2">
+                <table class="table2" style="width:1000px">
                     <tr class="tr1" style="height:50px;">
-                        <td id="edge1">주문일자</td>
-                        <td>이미지</td>
-                        <td>판매자명</td>
-                        <td>상품명</td>
-                        <td>옵션</td>
-                        <td>수량</td>
-                        <td>가격</td>
-                        <td id="edge2">배송비</td>
+                        <td id="edge1" style="width:100px">주문일자</td>
+                        <td style="width:90px">이미지</td>
+                        <td style="width:80px">판매자명</td>
+                        <td style="width:400px">상품명</td>
+                        <td style="width:110px">옵션</td>
+                        <td style="width:60px">수량</td>
+                        <td style="width:80px">가격</td>
+                        <td id="edge2" style="width:80px">배송비</td>
                     </tr>
                     <!-- v-show="compareDate(item) && compareInform(item)" -->
-                     <tr v-for="(item, idx) in users" :key="idx" v-show="compareDate(item) && compareInform(item) ">
+                    <tr v-for="(item, idx) in users" :key="idx" v-show="compareDate(item) && compareInform(item) ">
                         <td style="height:30px;">{{item.orderDate}}</td>
                         <td style="height:30px;">
-                            <img :src="require(`@/components/mainPage/productTableImage/${item.img}`)"  alt="banner" style="width:50px; height:50px;">
+                            <img :src="require(`@/components/mainPage/productTableImage/${item.img}`)" alt="banner" style="width:50px; height:50px;">
                         </td>
                         <td>{{item.name}}</td>
                         <td>{{item.product}}</td>
                         <td>{{item.option}}</td>
                         <td>{{item.amount}}</td>
-                        <td>{{item.price}}</td>
+                        <td>{{AddComma(item.price)}}원</td>
+
                         <td>{{item.charge}}</td>
+                        <!-- 총 상품금액 : {{ AddComma(totalPrice) }}원 -->
                     </tr>
                 </table>
             </div>
@@ -124,27 +126,27 @@
                 <h2>취소/환불 조회</h2>
             </div>
             <div class="date3">
-                <table class="table3">
-                      <tr class="tr1" style="height:50px;">
-                        <td id="edge1">주문일자</td>
-                        <td>이미지</td>
-                        <td>판매자명</td>
-                        <td>상품명</td>
-                        <td>옵션</td>
-                        <td>가격</td>
-                        <td>처리상태</td>
-                        <td id="edge2">결과</td>
+                <table class="table3" style="width:1000px">
+                    <tr class="tr1" style="height:50px;">
+                        <td id="edge1" style="width:100px">주문일자</td>
+                        <td style="width:90px">이미지</td>
+                        <td style="width:80px">판매자명</td>
+                        <td style="width:400px">상품명</td>
+                        <td style="width:110px">옵션</td>
+                        <td style="width:60px">가격</td>
+                        <td style="width:80px">처리상태</td>
+                        <td id="edge2" style="width:80px">결과</td>
                     </tr>
                     <!-- v-show="compareDate(item) && compareInform(item)" -->
-                     <tr v-for="(item, asd) in users2" :key="asd" v-show="compareDate(item) && compareInform(item) ">
+                    <tr v-for="(item, asd) in users2" :key="asd" v-show="compareDate(item) && compareInform(item) ">
                         <td style="height:30px;">{{item.orderDate}}</td>
                         <td style="height:30px;">
-                            <img :src="require(`@/components/mainPage/productTableImage/${item.img}`)"  alt="banner" style="width:50px; height:50px;">
+                            <img :src="require(`@/components/mainPage/productTableImage/${item.img}`)" alt="banner" style="width:50px; height:50px;">
                         </td>
                         <td>{{item.name}}</td>
                         <td>{{item.product}}</td>
                         <td>{{item.option}}</td>
-                        <td>{{item.price}}</td>
+                        <td>{{AddComma(item.price)}}원</td>
                         <td>{{item.process}}</td>
                         <td>{{item.result}}</td>
                     </tr>
@@ -156,7 +158,6 @@
 </template>
 
 <script>
-
 import userList from "../assets/data/orderList.json";
 import userList2 from "../assets/data/refundList.json";
 export default {
@@ -176,21 +177,22 @@ export default {
             months: [],
             dates: [],
             target: "",
-            
+
         }
     },
     name: "userList",
-    name2:"userList2",
+    name2: "userList2",
     computed: {
-         users() { 
-      return userList.users.map((items) => {
-        return items;
-      })
-    }, users2() { 
-      return userList2.users2.map((items) => {
-        return items;
-      })
-    }
+        users() {
+            return userList.users.map((items) => {
+                return items;
+            })
+        },
+        users2() {
+            return userList2.users2.map((items) => {
+                return items;
+            })
+        }
     },
     methods: {
         getDate() {
@@ -262,7 +264,11 @@ export default {
                 else
                     return false;
             }
-        }
+        },
+        AddComma(num) {
+            var regexp = /\B(?=(\d{3})+(?!\d))/g;
+            return num.toString().replace(regexp, ",");
+        },
     },
     mounted() {
         {
@@ -287,9 +293,11 @@ a {
 hr {
     width: 200px;
 }
-tr{
+
+tr {
     border: inherit;
 }
+
 .top {
     margin-left: 70px;
 }
@@ -331,24 +339,26 @@ tr{
 
 .date1,
 .date2 {
-    
+
     border-bottom: 1px solid rgb(197, 195, 195);
     padding-top: 20px;
     padding-bottom: 20px;
 }
-.date1{
-  display: flex;
+
+.date1 {
+    display: flex;
 }
+
 .date2 {
     height: 300px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .date3 {
     margin-top: 20px;
     padding-top: 15px;
     height: 300px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .table1st {
@@ -370,17 +380,21 @@ tr{
     color: white;
     margin-right: 20px;
 }
-.searchBtn{
+
+.searchBtn {
     margin-left: 20px;
 }
+
 .row1,
 .row2 {
-    padding: 1px ;
+    padding: 1px;
     border-radius: 4px;
 }
-.row2{
+
+.row2 {
     margin-left: 6px;
 }
+
 .row3 {
     display: flex;
     padding: 5px 0px;
@@ -404,8 +418,8 @@ tr{
     background-color: white;
 }
 
-.table2 td ,
-.table3 td  {
+.table2 td,
+.table3 td {
     border-bottom: 2px solid rgb(184, 181, 181);
     padding: 7px;
 }
@@ -459,14 +473,17 @@ tr{
     margin-top: 170px;
     margin-left: 40px;
 }
-.tr1{
+
+.tr1 {
     background-color: rgb(0, 153, 255);
     color: white;
 }
-#edge1{
+
+#edge1 {
     border-top-left-radius: 8px;
 }
-#edge2{
+
+#edge2 {
     border-top-right-radius: 8px;
 }
 </style>

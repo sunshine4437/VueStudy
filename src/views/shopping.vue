@@ -59,7 +59,7 @@
             </ul>
              <h2>백화점</h2>
             <ul class="aside_brand">
-                <li><input type="checkbox" class="blank"><a href="./basket.vue" class="blank">AK플라자</a></li>
+                <li><input type="checkbox" class="blank"><a href="" class="blank">AK플라자</a></li>
                 <li><input type="checkbox" class="blank"><a href="" class="blank">아이파크몰</a></li>
                 <li><input type="checkbox" class="blank"><a href="" class="blank">현대백화점</a></li>
                 <li><input type="checkbox" class="blank"><a href="" class="blank">롯데백화점</a></li>
@@ -76,8 +76,8 @@
             <div class="products">
                 <router-link v-bind:to="'/productDetail'">
                     <img src="@/assets/listImage/f1.jpg">
-                    <p>[뉴발란스] 운동화 MW880GR4 NBPQAS102G</p>
-                    <p class="price">125,000원</p>
+                    <p>[뉴발란스] 남여공용 574/327/530 운동화 씨쏠트 문빔</p>
+                    <p class="price">73,800원</p>
                 </router-link>
                 <a href="#">
                     <img src="@/assets/listImage/f2.jpg">
@@ -369,5 +369,8 @@ export default {
 
 .clearfix {
     clear: both;
+}
+a:any-link{
+   color:inherit;
 }
 </style>

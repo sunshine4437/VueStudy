@@ -15,35 +15,33 @@
             <div class="listDiv" v-for="(item, idx) in getBasketList" :key="idx">
                 <ul class="list">
                     <li class="list1">
-                        <div><input class="checkedList" type="checkbox" @click="[productPrice(),sumPrice(),sumDelivery(),discount()]"></div>
+                        <!-- <div><input class="checkedList" type="checkbox" @click="[productPrice(),sumPrice(),sumDelivery(),discount()]"></div> -->
+                        <div><input class="checkedList" type="checkbox" @click="calcPrice"></div>
                     </li>
                     <li class="list2">
                         <div class="listImage">
-                            <!-- <img class="productImage" :src="require(`@/assets/listImage/${item.image}`)" alt=""> -->
-                            {{item.img}}
-                            {{idx}}
+                            <!-- <img style="width: 500px; height: 500px; border-radius: 10px" src="@/components/productDetail/image/product01.jpg" /> -->
+                            <img class="productImage" :src="require(`@/components/productDetail/image/${item.img}`)" alt="">
                         </div>
                     </li>
                     <li class="list3">
                         <div>
-                            {{ item.seller}}
+                            <!-- {{ item.seller}} -->
                             <p>{{item.title}}</p>
-                            <p>{{item.name}}</p>
-                            {{ item.amount}}
-                        </div>
-                        <div>
-                            {{item.size}}
+                            <p>옵션1 : {{item.name}}</p>
+                            <p>옵션2 : {{item.size}}</p>
+                            <p>수량 : {{item.amount}}</p>
                         </div>
                     </li>
                     <li class="list4">
                         <div>
                             <p class="price">{{item.price}}원</p>
-                            <!-- <p class="rate">{{item.rate}}%</p>
-                            <p> {{item.totalRate}}원</p> -->
+                            <p class="rate">{{item.price*0.9}}원</p>
                         </div>
                     </li>
                     <li class="list5">
                         <div>
+                            <p>{{item.delivery_fee}}원</p>
                             <!-- <p class="info">{{item.info}}</p>
                             <p class="fee">{{item.fee}}</p> -->
                         </div>
@@ -143,51 +141,77 @@ export default {
         }
     },
     methods: {
-        sumPrice() {
+        calcPrice() {
             let checkedList = document.getElementsByClassName("checkedList");
+            let totalPro = document.getElementById("totalPro");
+            let totalDel = document.getElementById("totalDel")
+            let totalSale = document.getElementById("totalSale");
             let totalSum = document.getElementById("totalSum");
-
+            this.product = 0;
+            this.delivery = 0;
+            this.sale = 0;
             this.sum = 0;
             for (let i = 0; i < checkedList.length; i++) {
                 if (checkedList[i].checked == true) {
+                    this.product += Number(this.getBasketList[i].price);
+                    this.delivery += Number(this.getBasketList[i].delivery_fee);
+                    this.sale += this.getBasketList[i].price * 0.1;
                     this.sum += Number(this.getBasketList[i].price);
                 }
             }
-            totalSum.textContent = this.sum + "원";
-        },
-        sumDelivery() {
-            let checkedList = document.getElementsByClassName("checkedList");
-            let totalDel = document.getElementById("totalDel");
-            this.delivery = 0;
-            for (let i = 0; i < checkedList.length; i++) {
-                if (checkedList[i].checked == true) {
-                    this.delivery += Number(this.getBasketList[i].fee);
-                }
-            }
-            totalDel.textContent = this.delivery + "원";
-        },
-        productPrice() {
-            let checkedList = document.getElementsByClassName("checkedList");
-            let totalPro = document.getElementById("totalPro");
-            this.product = 0;
-            for (let i = 0; i < checkedList.length; i++) {
-                if (checkedList[i].checked == true) {
-                    this.product += Number(this.getBasketList[i].price);
-                }
-            }
             totalPro.textContent = this.product + "원";
+            totalDel.textContent = this.delivery + "원";
+            totalSale.textContent = "-" + this.sale + "원";
+            totalSum.textContent = this.sum + this.delivery - this.sale + "원";
         },
-        discount() {
-            let checkedList = document.getElementsByClassName("checkedList");
-            let totalSale = document.getElementById("totalSale");
-            this.sale = 0;
-            for (let i = 0; i < checkedList.length; i++) {
-                if (checkedList[i].checked == true) {
-                    this.sale += Number(this.items[i].totalRate - this.items[i].price);
-                }
-            }
-            totalSale.textContent = this.sale + "원";
-        },
+
+        // sumPrice() {
+        //     let checkedList = document.getElementsByClassName("checkedList");
+        //     // let totalSum = document.getElementById("totalSum");
+
+        //     this.sum = 0;
+        //     for (let i = 0; i < checkedList.length; i++) {
+        //         if (checkedList[i].checked == true) {
+        //             this.sum += Number(this.getBasketList[i].price);
+        //         }
+        //     }
+        //     // totalSum.textContent = this.sum + "원";
+        // },
+        // sumDelivery() {
+        //     let checkedList = document.getElementsByClassName("checkedList");
+        //     let totalDel = document.getElementById("totalDel");
+        //     this.delivery = 0;
+        //     for (let i = 0; i < checkedList.length; i++) {
+        //         if (checkedList[i].checked == true) {
+        //             this.delivery += Number(this.getBasketList[i].delivery_fee);
+        //         }
+        //     }
+        //     totalDel.textContent = this.delivery + "원";
+        // },
+        // productPrice() {
+        //     let checkedList = document.getElementsByClassName("checkedList");
+        //     let totalPro = document.getElementById("totalPro");
+        //     this.product = 0;
+        //     for (let i = 0; i < checkedList.length; i++) {
+        //         if (checkedList[i].checked == true) {
+        //             this.product += Number(this.getBasketList[i].price);
+        //         }
+        //     }
+        //     totalPro.textContent = this.product + "원";
+        // },
+        // discount() {
+        //     let checkedList = document.getElementsByClassName("checkedList");
+        //     let totalSale = document.getElementById("totalSale");
+        //     let totalSum = document.getElementById("totalSum");
+        //     this.sale = 0;
+        //     for (let i = 0; i < checkedList.length; i++) {
+        //         if (checkedList[i].checked == true) {
+        //             this.sale += this.getBasketList[i].price * 0.1;
+        //         }
+        //     }
+        //     totalSale.textContent = this.sale + "원";
+        //     totalSum.textContent = this.sum - this.sale + +"원";
+        // },
         allCheck() {
             let allCheck = document.getElementById("allCheckedList");
             let checkedList = document.getElementsByClassName("checkedList");
@@ -200,6 +224,7 @@ export default {
                     checkedList[i].checked = false;
                 }
             }
+            this.calcPrice();
         },
         AddComma(num) {
             var regexp = /\B(?=(\d{3})+(?!\d))/g;

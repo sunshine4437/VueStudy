@@ -315,7 +315,7 @@ export default {
 .mobile,
 .total_add,
 .detail_add {
-    text-align: left;
+      text-align: center;
     height: 25px;
     border-radius: 4px;
     border: 1px solid;

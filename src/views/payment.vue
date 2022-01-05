@@ -1,6 +1,6 @@
 <template>
 <div class="payment">
-    <form action="" method="post">
+    <form action="/" method="get">
         <div class="orderProduct">
             <h2>주문 상품 정보</h2>
             <table class="orderProductTable">
@@ -14,7 +14,7 @@
                                 " alt="productImage" />
                     </td>
                     <td class="orderProductTd" style="width: 50%; text-align: left">
-                          <p v-html="op.title"></p>
+                        <p v-html="op.title"></p>
                         <p v-html="op.name"></p>
                         <p>
                             <span>옵션 : </span><span v-html="op.size"></span>
@@ -184,7 +184,7 @@ export default {
     data() {
         return {
             point: 0,
-            totalPrice: 108000,
+            totalPrice: 0,
             coupon: 0,
             sale: 0,
             finalPrice: 110500,
@@ -227,16 +227,19 @@ export default {
             } else if (pt > parseInt(this.usable) + parseInt(this.point)) {
                 alert("포인트가 부족합니다.");
             } else {
+                this.sale -= parseInt(this.point);
                 this.usable = this.usable - pt + parseInt(this.point);
                 this.point = pt;
-                this.sale = parseInt(this.coupon) + parseInt(this.point);
+                this.sale += parseInt(this.point);
                 this.finalPrice = this.totalPrice - this.sale + this.delivery;
             }
         },
         applyCoupon() {
+            this.sale -= parseInt(this.coupon);
             this.coupon = this.totalPrice * 0.1;
-            this.sale = parseInt(this.coupon) + parseInt(this.point);
+            this.sale += this.coupon;
             this.finalPrice = this.totalPrice - this.sale + this.delivery;
+
         },
         phoneCheck() {
             let mobile = document.getElementById("mobile").value;
@@ -300,10 +303,20 @@ export default {
             var regexp = /\B(?=(\d{3})+(?!\d))/g;
             return num.toString().replace(regexp, ",");
         },
-        payCheck() {},
+        payCheck() {
+            // alert("결제를 완료했습니다.")
+        },
     },
     computed: {
         ...orderList.mapGetters(["getOrderList"]),
+    },
+    mounted() {
+        {
+            for (let i = 0; i < this.getOrderList.length; i++) {
+                this.totalPrice += this.getOrderList[i].price;
+                this.sale += this.getOrderList[i].price * 0.1;
+            }
+        }
     }
 };
 </script>

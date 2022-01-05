@@ -148,8 +148,13 @@
                         장바구니
                     </button>
                 </router-link>
-                <router-link v-bind:to="'/payment'">
-                    <button class="buyBtn" @click="insertOrderList">구매하기</button>
+                <router-link v-if="getLogin" v-bind:to="'/payment'">
+                    <button class="buyBtn" @click="insertOrderList">
+                        구매하기
+                    </button>
+                </router-link>
+                <router-link v-else v-bind:to="'/login'">
+                    <button class="buyBtn" >구매하기</button>
                 </router-link>
             </div>
 
