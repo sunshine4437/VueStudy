@@ -96,12 +96,12 @@
                 <table class="table2" style="width:1000px">
                     <tr class="tr1" style="height:50px;">
                         <td id="edge1" style="width:100px">주문일자</td>
-                        <td style="width:90px">이미지</td>
+                        <td style="width:80px">이미지</td>
                         <td style="width:80px">판매자명</td>
-                        <td style="width:400px">상품명</td>
-                        <td style="width:110px">옵션</td>
-                        <td style="width:60px">수량</td>
-                        <td style="width:80px">가격</td>
+                        <td style="width:370px">상품명</td>
+                        <td style="width:90px">옵션</td>
+                        <td style="width:100px">수량</td>
+                        <td style="width:100px">가격</td>
                         <td id="edge2" style="width:80px">배송비</td>
                     </tr>
                     <!-- v-show="compareDate(item) && compareInform(item)" -->
@@ -115,9 +115,7 @@
                         <td>{{item.option}}</td>
                         <td>{{item.amount}}</td>
                         <td>{{AddComma(item.price)}}원</td>
-
                         <td>{{item.charge}}</td>
-                        <!-- 총 상품금액 : {{ AddComma(totalPrice) }}원 -->
                     </tr>
                 </table>
             </div>
@@ -127,14 +125,14 @@
             </div>
             <div class="date3">
                 <table class="table3" style="width:1000px">
-                    <tr class="tr1" style="height:50px;">
+                      <tr class="tr1" style="height:50px;">
                         <td id="edge1" style="width:100px">주문일자</td>
-                        <td style="width:90px">이미지</td>
+                        <td style="width:80px">이미지</td>
                         <td style="width:80px">판매자명</td>
-                        <td style="width:400px">상품명</td>
-                        <td style="width:110px">옵션</td>
-                        <td style="width:60px">가격</td>
-                        <td style="width:80px">처리상태</td>
+                        <td style="width:370px">상품명</td>
+                        <td style="width:90px">옵션</td>
+                        <td style="width:100px">가격</td>
+                        <td style="width:100px">처리상태</td>
                         <td id="edge2" style="width:80px">결과</td>
                     </tr>
                     <!-- v-show="compareDate(item) && compareInform(item)" -->
@@ -421,7 +419,8 @@ tr {
 .table2 td,
 .table3 td {
     border-bottom: 2px solid rgb(184, 181, 181);
-    padding: 7px;
+    padding: 7px 4px;
+    font-size: 16px;
 }
 
 .List1 {

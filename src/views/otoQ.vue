@@ -1,94 +1,93 @@
 <template>
     <div class="otoQ">
-        <form
-            class="otoQForm"
-            action="success.html"
-            name="register"
-            method="post"
-        >
-            <table>
-                <tr>
-                    <th colspan="2" style="padding: 0 0">
-                        <h2>문의글 작성</h2>
-                    </th>
-                </tr>
-                <tr>
-                    <td style="width: 20%"><span>유형</span></td>
-                    <td>
-                        <select class="qnaType">
-                            <option value="회원">회원</option>
-                            <option value="쿠폰/혜택/이벤트">
-                                쿠폰/혜택/이벤트
-                            </option>
-                            <option value="주문/결제">주문/결제</option>
-                            <option value="배송">배송</option>
-                            <option value="취소/반품/교환">
-                                취소/반품/교환
-                            </option>
-                            <option value="기타">기타</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span>제목</span></td>
-                    <td><input type="text" class="longInput" required /></td>
-                </tr>
-                <tr>
-                    <td><span>내용</span></td>
-                    <td>
-                        <textarea
-                            name="otoTextarea"
-                            id="otoTextarea"
-                            class="otoTextarea"
-                            maxlength="2000"
-                            placeholder="문의 내용을 입력해주세요."
-                            style="resize: none"
-                            required
-                        ></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span>연락처</span></td>
-                    <td>
-                        <p>
-                            <span>
-                                <input
-                                    type="text"
-                                    name="mobile"
-                                    class="shortInput"
-                                    placeholder="-없이 숫자만"
-                                    id="mobile"
-                                    required
-                                    @keyup="phoneCheck()"
-                                />
-                            </span>
-                            <span>
-                                <span class="validate" v-if="!phoneValidate"
-                                    >- 없이 숫자 10~11자리만 입력해주세요</span
-                                >
-                            </span>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span>파일 첨부</span></td>
-                    <td><input type="file" /></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="text-align: center">
-                        <router-link
-                            class="signUpLink"
-                            v-bind:to="'/customerService'"
-                        >
-                            <button class="otoQBtn">
-                                취소하기
-                            </button></router-link
-                        >
-                        <button class="otoQBtn" type=" submit">등록하기</button>
-                    </td>
-                </tr>
-            </table>
-        </form>
+        <table>
+            <tr>
+                <th colspan="2" style="padding: 0 0">
+                    <h2>문의글 작성</h2>
+                </th>
+            </tr>
+            <tr>
+                <td style="width: 20%"><span>유형</span></td>
+                <td>
+                    <select class="qnaType">
+                        <option value="회원">회원</option>
+                        <option value="쿠폰/혜택/이벤트">
+                            쿠폰/혜택/이벤트
+                        </option>
+                        <option value="주문/결제">주문/결제</option>
+                        <option value="배송">배송</option>
+                        <option value="취소/반품/교환">취소/반품/교환</option>
+                        <option value="기타">기타</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><span>제목</span></td>
+                <td>
+                    <input
+                        type="text"
+                        name="제목"
+                        class="longInput inputValues"
+                    />
+                </td>
+            </tr>
+            <tr>
+                <td><span>내용</span></td>
+                <td>
+                    <textarea
+                        name="내용"
+                        id="otoTextarea"
+                        class="otoTextarea inputValues"
+                        maxlength="2000"
+                        placeholder="문의 내용을 입력해주세요."
+                        style="resize: none"
+                    ></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td><span>연락처</span></td>
+                <td>
+                    <p>
+                        <span>
+                            <input
+                                type="text"
+                                name="연락처"
+                                class="shortInput inputValues"
+                                placeholder="-없이 숫자만"
+                                id="mobile"
+                                @keyup="phoneCheck()"
+                            />
+                        </span>
+                        <span>
+                            <span class="validate" v-if="!phoneValidate"
+                                >- 없이 숫자만 입력해주세요</span
+                            >
+                        </span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td><span>파일 첨부</span></td>
+                <td><input type="file" /></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center">
+                    <router-link
+                        class="signUpLink"
+                        v-bind:to="'/customerService'"
+                    >
+                        <button class="otoQBtn">취소하기</button></router-link
+                    >
+                    <button
+                        class="otoQBtn"
+                        type="submit"
+                        @click="QuestionRegister"
+                    >
+                        등록하기
+                    </button>
+                </td>
+            </tr>
+        </table>
     </div>
 </template>
 
@@ -110,6 +109,23 @@ export default {
                 this.phoneValidate = true;
             } else {
                 this.phoneValidate = false;
+            }
+        },
+        QuestionRegister() {
+            let success = false;
+            const checked = document.getElementsByClassName("inputValues");
+
+            for (var i = 0; i < checked.length; i++) {
+                success = true;
+                if (checked[i].value.length == 0) {
+                    alert(`${checked[i].name}을/를 입력하세요`);
+                    checked[i].focus();
+                    success = false;
+                    return;
+                }
+            }
+            if (success) {
+                alert("질문을 등록했습니다");
             }
         },
     },

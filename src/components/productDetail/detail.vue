@@ -9,21 +9,29 @@
                 <div v-if="currentId === 1">
                     <img :src="
                                 require(`@/components/productDetail/image/${current.content}`)
-                            " style="margin: 0 auto" />
-                </div>
-                <div v-else-if="currentId === 2">
-                    <review></review>
-                </div>
-                <div v-else-if="currentId === 3">
-                    <qna></qna>
-                </div>
-            </section>
-        </transition>
+                            "
+                            style="margin: 0 auto"
+                        />
+                    </div>
+                    <div v-else-if="currentId === 2">
+                        <review></review>
+                    </div>
+                    <div v-else-if="currentId === 3">
+                        <qna></qna>
+                    </div>
+                </section>
+            </transition>
+        </div>
+        <div class="tabs">
+            <TabItem
+                v-for="item in list"
+                v-bind="item"
+                :key="item.id"
+                v-model="currentId"
+                class="tabBottom"
+            />
+        </div>
     </div>
-    <div class="tabs">
-        <TabItem v-for="item in list" v-bind="item" :key="item.id" v-model="currentId" class="tabBottom" />
-    </div>
-</div>
 </template>
 
 <script>
@@ -39,7 +47,8 @@ export default {
     data() {
         return {
             currentId: 1,
-            list: [{
+            list: [
+                {
                     id: 1,
                     label: "상품 상세 정보",
                     content: "productDetail01.jpg",
