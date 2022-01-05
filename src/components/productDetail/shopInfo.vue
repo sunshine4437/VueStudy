@@ -1,7 +1,7 @@
 <template>
     <div class="shop-info">
         <div class="shop-infoBox">
-            <div class="shop-title"><h2>NEPA</h2></div>
+            <div class="shop-title"><h2>신세계몰</h2></div>
         </div>
         <div class="shop-bestItem">
             <div class="bestItemMore">
@@ -10,30 +10,47 @@
                 >
                 <button class="showMore">더 보기</button>
             </div>
-            <div class="bestPicDiv">
-                <div class="bestPic">
-                    <img class="bestImg" src="http://placehold.it/140x140" />
-                </div>
-                <div class="bestPic">
-                    <img class="bestImg" src="http://placehold.it/140x140" />
-                </div>
-                <div class="bestPic">
-                    <img class="bestImg" src="http://placehold.it/140x140" />
-                </div>
-                <div class="bestPic">
-                    <img class="bestImg" src="http://placehold.it/140x140" />
-                </div>
-                <div class="bestPic">
-                    <img class="bestImg" src="http://placehold.it/140x140" />
-                </div>
-                <div class="bestPic">
-                    <img class="bestImg" src="http://placehold.it/140x140" />
+            <div class="bestPicDiv" >
+                <div class="bestPic" v-for="(best, idx) in bests" :key="idx">
+                    <img
+                        :src="
+                            require(`@/components/productDetail/image/${best.image}`)
+                        "
+                        style="width: 140px; height: 140px"
+                    />
                 </div>
             </div>
         </div>
     </div>
 </template>
-
+<script>
+export default {
+    data() {
+        return {
+            bests: [
+                {
+                    image: "best01.jpg",
+                },
+                {
+                    image: "best02.jpg",
+                },
+                {
+                    image: "best03.jpg",
+                },
+                {
+                    image: "best04.jpg",
+                },
+                {
+                    image: "best05.jpg",
+                },
+                {
+                    image: "best06.jpg",
+                },
+            ],
+        };
+    },
+};
+</script>
        
 <style scoped>
 .shop-info {
@@ -87,7 +104,7 @@
     border-radius: 4px;
     overflow: hidden;
 }
-.bestImg{
+.bestImg {
     height: 140px;
     width: 140px;
 }
