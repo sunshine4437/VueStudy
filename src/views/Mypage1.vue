@@ -56,7 +56,7 @@
                             <button class="dateBtn">10월</button>
                         </div>
                         <div class="row2">
-                            <select name="" id="" @change="setStartYears">
+                            <select name="" id="" @change="setStartYear">
                                 <option v-for="n in years" :key="n" :value="n" :selected="n == getYear()">{{n}}</option>
                             </select>
                             <label for="">년</label>
@@ -208,6 +208,9 @@ export default {
             return year;
         },
         // 2000-01-01
+        // replaceAt(input, index, character) {
+        //     return input.substr(0, index) + character + input.substr(index + character.length);
+        // },
         setStartDate(event) {
             if (event.target.value < 10)
                 this.startPoint.date = 0 + event.target.value;

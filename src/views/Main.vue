@@ -3,6 +3,7 @@
     <!-- 상단 메뉴바 -->
     <div class="nav">
         <ul class="search">
+                <!-- 드랍메뉴 -->
             <li>
                 <div class="dropDownMenu">
                     <button class="dropDownMenuBtn">
@@ -15,6 +16,7 @@
                     </div>
                 </div>
             </li>
+            <!-- 로고 -->
             <li>
                 <router-link class="logoLink" v-bind:to="'/'">
                     <div class="logo">
@@ -22,6 +24,7 @@
                     </div>
                 </router-link>
             </li>
+            <!-- 검색창 -->
             <li>
                 <div class="searchBar">
                     <select name="searchSelect" id="" class="searchSelectBox">
@@ -29,18 +32,19 @@
                         <option value="2">오늘발송</option>
                         <option value="3">가격비교</option>
                     </select>
-
                     <input id="search" type="text" v-on:keyup.enter="search()" style="font-size: 20px" placeholder="검색어 입력">
                     <button @click="search()">검색</button>
                 </div>
             </li>
         </ul>
+        <!-- 회원 관련 버튼 -->
+        <!-- 로그인을 했을 경우  -->
         <ul class="member">
             <li v-for="(link, i) in memberMenu" :key="i">
-                <router-link v-if="getLogin && i < 2" v-bind:to="link.link">
+                <router-link v-if="getLogin!=-1 && i < 2" v-bind:to="link.link">
                     <button>{{link.name}}</button>
                 </router-link>
-                <router-link v-else-if="!getLogin && i < 2" v-bind:to="'/Login'">
+                <router-link v-else-if="getLogin==-1 && i < 2" v-bind:to="'/Login'">
                     <button>{{link.name}}</button>
                 </router-link>
                 <router-link v-else v-bind:to="link.link">
@@ -67,7 +71,7 @@
                     <button>{{link.name}}</button>
                 </router-link>
                 <router-link v-else-if="i==2 && getLogin" v-bind:to="link.link">
-                    <button>{{getLogin.username}}</button>
+                    <button>{{getLogin.username}}님</button>
                 </router-link>
                 <router-link v-else-if="i==3 && getLogin" v-bind:to="link.link">
                     <button @click="LogOut">{{link.name}}</button>
