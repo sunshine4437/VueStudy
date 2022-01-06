@@ -200,177 +200,182 @@ export default {
 </script>
 
 <style scoped>
-.all{
-    display: flex;
-    justify-content: space-evenly;
-    margin: 0;
-    padding: 0;
-}
-.container0 {
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.container {
-    margin: 0;
-    padding: 0;
-    display: inline;
-    border: 1px solid rgb(197, 195, 195);
-    border-radius: 4px;
-}
-.products_fa{
-   display: inline;
-}
-.span1 {
-    display: flex;
-    font-size: 22px;
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    margin: 10px;
-    background-color: #fafafa;
-    border-radius: 4px;
-}
-
-.products {
-    display: inline-flex;
-    justify-content: center;
-    margin-left: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-.products router-link{
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 16px;
-}
-.products a {
-    display: inline;
-    width: 200px;
-    margin: 0 10px;
-    background-color: #fafafa;
-    border-radius: 4px;
-}
-
-.products a:visited,
-.products a:hover,
-.products a:link {
-    color: black;
-    text-decoration: none;
-}
-
-.products img {
-    width: 200px;
-    height: 200px;
-    border-radius: 4px;
-}
-
-.products p {
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 16px;
-}
-.products p:nth-child(3) {
-    font-weight: bold;
-    font-size: 22px;
-}
-
-.products1 ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.products1 li {
-    margin: 10px 10px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    background-color: #fafafa;
-    border-radius: 4px;
-    margin-left:1px solid rgb(197, 195, 195) ;
-}
-.products1 .item a>img {
-    width: 200px;
-    margin-top: 8px;
-    border-radius: 4px;
-}
-
- .desc {
-    margin: 0;
-    display: inline-block;
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 16px;
-}
-.products1 .item .desc p {
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 16px;
-    margin: 0 10px;
-    width: 450px;
-}
-.products1 .item .desc p:nth-child(2){
-    text-decoration: line-through;
-}
-.products1 .item .desc p:nth-child(3){
-    font-weight: bold;
-    font-size: 22px;
-}
-
-.desc .vendor {
-    display: inline-block;
-    border-left: 1px solid rgb(197, 195, 195);
-    width: 200px;
-    margin: 0;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    padding-left: 10px;
-}
-
-.container2 {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-}
-
-.aside_info {
-    border: 1px solid rgb(197, 195, 195);
-    width: 250px;
-    background-color: #fafafa;
-    border-radius: 4px;
-}
-
-.aside_info h2 {
-    margin: 0;
-    display: flex;
-    padding-left: 10px;
-    border-bottom: 1px solid rgb(197, 195, 195);
-    background-color: white;
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 22px;
-}
-.aside_info li .blank {
-    text-decoration: none;
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    font-size: 18px;
-}
-.aside_info ul {
-    list-style: none;
-    margin: 10px;
-    padding: 0;
-    align-items: center;
-}
-.aside_info li{
-    list-style: none;
-    font-size: 16px;
-    font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-    padding: 5px;
-    margin: 0;
-}
-.aside_info .buy a {
-    list-style: none;
-}
-
-.clearfix {
-    clear: both;
-}
-a:any-link{
-   color:inherit;
-}
-</style>
+        .all{
+            display: flex;
+            justify-content: space-evenly;
+            margin: 0;
+            padding: 0;
+        }
+        .container0 {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        .container {
+            margin: 0;
+            padding: 0;
+            display: inline;
+            border: 1px solid rgb(197, 195, 195);
+            border-radius: 4px;
+        }
+        .products_fa{
+           display: inline;
+        }
+        .span1 {
+            display: flex;
+            font-size: 22px;
+            font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
+            margin: 10px;
+            background-color: #fafafa;
+            border-radius: 4px;
+            border: 1px solid rgb(197, 195, 195);
+        }
+        
+        .products {
+            display: inline-flex;
+            justify-content: center;
+            margin-left: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+           
+        }
+        .products router-link{
+            font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
+            font-size: 16px;
+        }
+        .products a {
+            display: inline;
+            width: 200px;
+            margin: 0 10px;
+            background-color: #fafafa;
+            border-radius: 4px;
+            border: 1px solid rgb(197, 195, 195);
+        }
+        
+        .products a:visited,
+        .products a:hover,
+        .products a:link {
+            color: black;
+            text-decoration: none;
+        }
+        
+        .products img {
+            width: 200px;
+            height: 200px;
+            border-radius: 4px;
+        }
+        
+        .products p {
+            font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
+            font-size: 16px;
+        }
+        .products p:nth-child(3) {
+            font-weight: bold;
+            font-size: 22px;
+        }
+        
+        .products1 ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+           
+        }
+        
+        .products1 li {
+            margin: 10px 10px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            background-color: #fafafa;
+            border-radius: 4px;
+            margin-left:1px solid rgb(197, 195, 195) ;
+            border: 1px solid rgb(197, 195, 195);
+        }
+        .products1 .item a>img {
+            width: 200px;
+            margin-top: 8px;
+            border-radius: 4px;
+        }
+        
+         .desc {
+            margin: 0;
+            display: inline-block;
+            font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
+            font-size: 16px;
+        }
+        .products1 .item .desc p {
+            font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
+            font-size: 16px;
+            margin: 0 10px;
+            width: 450px;
+        }
+        .products1 .item .desc p:nth-child(2){
+            text-decoration: line-through;
+        }
+        .products1 .item .desc p:nth-child(3){
+            font-weight: bold;
+            font-size: 22px;
+        }
+        
+        .desc .vendor {
+            display: inline-block;
+            border-left: 1px solid rgb(197, 195, 195);
+            width: 200px;
+            margin: 0;
+            padding-top: 60px;
+            padding-bottom: 60px;
+            padding-left: 10px;
+        }
+        
+        .container2 {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .aside_info {
+            border: 1px solid rgb(197, 195, 195);
+            width: 250px;
+            background-color: #fafafa;
+            border-radius: 4px;
+        }
+        
+        .aside_info h2 {
+            margin: 0;
+            display: flex;
+            padding-left: 10px;
+            border-bottom: 1px solid rgb(197, 195, 195);
+            background-color: white;
+            font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
+            font-size: 22px;
+        }
+        .aside_info li .blank {
+            text-decoration: none;
+            font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
+            font-size: 18px;
+        }
+        .aside_info ul {
+            list-style: none;
+            margin: 10px;
+            padding: 0;
+            align-items: center;
+        }
+        .aside_info li{
+            list-style: none;
+            font-size: 16px;
+            font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
+            padding: 5px;
+            margin: 0;
+        }
+        .aside_info .buy a {
+            list-style: none;
+        }
+        
+        .clearfix {
+            clear: both;
+        }
+        a:any-link{
+           color:inherit;
+        }
+        </style>
