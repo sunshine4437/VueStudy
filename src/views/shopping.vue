@@ -12,10 +12,10 @@
             </ul>
             <h2>사이즈</h2>
             <ul class="size">
-                <li><input type="checkbox" class="blank"><a href="" class="blank">130~140이상</a></li>
-                <li><input type="checkbox" class="blank"><a href="" class="blank">145~155이상</a></li>
-                <li><input type="checkbox" class="blank"><a href="" class="blank">160~170이상</a></li>
-                <li><input type="checkbox" class="blank"><a href="" class="blank">175이상</a></li>
+                <li><input type="checkbox" class="blank"><a href="" class="blank">230~240이상</a></li>
+                <li><input type="checkbox" class="blank"><a href="" class="blank">245~255이상</a></li>
+                <li><input type="checkbox" class="blank"><a href="" class="blank">260~270이상</a></li>
+                <li><input type="checkbox" class="blank"><a href="" class="blank">275이상</a></li>
             </ul>
             <h2>색상</h2>
             <ul class="color">
