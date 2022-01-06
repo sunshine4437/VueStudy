@@ -9,9 +9,6 @@ const orderList = {
         orderList : [],
     },
     mutations: {
-        // Login(state) {
-        //     state.flag = true;
-        // },
         addOrderList(state, item){
             state.orderList.push(item);
         },

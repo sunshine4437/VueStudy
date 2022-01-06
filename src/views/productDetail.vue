@@ -25,47 +25,25 @@
                 <div class="searchBar">
                     <select id="search1" name="searchSelect" class="searchSelectBox" @click="firstSelected($event)">
                         <option value="0">상품 번호</option>
-                        <option value="01.NB_CM997HCA">
-                            01.NB_CM997HCA
-                        </option>
-                        <option value="02.NB_CM997HCC">
-                            02.NB_CM997HCC
-                        </option>
-                        <option value="03.NB_ML574RC2">
-                            03.NB_ML574RC2
-                        </option>
+                        <option value="01.NB_CM997HCA"> 01.NB_CM997HCA </option>
+                        <option value="02.NB_CM997HCC"> 02.NB_CM997HCC </option>
+                        <option value="03.NB_ML574RC2"> 03.NB_ML574RC2 </option>
                         <option value="04.NB_MR530SG">04.NB_MR530SG</option>
                         <option value="05.NB_MR530KA">05.NB_MR530KA</option>
                         <option value="06.NB_MS327FE">06.NB_MS327FE</option>
-                        <option value="07.NB_MS327LAB">
-                            07.NB_MS327LAB
-                        </option>
-                        <option value="08.NB_MS327CPG">
-                            08.NB_MS327CPG
-                        </option>
-                        <option value="09.NB_MS327LH1">
-                            09.NB_MS327LH1
-                        </option>
+                        <option value="07.NB_MS327LAB"> 07.NB_MS327LAB </option>
+                        <option value="08.NB_MS327CPG"> 08.NB_MS327CPG </option>
+                        <option value="09.NB_MS327LH1"> 09.NB_MS327LH1 </option>
                         <option value="10.NB_WS327KC">10.NB_WS327KC</option>
                         <option value="11.NB_MS327WE">11.NB_MS327WE</option>
                         <option value="12.NB_MS327BD">12.NB_MS327BD</option>
                         <option value="13.NB_MR530SH">13.NB_MR530SH</option>
                         <option value="14.NB_WS327LW">14.NB_WS327LW</option>
-                        <option value="15.NB_MS327CLA">
-                            15.NB_MS327CLA
-                        </option>
-                        <option value="16.NB_ML574EVB">
-                            16.NB_ML574EVB
-                        </option>
-                        <option value="17.NB_ML574EVG">
-                            17.NB_ML574EVG
-                        </option>
-                        <option value="18.NB_ML574EVW">
-                            18.NB_ML574EVW
-                        </option>
-                        <option value="19.NB_ML574EVE">
-                            19.NB_ML574EVE
-                        </option>
+                        <option value="15.NB_MS327CLA"> 15.NB_MS327CLA </option>
+                        <option value="16.NB_ML574EVB"> 16.NB_ML574EVB </option>
+                        <option value="17.NB_ML574EVG"> 17.NB_ML574EVG </option>
+                        <option value="18.NB_ML574EVW"> 18.NB_ML574EVW </option>
+                        <option value="19.NB_ML574EVE"> 19.NB_ML574EVE </option>
                     </select>
                 </div>
                 <div class="searchBar">
@@ -154,7 +132,7 @@
                     </button>
                 </router-link>
                 <router-link v-else v-bind:to="'/login'">
-                    <button class="buyBtn" >구매하기</button>
+                    <button class="buyBtn">구매하기</button>
                 </router-link>
             </div>
 

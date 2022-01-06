@@ -1,10 +1,6 @@
 <template>
 <div class="main">
     <div class="banner">
-        <!-- <img src="http://placehold.it/1920x500" alt="banner" style="cursor:
-            pointer"/> -->
-        <!-- <img src="https://picsum.photos/1900/00" alt="banner" style="cursor:
-            pointer"/> -->
         <bannerImage />
     </div>
     <div></div>
@@ -14,8 +10,6 @@
             <ul>
                 <li class="card_image" v-for='j in 4' :key="j">
                     <div class="imageDiv">
-                        <!-- <a v-bind:href="images[0].link"><img :src="getImage(images[0].image)"
-                            alt="productImage"></a> -->
                         <a v-bind:href="images[(j-1)+(n-1)*4].link">
                             <img :src="require(`@/components/mainPage/productTableImage/${images[(j-1)+(n-1)*4].image}`)" alt="productImage"></a>
                     </div>
@@ -51,7 +45,6 @@ export default {
     },
     methods: {
         moreImage() {
-            // console.log(this.length, this.imageLength);
             if (this.length < this.imageLength) {
                 if (this.imageLength - this.length == 1)
                     return this.length++;
@@ -70,9 +63,6 @@ export default {
 </script>
 
 <style scoped>
-.main {
-    /* border: 1px solid black; */
-}
 
 .banner img {
     max-width: 100%;
@@ -103,9 +93,7 @@ ul {
 .card_image>.imageDiv {
     width: 300px;
     height: 300px;
-    /* border: black 1px solid; */
     overflow: hidden;
-    /* margin: 0 auto; */
     margin-top: 0px;
     margin-bottom: 0px;
     border-radius: 4px 4px 0 0;
@@ -114,7 +102,6 @@ ul {
 .imageDiv img {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
 }
 
@@ -122,9 +109,7 @@ ul {
     display: block;
     text-align: left;
     width: 290px;
-    /* border: black 1px solid; */
     overflow: hidden;
-    /* margin: 0 auto; */
     margin-top: 0px;
     margin-bottom: 0px;
     background-color: #fafafa;

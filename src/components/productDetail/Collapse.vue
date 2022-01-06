@@ -2,20 +2,24 @@
 .collapse {
     margin-bottom: 2px;
 }
+
 .collapse .collapse-header {
     background: #f7f7f7;
     border-radius: 3px;
     position: relative;
 }
-.collapse .collapse-header > div {
+
+.collapse .collapse-header>div {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .collapse .collapse-header h3 {
     font-size: 0.938em;
     font-weight: bold;
 }
+
 .collapse .collapse-header::before {
     -moz-transition: all 0.2s;
     -o-transition: all 0.2s;
@@ -33,6 +37,7 @@
     -webkit-transform: rotate(-90deg);
     transform: rotate(-90deg);
 }
+
 .collapse.is-active .collapse-header::before {
     -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);
@@ -40,6 +45,7 @@
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
 }
+
 .collapse .collapse-content-box {
     -moz-transition: all 0.2s;
     -o-transition: all 0.2s;
@@ -55,23 +61,18 @@
 </style>
 
 <template>
-    <div class="collapse collapse-item" :class="{ 'is-active': active }">
-        <div
-            class="collapse-header touchable"
-            role="tab"
-            :aria-expanded="active ? 'true' : 'false'"
-            @click.prevent="toggle"
-        >
-            <slot name="collapse-header"></slot>
-        </div>
-        <transition name="fade">
-            <div class="collapse-content" v-if="active">
-                <div class="collapse-content-box">
-                    <slot name="collapse-body"></slot>
-                </div>
-            </div>
-        </transition>
+<div class="collapse collapse-item" :class="{ 'is-active': active }">
+    <div class="collapse-header touchable" role="tab" :aria-expanded="active ? 'true' : 'false'" @click.prevent="toggle">
+        <slot name="collapse-header"></slot>
     </div>
+    <transition name="fade">
+        <div class="collapse-content" v-if="active">
+            <div class="collapse-content-box">
+                <slot name="collapse-body"></slot>
+            </div>
+        </div>
+    </transition>
+</div>
 </template>
 
 <script>

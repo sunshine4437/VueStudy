@@ -68,9 +68,6 @@
                 <span>
                     <button type="button" class="classBtn" @click="execDaumPostcode()">주소검색</button>
                 </span>
-         
-                <!-- <input type="text" name="total_add" class="total_add"> -->
-
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">*주소</label>

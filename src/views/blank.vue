@@ -29,7 +29,7 @@ export default {
     color: rgb(0, 153, 255);
 }
 
-.title{
+.title {
     text-align: center;
 }
 </style>

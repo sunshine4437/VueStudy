@@ -4,13 +4,9 @@
         <carousel v-bind="options">
             <!-- // @initialized="init" -->
             <div class="test" v-for="(banners,idx) in bannerImage" :key="idx">
-                <!-- <a v-bind:href="'/#'"> -->
                 <img :src="require(`@/assets/bannerImage/${banners.image}`)" alt="banner">
-                <!-- </a>  -->
-                <!-- {{n}} -->
             </div>
         </carousel>
-
     </div>
 </div>
 </template>
@@ -21,7 +17,6 @@ import BannerImage from './banner.json'
 export default {
     components: {
         carousel,
-    
     },
     data() {
         return {
@@ -48,8 +43,6 @@ export default {
     font-size: 14px;
     margin: 0;
     padding: 0;
-    /* margin: 5px; */
-    /* padding: 4px 7px; */
     background: gray;
     display: inline-block;
     cursor: pointer;
@@ -57,7 +50,6 @@ export default {
 }
 
 .test {
-    /* width: 100; */
 }
 
 .prev::after {
@@ -74,8 +66,6 @@ export default {
     transform: rotate(225deg);
     /* 각도 */
     position: absolute;
-    /* top: 120px; 기본 0px 값으로 해주세요 */
-    /* left: 935px; 기본 0px 값으로 해주세요 */
     top: 50%;
     left: 10px;
 }
@@ -94,8 +84,6 @@ export default {
     transform: rotate(45deg);
     /* 각도 */
     position: absolute;
-    /* top: 120px; 기본 0px 값으로 해주세요 */
-    /* left: 935px; 기본 0px 값으로 해주세요 */
     top: 50%;
     right: 10px;
 }

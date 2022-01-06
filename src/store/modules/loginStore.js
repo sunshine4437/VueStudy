@@ -37,7 +37,6 @@ const loginStore = {
         getLogin: function (state) {
             return state.userInfo[state.idx];
         },
-        // getIsUserSignIn:
     }
 }
 
