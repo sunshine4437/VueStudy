@@ -112,7 +112,6 @@ export default {
 
 .container {
     display: flex;
-    /* border: 1px solid black; */
 }
 
 .upper {
@@ -152,14 +151,6 @@ export default {
 .menu>li {
     margin-right: 13px;
 }
-
-/* .menu li::before {
-    content: "| ";
-} */
-
-/* .menu li::after {
-    content: " |";
-} */
 
 :any-link {
     text-decoration: none;

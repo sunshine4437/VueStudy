@@ -30,22 +30,6 @@
                     <router-link v-bind:to="'/join2'"> <button class="sellerSignUpBtn">회원가입</button></router-link>
 
                 </div>
-                <!-- <table>
-                    <tr class="tt">
-                        <td>사업자 이거나</td>
-                        <td>사업자 구매회원</td>
-                        <td>사업자 셀러회원</td>
-                        <td>개인 셀러회원</td>
-                        <td>글로벌 셀러회원</td>
-                    </tr>
-                    <tr>
-                        <td>셀러이신가요?</td>
-                        <td>사업자 등록증을 보유한 <br>구매회원 <br><input type='button' value='가입하기'> </td>
-                        <td>사업자 등록증을<br>보유한 판매회원 <br><input type='button' value='가입하기'> </td>
-                        <td>사업자 등록증을<br>하지 않은 판매회원 <br><input type='button' value='가입하기'> </td>
-                        <td>해외 브랜드 상품<br>판매회원 <br><input type='button' value='가입하기'> </td>
-                    </tr>
-                </table> -->
             </div>
         </div>
     </div>

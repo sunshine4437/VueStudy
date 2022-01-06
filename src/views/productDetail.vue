@@ -158,25 +158,6 @@
                 </router-link>
             </div>
 
-            <!--  -->
-            <!-- <button class="myCartBtn" style="margin-right: 20px" @click="addBasketList">
-                test
-            </button>
-            <div v-show="getLogin" class="rightSelectedTable">
-                <tr v-for="item in getBasketList.slice(1)" :key="item">
-                    <td>
-                        <span v-html="item.name"></span>
-                    </td>
-                    <td style="width: 50px">
-                        <span v-html="item.size"></span>
-                    </td>
-                    <td style="width: 50px">
-                        <span v-html="item.price"></span>
-                    </td>
-                </tr>
-            </div>
-            <div class="clear"></div> -->
-            <!--  -->
         </div>
     </div>
     <div class="clear"></div>

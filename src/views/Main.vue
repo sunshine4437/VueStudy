@@ -16,7 +16,6 @@
                 </div>
             </li>
             <li>
-                <!-- <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo"></router-link> -->
                 <router-link class="logoLink" v-bind:to="'/'">
                     <div class="logo">
                         <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo" style="width:65px; height:65px; "></router-link>
@@ -73,15 +72,11 @@
                 <router-link v-else-if="i==3 && getLogin" v-bind:to="link.link">
                     <button @click="LogOut">{{link.name}}</button>
                 </router-link>
-                <!-- <router-link v-else v-bind:to="link.link">
-                    <button>{{link.name}}</button>
-                </router-link> -->
             </li>
         </ul>
     </div>
     <hr class="lineNav">
     <router-view></router-view>
-    <!-- <productTable /> -->
 </div>
 </template>
 
@@ -100,7 +95,6 @@ export default {
     computed: {
         ...loginStore.mapGetters(['getLogin'])
     },
-    //
     methods: {
         search() {
             const targetId = document.getElementById("search");
@@ -114,19 +108,6 @@ export default {
     },
     data() {
         return {
-            searchMenu: [{ //시험중인 배열
-                id: 1,
-                content: "http://placehold.it/95X95",
-                alt: "logo"
-            }, {
-                id: 2,
-                content: "http://placehold.it/95X95",
-                alt: "logo"
-            }, {
-                id: 3,
-                content: "http://placehold.it/95X95",
-                alt: "logo"
-            }],
             memberMenu: [{
                     link: "/Mypage1",
                     name: '마이페이지'
@@ -152,25 +133,19 @@ export default {
                 link: "/blank",
                 name: '특별'
             }, ],
-            // rightMenuName: ['로그인', '회원가입', '기타'],
             rightMenuName: [{
-                    link: "/login",
-                    name: '로그인'
-                }, {
-                    link: "/signUp",
-                    name: '회원가입'
-                }, {
-                    link: "/Mypage1",
-                    name: ""
-                }, {
-                    link: "/",
-                    name: '로그아웃'
-                },
-                //  {
-                //     link: "/customerService",
-                //     name: '고객센터'
-                // }
-            ]
+                link: "/login",
+                name: '로그인'
+            }, {
+                link: "/signUp",
+                name: '회원가입'
+            }, {
+                link: "/Mypage1",
+                name: ""
+            }, {
+                link: "/",
+                name: '로그아웃'
+            }, ]
         }
     },
 }
@@ -180,9 +155,6 @@ export default {
 .nav {
     display: flex;
     width: 100%;
-    /* align-items: center;
-    justify-content: center; */
-    /* border: 1px solid black; */
     height: 80px;
     position: fixed;
     z-index: 200;
@@ -190,7 +162,6 @@ export default {
 }
 
 .search {
-    /* border: 1px solid black; */
     display: flex;
     list-style: none;
     padding: 0;
@@ -200,12 +171,10 @@ export default {
 }
 
 .search li {
-    /* border: 1px solid black; */
     padding: 0 2px;
     margin: 0;
     margin-left: 50px;
     display: flex;
-    /* flex-direction: row; */
     align-items: center;
 
 }
@@ -224,17 +193,11 @@ export default {
 }
 
 .dropDownMenuBtn {
-    /* border: 1px solid rgb(37, 37, 37); */
-    /* border-radius: 4px; */
-    /* background-color: #0051ba; */
-    /* font-weight: 400; */
-    /* color: white; */
     padding: 12px;
     width: 120px;
     text-align: center;
     cursor: pointer;
     margin-left: 0;
-    /* font-size: 13px; */
 }
 
 .dropDownMenuBtn:hover {
@@ -261,7 +224,6 @@ export default {
     font-size: 16px;
     padding: 12px 10px;
     text-align: center;
-    /* border-top: 1px solid white; */
 }
 
 .dropDownMenuContent *:hover {
@@ -275,21 +237,16 @@ export default {
 }
 
 .member {
-    /* border: 1px solid black; */
     display: flex;
     list-style: none;
     padding: 0;
     margin: 0;
-    /* margin-left:auto; */
 }
 
 .member li {
-    /* border: 1px solid black; */
     padding: 0;
     margin: 0;
-
     display: flex;
-    /* flex-direction: row; */
     align-items: center;
 }
 
@@ -334,8 +291,6 @@ export default {
 
 .menu {
     display: flex;
-    /* border: 1px solid black; */
-    /* vertical-align: middle; */
     padding-top: 80px;
     height: 80px;
     align-items: center;
@@ -347,16 +302,11 @@ export default {
 }
 
 .menu li {
-    /* border: 1px solid black; */
-    /* padding: 0 10px;
-    margin: 0 10px; */
     padding: 0;
     margin: 0;
 }
 
 .leftMenu {
-    /* display: inline-block; */
-    /* border: 1px solid black; */
     margin-left: 5px;
     padding: 0;
 }
@@ -366,8 +316,6 @@ export default {
 }
 
 .rightMenu {
-    /* display: inline-block; */
-    /* border: 1px solid black; */
     margin-right: 5px;
     margin-left: auto;
     padding: 0;
@@ -389,7 +337,6 @@ export default {
 
 .logo {
     display: flex;
-    /* width: 65px; */
     height: 65px;
     background-color: rgb(0, 153, 255);
     color: white;
@@ -404,36 +351,4 @@ export default {
     font-size: 50px;
     font-weight: bold;
 }
-
-/* select::selection{
-     -webkit-appearance: none;
-      appearance: none;
-    border: red
-}
-
-select:focus{
-       -webkit-appearance: none;
-        appearance: none;
-           border: red
-} */
-/* 
-select {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    /* font-family: "Noto Sansf KR", sans-serif; 
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-
-    color: #444;
-    background-color: #fff;
-
-    padding: 0.6em 1.4em 0.5em 0.8em;
-    margin: 0;
-
-    border: 1px solid #aaa;
-    border-radius: 0.5em;
-    box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
-} */
 </style>

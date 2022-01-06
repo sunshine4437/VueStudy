@@ -108,7 +108,7 @@ export default {
                     this.sum += Number(this.getBasketList[i].price);
                 }
             }
-            totalPro.textContent = this.AddComma( this.product) + "원";
+            totalPro.textContent = this.AddComma(this.product) + "원";
             totalDel.textContent = this.AddComma(this.delivery) + "원";
             totalSale.textContent = "-" + this.AddComma(this.sale) + "원";
             totalSum.textContent = this.AddComma(this.sum + this.delivery - this.sale) + "원";
@@ -121,17 +121,10 @@ export default {
             this.calcPrice();
         },
         allDisCheck() {
-            // let allCheck = document.getElementById("allCheckedList");
             let checkedList = document.getElementsByClassName("checkedList");
-            // if (allCheck.checked == true)
-            //     for (let i = 0; i < checkedList.length; i++) {
-            //         checkedList[i].checked = true;
-            //     }
-            // else {
             for (let i = 0; i < checkedList.length; i++) {
                 checkedList[i].checked = false;
             }
-            // }
             this.calcPrice();
         },
         AddComma(num) {
@@ -175,200 +168,175 @@ export default {
 }
 </script>
 
- <style scoped>
-        .basket {
-            display: flex;
-        }
-        
-        .main {
-            display: inline-block;
-            width: 85%;
-            /* border: 1px solid black; */
-        }
-        
-        .selectDiv {
-            display: flex;
-            width: 100%;
-        }
-        
-        .selectDiv>div {
-            width: 50%;
-            /* border: 1px solid black; */
-        
-        }
-        
-        .allSelectDiv {
-            display: flex;
-        }
-        
-        .list {
-            list-style: none;
-            display: flex;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            background-color: #fafafa;
-            border: 1px solid rgb(197, 195, 195);
-            border-radius: 4px;
-        }
-        
-        .list3 p {
-            margin: 10px 0;
-            padding: 0px;
-        }
-        
-        .list3 .option {
-            margin-right: 10px;
-        }
-        
-        .list4 .price {
-            font-size: 16px;
-            margin: 10px 0;
-            text-decoration: line-through;
-            opacity: 0.5;
-        }
-        
-        .list5 .info {
-            margin: 10px 0;
-            padding: 0px;
-        }
-        
-        .list4 .rate {
-            font-weight: bold;
-        }
-        
-        .list :nth-child(3) {
-            width: 50%;
-        }
-        
-        .list :nth-child(4) {
-            width: 20%;
-        
-        }
-        
-        .list :nth-child(5) {
-            width: 20%;
-        }
-        
-        .list li {
-            /* border: 1px solid black; */
-            border-left: 1px solid rgb(197, 195, 195);
-            position: relative;
-        
-            padding: 5px;
-        }
-        
-        /* .listImage{
-             width: 200px;
-            height: 200px;
-            overflow: hidden;
-            margin: 0 auto;
-        } */
-        .list1 {
-            width: 30px;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .list1 input {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            margin: 0;
-            padding: 0;
-        }
-        
-        /* .list3 {
-            width: 15%;
-        }
-        
-        .list4 {
-            width: 15%;
-        }
-        
-        .list5 {
-            width: 70%;
-        } */
-        
-        .right {
-            position: relative;
-            display: inline-block;
-            width: 30%;
-            /* border: 1px solid black; */
-            padding: 10px;
-            margin-left: 20px;
-            min-height: 600px;
-            border: 1px solid rgb(197, 195, 195);
-            border-radius: 4px;
-        }
-        
-        .inform {
-            /* border: 1px solid black; */
-            width: 100%;
-            background-color: #fafafa;
-            border-radius: 4px;
-            border: 1px solid rgb(197, 195, 195);
-            margin: 0;
-        }
-        
-        .inform .line {
-            margin: 0;
-            border-bottom: 1px solid rgb(197, 195, 195);
-           
-        }
-        
-        .inform>div {
-            display: flex;
-            padding: 20px 5px;
-        
-        }
-        
-        .price {
-          margin-left: auto;
-          margin-top: 20px;
-            
-        }
-        
-        .orderBtn {
-            margin-top: 20px;
-            width: 100%;
-            text-align: center;
-            background-color: #0099ff;
-            border-radius: 4px;
-        }
-        
-        .productImage {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-        }
-        
-        .productImage {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-        }
-        
-        h1{
-            background-color: #fafafa;
-            border: 1px solid rgb(197, 195, 195);
-            border-radius: 4px;
-        }
-        
-        .selectBtn {
-            font-size: 15px;
-            height: 22px;
-            padding-top: 1px;
-            padding-bottom: 1px;
-        }
-        .signUpLink > button {
-            font-size: 22px;
-            width: 100%;
-            
-        }
-       
+<style scoped>
+.basket {
+    display: flex;
+}
 
-        </style>
+.main {
+    display: inline-block;
+    width: 85%;
+}
+
+.selectDiv {
+    display: flex;
+    width: 100%;
+}
+
+.selectDiv>div {
+    width: 50%;
+}
+
+.allSelectDiv {
+    display: flex;
+}
+
+.list {
+    list-style: none;
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #fafafa;
+    border: 1px solid rgb(197, 195, 195);
+    border-radius: 4px;
+}
+
+.list3 p {
+    margin: 10px 0;
+    padding: 0px;
+}
+
+.list3 .option {
+    margin-right: 10px;
+}
+
+.list4 .price {
+    font-size: 16px;
+    margin: 10px 0;
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.list5 .info {
+    margin: 10px 0;
+    padding: 0px;
+}
+
+.list4 .rate {
+    font-weight: bold;
+}
+
+.list :nth-child(3) {
+    width: 50%;
+}
+
+.list :nth-child(4) {
+    width: 20%;
+
+}
+
+.list :nth-child(5) {
+    width: 20%;
+}
+
+.list li {
+    border-left: 1px solid rgb(197, 195, 195);
+    position: relative;
+
+    padding: 5px;
+}
+
+.list1 {
+    width: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.list1 input {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+}
+
+.right {
+    position: relative;
+    display: inline-block;
+    width: 30%;
+    padding: 10px;
+    margin-left: 20px;
+    min-height: 600px;
+    border: 1px solid rgb(197, 195, 195);
+    border-radius: 4px;
+}
+
+.inform {
+    width: 100%;
+    background-color: #fafafa;
+    border-radius: 4px;
+    border: 1px solid rgb(197, 195, 195);
+    margin: 0;
+}
+
+.inform .line {
+    margin: 0;
+    border-bottom: 1px solid rgb(197, 195, 195);
+
+}
+
+.inform>div {
+    display: flex;
+    padding: 20px 5px;
+
+}
+
+.price {
+    margin-left: auto;
+    margin-top: 20px;
+
+}
+
+.orderBtn {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    background-color: #0099ff;
+    border-radius: 4px;
+}
+
+.productImage {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.productImage {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+h1 {
+    background-color: #fafafa;
+    border: 1px solid rgb(197, 195, 195);
+    border-radius: 4px;
+}
+
+.selectBtn {
+    font-size: 15px;
+    height: 22px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.signUpLink>button {
+    font-size: 22px;
+    width: 100%;
+
+}
+</style>

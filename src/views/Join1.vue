@@ -43,9 +43,6 @@
                 <span>
                     <button type="button" class="classBtn" @click="execDaumPostcode()">주소검색</button>
                 </span>
-
-                <!-- <input type="text" name="total_add" class="total_add"> -->
-
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">*주소</label>
@@ -344,7 +341,6 @@ export default {
 
 .tempDiv {
     display: flex;
-    /* margin-left: 100px; */
     margin: 40px 0 40px 0;
 }
 
@@ -359,35 +355,6 @@ export default {
     margin-left: 10px;
     padding: 0;
 }
-
-/* 
-#id {
-    margin-left: 54px;
-}
-
-#nick {
-    margin-left: 54px;
-}
-
-#pw {
-    margin-left: 36px;
-}
-
-.username {
-    margin-left: 79px;
-}
-
-#mobile {
-    margin-left: 37px;
-}
-
-.total_add {
-    margin-left: 79px;
-}
-
-.detail_add {
-    margin-left: 43px;
-} */
 
 .pwFlag,
 .re_pwFlag {

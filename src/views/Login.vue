@@ -9,23 +9,16 @@
         <input class="inputID" type="text" v-model="username" placeholder="아이디 입력">
         <input class="inputPWD" type="password" v-model="password" placeholder="비밀번호 입력">
         <button class="inputBtn" @click="signIn">로그인</button>
-        <!-- <input type="button" value="회원가입" v-on:click="signUp()"> -->
         <div class="etc">
             <div class="checkBoxDiv"><input type="checkbox" id="a"> <label for="a">자동로그인</label></div>
             <div class="findBoxDiv"><label>| 아이디찾기 | 비밀번호찾기</label></div>
         </div>
         <router-link class="signUpLink" v-bind:to="'/signUp'"><button class="signUpBtn">회원가입 </button></router-link>
-
-        <!-- <LoginPage /> -->
     </div>
 </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import LoginPage from '@/components/LoginPage.vue'
-// import { mapState, mapActions, mapMutations, mapGetters } from 'vuex'
-// import {mapGetters, mapMutations } from 'vuex';
 import {
     createNamespacedHelpers
 } from 'vuex'
@@ -48,9 +41,10 @@ export default {
                             this.Login(i);
                             this.$router.push("/");
                             return;
-                        }  if ("" === this.password) {
+                        }
+                        if ("" === this.password) {
                             alert("비밀번호를 입력하세요.");
-                               return;
+                            return;
                         } else {
                             alert("비밀번호가 맞지 않습니다.");
                             this.password = "";
@@ -75,7 +69,6 @@ export default {
     computed: {
         ...loginStore.mapGetters(['getUserInfo']),
         ...loginStore.mapGetters(['getLogin']),
-
     }
 }
 </script>
@@ -84,7 +77,6 @@ export default {
 .login {
     height: 950px;
     text-align: center;
-    /* border: 1px solid black; */
     margin: 0 auto;
 
 }
@@ -178,9 +170,4 @@ export default {
     width: 130px;
     font-size: 100px;
 }
-
-/* .signUpLink:link .signUpLink:hover .signUpLink:visited {
-
-    color: white;
-} */
 </style>
