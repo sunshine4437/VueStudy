@@ -44,20 +44,20 @@
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">비밀번호</label>
-                    <input v-model="signup.password" type="password" class="mdText"  @blur="passwordValid">
+                    <input v-model="signup.password" type="password" class="mdText"  @keyup="passwordValid">
                     <div v-if="!passwordValidFlag" class="pwFlag"> 유효하지 않은 비밀번호 입니다. </div>
                 <br>
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">비밀번호확인</label>
-                <input v-model="passwordCheck" type="password" name="비밀번호 확인" class="mdText"  @blur="passwordCheckValid">
+                <input v-model="passwordCheck" type="password" name="비밀번호 확인" class="mdText"  @keyup="passwordCheckValid">
                 <button class="classBtn" @click="pwMod"> 수정하기 </button>
                 <div v-if="!passwordCheckFlag" class="re_pwFlag"> 비밀번호가 동일하지 않습니다. </div>
      
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">전화번호</label>
-                    <input v-model="putNum" type="text" class="mdText"  @blur="numValid" placeholder="- 없이 숫자만" maxlength="11">
+                    <input v-model="putNum" type="text" class="mdText"  @keyup="numValid" placeholder="- 없이 숫자만" maxlength="11">
                     <button class="classBtn" @click="numMod"> 수정하기 </button>
                     <div v-if="!numValidFlag" class="numFlag"> 유효하지 않은 전화번호 입니다. </div>
             </div>

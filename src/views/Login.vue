@@ -3,7 +3,7 @@
     <div class="inputForm">
         <router-link class="logoLink" v-bind:to="'/'">
             <div class="logo">
-                    <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo" style="width:130px; height:130px;"></router-link>
+                <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo" style="width:130px; height:130px;"></router-link>
             </div>
         </router-link>
         <input class="inputID" type="text" v-model="username" placeholder="아이디 입력">
@@ -26,7 +26,9 @@
 // import LoginPage from '@/components/LoginPage.vue'
 // import { mapState, mapActions, mapMutations, mapGetters } from 'vuex'
 // import {mapGetters, mapMutations } from 'vuex';
-import { createNamespacedHelpers } from 'vuex'
+import {
+    createNamespacedHelpers
+} from 'vuex'
 const loginStore = createNamespacedHelpers('loginStore')
 export default {
     data() {
@@ -39,18 +41,24 @@ export default {
     methods: {
         signIn() {
             try {
-                if (this.getUserInfo.username === this.username) {
-                    if (this.getUserInfo.password === this.password) {
-                        alert(this.username + "님 환영합니다");
-                        this.Login();
-                        this.$router.push("/");
-                    } else if ("" === this.password) {
-                        alert("비밀번호를 입력하세요.");
-                    } else {
-                        alert("비밀번호가 맞지 않습니다.");
-                        this.password = "";
+                for (let i = 0; i < this.getUserInfo.length; i++) {
+                    if (this.getUserInfo[i].username === this.username) {
+                        if (this.getUserInfo[i].password === this.password) {
+                            alert(this.username + "님 환영합니다");
+                            this.Login(i);
+                            this.$router.push("/");
+                            return;
+                        }  if ("" === this.password) {
+                            alert("비밀번호를 입력하세요.");
+                               return;
+                        } else {
+                            alert("비밀번호가 맞지 않습니다.");
+                            this.password = "";
+                            return;
+                        }
                     }
-                } else if ("" === this.username)
+                }
+                if ("" === this.username)
                     alert("아이디를 입력하세요.")
                 else
                     alert("아이디가 맞지 않습니다.")
@@ -64,10 +72,10 @@ export default {
             'Login'
         ])
     },
-    computed:{
-       ...loginStore.mapGetters([
-             'getUserInfo'
-        ])
+    computed: {
+        ...loginStore.mapGetters(['getUserInfo']),
+        ...loginStore.mapGetters(['getLogin']),
+
     }
 }
 </script>
@@ -111,10 +119,12 @@ export default {
     padding: 5px;
     font-size: 15px;
 }
-.inputID{
-    margin-top:10px;
+
+.inputID {
+    margin-top: 10px;
     border-radius: 4px 4px 0 0;
 }
+
 .inputBtn {
     border-radius: 0;
     border: none;
@@ -158,11 +168,12 @@ export default {
 }
 
 .logo {
-    width:130px;
-    height:130px;
+    width: 130px;
+    height: 130px;
     margin-left: auto;
     margin-right: auto;
 }
+
 .logo>p {
     width: 130px;
     font-size: 100px;

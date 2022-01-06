@@ -7,17 +7,25 @@ const loginStore = {
     namespaced: true,
     state: {
         flag: false,
-        userInfo: {
+        idx: -1,
+        userInfo: [{
             username: "admin",
             password: "admin"
-        },
+        },{
+            username: "user1",
+            password: "user1"
+        },]
+
     },
     mutations: {
-        Login(state) {
-            state.flag = true;
+        Login(state, payload) {
+            state.idx = payload;
         },
         LogOut(state) {
-            state.flag = false;
+            state.idx = -1;
+        },
+        addMember(state, item){
+            state.userInfo.push(item);
         },
     },
     actions: {
@@ -27,7 +35,7 @@ const loginStore = {
             return state.userInfo;
         },
         getLogin: function (state) {
-            return state.flag;
+            return state.userInfo[state.idx];
         },
         // getIsUserSignIn:
     }

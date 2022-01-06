@@ -19,16 +19,16 @@
                 <!-- <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo"></router-link> -->
                 <router-link class="logoLink" v-bind:to="'/'">
                     <div class="logo">
-                           <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo" style="width:65px; height:65px; "></router-link>
+                        <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo" style="width:65px; height:65px; "></router-link>
                     </div>
                 </router-link>
             </li>
             <li>
                 <div class="searchBar">
                     <select name="searchSelect" id="" class="searchSelectBox">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        <option value="1">통합검색</option>
+                        <option value="2">오늘발송</option>
+                        <option value="3">가격비교</option>
                     </select>
 
                     <input id="search" type="text" v-on:keyup.enter="search()" style="font-size: 20px" placeholder="검색어 입력">
@@ -68,7 +68,7 @@
                     <button>{{link.name}}</button>
                 </router-link>
                 <router-link v-else-if="i==2 && getLogin" v-bind:to="link.link">
-                    <button>{{link.name}}</button>
+                    <button>{{getLogin.username}}</button>
                 </router-link>
                 <router-link v-else-if="i==3 && getLogin" v-bind:to="link.link">
                     <button @click="LogOut">{{link.name}}</button>
@@ -98,9 +98,7 @@ export default {
 
     },
     computed: {
-        ...loginStore.mapGetters([
-            'getLogin'
-        ])
+        ...loginStore.mapGetters(['getLogin'])
     },
     //
     methods: {
@@ -110,7 +108,7 @@ export default {
                 this.$router.push(`/shopping`);
             }
         },
-            ...loginStore.mapMutations([
+        ...loginStore.mapMutations([
             'LogOut'
         ])
     },
@@ -163,7 +161,7 @@ export default {
                     name: '회원가입'
                 }, {
                     link: "/Mypage1",
-                    name: 'admin님'
+                    name: ""
                 }, {
                     link: "/",
                     name: '로그아웃'

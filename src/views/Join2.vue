@@ -1,7 +1,7 @@
 <template>
 <div>
     <div style="text-align:center;" id="logo">
-        <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo"></router-link>
+        <router-link v-bind:to="'/'"> <img src="@/assets/logo.jpg" alt="logo" style="width:130px; height:130px; margin-top:10px;"></router-link>
         <h1>회원가입</h1>
         <hr>
     </div>
@@ -43,13 +43,13 @@
                 <span>
                     <button type="button" class="classBtn" @click="execDaumPostcode()">주소검색</button>
                 </span>
-         
+
                 <!-- <input type="text" name="total_add" class="total_add"> -->
 
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">*주소</label>
-                       <input type="text" class="inputValues" id="address" v-model="address" placeholder="주소">
+                <input type="text" class="inputValues" id="address" v-model="address" placeholder="주소">
 
             </div>
             <div class="tempDiv">
@@ -85,6 +85,10 @@
 </template>
 
 <script>
+import {
+    createNamespacedHelpers
+} from 'vuex'
+const loginStore = createNamespacedHelpers('loginStore')
 export default {
     data() {
         return {
@@ -119,11 +123,15 @@ export default {
 
         idCheck() {
             try {
+                for (let i = 0; i < this.getUserInfo.length; i++) {
+                    if (this.getUserInfo[i].username == this.signup.putid) {
+                        alert("이미 가입된 아이디 입니다.");
+                        this.checkIdFlag = false;
+                        return;
+                    }
+                }
                 if ("" === this.signup.putid) {
                     alert("공백 입니다.");
-                } else if ("admin" === this.signup.putid) {
-                    alert("이미 가입된 아이디 입니다.");
-                    this.checkIdFlag = false;
                 } else {
                     alert("등록 가능한 아이디 입니다.");
                     this.checkIdFlag = true;
@@ -219,19 +227,24 @@ export default {
             }
             let agreement1 = document.getElementById('agreement1');
             let agreement2 = document.getElementById('agreement2');
+
+            let username = document.getElementById('id').value;
+            let password = document.getElementById('pw').value;
             if (!agreement1.checked) {
                 alert("약관을 확인해 주세요");
             } else if (!agreement2.checked) {
                 alert("약관을 확인해 주세요");
             } else {
-
                 alert("회원가입이 완료 되었습니다.");
-
+                this.$router.push("/");
+                this.addMember({
+                    username: username,
+                    password: password
+                })
             }
-            
 
         },
-         execDaumPostcode() {
+        execDaumPostcode() {
             new window.daum.Postcode({
                 oncomplete: (data) => {
                     if (this.extraAddress !== "") {
@@ -270,15 +283,20 @@ export default {
                     this.postcode = data.zonecode;
                 },
             }).open();
-         },
+        },
+        ...loginStore.mapMutations(["addMember"]),
+    },
+    computed: {
+        ...loginStore.mapGetters(['getUserInfo']),
     }
 }
 </script>
 
 <style scoped>
-#logo{
+#logo {
     margin-top: 25px;
 }
+
 .container {
     background-color: #fafafa;
     display: flex;

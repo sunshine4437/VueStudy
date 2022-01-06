@@ -233,6 +233,7 @@ export default {
     background-color: #fafafa;
     border-radius: 4px;
     border: 1px solid rgb(197, 195, 195);
+    padding-left:5px;
 }
 
 .products {
