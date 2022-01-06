@@ -9,7 +9,9 @@
         <!--left-->
         <div class="left">
             <div class="List1">
-                <router-link v-bind:to="'/mypage1'">나의쇼핑내역</router-link>
+                <router-link v-bind:to="'/mypage1'">
+                    <h3>나의쇼핑내역</h3>
+                </router-link>
                 <hr>
             </div>
             <div class="Check">
@@ -20,7 +22,9 @@
                 <a href="">영수증/소득공제</a><br>
             </div>
             <div class="List2">
-                <router-link v-bind:to="'/mypage2'">회원정보 열람</router-link>
+                <router-link v-bind:to="'/mypage2'">
+                    <h3>회원정보 열람</h3>
+                </router-link>
                 <hr>
             </div>
             <div class="Check">
@@ -32,13 +36,11 @@
                 <a href="">로그인 관리</a><br>
                 <a href="">개인정보 이용내역</a>
             </div>
-            <!-- <router-link v-bind:to="'/'"> <button class="logoutbtn" @click="logout"> 로그아웃 </button></router-link> -->
-            <!-- <router-link v-bind:to="'/'"> <button class="logoutbtn"> 로그아웃 </button></router-link> -->
         </div>
         <!--right-->
         <div class="right">
             <div class="pList1">
-                <h2>나의쇼핑내역</h2><br>주문/ 배송 / 취소 / 환불 조회
+                <h2>나의쇼핑내역</h2>
             </div>
             <div class="date1">
                 <div class="table1st">
@@ -91,7 +93,6 @@
             <div class="pList2">
                 <h2>주문내역 조회</h2>
             </div>
-
             <div class="date2">
                 <table class="table2" style="width:1000px">
                     <tr class="tr1" style="height:50px;">
@@ -108,7 +109,7 @@
                     <tr v-for="(item, idx) in users" :key="idx" v-show="compareDate(item) && compareInform(item) ">
                         <td style="height:30px;">{{item.orderDate}}</td>
                         <td style="height:30px;">
-                            <img :src="require(`@/components/mainPage/productTableImage/${item.img}`)" alt="banner" style="width:50px; height:50px;">
+                            <img :src="require(`@/assets/image/${item.img}`)" alt="banner" style="width:50px; height:50px;">
                         </td>
                         <td>{{item.name}}</td>
                         <td>{{item.product}}</td>
@@ -125,7 +126,7 @@
             </div>
             <div class="date3">
                 <table class="table3" style="width:1000px">
-                      <tr class="tr1" style="height:50px;">
+                    <tr class="tr1" style="height:50px;">
                         <td id="edge1" style="width:100px">주문일자</td>
                         <td style="width:80px">이미지</td>
                         <td style="width:80px">판매자명</td>
@@ -139,7 +140,7 @@
                     <tr v-for="(item, asd) in users2" :key="asd" v-show="compareDate(item) && compareInform(item) ">
                         <td style="height:30px;">{{item.orderDate}}</td>
                         <td style="height:30px;">
-                            <img :src="require(`@/components/mainPage/productTableImage/${item.img}`)" alt="banner" style="width:50px; height:50px;">
+                            <img :src="require(`@/assets/image/${item.img}`)" alt="banner" style="width:50px; height:50px;">
                         </td>
                         <td>{{item.name}}</td>
                         <td>{{item.product}}</td>
@@ -307,13 +308,13 @@ tr {
 
 .left {
     display: inline-block;
-    height: 1090px;
+    height: 1095px;
     border: 1px solid rgb(197, 195, 195);
     background-color: #fafafa;
     border-radius: 4px;
     width: 210px;
     padding: 15px;
-    padding-top: 40px;
+    padding-top: 1px;
     font-size: 18px;
 }
 
@@ -367,10 +368,11 @@ tr {
 }
 
 .tables_header {
-    width: 150px;
+    width: 140px;
+    height: 100px;
     padding-top: 20px;
     text-align: center;
-    line-height: 90px;
+    line-height: 80px;
     font-weight: bold;
     border: 1px solid;
     border-radius: 4px;
@@ -466,11 +468,6 @@ tr {
     margin: 0px 1px;
     margin: 0px 5px;
 
-}
-
-.logoutbtn {
-    margin-top: 170px;
-    margin-left: 40px;
 }
 
 .tr1 {

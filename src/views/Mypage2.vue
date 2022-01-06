@@ -8,18 +8,18 @@
         <!--left-->
         <div class="left">
             <div class="List1">
-                <router-link v-bind:to="'/mypage1'">나의쇼핑내역</router-link>
+                <router-link v-bind:to="'/mypage1'"><h3>나의쇼핑내역</h3></router-link>
                 <hr>
             </div>
             <div class="Check">
-                  <a href="">주문/배송 조회</a><br>
+                <a href="">주문/배송 조회</a><br>
                 <a href="">취소/반품/교환 신청</a><br>
                 <a href="">취소/반품/교환 현황</a><br>
                 <a href="">환불/입금내역</a><br>
                 <a href="">영수증/소득공제</a><br>
             </div>
             <div class="List2">
-                <router-link v-bind:to="'/mypage2'">회원정보 열람</router-link>
+                <router-link v-bind:to="'/mypage2'"><h3>회원정보 열람</h3></router-link>
                 <hr>
             </div>
             <div class="Check">
@@ -31,7 +31,6 @@
                 <a href="">로그인 관리</a><br>
                 <a href="">개인정보 이용내역</a>
             </div>
-            <!-- <router-link v-bind:to="'/'"> <button class="logoutbtn">로그아웃</button></router-link> -->
         </div>
         <!--right-->
         <div class="right">
@@ -45,20 +44,20 @@
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">비밀번호</label>
-                    <input v-model="signup.password" type="password" class="mdText"  @keyup="passwordValid">
+                    <input v-model="signup.password" type="password" class="mdText"  @blur="passwordValid">
                     <div v-if="!passwordValidFlag" class="pwFlag"> 유효하지 않은 비밀번호 입니다. </div>
                 <br>
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">비밀번호확인</label>
-                <input v-model="passwordCheck" type="password" name="비밀번호 확인" class="mdText"  @keyup="passwordCheckValid">
+                <input v-model="passwordCheck" type="password" name="비밀번호 확인" class="mdText"  @blur="passwordCheckValid">
                 <button class="classBtn" @click="pwMod"> 수정하기 </button>
                 <div v-if="!passwordCheckFlag" class="re_pwFlag"> 비밀번호가 동일하지 않습니다. </div>
      
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">전화번호</label>
-                    <input v-model="putNum" type="text" class="mdText"  @keyup="numValid" placeholder="- 없이 숫자만" maxlength="11">
+                    <input v-model="putNum" type="text" class="mdText"  @blur="numValid" placeholder="- 없이 숫자만" maxlength="11">
                     <button class="classBtn" @click="numMod"> 수정하기 </button>
                     <div v-if="!numValidFlag" class="numFlag"> 유효하지 않은 전화번호 입니다. </div>
             </div>
@@ -75,12 +74,13 @@
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">*주소</label>
-                       <input type="text" class="mdText" id="address" v-model="address" placeholder="주소">
+                       <input type="text" class="mdText" id="address" v-model="address" placeholder="주소" >
 
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">*상세주소</label>
-                <input type="text" class="mdText" id="detailAddress" placeholder="상세주소">
+                <input type="text" class="mdText" id="detailAddress" placeholder="상세주소" v-model="putadd">
+                <button class="classBtn" @click="addMod"> 수정하기 </button>  
             </div>
             <div class="content1">
                 <router-link v-bind:to="'/'"> <button class="quit" @click="quitBtn">회원탈퇴</button></router-link>
@@ -109,6 +109,7 @@ export default {
             numValidFlag: true,
             putNum: '',
             putnick: '',
+            putadd: '',
             msg: '',
         }
     },
@@ -175,6 +176,17 @@ export default {
                     alert("수정 되었습니다.");
                 } else {
                     alert("제대로 입력해주세요.")
+                }
+            } catch (err) {
+                this.msg = "error";
+            }
+        },
+        addMod(){
+              try {
+                if ("" === this.putadd) {
+                    alert("공백 입니다.");
+                } else {
+                    alert("수정 되었습니다.");
                 }
             } catch (err) {
                 this.msg = "error";
@@ -254,7 +266,7 @@ hr {
     border-radius: 4px;
     width: 210px;
     padding: 15px;
-    padding-top: 40px;
+    padding-top: 1px;
     font-size: 18px;
 }
 
@@ -327,12 +339,6 @@ hr {
 .mdBtn {
     margin-left: 20px;
 }
-
-.logoutbtn {
-    margin-top: 100px;
-    margin-left: 45px;
-}
-
 .quit {
     width: 130px;
     height: 65px;
