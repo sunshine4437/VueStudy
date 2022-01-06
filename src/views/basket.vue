@@ -2,7 +2,7 @@
 <div class="basket">
     <div class="main">
         <div class="title">
-            <h2>장바구니</h2>
+            <h1>장바구니</h1>
         </div>
         <div class="selectDiv">
             <div class="allSelectDiv">
@@ -272,6 +272,9 @@ export default {
             border: 1px solid rgb(197, 195, 195);
             border-radius: 4px;
         }
+        .list p {
+            margin: 10px 0;
+        }
         
         .list3 p {
             margin: 10px 0;
@@ -296,6 +299,7 @@ export default {
         
         .list4 .rate {
             font-weight: bold;
+            margin: 20px 0;
         }
         
         .list :nth-child(3) {
@@ -415,6 +419,8 @@ export default {
             background-color: #fafafa;
             border: 1px solid rgb(197, 195, 195);
             border-radius: 4px;
+            padding: 10px;
+            
         }
         
         .selectBtn {

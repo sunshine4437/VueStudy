@@ -224,12 +224,13 @@ export default {
         }
         .span1 {
             display: flex;
-            font-size: 22px;
+            font-size: 32px;
             font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
             margin: 10px;
             background-color: #fafafa;
             border-radius: 4px;
             border: 1px solid rgb(197, 195, 195);
+            padding: 10px;
         }
         
         .products {
@@ -312,6 +313,7 @@ export default {
         }
         .products1 .item .desc p:nth-child(2){
             text-decoration: line-through;
+            opacity: 0.5;
         }
         .products1 .item .desc p:nth-child(3){
             font-weight: bold;
@@ -344,8 +346,9 @@ export default {
         .aside_info h2 {
             margin: 0;
             display: flex;
-            padding-left: 10px;
+            padding: 10px 10px;
             border-bottom: 1px solid rgb(197, 195, 195);
+            border-radius: 4px;
             background-color: white;
             font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
             font-size: 22px;
