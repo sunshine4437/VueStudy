@@ -6,7 +6,6 @@
         </div>
         <div class="selectDiv">
             <div class="allSelectDiv">
-                <!-- <div><input type="checkbox" @click="allCheck()" id="allCheckedList"></div> -->
                 <button class="selectBtn" @click="allCheck">전체선택</button>
                 <button class="selectBtn" @click="allDisCheck">전체해제</button>
                 <button class="selectBtn" @click="removeList">선택삭제</button>
@@ -16,18 +15,15 @@
             <div class="listDiv" v-for="(item, idx) in getBasketList" :key="idx">
                 <ul class="list">
                     <li class="list1">
-                        <!-- <div><input class="checkedList" type="checkbox" @click="[productPrice(),sumPrice(),sumDelivery(),discount()]"></div> -->
                         <div><input class="checkedList" type="checkbox" @click="calcPrice"></div>
                     </li>
                     <li class="list2">
                         <div class="listImage">
-                            <!-- <img style="width: 500px; height: 500px; border-radius: 10px" src="@/components/productDetail/image/product01.jpg" /> -->
                             <img class="productImage" :src="require(`@/components/productDetail/image/${item.img}`)" alt="">
                         </div>
                     </li>
                     <li class="list3">
                         <div>
-                            <!-- {{ item.seller}} -->
                             <p>{{item.title}}</p>
                             <p>옵션1 : {{item.name}}</p>
                             <p>옵션2 : {{item.size}}</p>
@@ -43,8 +39,6 @@
                     <li class="list5">
                         <div>
                             <p>{{AddComma(item.delivery_fee)}}원</p>
-                            <!-- <p class="info">{{item.info}}</p>
-                            <p class="fee">{{item.fee}}</p> -->
                         </div>
                     </li>
                 </ul>
@@ -70,15 +64,12 @@
             </div>
             <div style="color:red; ">
                 <h2>합계</h2>
-
                 <label class="price" style="font-size:25px;" id="totalSum">0원</label>
-
             </div>
         </div>
         <div class="orderBtn">
             <router-link class="signUpLink" v-bind:to="'/payment'"> <button @click="selectList">주문</button></router-link>
         </div>
-
     </div>
 </div>
 </template>
@@ -96,49 +87,6 @@ export default {
             delivery: 0,
             product: 0,
             sale: 0,
-            // items: [{
-            //     image: "f1.jpg",
-            //     name: "[뉴발란스] 운동화 MW880GR4 NBPQAS102G",
-            //     option: "옵션변경",
-            //     price: "125000",
-            //     rate: "0",
-            //     totalRate: "",
-            //     info: "무료배송",
-            // }, {
-            //     image: "s1.jpg",
-            //     name: "나이키 에어맥스97 트리플블랙",
-            //     option: "옵션변경",
-            //     price: "173000",
-            //     rate: "10",
-            //     totalRate: "",
-            //     info: "무료배송",
-            // }, {
-            //     image: "b1.jpg",
-            //     name: "[네파]21년 신상 남성용 벨키자 미드 구스 다운자켓(7H7026)",
-            //     option: "옵션변경",
-            //     price: "129000",
-            //     rate: "24",
-            //     totalRate: "",
-            //     info: "무료배송",
-            // }, {
-            //     image: "b2.jpg",
-            //     name: "LG Gram 17Z90N 노트북 17인치 IPS 초경량, (2560 x 1600), 10세대 인텔 코어 i7, 8GB RAM, 512GB SSD, 윈도우 10 홈, 17시간 배터리",
-            //     option: "옵션변경",
-            //     price: "1382490",
-            //     rate: "14",
-            //     totalRate: "",
-            //     info: "예상 통관대행료",
-            //     fee: "155360",
-            // }, {
-            //     image: "b3.jpg",
-            //     name: "벌레퇴치 영국방역회사인정 초파리 페로몬 삼각트랩(1개입)",
-            //     option: "옵션변경",
-            //     price: "1980",
-            //     rate: "0",
-            //     totalRate: "",
-            //     info: "배송비",
-            //     fee: "2500",
-            // }, ]
         }
     },
     methods: {
@@ -166,16 +114,9 @@ export default {
             totalSum.textContent = this.AddComma(this.sum + this.delivery - this.sale) + "원";
         },
         allCheck() {
-            // let allCheck = document.getElementById("allCheckedList");
             let checkedList = document.getElementsByClassName("checkedList");
-            // if (allCheck.checked == true)
             for (let i = 0; i < checkedList.length; i++) {
                 checkedList[i].checked = true;
-                // }
-                // else {
-                //     for (let i = 0; i < checkedList.length; i++) {
-                //         checkedList[i].checked = false;
-                //     }
             }
             this.calcPrice();
         },
