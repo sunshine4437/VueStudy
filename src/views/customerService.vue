@@ -4,13 +4,16 @@
         <div class="csTop">
             <table style="width: 100%">
                 <tr>
+                    <!-- 자주 묻는 질문 검색 -->
                     <td style="border: none; width: 50%" colspan="2">
                         <input type="text" class="search" placeholder="자주 묻는 질문 검색" style="padding: 0 20px" />
                         <button class="searchBtn">검색</button>
                     </td>
+                    <!-- 전화번호 -->
                     <td style="border: none">
                         <h2>전화 문의 : 1234-5678</h2>
                     </td>
+                    <!-- 1대1 문의 버튼 -->
                     <td style="border: none">
                         <router-link v-bind:to="'/otoQ'">
                             <button class="toOtoQ">1대1 문의하기</button>
@@ -19,6 +22,7 @@
                 </tr>
             </table>
         </div>
+        <!-- 자주 묻는 질문 목록 -->
         <div class="csFAQ">
             <div>
                 <h2 style="text-align: left">자주 묻는 질문</h2>
@@ -44,6 +48,7 @@
                 </table>
             </div>
         </div>
+        <!-- 공지사항 목록 -->
         <div class="csNotice">
             <div>
                 <h2 style="text-align: left">공지 사항</h2>

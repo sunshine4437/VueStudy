@@ -8,7 +8,9 @@
         <!--left-->
         <div class="left">
             <div class="List1">
-                <router-link v-bind:to="'/mypage1'"><h3>나의쇼핑내역</h3></router-link>
+                <router-link v-bind:to="'/mypage1'">
+                    <h3>나의쇼핑내역</h3>
+                </router-link>
                 <hr>
             </div>
             <div class="Check">
@@ -19,7 +21,9 @@
                 <a href="">영수증/소득공제</a><br>
             </div>
             <div class="List2">
-                <router-link v-bind:to="'/mypage2'"><h3>회원정보 열람</h3></router-link>
+                <router-link v-bind:to="'/mypage2'">
+                    <h3>회원정보 열람</h3>
+                </router-link>
                 <hr>
             </div>
             <div class="Check">
@@ -38,28 +42,28 @@
                 <h2>회원 정보 열람</h2>
             </div>
             <div class="tempDiv">
-               <label class="labelClass" for="">닉네임</label>
-                    <input type="text" class="mdText"  v-model="putnick">
-                    <button class="classBtn" @click="nickMod"> 수정하기 </button>  
+                <label class="labelClass" for="">닉네임</label>
+                <input type="text" class="mdText" v-model="putnick">
+                <button class="classBtn" @click="nickMod"> 수정하기 </button>
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">비밀번호</label>
-                    <input v-model="signup.password" type="password" class="mdText"  @keyup="passwordValid">
-                    <div v-if="!passwordValidFlag" class="pwFlag"> 유효하지 않은 비밀번호 입니다. </div>
+                <input v-model="signup.password" type="password" class="mdText" @keyup="passwordValid">
+                <div v-if="!passwordValidFlag" class="pwFlag"> 유효하지 않은 비밀번호 입니다. </div>
                 <br>
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">비밀번호확인</label>
-                <input v-model="passwordCheck" type="password" name="비밀번호 확인" class="mdText"  @keyup="passwordCheckValid">
+                <input v-model="passwordCheck" type="password" name="비밀번호 확인" class="mdText" @keyup="passwordCheckValid">
                 <button class="classBtn" @click="pwMod"> 수정하기 </button>
                 <div v-if="!passwordCheckFlag" class="re_pwFlag"> 비밀번호가 동일하지 않습니다. </div>
-     
+
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">전화번호</label>
-                    <input v-model="putNum" type="text" class="mdText"  @keyup="numValid" placeholder="- 없이 숫자만" maxlength="11">
-                    <button class="classBtn" @click="numMod"> 수정하기 </button>
-                    <div v-if="!numValidFlag" class="numFlag"> 유효하지 않은 전화번호 입니다. </div>
+                <input v-model="putNum" type="text" class="mdText" @keyup="numValid" placeholder="- 없이 숫자만" maxlength="11">
+                <button class="classBtn" @click="numMod"> 수정하기 </button>
+                <div v-if="!numValidFlag" class="numFlag"> 유효하지 않은 전화번호 입니다. </div>
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">*우편번호</label>
@@ -71,13 +75,13 @@
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">*주소</label>
-                       <input type="text" class="mdText" id="address" v-model="address" placeholder="주소" >
+                <input type="text" class="mdText" id="address" v-model="address" placeholder="주소">
 
             </div>
             <div class="tempDiv">
                 <label class="labelClass" for="">*상세주소</label>
                 <input type="text" class="mdText" id="detailAddress" placeholder="상세주소" v-model="putadd">
-                <button class="classBtn" @click="addMod"> 수정하기 </button>  
+                <button class="classBtn" @click="addMod"> 수정하기 </button>
             </div>
             <div class="content1">
                 <router-link v-bind:to="'/'"> <button class="quit" @click="quitBtn">회원탈퇴</button></router-link>
@@ -111,7 +115,7 @@ export default {
         }
     },
     methods: {
-        nickMod() {
+        nickMod() { // 닉네임 수정버튼 이벤트
             try {
                 if ("" === this.putnick) {
                     alert("공백 입니다.");
@@ -124,7 +128,7 @@ export default {
                 this.msg = "error";
             }
         },
-        passwordValid() {
+        passwordValid() { // 비밀번호 유효성 검사 및 플래그
             if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$/.test(this.signup.password)) {
                 this.passwordValidFlag = true
             } else {
@@ -132,7 +136,7 @@ export default {
             }
 
         },
-        passwordCheckValid() {
+        passwordCheckValid() { // 비밀번호 재확인 - 비밀번호 일치 여부 검사 및 플래그
             if (this.signup.password === this.passwordCheck) {
                 this.passwordCheckFlag = true;
                 this.checkRePwdFlag = true;
@@ -141,14 +145,14 @@ export default {
                 this.checkRePwdFlag = false;
             }
         },
-        pwMod() {
+        pwMod() { // 비밀번호 수정버튼 이벤트
             try {
                 if ("" === this.signup.password) {
                     alert("공백 입니다.");
                 } else if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$/.test(this.signup.password)) {
                     if (this.passwordValidFlag == true)
-                    if (this.signup.password === this.passwordCheck)
-                        alert("수정되었습니다.");
+                        if (this.signup.password === this.passwordCheck)
+                            alert("수정되었습니다.");
                 } else {
                     if (!this.passwordValidFlag == true)
                         alert("비밀번호 형식은 대문자,소문자,숫자 포함 8~16글자 입니다.");
@@ -157,7 +161,7 @@ export default {
                 this.msg = "error";
             }
         },
-        numValid() {
+        numValid() { // 휴대전화번호 유효성 검사 및 플래그
             if (/^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/.test(this.putNum)) {
                 this.numValidFlag = true
             } else {
@@ -165,7 +169,7 @@ export default {
             }
 
         },
-        numMod() {
+        numMod() { // 휴대전화 번호 수정버튼 이벤트
             try {
                 if ("" === this.putNum) {
                     alert("공백 입니다.");
@@ -178,8 +182,8 @@ export default {
                 this.msg = "error";
             }
         },
-        addMod(){
-              try {
+        addMod() { // 주소 수정버튼 이벤트
+            try {
                 if ("" === this.putadd) {
                     alert("공백 입니다.");
                 } else {
@@ -192,7 +196,7 @@ export default {
         quitBtn() {
             alert("정말 탈퇴하시겠습니까?")
         },
-         execDaumPostcode() {
+        execDaumPostcode() { // Daum 우편번호 조회 API 인용
             new window.daum.Postcode({
                 oncomplete: (data) => {
                     if (this.extraAddress !== "") {
@@ -231,7 +235,7 @@ export default {
                     this.postcode = data.zonecode;
                 },
             }).open();
-         },
+        },
     }
 }
 </script>
@@ -276,7 +280,7 @@ hr {
     border-radius: 4px;
 }
 
-.right>div:not(.content1){
+.right>div:not(.content1) {
     border-bottom: 1px solid rgb(197, 195, 195);
 }
 
@@ -336,6 +340,7 @@ hr {
 .mdBtn {
     margin-left: 20px;
 }
+
 .quit {
     width: 130px;
     height: 65px;
@@ -355,6 +360,7 @@ hr {
     display: flex;
     margin: 40px 0 40px 0;
 }
+
 .labelClass {
     margin-left: 150px;
     padding-bottom: 40px;

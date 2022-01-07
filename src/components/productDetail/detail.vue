@@ -1,23 +1,30 @@
 <template>
+<!-- 내용 -->
 <div>
+     <!-- 탭을 이용함 -->
     <div class="tabs">
         <TabItem v-for="item in list" v-bind="item" :key="item.id" v-model="currentId" class="tabTop" />
     </div>
+     <!-- 중간부분 -->
     <div class="contents">
         <transition>
             <section class="item" :key="currentId">
+                 <!-- 상품 상세 정보 -->
                 <div v-if="currentId === 1">
                     <img :src="require(`@/components/productDetail/image/${current.content}`)" style="margin: 0 auto" />
                 </div>
+                   <!-- 리뷰 -->
                 <div v-else-if="currentId === 2">
                     <review></review>
                 </div>
+                <!-- 판매자와의 QNA -->
                 <div v-else-if="currentId === 3">
                     <qna></qna>
                 </div>
             </section>
         </transition>
     </div>
+    <!-- 하단 탭버튼 -->
     <div class="tabs">
         <TabItem v-for="item in list" v-bind="item" :key="item.id" v-model="currentId" class="tabBottom" />
     </div>

@@ -3,7 +3,7 @@
     <!-- 상단 메뉴바 -->
     <div class="nav">
         <ul class="search">
-                <!-- 드랍메뉴 -->
+            <!-- 드랍메뉴 -->
             <li>
                 <div class="dropDownMenu">
                     <button class="dropDownMenuBtn">
@@ -38,19 +38,22 @@
             </li>
         </ul>
         <!-- 회원 관련 버튼 -->
-        <!-- 로그인을 했을 경우  -->
+        <!-- getLogin을 통해 로그인 여부를 확인하여 
+            로그인을 했을 경우 1번 로그인을 안했을 경우 2번 로그인이 필요없는 경우 3번이 실행-->
         <ul class="member">
             <li v-for="(link, i) in memberMenu" :key="i">
-                <router-link v-if="getLogin!=-1 && i < 2" v-bind:to="link.link">
+                <!-- 1번 -->
+                <router-link v-if="getLogin && i < 2" v-bind:to="link.link">
                     <button>{{link.name}}</button>
                 </router-link>
-                <router-link v-else-if="getLogin==-1 && i < 2" v-bind:to="'/Login'">
+                <!-- 2번 -->
+                <router-link v-else-if="!getLogin && i < 2" v-bind:to="'/Login'">
                     <button>{{link.name}}</button>
                 </router-link>
+                <!-- 3번 -->
                 <router-link v-else v-bind:to="link.link">
                     <button>{{link.name}}</button>
                 </router-link>
-
             </li>
         </ul>
     </div>
@@ -62,24 +65,28 @@
                 </router-link>
             </li>
         </ul>
+        <!-- 회원의 접속 관련 메뉴 로그인 로그아웃 회원가입 버튼 -->
         <ul class="rightMenu">
             <li v-for="(link, i) in rightMenuName" :key="i">
+                <!-- 미로그인 상태에서의 로그인 버튼과 회원가입 버튼 -->
                 <router-link v-if="i==0 && !getLogin" v-bind:to="link.link">
-                    <button>{{link.name}}</button>
+                    <button>로그인</button>
                 </router-link>
                 <router-link v-else-if="i==1 && !getLogin" v-bind:to="link.link">
-                    <button>{{link.name}}</button>
+                    <button>회원가입</button>
                 </router-link>
+                <!-- 로그인상태에서의 접속자의 아이디 표시와 누르면 마이페이지 이동 기능과 로그아웃 버튼 -->
                 <router-link v-else-if="i==2 && getLogin" v-bind:to="link.link">
                     <button>{{getLogin.username}}님</button>
                 </router-link>
                 <router-link v-else-if="i==3 && getLogin" v-bind:to="link.link">
-                    <button @click="LogOut">{{link.name}}</button>
+                    <button @click="LogOut">로그아웃</button>
                 </router-link>
             </li>
         </ul>
     </div>
     <hr class="lineNav">
+    <!-- 메인 하위 컴포넌트 표시 구역 -->
     <router-view></router-view>
 </div>
 </template>
@@ -87,25 +94,29 @@
 <script>
 // @ is an alias to /src
 import "@/css/common.css"
+// 새로고침과 페이지 이동시 로그인 상태 확인 및 유지 기능
 import {
     createNamespacedHelpers
 } from 'vuex';
+// 로그인 상태 관련 모듈
 const loginStore = createNamespacedHelpers('loginStore');
 export default {
     name: 'Main',
     components: {
-
     },
     computed: {
+        // 로그인한 유저정보를 반환
         ...loginStore.mapGetters(['getLogin'])
     },
     methods: {
+        // 검색 기능 신발만 가능
         search() {
             const targetId = document.getElementById("search");
             if (targetId.value === '신발') {
                 this.$router.push(`/shopping`);
             }
         },
+        // 로그아웃 상태로 전환
         ...loginStore.mapMutations([
             'LogOut'
         ])
@@ -139,16 +150,16 @@ export default {
             }, ],
             rightMenuName: [{
                 link: "/login",
-                name: '로그인'
+                name: ''
             }, {
                 link: "/signUp",
-                name: '회원가입'
+                name: ''
             }, {
-                link: "/Mypage1",
+                link: "/Mypage2",
                 name: ""
             }, {
                 link: "/",
-                name: '로그아웃'
+                name: ''
             }, ]
         }
     },

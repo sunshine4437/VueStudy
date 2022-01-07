@@ -1,5 +1,6 @@
 <template>
 <div class="login">
+    <!-- 로그인 입력 양식 -->
     <div class="inputForm">
         <router-link class="logoLink" v-bind:to="'/'">
             <div class="logo">
@@ -32,12 +33,14 @@ export default {
         }
     },
     methods: {
+        // 로그인 버튼을 눌렀을 때 아이디, 비밀번호 검사
         signIn() {
             try {
                 for (let i = 0; i < this.getUserInfo.length; i++) {
                     if (this.getUserInfo[i].username === this.username) {
                         if (this.getUserInfo[i].password === this.password) {
                             alert(this.username + "님 환영합니다");
+                            // 로그인한 유저 정보를 저장
                             this.Login(i);
                             this.$router.push("/");
                             return;

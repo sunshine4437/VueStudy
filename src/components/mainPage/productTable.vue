@@ -1,9 +1,11 @@
 <template>
 <div class="main">
+    <!-- 배너영역 -->
     <div class="banner">
         <bannerImage />
     </div>
     <div></div>
+    <!-- 메인 화면에 이미지를 출력하는 기능 -->
     <div>
         <h1>추천상품</h1>
         <div class="imageArea" v-for="n in length" v-bind:key="n">
@@ -44,6 +46,7 @@ export default {
         bannerImage
     },
     methods: {
+        // 화면에 보이는 이미지 출력 길이를 늘리는 기능
         moreImage() {
             if (this.length < this.imageLength) {
                 if (this.imageLength - this.length == 1)

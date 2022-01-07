@@ -5,6 +5,7 @@
         <h1>회원가입</h1>
         <hr>
     </div>
+    <!-- 입력 양식 -->
     <form class="container" name="login_member" preva>
         <div>
             <div class="tempDiv">
@@ -56,6 +57,7 @@
         </div>
     </form>
     <hr>
+    <!-- 약고나 동의 부분 -->
     <div class="footer">
         <div class="CheckBox">
             <label class="Agree" id="agreement">
@@ -109,7 +111,7 @@ export default {
     },
     methods: {
 
-        idCheck() {
+        idCheck() {// 아이디 중복검사 이벤트
             try {
                 for (let i = 0; i < this.getUserInfo.length; i++) {
                     if (this.getUserInfo[i].username == this.signup.putid) {
@@ -128,7 +130,7 @@ export default {
                 this.msg = "error";
             }
         },
-        nickCheck() {
+        nickCheck() {// 닉네임 중복검사 이벤트
             try {
                 if ("" === this.signup.putnick) {
                     alert("공백 입니다.");
@@ -143,7 +145,7 @@ export default {
                 this.msg = "error";
             }
         },
-        passwordValid() {
+        passwordValid() {// 비밀번호 유효성 검사 및 플래그
             if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$/.test(this.signup.password)) {
                 this.passwordValidFlag = true;
                 this.checkPwdFlag = true;
@@ -152,7 +154,7 @@ export default {
                 this.checkPwdFlag = false;
             }
         },
-        passwordCheckValid() {
+        passwordCheckValid() { // 비밀번호 재확인 - 비밀번호 일치 여부 검사 및 플래그
             if (this.signup.password === this.passwordCheck) {
                 this.passwordCheckFlag = true;
                 this.checkRePwdFlag = true;
@@ -161,8 +163,9 @@ export default {
                 this.checkRePwdFlag = false;
             }
         },
-        mobileCheckValid() {
+        mobileCheckValid() {// 휴대전화번호 유효성 검사 및 플래그
             if (/^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/.test(this.signup.mobile)) {
+                  //정규식표현 - 앞자리, 중간자리, 뒷자리 파트별 검사
                 this.mobileValidFlag = true;
                 this.checkTelFlag = true;
             } else {
@@ -170,7 +173,7 @@ export default {
                 this.checkTelFlag = false;
             }
         },
-        submit() {
+        submit() {// 회원가입 버튼 이벤트 - 각 컬럼별 유효성 검사
             const checked = document.getElementsByClassName('inputValues')
             for (var i = 0; i < checked.length; i++) {
                 if (checked[i].value.length == 0) {
@@ -205,12 +208,12 @@ export default {
 
             let username = document.getElementById('id').value;
             let password = document.getElementById('pw').value;
-            if (!agreement1.checked) {
+            if (!agreement1.checked) {// 약관 - 필수 체크박스 검사
                 alert("약관을 확인해 주세요");
             } else if (!agreement2.checked) {
                 alert("약관을 확인해 주세요");
             } else {
-                alert("회원가입이 완료 되었습니다.");
+                alert("회원가입이 완료 되었습니다.");// 모든 컬럼 true 일시 최종적으로 회원가입완료 알람.
                 this.$router.push("/");
                 this.addMember({
                     username: username,

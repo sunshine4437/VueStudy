@@ -1,17 +1,23 @@
 <template>
+<!-- 상품 페이지 -->
 <div class="productDetail">
+    <!-- 상단부 : 사진, 설명 등 -->
     <div class="detailTop">
+        <!-- 사진 -->
         <div class="leftBox scale-down" style="margin: auto; text-align: center">
             <img style="width: 500px; height: 500px; border-radius: 10px" src="@/components/productDetail/image/product01.jpg" />
         </div>
+        <!-- 사진의 오른쪽 부분 -->
         <div class="rightBox">
             <div class="enter"></div>
+            <!-- 상품명, 가격 -->
             <div class="rightTitle">
                 <h2 id="title">
                     [뉴발란스] 남여공용 574/327/530 운동화 씨쏠트 문빔
                 </h2>
                 <h1>{{ AddComma(price) }}원</h1>
             </div>
+            <!-- 상품명, 가격 -->
             <div class="rightTop">
                 <p>15시 이전 주문 시 오늘 출발</p>
                 <p v-if="delivery == 0">무료 배송</p>
@@ -20,6 +26,7 @@
                     {{ AddComma(delivery_low) }}원 이상 구매 시 배송비 무료)
                 </p>
             </div>
+            <!-- 상품명, 가격 -->
             <div class="rightSelect">
                 <h3>옵션 선택</h3>
                 <div class="searchBar">
@@ -66,6 +73,7 @@
                     </select>
                 </div>
             </div>
+            <!-- 선택된 옵션 출력 -->
             <div class="rightSelected">
                 <h3 style="text-align: left; padding: 0 0 0 20px">
                     선택된 옵션
@@ -112,6 +120,7 @@
                 </table>
             </div>
             <div class="clear"></div>
+            <!-- 총 상품 금액 및 장바구니, 구매하기 버튼 -->
             <div class="rightButton">
                 <h3 style="text-align: right; margin: 20px 35px 30px 0">
                     총 상품금액 : {{ AddComma(totalPrice) }}원
@@ -135,14 +144,15 @@
                     <button class="buyBtn">구매하기</button>
                 </router-link>
             </div>
-
         </div>
     </div>
     <div class="clear"></div>
+    <!-- 판매자 정보 -->
     <div class="shopInfo">
         <shopInfo></shopInfo>
     </div>
     <div class="clear"></div>
+    <!-- 상세 내용 정보 -->
     <div class="detail">
         <detail></detail>
     </div>
@@ -172,10 +182,11 @@ export default {
             price: 73800,
             delivery: 0,
             delivery_low: 50000,
-            delivery_fee: 2500,
+            delivery_fee: 0,
         };
     },
     methods: {
+        // 첫번째 옵션 선택 시 사용
         firstSelected(event) {
             if (event.target.value != 0) {
                 this.isSelected = true;
@@ -184,10 +195,12 @@ export default {
                 this.isSelected = false;
             }
         },
+        // 두번째 옵션 선택 시 사용
         secondSelected(event) {
             if (event.target.value != 0) {
                 this.secondOption = event.target.value;
                 this.isSelected = false;
+
                 let title = document.getElementById("title").innerHTML;
                 let newItem = {
                     img: "product01.jpg",
@@ -197,15 +210,11 @@ export default {
                     size: this.secondOption,
                     price: this.price,
                     amount: 1,
-                    delivery_fee: 2500,
-                    delivery_low: 50000,
+                    delivery_fee: this.delivery_fee,
                 };
                 this.items.push(newItem);
                 this.addList(newItem);
 
-                if (this.totalPrice >= 50000) {
-                    this.delivery_fee = 0;
-                }
                 event.target.value = 0;
                 document.getElementById("search1").value = 0;
             }
@@ -221,28 +230,28 @@ export default {
                 this.addList(this.items[i]);
             }
         },
+        // 선택된 옵션 x 버튼을 눌러 지울 때 사용
         removeSelected(idx) {
             this.items.splice(idx, 1);
-
-            if (this.totalPrice < 50000) {
-                this.delivery_fee = 2500;
-            }
         },
+        // 숫자에 천자리마다 ,추가
         AddComma(num) {
             var regexp = /\B(?=(\d{3})+(?!\d))/g;
             return num.toString().replace(regexp, ",");
         },
-        ...basketList.mapMutations(["addList"]),
+        // 숫자에 천자리마다 ,추가
         amountDec(idx) {
             if (this.items[idx].amount > 1) {
                 this.items[idx].amount--;
                 this.items[idx].price = this.price * this.items[idx].amount;
             }
         },
+        // 숫자에 천자리마다 ,추가
         amountInc(idx) {
             this.items[idx].amount++;
             this.items[idx].price = this.price * this.items[idx].amount;
         },
+        ...basketList.mapMutations(["addList"]),
         ...orderList.mapMutations(["addOrderList"]),
         ...orderList.mapMutations(["clearOrderList"]),
         ...basketList.mapMutations(["delList"]),
@@ -250,6 +259,7 @@ export default {
     computed: {
         ...basketList.mapGetters(["getBasketList"]),
         ...loginStore.mapGetters(["getLogin"]),
+        // 총 가격 계산
         totalPrice() {
             let tp = 0;
             for (let i = 0; i < this.items.length; i++) {

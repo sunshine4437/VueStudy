@@ -1,4 +1,6 @@
 <template>
+<!-- 판매자와의 QNA -->
+
     <div class="qna">
         <div class="qnaTitle">
             <h2>상품 문의</h2>
@@ -16,6 +18,7 @@
 
             <tr v-for="qna in qnas" :key="qna.number">
                 <div>
+                     <!-- 클릭 시 드롭다운 방식 -->
                     <collapse :selected="false">
                         <div slot="collapse-header">
                             <td style="width: 80px">

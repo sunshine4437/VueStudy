@@ -1,4 +1,5 @@
 <template>
+<!-- 1대1 문의 -->
 <div class="otoQ">
     <table>
         <tr>
@@ -6,6 +7,7 @@
                 <h2>문의글 작성</h2>
             </th>
         </tr>
+        <!-- 유형 선택 -->
         <tr>
             <td style="width: 20%"><span>유형</span></td>
             <td>
@@ -21,18 +23,21 @@
                 </select>
             </td>
         </tr>
+        <!-- 제목(입력 필수) -->
         <tr>
             <td><span>제목</span></td>
             <td>
                 <input type="text" name="제목" class="longInput inputValues" />
             </td>
         </tr>
+        <!-- 내용(입력 필수) -->
         <tr>
             <td><span>내용</span></td>
             <td>
                 <textarea name="내용" id="otoTextarea" class="otoTextarea inputValues" maxlength="2000" placeholder="문의 내용을 입력해주세요." style="resize: none"></textarea>
             </td>
         </tr>
+        <!-- 연락처(입력 필수, 정규식) -->
         <tr>
             <td><span>연락처</span></td>
             <td>
@@ -46,6 +51,7 @@
                 </p>
             </td>
         </tr>
+        <!-- 파일 첨부 -->
         <tr>
             <td><span>파일 첨부</span></td>
             <td><input type="file" /></td>
@@ -71,6 +77,7 @@ export default {
         };
     },
     methods: {
+        // 전화번호 정규식 검사
         phoneCheck() {
             let mobile = document.getElementById("mobile").value;
             if (
@@ -83,10 +90,11 @@ export default {
                 this.phoneValidate = false;
             }
         },
-        QuestionRegister() {
+          // 유효성 검사
+        QuestionRegister() {  
             let success = false;
+                // 하나라도 실패하면 success=false가 되어 완료 안됨
             const checked = document.getElementsByClassName("inputValues");
-
             for (var i = 0; i < checked.length; i++) {
                 success = true;
                 if (checked[i].value.length == 0) {

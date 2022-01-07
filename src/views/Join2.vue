@@ -118,7 +118,6 @@ export default {
         }
     },
     methods: {
-
         idCheck() {
             try {
                 for (let i = 0; i < this.getUserInfo.length; i++) {

@@ -55,7 +55,7 @@
                             <button class="dateBtn">11월</button>
                             <button class="dateBtn">10월</button>
                         </div>
-                        <div class="row2">
+                        <div class="row2"><!--기간별 주문/취소한 상품 내역 조회-->
                             <select name="" id="" @change="setStartYear">
                                 <option v-for="n in years" :key="n" :value="n" :selected="n == getYear()">{{n}}</option>
                             </select>
@@ -91,7 +91,7 @@
             </div>
 
             <div class="pList2">
-                <h2>주문내역 조회</h2>
+                <h2>주문내역 조회</h2> <!--주문내역 조회 테이블-->
             </div>
             <div class="date2">
                 <table class="table2" style="width:1000px">
@@ -105,6 +105,7 @@
                         <td style="width:100px">가격</td>
                         <td id="edge2" style="width:80px">배송비</td>
                     </tr>
+                    <!-- 날짜, 검색 정보를 비교하여 화면 목록에 표시 -->
                     <tr v-for="(item, idx) in users" :key="idx" v-show="compareDate(item) && compareInform(item) ">
                         <td style="height:30px;">{{item.orderDate}}</td>
                         <td style="height:30px;">
@@ -121,7 +122,7 @@
             </div>
 
             <div class="pList3">
-                <h2>취소/환불 조회</h2>
+                <h2>취소/환불 조회</h2><!--취소/환불 내역 조회 테이블-->
             </div>
             <div class="date3">
                 <table class="table3" style="width:1000px">
@@ -155,8 +156,8 @@
 </template>
 
 <script>
-import userList from "../assets/data/orderList.json";
-import userList2 from "../assets/data/refundList.json";
+import userList from "../assets/data/orderList.json";// 주문내역 제이슨
+import userList2 from "../assets/data/refundList.json";// 취소내역 제이슨
 export default {
     data() {
         return {
@@ -177,6 +178,7 @@ export default {
 
         }
     },
+        // 주문/취소 내역 제이슨
     name: "userList",
     name2: "userList2",
     computed: {
@@ -192,6 +194,7 @@ export default {
         }
     },
     methods: {
+          // 기간별 주문/취소한 상품 내역 조회를 위한 함수
         getDate() {
             let today = new Date();
             let date = today.getDate();
@@ -207,10 +210,6 @@ export default {
             let year = today.getFullYear();
             return year;
         },
-        // 2000-01-01
-        // replaceAt(input, index, character) {
-        //     return input.substr(0, index) + character + input.substr(index + character.length);
-        // },
         setStartDate(event) {
             if (event.target.value < 10)
                 this.startPoint.date = 0 + event.target.value;
@@ -241,6 +240,7 @@ export default {
         setEndYear(event) {
             this.endPoint.year = event.target.value;
         },
+           //시작날짜와 끝날짜 기간사이 상품을 조회하기 위한 함수
         compareDate(target) {
             if (`${this.startPoint.year}-${this.startPoint.month}-${this.startPoint.orderDate}` <= target.orderDate)
                 if (target.orderDate <= `${this.endPoint.year}-${this.endPoint.month}-${this.endPoint.date}`)
@@ -249,6 +249,7 @@ export default {
         search() {
             this.target = document.getElementById("searchInput").value
         },
+          //기간에 해당되는 상품 출력
         compareInform(event) {
             if (this.target == "")
                 return true;
@@ -259,6 +260,7 @@ export default {
                     return false;
             }
         },
+           //가격부분 콤마 추가
         AddComma(num) {
             var regexp = /\B(?=(\d{3})+(?!\d))/g;
             return num.toString().replace(regexp, ",");

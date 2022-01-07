@@ -4,6 +4,7 @@
         <div class="title">
             <h2>장바구니</h2>
         </div>
+        <!-- 장바구니 목록 선택 체크 버튼 -->
         <div class="selectDiv">
             <div class="allSelectDiv">
                 <button class="selectBtn" @click="allCheck">전체선택</button>
@@ -12,6 +13,7 @@
             </div>
         </div>
         <div>
+            <!-- 장바구니 목록 표시 -->
             <div class="listDiv" v-for="(item, idx) in getBasketList" :key="idx">
                 <ul class="list">
                     <li class="list1">
@@ -46,6 +48,7 @@
         </div>
     </div>
     <div class="right">
+        <!-- 결제 금액 내역 표시 -->
         <div class="inform">
             <div class="line">
                 <h2>결제예정금액</h2>
@@ -90,6 +93,7 @@ export default {
         }
     },
     methods: {
+        // 체크박스를 선택할때 금액 계산
         calcPrice() {
             let checkedList = document.getElementsByClassName("checkedList");
             let totalPro = document.getElementById("totalPro");
@@ -113,6 +117,7 @@ export default {
             totalSale.textContent = "-" + this.AddComma(this.sale) + "원";
             totalSum.textContent = this.AddComma(this.sum + this.delivery - this.sale) + "원";
         },
+        // 체크박스 전체 선택
         allCheck() {
             let checkedList = document.getElementsByClassName("checkedList");
             for (let i = 0; i < checkedList.length; i++) {
@@ -120,6 +125,7 @@ export default {
             }
             this.calcPrice();
         },
+        // 체크박스 전체 선택 해제
         allDisCheck() {
             let checkedList = document.getElementsByClassName("checkedList");
             for (let i = 0; i < checkedList.length; i++) {
@@ -131,6 +137,7 @@ export default {
             var regexp = /\B(?=(\d{3})+(?!\d))/g;
             return num.toString().replace(regexp, ',');
         },
+        // 장바구니 목록 삭제
         removeList() {
             let checkedList = document.getElementsByClassName("checkedList");
             for (let i = checkedList.length - 1; i >= 0; i--) {
@@ -149,6 +156,7 @@ export default {
             totalSale.textContent = "0원";
             totalSum.textContent = "0원";
         },
+        // 주문 버튼을 누를 때 구매 목록에 장바구니 목록 넣기
         selectList() {
             let checkedList = document.getElementsByClassName("checkedList");
             this.clearOrderList();
