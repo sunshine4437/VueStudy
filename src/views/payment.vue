@@ -191,9 +191,9 @@ export default {
             totalPrice: 0,
             coupon: 0,
             sale: 0,
-            finalPrice: 110500,
+            finalPrice: 0,
             radioPay: "",
-            delivery: 2500,
+            delivery: 0,
             phoneValidate: true,
             usable: 3548,
             open: false,
@@ -326,7 +326,10 @@ export default {
             for (let i = 0; i < this.getOrderList.length; i++) {
                 this.totalPrice += this.getOrderList[i].price;
                 this.sale += this.getOrderList[i].price * 0.1;
+                this.delivery += this.getOrderList[i].delivery_fee;
+              
             }
+            this.finalPrice = this.totalPrice - this.sale + this.delivery;
         }
     },
 };
